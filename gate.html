@@ -164,7 +164,7 @@
   const INTERNAL_KEY  = "ti_internal_auth";
 
   // If already authenticated, go straight to the main site
-  if (localStorage.getItem(BETA_KEY) === BETA_HASH) {
+  if (sessionStorage.getItem(BETA_KEY) === BETA_HASH) {
     window.location.replace("index.html");
   }
 
@@ -178,11 +178,11 @@
     const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
 
     if (hash === BETA_HASH) {
-      localStorage.setItem(BETA_KEY, BETA_HASH);
+      sessionStorage.setItem(BETA_KEY, BETA_HASH);
       window.location.replace("index.html");
     } else if (hash === INTERNAL_HASH) {
       // Internal password grants beta access + activates internal view for the session
-      localStorage.setItem(BETA_KEY, BETA_HASH);
+      sessionStorage.setItem(BETA_KEY, BETA_HASH);
       sessionStorage.setItem(INTERNAL_KEY, INTERNAL_HASH);
       window.location.replace("index.html");
     } else {

@@ -4,7 +4,7 @@
   var KEY  = "ti_internal_auth";
 
   function isInternal() {
-    return localStorage.getItem(KEY) === HASH || sessionStorage.getItem(KEY) === HASH;
+    return sessionStorage.getItem(KEY) === HASH;
   }
 
   function applyInternalState() {
@@ -43,7 +43,6 @@
   }
 
   function exitInternal() {
-    localStorage.removeItem(KEY);
     sessionStorage.removeItem(KEY);
     applyInternalState();
   }

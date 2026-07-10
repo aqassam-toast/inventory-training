@@ -14,7 +14,7 @@
   var depth = repoIdx >= 0 ? parts.length - repoIdx - 2 : 0;
   var prefix = "";
   for (var i = 0; i < depth; i++) prefix += "../";
-  if (localStorage.getItem(KEY) !== HASH) {
+  if (sessionStorage.getItem(KEY) !== HASH) {
     window.location.replace(prefix + "gate.html");
   }
 })();
