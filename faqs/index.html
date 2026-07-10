@@ -39,16 +39,108 @@
 </div>
 
 <div class="content">
-  <!-- Add FAQ items here. Example:
-  <details>
-    <summary>Your question here?</summary>
-    <p>Your answer here.</p>
-  </details>
-  -->
-  <details>
-    <summary>FAQs coming soon</summary>
-    <p>Frequently asked questions will be added here. Check back soon.</p>
-  </details>
+
+  <div class="faq-section">
+    <h2>Product &amp; Functionality</h2>
+
+    <details>
+      <summary>Will inventory update automatically from invoices?</summary>
+      <p>Yes. We're working toward a system where invoice ingestion updates inventory with minimal manual intervention, though mapping between purchases and products will still be necessary at the beginning.</p>
+    </details>
+
+    <details>
+      <summary>Do recipes need to exist before sales? Can they be updated later?</summary>
+      <p>The system is quite flexible. You'll be able to manually enter a plate cost that gets applied to sales to determine margin, even without recipes existing against those sellable items. This manual plate cost can be updated up to 30 days in the past.</p>
+      <p style="margin-top:0.75rem">Recipes are also flexible:</p>
+      <ul>
+        <li>You can adjust recipes over time.</li>
+        <li>Changes are tracked so historical reporting remains intact — no need to create new menu items just because a recipe changes.</li>
+        <li>Retroactive recipe changes will be allowed, with restrictions: generally no more than 30 days back, and for complex historical edits (like recipe changes) you may be limited to 7 days.</li>
+      </ul>
+    </details>
+
+    <details>
+      <summary>Can multiple products share the same inventory?</summary>
+      <p>Yes — this is a core use case (e.g., different pours from the same keg). The system is designed to support shared inventory across multiple sellable items. This capability already exists in the Toast retail product. We're improving the usability of how it works today; if you want to test it now, the Sandbox account is a great starting point.</p>
+    </details>
+
+    <details>
+      <summary>Will batch production / prep workflows be supported?</summary>
+      <p>Yes. Batch production will exist, but it will be manual at the start. We're figuring out what level of automation makes sense to keep batch production maintainable without a lot of human intervention.</p>
+    </details>
+
+    <details>
+      <summary>Can I track inventory by sub-location (bar, kitchen, retail)?</summary>
+      <p>Not fully in the first release, but this is a high-priority area of feedback and something we're actively investigating.</p>
+    </details>
+  </div>
+
+  <div class="faq-section">
+    <h2>Automation &amp; AI</h2>
+
+    <details>
+      <summary>Will the system automate reordering?</summary>
+      <p>Eventually, yes — with alerts first, then recommendations, then optional automation. We expect this to evolve over time, not all at once.</p>
+    </details>
+
+    <details>
+      <summary>Can I set par levels and trigger orders?</summary>
+      <p>Yes — par-based workflows are already part of the system.</p>
+    </details>
+
+    <details>
+      <summary>Can the system automatically 86 items?</summary>
+      <p>Yes — especially based on ingredient stock. More advanced logic (e.g., time-based replenishment) is being explored. We'll also offer capabilities for setting manual availability that is independent of stock levels.</p>
+    </details>
+  </div>
+
+  <div class="faq-section">
+    <h2>Hardware &amp; Integrations</h2>
+
+    <details>
+      <summary>Will there be integrations with scales or draft systems?</summary>
+      <p>This is an active area of research. Barcode scanning is included, as well as barcode label generation and printing. We're exploring additional hardware integrations over time.</p>
+    </details>
+
+    <details>
+      <summary>Does this integrate with accounting tools like QuickBooks?</summary>
+      <p>Yes. Payroll integration with QuickBooks (outside of xtraCHEF) is already generally available. Sales integration with QuickBooks is in beta. Invoice automation with QuickBooks is coming soon. Support for additional accounting systems is also planned.</p>
+    </details>
+  </div>
+
+  <div class="faq-section">
+    <h2>Rollout &amp; Access</h2>
+
+    <details>
+      <summary>When will this be available?</summary>
+      <p>We're rolling out in phases: retail first, recipes next, modifiers after that. We'll reach out based on your use case and readiness.</p>
+    </details>
+
+    <details>
+      <summary>Will there be sandbox access?</summary>
+      <p>Yes — sandbox / early testing environments are planned. We'll follow up with those who expressed interest. You can also <a href="https://docs.google.com/forms/d/1cEDLAh22wpyiBbnibtwP2k5qwT0xHowIFcgpDn6yuyI/viewform" target="_blank">complete the access acknowledgement form</a> to get started.</p>
+    </details>
+
+    <details>
+      <summary>Will this be available outside the U.S.?</summary>
+      <p>Yes — when this product rolls out, it will roll out to all countries where Toast is sold today.</p>
+    </details>
+
+    <details>
+      <summary>Will this cost extra?</summary>
+      <p>Yes, this will cost extra. Pricing is still being finalized. We'll share details before broader rollout.</p>
+    </details>
+  </div>
+
+  <div class="faq-section">
+    <h2>Edge Cases &amp; Advanced Use Cases</h2>
+
+    <details>
+      <summary>Can large catering orders be handled differently?</summary>
+      <p>We haven't fully considered catering-specific operations yet, but a lot of great suggestions came up in the webinar. If a significant portion of your orders are catering-based, please reach out — we'd love to learn more about your use case.</p>
+    </details>
+  </div>
+
 </div>
 
 <footer>

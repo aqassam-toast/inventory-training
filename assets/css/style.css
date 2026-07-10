@@ -356,34 +356,39 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 .assoc-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   border: 1px solid #e5e5e5;
-  border-radius: 8px;
-  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
   text-decoration: none;
   color: inherit;
   transition: box-shadow 0.15s;
 }
 .assoc-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-.assoc-icon { font-size: 1.4rem; flex-shrink: 0; }
-.assoc-item > div { flex: 1; }
+.assoc-icon {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+.assoc-body { flex: 1; }
 .assoc-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
 .assoc-desc { font-size: 0.825rem; color: var(--mid); }
-.assoc-cta { flex-shrink: 0; font-size: 0.8rem; font-weight: 600; color: var(--orange); white-space: nowrap; }
+.assoc-cta { flex-shrink: 0; font-size: 0.85rem; font-weight: 600; color: var(--orange); white-space: nowrap; }
 
-/* PDF EMBED */
-.pdf-embed-wrap {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-  background: var(--light);
-}
-.pdf-embed {
-  width: 100%;
-  height: 680px;
-  border: none;
-  display: block;
-}
+/* FAQ SECTIONS */
+.faq-section { margin-bottom: 2.5rem; }
+.faq-section h2 { font-size: 1.1rem; font-weight: 700; color: var(--mid); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
+details p + p { margin-top: 0.5rem; }
+details ul { padding-left: 1.25rem; margin-top: 0.5rem; }
+details ul li { font-size: 0.875rem; color: var(--mid); margin-bottom: 0.3rem; }
+details a { color: var(--orange); }
 
 /* FOOTER */
 footer {
