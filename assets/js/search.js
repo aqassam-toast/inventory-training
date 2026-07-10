@@ -18,7 +18,12 @@
         if (haystack.indexOf(word) !== -1) score++;
       });
       return { item: item, score: score };
-    }).filter(function(s) { return s.score > 0; }).sort(function(a, b) { return b.score - a.score; });
+    }).filter(function(s) { return s.score > 0; }).sort(function(a, b) {
+      var aFaq = a.item.type === "FAQ" ? 1 : 0;
+      var bFaq = b.item.type === "FAQ" ? 1 : 0;
+      if (bFaq !== aFaq) return bFaq - aFaq;
+      return b.score - a.score;
+    });
 
     if (scored.length === 0) {
       results.innerHTML = '<div class="search-empty">No results found</div>';
