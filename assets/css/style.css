@@ -157,7 +157,24 @@ nav .nav-actions { display: flex; align-items: center; gap: 0.75rem; margin-left
 .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
 .card .icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
 .card h3 { font-size: 1rem; margin-bottom: 0.4rem; }
-.card p { font-size: 0.875rem; color: var(--mid); }
+.card p { font-size: 0.875rem; color: var(--mid); flex: 1; }
+.card { display: flex; flex-direction: column; }
+.card-type-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--mid);
+  margin-bottom: 0.75rem;
+}
+.card-cta {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--orange);
+}
 
 /* PAGE CONTENT */
 .page-header {
