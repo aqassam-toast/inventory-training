@@ -549,7 +549,7 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 
 .ft-col-feature { width: auto; }
 .ft-col-tag     { width: 80px; }
-.ft-col-status  { width: 130px; text-align: center; }
+.ft-col-status  { width: 200px; text-align: center; white-space: nowrap; }
 .ft-table thead th.ft-col-status { text-align: center; }
 
 .ft-desc { font-size: 0.8rem; color: var(--mid); display: block; margin-top: 0.2rem; font-weight: 400; }
