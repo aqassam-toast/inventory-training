@@ -399,6 +399,96 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 .assoc-desc { font-size: 0.825rem; color: var(--mid); }
 .assoc-cta { flex-shrink: 0; font-size: 0.85rem; font-weight: 600; color: var(--orange); white-space: nowrap; }
 
+/* INTERNAL BANNER */
+#internal-banner {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: var(--blue);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+#internal-banner button {
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.7rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#internal-banner button:hover { background: rgba(255,255,255,0.25); }
+
+/* INTERNAL MODAL */
+#internal-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+.internal-modal-box {
+  background: var(--white);
+  border-radius: 10px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+.internal-modal-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; }
+.internal-modal-sub { font-size: 0.875rem; color: var(--mid); margin-bottom: 1.25rem; }
+.internal-modal-box input[type="password"] {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  margin-bottom: 0.5rem;
+}
+.internal-modal-box input[type="password"]:focus { border-color: #aaa; }
+#internal-pwd-error {
+  display: none;
+  font-size: 0.8rem;
+  color: #c0392b;
+  margin-bottom: 0.75rem;
+}
+.internal-modal-actions { display: flex; justify-content: flex-end; gap: 0.6rem; margin-top: 1rem; }
+.internal-modal-actions button {
+  padding: 0.45rem 1.1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+}
+#internal-cancel-btn { background: var(--light); color: var(--dark); border: 1.5px solid var(--border); }
+#internal-cancel-btn:hover { border-color: #aaa; }
+#internal-submit-btn { background: var(--blue); color: white; }
+#internal-submit-btn:hover { opacity: 0.9; }
+
+/* Internal-only card indicator */
+.card[data-internal="true"] { border-style: dashed; border-color: var(--blue); }
+.card[data-internal="true"] .card-type-badge::after { content: " · Internal"; color: var(--blue); }
+
+/* FOOTER internal trigger */
+.footer-internal-link {
+  color: #444;
+  text-decoration: none;
+  margin-left: 1rem;
+  font-size: 0.75rem;
+}
+.footer-internal-link:hover { color: #888; }
+
 /* FAQ SECTIONS */
 .faq-section { margin-bottom: 2.5rem; }
 .faq-section h2 { font-size: 1.1rem; font-weight: 700; color: var(--mid); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
