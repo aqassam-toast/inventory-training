@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toast Inventory — Beta Access</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #fafafa;
+    }
+    .gate-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .gate-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .gate-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+      text-decoration: none;
+    }
+    .gate-logo .logo-icon {
+      background: var(--orange);
+      color: white;
+      border-radius: 6px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 800;
+    }
+    .gate-logo span {
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--dark);
+    }
+    .gate-card h1 {
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem;
+    }
+    .gate-card .subtitle {
+      color: var(--mid);
+      font-size: 0.925rem;
+      margin-bottom: 0.4rem;
+      line-height: 1.55;
+    }
+    .gate-card .subtitle a {
+      color: var(--orange);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .gate-card .subtitle a:hover { text-decoration: underline; }
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 1.5rem 0;
+    }
+    .gate-card .already {
+      font-size: 0.875rem;
+      color: var(--mid);
+      margin-bottom: 1rem;
+    }
+    .gate-card .already strong { color: var(--dark); }
+    .password-wrap {
+      position: relative;
+      margin-bottom: 0.75rem;
+    }
+    .password-wrap input {
+      width: 100%;
+      padding: 0.7rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      color: var(--dark);
+      letter-spacing: 0.05em;
+    }
+    .password-wrap input:focus { border-color: #aaa; }
+    .password-wrap input.error { border-color: #e53e3e; }
+    .error-msg {
+      color: #e53e3e;
+      font-size: 0.8rem;
+      margin-bottom: 0.75rem;
+      display: none;
+    }
+    .error-msg.visible { display: block; }
+    .gate-card .btn-submit {
+      width: 100%;
+      background: var(--blue);
+      color: white;
+      border: none;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .gate-card .btn-submit:hover { opacity: 0.9; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="gate.html">
+    <div class="logo-icon">t</div>
+    <span>toast</span>
+  </a>
+</nav>
+
+<div class="gate-wrap">
+  <div class="gate-card">
+    <a class="gate-logo" href="gate.html">
+      <div class="logo-icon">t</div>
+      <span>toast</span>
+    </a>
+
+    <h1>Toast Inventory is in beta</h1>
+    <p class="subtitle">
+      Join the test kitchen to get access and be one of the first to try Toast Inventory.<br><br>
+      <a href="https://www.toasttab.com/customers/shop/test-kitchen/shop-item-toast-inventory" target="_blank">
+        Join the Test Kitchen →
+      </a>
+    </p>
+
+    <hr class="divider" />
+
+    <p class="already"><strong>Already part of the Beta?</strong> Get started now.</p>
+
+    <div class="password-wrap">
+      <input type="password" id="password-input" placeholder="Enter beta password" />
+    </div>
+    <p class="error-msg" id="error-msg">Incorrect password. Please try again.</p>
+    <button class="btn-submit" onclick="checkPassword()">Get Started</button>
+  </div>
+</div>
+
+<footer>
+  Toast Inventory Training &amp; Support
+</footer>
+
+<script>
+  const HASH = "e9fb34ce28a625b0f56cecc4cf6d7fcf74dc21282dc3f94d8c5cf35527d46fea";
+  const KEY  = "ti_beta_auth";
+
+  // If already authenticated, go straight to the main site
+  if (localStorage.getItem(KEY) === HASH) {
+    window.location.replace("index.html");
+  }
+
+  // Allow Enter key to submit
+  document.getElementById("password-input").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") checkPassword();
+  });
+
+  async function checkPassword() {
+    const val = document.getElementById("password-input").value;
+    const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
+    const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+    if (hash === HASH) {
+      localStorage.setItem(KEY, HASH);
+      window.location.replace("index.html");
+    } else {
+      document.getElementById("password-input").classList.add("error");
+      document.getElementById("error-msg").classList.add("visible");
+    }
+  }
+</script>
+
+</body>
+</html>
