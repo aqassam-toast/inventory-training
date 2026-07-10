@@ -44,6 +44,14 @@ var SEARCH_INDEX = [
   },
   // FAQs
   {
+    title: "How do I get early access to Toast Inventory?",
+    type: "FAQ",
+    url: "faqs/index.html",
+    external: false,
+    description: "Sign up for Test Kitchen, watch the onboarding video, complete the acknowledgement form, then await confirmation.",
+    keywords: "early access get started sign up test kitchen onboarding video acknowledgement form sandbox production account how"
+  },
+  {
     title: "Will inventory update automatically from invoices?",
     type: "FAQ",
     url: "faqs/index.html",
