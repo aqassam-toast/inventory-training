@@ -373,6 +373,7 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 }
 .htl-item h3 { font-size: 0.875rem; font-weight: 700; margin-bottom: 0.25rem; }
 .htl-item p { font-size: 0.8rem; color: var(--mid); line-height: 1.5; }
+.htl-note { margin-top: 0.4rem; font-size: 0.7rem; font-style: italic; color: #888; }
 
 /* VIDEO CARD (new card-style layout) */
 .video-grid { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 3rem; }
