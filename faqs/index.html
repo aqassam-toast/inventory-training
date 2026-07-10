@@ -6,6 +6,14 @@
   <title>FAQs — Toast Inventory Training</title>
   <link rel="stylesheet" href="../assets/css/style.css" />
   <script src="../assets/js/auth.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4G4QQHWDEG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4G4QQHWDEG');
+  </script>
 </head>
 <body>
 
@@ -20,8 +28,8 @@
     <a href="../faqs/index.html" class="active">FAQs</a>
   </div>
   <div class="nav-actions">
-    <a href="../faqs/index.html" class="btn-outline">Get help now</a>
-    <a href="https://docs.google.com/forms/d/1fGYNrUxSuVLAZEoHQGNhTPxGZmjCKjUJVmtkaNbt0Do/viewform" target="_blank" class="btn-primary">Submit Feedback</a>
+    <a href="../faqs/index.html" class="btn-outline" data-track="nav_get_help">Get help now</a>
+    <a href="https://docs.google.com/forms/d/1fGYNrUxSuVLAZEoHQGNhTPxGZmjCKjUJVmtkaNbt0Do/viewform" target="_blank" class="btn-primary" data-track="nav_submit_feedback">Submit Feedback</a>
   </div>
 </nav>
 
@@ -47,5 +55,7 @@
   Toast Inventory Training &amp; Support
 </footer>
 
+  <script src="../assets/js/analytics.js"></script>
+  <script src="../assets/js/analytics.js"></script>
 </body>
 </html>
