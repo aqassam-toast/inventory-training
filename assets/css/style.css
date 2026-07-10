@@ -562,6 +562,120 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 .ft-committed::after  { content: "Committed";                  background: #e8f0fe; color: #2a5ab7; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; }
 .ft-notplanned::after { content: "Not Planned";                background: var(--light); color: var(--mid); font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; border: 1px solid var(--border); }
 
+/* TUTORIAL PAGE */
+.tut-hero {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 3rem 2rem 2.5rem;
+}
+.tut-hero-inner { max-width: var(--max-width); margin: 0 auto; }
+.tut-back { font-size: 0.85rem; color: var(--mid); text-decoration: none; font-weight: 600; display: inline-block; margin-bottom: 1.25rem; }
+.tut-back:hover { color: var(--dark); }
+.tut-eyebrow { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); margin-bottom: 0.6rem; }
+.tut-hero h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.75rem; line-height: 1.2; }
+.tut-hero h1 span { color: var(--orange); }
+.tut-hero p { color: var(--mid); font-size: 0.975rem; max-width: 560px; line-height: 1.65; }
+
+.tut-body { max-width: var(--max-width); margin: 0 auto; padding: 2.5rem 2rem 4rem; display: flex; flex-direction: column; gap: 1.25rem; }
+
+.tut-step {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tut-step-header { display: flex; gap: 1.25rem; align-items: flex-start; }
+
+.tut-step-num {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.875rem;
+  color: var(--orange);
+}
+
+.tut-step-header h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
+.tut-step-header p { font-size: 0.875rem; color: var(--mid); line-height: 1.65; }
+
+.tut-cta {
+  display: inline-flex;
+  align-items: center;
+  background: var(--orange);
+  color: white;
+  padding: 0.5rem 1.1rem;
+  border-radius: 7px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  align-self: flex-start;
+}
+.tut-cta:hover { background: var(--orange-dark); }
+
+.tut-contacts { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 0.9rem; }
+.tut-contact-label { font-size: 0.75rem; color: var(--mid); margin-top: 0.25rem; }
+.tut-contact { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; font-weight: 600; color: var(--orange); text-decoration: none; }
+.tut-contact:hover { text-decoration: underline; }
+.tut-contact-icon { font-style: normal; }
+
+.tut-note { font-size: 0.8rem; color: var(--mid); font-style: italic; margin-top: 0.75rem; }
+
+.tut-screenshot { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.tut-screenshot img { width: 100%; display: block; }
+.tut-screenshot-caption { font-size: 0.78rem; color: var(--mid); padding: 0.6rem 1rem; border-top: 1px solid var(--border); background: var(--light); }
+
+.tut-screenshot-placeholder {
+  border: 1.5px dashed var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.tut-screenshot-placeholder-inner {
+  background: var(--light);
+  padding: 2.5rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--mid);
+}
+
+.tut-banner {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.tut-banner-tip { background: #fffbeb; border: 1px solid #fde68a; color: #78350f; }
+.tut-banner-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+.tut-done {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border: 1px solid #bbf7d0;
+  background: #f0fdf4;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: #166534;
+}
+.tut-done a { color: #16a34a; font-weight: 600; }
+.tut-done-icon { font-size: 1.25rem; flex-shrink: 0; width: 32px; height: 32px; background: #16a34a; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; margin-top: 0.1rem; }
+
+.tut-nav-footer { display: flex; padding-top: 0.5rem; }
+
 /* LEARNING PATHS */
 .lp-list { display: flex; flex-direction: column; gap: 2rem; }
 
