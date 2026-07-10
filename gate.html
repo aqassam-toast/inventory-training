@@ -158,15 +158,16 @@
 </footer>
 
 <script>
-  const HASH = "e9fb34ce28a625b0f56cecc4cf6d7fcf74dc21282dc3f94d8c5cf35527d46fea";
-  const KEY  = "ti_beta_auth";
+  const BETA_HASH     = "e9fb34ce28a625b0f56cecc4cf6d7fcf74dc21282dc3f94d8c5cf35527d46fea";
+  const INTERNAL_HASH = "ecd64d4210349796828b6e9a336506121b6afad4b907ee2b78cf8ec93a227824";
+  const BETA_KEY      = "ti_beta_auth";
+  const INTERNAL_KEY  = "ti_internal_auth";
 
   // If already authenticated, go straight to the main site
-  if (localStorage.getItem(KEY) === HASH) {
+  if (localStorage.getItem(BETA_KEY) === BETA_HASH) {
     window.location.replace("index.html");
   }
 
-  // Allow Enter key to submit
   document.getElementById("password-input").addEventListener("keydown", function(e) {
     if (e.key === "Enter") checkPassword();
   });
@@ -175,8 +176,14 @@
     const val = document.getElementById("password-input").value;
     const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
     const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
-    if (hash === HASH) {
-      localStorage.setItem(KEY, HASH);
+
+    if (hash === BETA_HASH) {
+      localStorage.setItem(BETA_KEY, BETA_HASH);
+      window.location.replace("index.html");
+    } else if (hash === INTERNAL_HASH) {
+      // Internal password grants beta access + activates internal view for the session
+      localStorage.setItem(BETA_KEY, BETA_HASH);
+      sessionStorage.setItem(INTERNAL_KEY, INTERNAL_HASH);
       window.location.replace("index.html");
     } else {
       document.getElementById("password-input").classList.add("error");

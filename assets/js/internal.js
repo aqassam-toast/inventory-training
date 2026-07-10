@@ -4,7 +4,7 @@
   var KEY  = "ti_internal_auth";
 
   function isInternal() {
-    return localStorage.getItem(KEY) === HASH;
+    return localStorage.getItem(KEY) === HASH || sessionStorage.getItem(KEY) === HASH;
   }
 
   function applyInternalState() {
@@ -34,7 +34,7 @@
     var buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
     var hash = Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2,"0"); }).join("");
     if (hash === HASH) {
-      localStorage.setItem(KEY, HASH);
+      sessionStorage.setItem(KEY, HASH);
       hideModal();
       applyInternalState();
     } else {
@@ -44,6 +44,7 @@
 
   function exitInternal() {
     localStorage.removeItem(KEY);
+    sessionStorage.removeItem(KEY);
     applyInternalState();
   }
 
