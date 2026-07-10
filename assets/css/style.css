@@ -562,6 +562,96 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 .ft-committed::after  { content: "Committed";                  background: #e8f0fe; color: #2a5ab7; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; }
 .ft-notplanned::after { content: "Not Planned";                background: var(--light); color: var(--mid); font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; border: 1px solid var(--border); }
 
+/* LEARNING PATHS */
+.lp-list { display: flex; flex-direction: column; gap: 2rem; }
+
+.lp-track {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.lp-track-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--light);
+  border-bottom: 1px solid var(--border);
+}
+
+.lp-num {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  background: var(--orange);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.lp-track-title { font-weight: 700; font-size: 1rem; margin-bottom: 0.15rem; }
+.lp-track-desc  { font-size: 0.825rem; color: var(--mid); }
+
+.lp-steps { display: flex; flex-direction: column; }
+
+.lp-step {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #f0f0f0;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.1s;
+}
+.lp-step:last-child { border-bottom: none; }
+.lp-step:not(.lp-step-coming):hover { background: #fafafa; }
+
+.lp-step-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.lp-step-coming .lp-step-icon { opacity: 0.45; }
+
+.lp-step-body { flex: 1; }
+.lp-step-type  { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--mid); margin-bottom: 0.2rem; }
+.lp-step-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.15rem; }
+.lp-step-coming .lp-step-title { color: var(--mid); }
+.lp-step-desc  { font-size: 0.825rem; color: var(--mid); }
+
+.lp-step-badge {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 99px;
+  background: var(--light);
+  color: var(--mid);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+.lp-step-cta {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--orange);
+  white-space: nowrap;
+}
+
 /* FAQ SECTIONS */
 .faq-section { margin-bottom: 2.5rem; }
 .faq-section h2 { font-size: 1.1rem; font-weight: 700; color: var(--mid); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.75rem; }
