@@ -844,6 +844,10 @@ details ul { padding-left: 1.25rem; margin-top: 0.5rem; }
 details ul li { font-size: 0.875rem; color: var(--mid); margin-bottom: 0.3rem; }
 details a { color: var(--orange); }
 
+/* BETA SECTION HEADINGS (no step number) */
+.beta-section-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.35rem; }
+.beta-section-sub { font-size: 0.875rem; color: var(--mid); margin-bottom: 1.25rem; }
+
 /* BETA ACCESS GRID */
 .beta-access-grid {
   display: grid;
