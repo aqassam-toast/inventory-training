@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beta Rollout Plan — Toast Inventory</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/auth.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4G4QQHWDEG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4G4QQHWDEG');
+  </script>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">
+    <div class="logo-icon">t</div>
+    <span>Toast Inventory</span>
+  </a>
+  <div class="nav-links">
+    <a href="videos/index.html">Videos</a>
+    <a href="tutorials/index.html">Tutorials</a>
+    <a href="faqs/index.html">FAQs</a>
+  </div>
+  <div class="nav-actions">
+    <a href="faqs/index.html" class="btn-outline" data-track="nav_get_help">Get help now</a>
+    <a href="https://docs.google.com/forms/d/1fGYNrUxSuVLAZEoHQGNhTPxGZmjCKjUJVmtkaNbt0Do/viewform" target="_blank" class="btn-primary" data-track="nav_submit_feedback">Submit Feedback</a>
+  </div>
+</nav>
+
+<div class="tut-hero">
+  <div class="tut-hero-inner">
+    <a href="index.html" class="tut-back">← Back to home</a>
+    <div class="tut-eyebrow">July 2026 · Simple Retail Products</div>
+    <h1>Beta <span>Rollout Plan</span></h1>
+    <p>How we're rolling out Toast Inventory to early customers — what access looks like, how to get started, and who's already in the beta.</p>
+  </div>
+</div>
+
+<div class="tut-body">
+
+  <!-- ACCESS OPTIONS -->
+  <div class="tut-step">
+    <div class="tut-step-header">
+      <div class="tut-step-num">01</div>
+      <div>
+        <h2>Two ways to get access</h2>
+        <p>Depending on your preference, you can explore Toast Inventory in a safe sandbox environment or enable it directly on your own production account.</p>
+      </div>
+    </div>
+
+    <div class="beta-access-grid">
+
+      <div class="beta-access-card">
+        <div class="beta-access-icon">🧪</div>
+        <div class="beta-access-body">
+          <div class="beta-access-label">Option A</div>
+          <h3>Sandbox account</h3>
+          <p>Get access to a pre-configured Test Kitchen sandbox — a safe environment with sample data where you can explore features without any risk to your real account.</p>
+          <ul>
+            <li>No impact on live operations</li>
+            <li>Pre-loaded with sample items and data</li>
+            <li>Best for exploring before committing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="beta-access-card">
+        <div class="beta-access-icon">🏪</div>
+        <div class="beta-access-body">
+          <div class="beta-access-label">Option B</div>
+          <h3>Production account</h3>
+          <p>Request early access directly on your live Toast account and start managing real inventory from day one.</p>
+          <ul>
+            <li>Work with your real menu and items</li>
+            <li>Live data from your locations</li>
+            <li>Best if you're ready to go live</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HOW TO GET ACCESS -->
+  <div class="tut-step">
+    <div class="tut-step-header">
+      <div class="tut-step-num">02</div>
+      <div>
+        <h2>How to get access</h2>
+        <p>Follow the step-by-step tutorial that matches your preferred access type. Each guide walks you through everything from sign-up to your first inventory action.</p>
+      </div>
+    </div>
+
+    <div class="assoc-list">
+      <a href="tutorials/sandbox-access.html" class="assoc-item" data-track="beta_rollout_tut_sandbox">
+        <div class="assoc-icon">📋</div>
+        <div class="assoc-body">
+          <div class="assoc-title">Getting Started with the Test Kitchen Sandbox</div>
+          <div class="assoc-desc">Join Test Kitchen, complete the access survey, and navigate to the Item Library for the first time.</div>
+        </div>
+        <span class="assoc-cta">Read →</span>
+      </a>
+      <a href="tutorials/production-access.html" class="assoc-item" data-track="beta_rollout_tut_prod">
+        <div class="assoc-icon">🏪</div>
+        <div class="assoc-body">
+          <div class="assoc-title">Getting Early Access on Your Account</div>
+          <div class="assoc-desc">Request Toast Inventory early access on your own production account through the Test Kitchen program.</div>
+        </div>
+        <span class="assoc-cta">Read →</span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- BETA CUSTOMER LIST -->
+  <div class="tut-step">
+    <div class="tut-step-header">
+      <div class="tut-step-num">03</div>
+      <div>
+        <h2>Beta customer list</h2>
+        <p>Customers currently enrolled in the Toast Inventory beta program.</p>
+      </div>
+    </div>
+
+    <table class="beta-table">
+      <thead>
+        <tr>
+          <th>Customer Name</th>
+          <th>Location</th>
+          <th>Restaurant Type</th>
+          <th>Access Type</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Example Restaurant Group</td>
+          <td>Boston, MA</td>
+          <td>Full Service</td>
+          <td>Production</td>
+          <td><span class="beta-status beta-status-active">Active</span></td>
+        </tr>
+        <tr>
+          <td>Sample Café</td>
+          <td>Austin, TX</td>
+          <td>Quick Service</td>
+          <td>Sandbox</td>
+          <td><span class="beta-status beta-status-onboarding">Onboarding</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+
+<footer>
+  Toast Inventory Training &amp; Support
+  <a href="#" class="footer-internal-link internal-trigger">Internal</a>
+</footer>
+
+  <script src="assets/js/analytics.js"></script>
+  <script src="assets/js/internal.js"></script>
+</body>
+</html>

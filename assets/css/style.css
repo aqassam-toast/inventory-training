@@ -374,6 +374,8 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 .htl-item h3 { font-size: 0.875rem; font-weight: 700; margin-bottom: 0.25rem; }
 .htl-item p { font-size: 0.8rem; color: var(--mid); line-height: 1.5; }
 .htl-note { margin-top: 0.4rem; font-size: 0.7rem; font-style: italic; color: #888; }
+.htl-learn-more { display: inline-block; margin-top: 0.6rem; font-size: 0.78rem; font-weight: 600; color: var(--orange); text-decoration: none; }
+.htl-learn-more:hover { text-decoration: underline; }
 
 /* VIDEO CARD (new card-style layout) */
 .video-grid { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 3rem; }
@@ -841,6 +843,35 @@ details p + p { margin-top: 0.5rem; }
 details ul { padding-left: 1.25rem; margin-top: 0.5rem; }
 details ul li { font-size: 0.875rem; color: var(--mid); margin-bottom: 0.3rem; }
 details a { color: var(--orange); }
+
+/* BETA ACCESS GRID */
+.beta-access-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 600px) { .beta-access-grid { grid-template-columns: 1fr; } }
+.beta-access-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.beta-access-icon { font-size: 1.5rem; flex-shrink: 0; margin-top: 0.1rem; }
+.beta-access-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--orange);
+  margin-bottom: 0.2rem;
+}
+.beta-access-body h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+.beta-access-body p { font-size: 0.85rem; color: var(--mid); margin-bottom: 0.6rem; }
+.beta-access-body ul { padding-left: 1.1rem; }
+.beta-access-body ul li { font-size: 0.82rem; color: var(--mid); margin-bottom: 0.2rem; }
 
 /* BETA CUSTOMER TABLE */
 .beta-table {
