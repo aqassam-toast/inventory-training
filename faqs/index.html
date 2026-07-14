@@ -15,6 +15,16 @@
     gtag('js', new Date());
     gtag('config', 'G-4G4QQHWDEG');
   </script>
+  <style>
+    .faq-link-btn { background: none; border: none; cursor: pointer; font-size: 0.85rem; margin-left: 0.5rem; opacity: 0; transition: opacity 0.15s; vertical-align: middle; padding: 0; line-height: 1; }
+    details:target > summary .faq-link-btn,
+    details:hover > summary .faq-link-btn,
+    details[open] > summary .faq-link-btn { opacity: 0.5; }
+    .faq-link-btn:hover { opacity: 1 !important; }
+    .faq-copied { position: fixed; bottom: 1.5rem; right: 1.5rem; background: #1a1a1a; color: white; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.8rem; opacity: 0; transition: opacity 0.2s; pointer-events: none; z-index: 999; }
+    .faq-copied.show { opacity: 1; }
+    details:target { scroll-margin-top: 5rem; }
+  </style>
 </head>
 <body>
 
@@ -44,8 +54,8 @@
   <div class="faq-section">
     <h2>Getting Started</h2>
 
-    <details>
-      <summary>How do I get early access to Toast Inventory?</summary>
+    <details id="early-access">
+      <summary>How do I get early access to Toast Inventory?<button class="faq-link-btn" onclick="copyFaqLink(event,'early-access')" title="Copy link">🔗</button></summary>
       <p>To get early access, follow these steps:</p>
       <ul>
         <li><strong>Sign up for <a href="https://www.toasttab.com/customers/shop/test-kitchen/shop-item-toast-inventory" target="_blank">Test Kitchen</a></strong> — you must be an active member and agree to the beta terms.</li>
@@ -59,13 +69,13 @@
   <div class="faq-section">
     <h2>Product &amp; Functionality</h2>
 
-    <details>
-      <summary>Will inventory update automatically from invoices?</summary>
+    <details id="invoice-updates">
+      <summary>Will inventory update automatically from invoices?<button class="faq-link-btn" onclick="copyFaqLink(event,'invoice-updates')" title="Copy link">🔗</button></summary>
       <p>Yes. We're working toward a system where invoice ingestion updates inventory with minimal manual intervention, though mapping between purchases and products will still be necessary at the beginning.</p>
     </details>
 
-    <details>
-      <summary>Do recipes need to exist before sales? Can they be updated later?</summary>
+    <details id="recipes-before-sales">
+      <summary>Do recipes need to exist before sales? Can they be updated later?<button class="faq-link-btn" onclick="copyFaqLink(event,'recipes-before-sales')" title="Copy link">🔗</button></summary>
       <p>The system is quite flexible. You'll be able to manually enter a plate cost that gets applied to sales to determine margin, even without recipes existing against those sellable items. This manual plate cost can be updated up to 30 days in the past.</p>
       <p style="margin-top:0.75rem">Recipes are also flexible:</p>
       <ul>
@@ -75,18 +85,18 @@
       </ul>
     </details>
 
-    <details>
-      <summary>Can multiple products share the same inventory?</summary>
+    <details id="shared-inventory">
+      <summary>Can multiple products share the same inventory?<button class="faq-link-btn" onclick="copyFaqLink(event,'shared-inventory')" title="Copy link">🔗</button></summary>
       <p>Yes — this is a core use case (e.g., different pours from the same keg). The system is designed to support shared inventory across multiple sellable items. This capability already exists in the Toast retail product. We're improving the usability of how it works today; if you want to test it now, the Sandbox account is a great starting point.</p>
     </details>
 
-    <details>
-      <summary>Will batch production / prep workflows be supported?</summary>
+    <details id="batch-production">
+      <summary>Will batch production / prep workflows be supported?<button class="faq-link-btn" onclick="copyFaqLink(event,'batch-production')" title="Copy link">🔗</button></summary>
       <p>Yes. Batch production will exist, but it will be manual at the start. We're figuring out what level of automation makes sense to keep batch production maintainable without a lot of human intervention.</p>
     </details>
 
-    <details>
-      <summary>Can I track inventory by sub-location (bar, kitchen, retail)?</summary>
+    <details id="sub-location-tracking">
+      <summary>Can I track inventory by sub-location (bar, kitchen, retail)?<button class="faq-link-btn" onclick="copyFaqLink(event,'sub-location-tracking')" title="Copy link">🔗</button></summary>
       <p>Not fully in the first release, but this is a high-priority area of feedback and something we're actively investigating.</p>
     </details>
   </div>
@@ -94,18 +104,18 @@
   <div class="faq-section">
     <h2>Automation &amp; AI</h2>
 
-    <details>
-      <summary>Will the system automate reordering?</summary>
+    <details id="automate-reordering">
+      <summary>Will the system automate reordering?<button class="faq-link-btn" onclick="copyFaqLink(event,'automate-reordering')" title="Copy link">🔗</button></summary>
       <p>Eventually, yes — with alerts first, then recommendations, then optional automation. We expect this to evolve over time, not all at once.</p>
     </details>
 
-    <details>
-      <summary>Can I set par levels and trigger orders?</summary>
+    <details id="par-levels">
+      <summary>Can I set par levels and trigger orders?<button class="faq-link-btn" onclick="copyFaqLink(event,'par-levels')" title="Copy link">🔗</button></summary>
       <p>Yes — par-based workflows are already part of the system.</p>
     </details>
 
-    <details>
-      <summary>Can the system automatically 86 items?</summary>
+    <details id="auto-86">
+      <summary>Can the system automatically 86 items?<button class="faq-link-btn" onclick="copyFaqLink(event,'auto-86')" title="Copy link">🔗</button></summary>
       <p>Yes — especially based on ingredient stock. More advanced logic (e.g., time-based replenishment) is being explored. We'll also offer capabilities for setting manual availability that is independent of stock levels.</p>
     </details>
   </div>
@@ -113,13 +123,13 @@
   <div class="faq-section">
     <h2>Hardware &amp; Integrations</h2>
 
-    <details>
-      <summary>Will there be integrations with scales or draft systems?</summary>
+    <details id="hardware-integrations">
+      <summary>Will there be integrations with scales or draft systems?<button class="faq-link-btn" onclick="copyFaqLink(event,'hardware-integrations')" title="Copy link">🔗</button></summary>
       <p>This is an active area of research. Barcode scanning is included, as well as barcode label generation and printing. We're exploring additional hardware integrations over time.</p>
     </details>
 
-    <details>
-      <summary>Does this integrate with accounting tools like QuickBooks?</summary>
+    <details id="accounting-integrations">
+      <summary>Does this integrate with accounting tools like QuickBooks?<button class="faq-link-btn" onclick="copyFaqLink(event,'accounting-integrations')" title="Copy link">🔗</button></summary>
       <p>Yes. Payroll integration with QuickBooks (outside of xtraCHEF) is already generally available. Sales integration with QuickBooks is in beta. Invoice automation with QuickBooks is coming soon. Support for additional accounting systems is also planned.</p>
     </details>
   </div>
@@ -127,23 +137,23 @@
   <div class="faq-section">
     <h2>Rollout &amp; Access</h2>
 
-    <details>
-      <summary>When will this be available?</summary>
+    <details id="availability">
+      <summary>When will this be available?<button class="faq-link-btn" onclick="copyFaqLink(event,'availability')" title="Copy link">🔗</button></summary>
       <p>We're rolling out in phases: retail first, recipes next, modifiers after that. We'll reach out based on your use case and readiness.</p>
     </details>
 
-    <details>
-      <summary>Will there be sandbox access?</summary>
+    <details id="sandbox-access">
+      <summary>Will there be sandbox access?<button class="faq-link-btn" onclick="copyFaqLink(event,'sandbox-access')" title="Copy link">🔗</button></summary>
       <p>Yes — sandbox / early testing environments are planned. We'll follow up with those who expressed interest. You can also <a href="https://docs.google.com/forms/d/1cEDLAh22wpyiBbnibtwP2k5qwT0xHowIFcgpDn6yuyI/viewform" target="_blank">complete the access acknowledgement form</a> to get started.</p>
     </details>
 
-    <details>
-      <summary>Will this be available outside the U.S.?</summary>
+    <details id="international">
+      <summary>Will this be available outside the U.S.?<button class="faq-link-btn" onclick="copyFaqLink(event,'international')" title="Copy link">🔗</button></summary>
       <p>Yes — when this product rolls out, it will roll out to all countries where Toast is sold today.</p>
     </details>
 
-    <details>
-      <summary>Will this cost extra?</summary>
+    <details id="pricing">
+      <summary>Will this cost extra?<button class="faq-link-btn" onclick="copyFaqLink(event,'pricing')" title="Copy link">🔗</button></summary>
       <p>Yes, this will cost extra. Pricing is still being finalized. We'll share details before broader rollout.</p>
     </details>
   </div>
@@ -151,8 +161,8 @@
   <div class="faq-section">
     <h2>Edge Cases &amp; Advanced Use Cases</h2>
 
-    <details>
-      <summary>Can large catering orders be handled differently?</summary>
+    <details id="catering">
+      <summary>Can large catering orders be handled differently?<button class="faq-link-btn" onclick="copyFaqLink(event,'catering')" title="Copy link">🔗</button></summary>
       <p>We haven't fully considered catering-specific operations yet, but a lot of great suggestions came up in the webinar. If a significant portion of your orders are catering-based, please reach out — we'd love to learn more about your use case.</p>
     </details>
   </div>
@@ -166,5 +176,27 @@
 
   <script src="../assets/js/analytics.js"></script>
   <script src="../assets/js/internal.js"></script>
+  <div class="faq-copied" id="faq-copied">Link copied!</div>
+  <script>
+    function copyFaqLink(e, slug) {
+      e.preventDefault();
+      e.stopPropagation();
+      var url = window.location.origin + window.location.pathname + '#' + slug;
+      navigator.clipboard.writeText(url).then(function() {
+        var el = document.getElementById('faq-copied');
+        el.classList.add('show');
+        setTimeout(function() { el.classList.remove('show'); }, 2000);
+      });
+    }
+    (function() {
+      var hash = window.location.hash.slice(1);
+      if (!hash) return;
+      var el = document.getElementById(hash);
+      if (el && el.tagName === 'DETAILS') {
+        el.open = true;
+        setTimeout(function() { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+      }
+    })();
+  </script>
 </body>
 </html>
