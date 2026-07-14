@@ -88,33 +88,17 @@
   <!-- BETA CUSTOMER LIST -->
   <div class="tut-step">
     <h2 class="beta-section-title">Beta customer list</h2>
-    <p class="beta-section-sub">Customers currently enrolled in the Toast Inventory beta program.</p>
+    <p class="beta-section-sub" id="beta-count-line">Customers currently enrolled in the Toast Inventory beta program.</p>
 
-    <table class="beta-table">
+    <table class="beta-table" id="beta-table">
       <thead>
         <tr>
           <th>Customer Name</th>
-          <th>Location</th>
-          <th>Restaurant Type</th>
-          <th>Access Type</th>
-          <th>Status</th>
+          <th>Locations</th>
+          <th>Markets</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Example Restaurant Group</td>
-          <td>Boston, MA</td>
-          <td>Full Service</td>
-          <td>Production</td>
-          <td><span class="beta-status beta-status-active">Active</span></td>
-        </tr>
-        <tr>
-          <td>Sample Café</td>
-          <td>Austin, TX</td>
-          <td>Quick Service</td>
-          <td>Sandbox</td>
-          <td><span class="beta-status beta-status-onboarding">Onboarding</span></td>
-        </tr>
+      <tbody id="beta-table-body">
       </tbody>
     </table>
 
@@ -129,5 +113,23 @@
 
   <script src="assets/js/analytics.js"></script>
   <script src="assets/js/internal.js"></script>
+  <script src="assets/js/beta-customers.js"></script>
+  <script>
+    (function () {
+      const countryNames = { US: "United States", CA: "Canada", GB: "United Kingdom", IE: "Ireland" };
+      const tbody = document.getElementById('beta-table-body');
+      const sorted = betaCustomers.slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
+
+      sorted.forEach(function (c) {
+        const tr = document.createElement('tr');
+        const markets = c.countries.map(function (code) { return countryNames[code] || code; }).join(', ');
+        const locationStr = c.locations.length ? c.locations.join(', ') : '—';
+        tr.innerHTML = '<td><strong>' + c.name + '</strong></td><td class="beta-locations">' + locationStr + '</td><td>' + markets + '</td>';
+        tbody.appendChild(tr);
+      });
+
+      document.getElementById('beta-count-line').textContent = sorted.length + ' customers currently enrolled in the Toast Inventory beta program.';
+    })();
+  </script>
 </body>
 </html>

@@ -902,7 +902,8 @@ details a { color: var(--orange); }
 .beta-table tbody tr { border-bottom: 1px solid #f0f0f0; }
 .beta-table tbody tr:last-child { border-bottom: none; }
 .beta-table tbody tr:hover { background: #fafafa; }
-.beta-table td { padding: 0.85rem 0.75rem; vertical-align: middle; }
+.beta-table td { padding: 0.85rem 0.75rem; vertical-align: top; }
+.beta-locations { font-size: 0.8rem; color: var(--mid); }
 .beta-status {
   display: inline-block;
   font-size: 0.7rem;
