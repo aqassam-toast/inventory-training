@@ -90,17 +90,23 @@
     <h2 class="beta-section-title">Beta customer list</h2>
     <p class="beta-section-sub" id="beta-count-line">Customers currently enrolled in the Toast Inventory beta program.</p>
 
+    <div class="beta-search-wrap">
+      <span class="beta-search-icon">🔍</span>
+      <input id="beta-search" type="text" placeholder="Search by customer name, location, country, or location GUID…" />
+    </div>
+
     <table class="beta-table" id="beta-table">
       <thead>
         <tr>
           <th>Customer Name</th>
           <th>Locations</th>
-          <th>Markets</th>
+          <th>Country</th>
         </tr>
       </thead>
       <tbody id="beta-table-body">
       </tbody>
     </table>
+    <p id="beta-no-results" style="display:none; color:var(--mid); font-size:0.875rem; margin-top:1rem;">No results match your search.</p>
 
   </div>
 
@@ -118,17 +124,46 @@
     (function () {
       const countryNames = { US: "United States", CA: "Canada", GB: "United Kingdom", IE: "Ireland" };
       const tbody = document.getElementById('beta-table-body');
+      const searchInput = document.getElementById('beta-search');
+      const noResults = document.getElementById('beta-no-results');
+      const countLine = document.getElementById('beta-count-line');
       const sorted = betaCustomers.slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
+      const totalCount = sorted.length;
 
-      sorted.forEach(function (c) {
+      function buildSearchable(c) {
+        const countryFull = c.countries.map(function (code) { return (countryNames[code] || code).toLowerCase(); }).join(' ');
+        return [
+          c.name.toLowerCase(),
+          c.locations.join(' ').toLowerCase(),
+          c.guids.join(' ').toLowerCase(),
+          c.countries.join(' ').toLowerCase(),
+          countryFull
+        ].join(' ');
+      }
+
+      const rows = sorted.map(function (c) {
         const tr = document.createElement('tr');
-        const markets = c.countries.map(function (code) { return countryNames[code] || code; }).join(', ');
+        const countries = c.countries.map(function (code) { return countryNames[code] || code; }).join(', ');
         const locationStr = c.locations.length ? c.locations.join(', ') : '—';
-        tr.innerHTML = '<td><strong>' + c.name + '</strong></td><td class="beta-locations">' + locationStr + '</td><td>' + markets + '</td>';
+        tr.innerHTML = '<td><strong>' + c.name + '</strong></td><td class="beta-locations">' + locationStr + '</td><td>' + countries + '</td>';
+        tr._searchable = buildSearchable(c);
         tbody.appendChild(tr);
+        return tr;
       });
 
-      document.getElementById('beta-count-line').textContent = sorted.length + ' customers currently enrolled in the Toast Inventory beta program.';
+      countLine.textContent = totalCount + ' customers currently enrolled in the Toast Inventory beta program.';
+
+      searchInput.addEventListener('input', function () {
+        const q = searchInput.value.trim().toLowerCase();
+        let visible = 0;
+        rows.forEach(function (tr) {
+          const match = !q || tr._searchable.includes(q);
+          tr.style.display = match ? '' : 'none';
+          if (match) visible++;
+        });
+        noResults.style.display = visible === 0 ? '' : 'none';
+        countLine.textContent = (q ? visible + ' of ' + totalCount : totalCount) + ' customers currently enrolled in the Toast Inventory beta program.';
+      });
     })();
   </script>
 </body>

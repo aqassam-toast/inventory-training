@@ -856,6 +856,10 @@ details a { color: var(--orange); }
 /* BETA SECTION HEADINGS (no step number) */
 .beta-section-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.35rem; }
 .beta-section-sub { font-size: 0.875rem; color: var(--mid); margin-bottom: 1.25rem; }
+.beta-search-wrap { position: relative; margin-bottom: 1rem; }
+.beta-search-icon { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); font-size: 0.9rem; pointer-events: none; }
+.beta-search-wrap input { width: 100%; box-sizing: border-box; padding: 0.55rem 0.75rem 0.55rem 2.25rem; border: 1px solid var(--border); border-radius: 8px; font-size: 0.875rem; outline: none; }
+.beta-search-wrap input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,92,0,0.08); }
 
 /* BETA ACCESS GRID */
 .beta-access-grid {
