@@ -571,6 +571,14 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 .fl-tag    { font-size: 0.65rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 99px; letter-spacing: 0.04em; }
 .ft-ai     { background: #f0e8ff; color: #6b21a8; }
 .ft-mobile { background: #e0f2fe; color: #0369a1; }
+.ft-mlm    { background: #fef9c3; color: #854d0e; }
+
+.features-filters { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
+.ff-group { display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+.ff-label { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--mid); min-width: 48px; }
+.ff-btn { font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.7rem; border-radius: 99px; border: 1px solid var(--border); background: var(--white); color: var(--mid); cursor: pointer; transition: background 0.15s, color 0.15s, border-color 0.15s; }
+.ff-btn:hover { border-color: var(--orange); color: var(--orange); }
+.ff-btn.active { background: var(--orange); color: #fff; border-color: var(--orange); }
 
 .ft-section { margin-bottom: 2.5rem; }
 

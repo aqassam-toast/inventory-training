@@ -41,6 +41,25 @@
 
 <div class="content features-content">
 
+  <div class="features-filters">
+    <div class="ff-group">
+      <span class="ff-label">Status</span>
+      <button class="ff-btn active" data-filter="status" data-value="all">All</button>
+      <button class="ff-btn" data-filter="status" data-value="ft-available">Available to all CX</button>
+      <button class="ff-btn" data-filter="status" data-value="ft-beta">Available via Beta</button>
+      <button class="ff-btn" data-filter="status" data-value="ft-dev">Development in Progress</button>
+      <button class="ff-btn" data-filter="status" data-value="ft-committed">Committed</button>
+      <button class="ff-btn" data-filter="status" data-value="ft-notplanned">Not Planned</button>
+    </div>
+    <div class="ff-group">
+      <span class="ff-label">Tags</span>
+      <button class="ff-btn active" data-filter="tag" data-value="all">All</button>
+      <button class="ff-btn" data-filter="tag" data-value="ft-ai">AI</button>
+      <button class="ff-btn" data-filter="tag" data-value="ft-mobile">Mobile</button>
+      <button class="ff-btn" data-filter="tag" data-value="ft-mlm">MLM</button>
+    </div>
+  </div>
+
   <div class="features-legend">
     <span class="fl-item"><span class="fl-badge fl-available">Available to all CX</span></span>
     <span class="fl-item"><span class="fl-badge fl-beta">Available via Beta</span></span>
@@ -49,6 +68,7 @@
     <span class="fl-item"><span class="fl-badge fl-notplanned">Not Planned</span></span>
     <span class="fl-item"><span class="fl-tag ft-ai">AI</span> AI-powered</span>
     <span class="fl-item"><span class="fl-tag ft-mobile">Mobile</span> Mobile feature</span>
+    <span class="fl-item"><span class="fl-tag ft-mlm">MLM</span> Multi-location management</span>
   </div>
 
   <!-- PURCHASING & RECEIVING & ORDERING -->
@@ -363,7 +383,7 @@
         </tr>
         <tr>
           <td><strong>Recipe Reuse Across Menu Items</strong><br><span class="ft-desc">Reuse a single recipe across multiple menu items to maintain consistency and reduce duplication.</span></td>
-          <td></td>
+          <td><span class="fl-tag ft-mlm">MLM</span></td>
           <td class="ft-dev"></td>
           
         </tr>
@@ -439,5 +459,39 @@
 
   <script src="../assets/js/analytics.js"></script>
   <script src="../assets/js/internal.js"></script>
+  <script>
+    (function () {
+      let activeStatus = 'all';
+      let activeTag = 'all';
+
+      function applyFilters() {
+        document.querySelectorAll('.ft-table tbody tr').forEach(function (row) {
+          const statusCell = row.querySelector('td:nth-child(3)');
+          const tagCell = row.querySelector('td:nth-child(2)');
+          const statusMatch = activeStatus === 'all' || (statusCell && statusCell.classList.contains(activeStatus));
+          const tagMatch = activeTag === 'all' || (tagCell && tagCell.querySelector('.' + activeTag));
+          row.style.display = (statusMatch && tagMatch) ? '' : 'none';
+        });
+
+        // Hide section headers when all rows in that section are hidden
+        document.querySelectorAll('.ft-section').forEach(function (section) {
+          const visible = Array.from(section.querySelectorAll('tbody tr')).some(function (r) { return r.style.display !== 'none'; });
+          section.style.display = visible ? '' : 'none';
+        });
+      }
+
+      document.querySelectorAll('.ff-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const filter = btn.dataset.filter;
+          const value = btn.dataset.value;
+          document.querySelectorAll('.ff-btn[data-filter="' + filter + '"]').forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          if (filter === 'status') activeStatus = value;
+          if (filter === 'tag') activeTag = value;
+          applyFilters();
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
