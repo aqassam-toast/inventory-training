@@ -854,6 +854,12 @@ details ul li { font-size: 0.875rem; color: var(--mid); margin-bottom: 0.3rem; }
 details a { color: var(--orange); }
 
 /* BETA SECTION HEADINGS (no step number) */
+.beta-tldr { background: #fff8f0; border: 1px solid #fde2c8; border-left: 4px solid var(--orange); border-radius: 8px; padding: 1.1rem 1.25rem; margin-bottom: 2rem; }
+.beta-tldr-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); margin-bottom: 0.6rem; }
+.beta-tldr ul { margin: 0; padding-left: 1.2rem; }
+.beta-tldr ul li { font-size: 0.875rem; color: var(--dark); line-height: 1.6; margin-bottom: 0.4rem; }
+.beta-tldr ul li:last-child { margin-bottom: 0; }
+
 .beta-section-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.35rem; }
 .beta-section-sub { font-size: 0.875rem; color: var(--mid); margin-bottom: 1.25rem; }
 .beta-search-wrap { position: relative; margin-bottom: 1rem; }
