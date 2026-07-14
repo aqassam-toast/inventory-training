@@ -376,6 +376,7 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 .htl-note { margin-top: 0.4rem; font-size: 0.7rem; font-style: italic; color: #888; }
 .htl-learn-more { display: inline-block; margin-top: 0.6rem; font-size: 0.78rem; font-weight: 600; color: var(--orange); text-decoration: none; }
 .htl-learn-more:hover { text-decoration: underline; }
+.htl-learn-more-center { display: block; text-align: center; }
 
 /* VIDEO CARD (new card-style layout) */
 .video-grid { display: flex; flex-direction: column; gap: 1.25rem; margin-bottom: 3rem; }
