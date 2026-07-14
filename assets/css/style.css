@@ -915,6 +915,9 @@ details a { color: var(--orange); }
 .beta-table tbody tr:hover { background: #fafafa; }
 .beta-table td { padding: 0.85rem 0.75rem; vertical-align: top; }
 .beta-locations { font-size: 0.8rem; color: var(--mid); }
+.beta-access-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; white-space: nowrap; }
+.beta-access-sandbox { background: #dbeafe; color: #1e40af; }
+.beta-access-prod { background: #d1fae5; color: #065f46; }
 .beta-status {
   display: inline-block;
   font-size: 0.7rem;

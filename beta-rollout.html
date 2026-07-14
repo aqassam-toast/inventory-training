@@ -48,6 +48,7 @@
   <!-- TLDR -->
   <div class="beta-tldr">
     <div class="beta-tldr-label">TL;DR</div>
+    <div style="font-size:0.75rem; color:var(--mid); margin-bottom:0.75rem;">Last updated July 14, 2026</div>
     <ul>
       <li><strong>Only simple retail products are ready for testing right now.</strong> This covers stock counting, invoice scanning, and core purchasing &amp; receiving. All customers who have signed up are aware of this limitation.</li>
       <li><strong>Recipes &amp; ingredients are coming next.</strong> Once that phase is ready, we'll run another webinar and open a new signup round.</li>
@@ -112,6 +113,7 @@
           <th>Customer Name</th>
           <th>Locations</th>
           <th>Country</th>
+          <th>Access</th>
         </tr>
       </thead>
       <tbody id="beta-table-body">
@@ -156,7 +158,8 @@
         const tr = document.createElement('tr');
         const countries = c.countries.map(function (code) { return countryNames[code] || code; }).join(', ');
         const locationStr = c.locations.length ? c.locations.join(', ') : '—';
-        tr.innerHTML = '<td><strong>' + c.name + '</strong></td><td class="beta-locations">' + locationStr + '</td><td>' + countries + '</td>';
+        const accessClass = c.access === 'Production' ? 'beta-access-prod' : 'beta-access-sandbox';
+        tr.innerHTML = '<td><strong>' + c.name + '</strong></td><td class="beta-locations">' + locationStr + '</td><td>' + countries + '</td><td><span class="beta-access-badge ' + accessClass + '">' + (c.access || '—') + '</span></td>';
         tr._searchable = buildSearchable(c);
         tbody.appendChild(tr);
         return tr;
