@@ -888,6 +888,7 @@
   function isRecentlyDone(item) {
     var norm = normalizeStatus(item.jiraStatus || '').toLowerCase();
     if (norm !== 'done' && norm !== 'closed') return false;
+    if ((item.resolution || '').toLowerCase() === 'duplicate') return false;
     var updated = item.updated ? new Date(item.updated).getTime() : 0;
     return (NOW_MS - updated) <= THIRTY_DAYS_MS;
   }
