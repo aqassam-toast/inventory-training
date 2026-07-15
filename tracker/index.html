@@ -200,11 +200,11 @@
       border-radius: 4px;
       margin-top: 0.3rem;
     }
-    .jira-status-open       { background: #dbeafe; color: #1e40af; }
-    .jira-status-inprogress { background: #e0e7ff; color: #3730a3; }
-    .jira-status-done       { background: #d1fae5; color: #065f46; }
-    .jira-status-closed     { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
-    .jira-status-notplanned { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
+    .jira-status-open        { background: #dbeafe; color: #1e40af; }
+    .jira-status-inprogress  { background: #e0e7ff; color: #3730a3; }
+    .jira-status-done        { background: #d1fae5; color: #065f46; }
+    .jira-status-closed      { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
+    .jira-status-notplanned  { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
 
     /* ── COMMENTS (features only) ── */
     .comment-toggle-btn {
@@ -664,7 +664,10 @@
   var isInternalUser = false;
 
   // Labels to suppress from the tag filter pills
-  var HIDDEN_TAGS = { 'FeatureRequest': true, 'Important_Bugs': true, 'tracker-visible': true };
+  var HIDDEN_TAGS_SET = ['featurerequest', 'important_bugs', 'tracker-visible'];
+  function isHiddenTag(t) {
+    return HIDDEN_TAGS_SET.indexOf(t.toLowerCase()) !== -1 || /^retail-/.test(t);
+  }
 
   // Detect admin state (edit access requires admin password)
   function checkInternal() {
@@ -715,11 +718,12 @@
     return s;
   }
 
-  function displayStatus(s) {
+  function displayStatus(s, item) {
     if (!s) return '';
     var l = s.toLowerCase();
     if (l === 'backlog') return 'Open';
     if (l === 'cancelled' || l === 'not planned') return 'Done — Cancelled';
+    if ((l === 'done' || l === 'closed' || l === 'resolved') && item && isRecentlyDone(item)) return 'Recently Done';
     return s;
   }
 
@@ -802,7 +806,7 @@
     var tagSet = {};
     allIssues.filter(function(d){ return d.type === 'feature'; }).forEach(function(d){
       (d.tags || []).forEach(function(t){
-        if (HIDDEN_TAGS[t] || /^retail-/.test(t)) return;
+        if (isHiddenTag(t)) return;
         var key = t.toLowerCase();
         if (!tagLower[key]) { tagLower[key] = t; tagSet[t] = true; }
       });
@@ -976,7 +980,7 @@
       if (!isIssue) {
         var seenLower = {};
         tagsHtml = (item.tags || []).filter(function(t){
-          if (HIDDEN_TAGS[t] || /^retail-/.test(t)) return false;
+          if (isHiddenTag(t)) return false;
           var k = t.toLowerCase();
           if (seenLower[k]) return false;
           seenLower[k] = true;
@@ -992,7 +996,7 @@
         : '<span style="color:var(--mid);font-size:0.8rem;">—</span>';
 
       var jiraStatusHtml = item.jiraStatus
-        ? '<span class="jira-status-badge ' + jiraStatusClass(item.jiraStatus) + '">' + escHtml(displayStatus(item.jiraStatus)) + '</span>' +
+        ? '<span class="jira-status-badge ' + jiraStatusClass(item.jiraStatus) + '">' + escHtml(displayStatus(item.jiraStatus, item)) + '</span>' +
           (item.jiraStatus.toLowerCase() === 'closed' && item.resolution
             ? '<div style="font-size:0.72rem;color:var(--mid);margin-top:0.25rem;">' + escHtml(item.resolution) + '</div>'
             : '')
