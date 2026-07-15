@@ -121,7 +121,7 @@ function toAdf(text) {
   };
 }
 
-// GET /tracker — fetch Feature Requests and Important Bugs in NVR
+// GET /tracker — fetch Feature Requests and Bugs in NVR (parallel queries)
 async function handleGet(env) {
   const fields = [
     'summary', 'description', 'status', 'issuetype', 'labels',
@@ -130,27 +130,28 @@ async function handleGet(env) {
     FIELD_RELEASE_NOTE, FIELD_EST_DELIVERY,
   ];
 
-  const { status, body } = await jiraFetch(
-    '/search/jql',
-    {
-      method: 'POST',
-      body: JSON.stringify({
-        jql: `project in (${NVR_PROJECT}) AND labels in (FeatureRequest, Important_Bugs) ORDER BY created DESC`,
-        maxResults: 200,
-        fields,
-      }),
-    },
-    env
-  );
+  async function search(jql) {
+    const { status, body } = await jiraFetch(
+      '/search/jql',
+      { method: 'POST', body: JSON.stringify({ jql, maxResults: 200, fields }) },
+      env
+    );
+    if (status !== 200) throw new Error(JSON.stringify(body));
+    return Array.isArray(body.issues) ? body.issues
+      : Array.isArray(body.issues?.nodes) ? body.issues.nodes
+      : [];
+  }
 
-  if (status !== 200) return json({ error: body }, status, env);
-
-  // /search/jql (POST) returns issues as a flat array under body.issues
-  const raw = Array.isArray(body.issues) ? body.issues
-    : Array.isArray(body.issues?.nodes) ? body.issues.nodes
-    : [];
-  const issues = raw.map(mapIssue);
-  return json({ issues, total: issues.length }, 200, env);
+  try {
+    const [featureRaw, bugRaw] = await Promise.all([
+      search(`project = ${NVR_PROJECT} AND issuetype = "Feature Request" AND labels = "FeatureRequest" ORDER BY created DESC`),
+      search(`project = ${NVR_PROJECT} AND issuetype = "Bug" ORDER BY created DESC`),
+    ]);
+    const issues = [...featureRaw, ...bugRaw].map(mapIssue);
+    return json({ issues, total: issues.length }, 200, env);
+  } catch (e) {
+    return json({ error: e.message }, 500, env);
+  }
 }
 
 // POST /tracker — create a new ticket
