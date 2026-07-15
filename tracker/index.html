@@ -16,6 +16,9 @@
     gtag('config', 'G-4G4QQHWDEG');
   </script>
   <style>
+    /* ── WORKER URL — change after deploying ── */
+    /* Set window.TRACKER_WORKER_URL before this script loads, or edit below */
+
     /* ── TRACKER TABS ── */
     .tracker-tabs {
       display: flex;
@@ -110,6 +113,7 @@
     .tracker-table thead th.th-status { width: 130px; }
     .tracker-table thead th.th-timeline { width: 130px; }
     .tracker-table thead th.th-workaround { width: 200px; }
+    .tracker-table thead th.th-edit { width: 44px; }
     .tracker-table tbody tr { border-bottom: 1px solid #f0f0f0; transition: background 0.1s; }
     .tracker-table tbody tr:last-child { border-bottom: none; }
     .tracker-table tbody tr:hover { background: #fafafa; }
@@ -145,7 +149,7 @@
 
     /* ── TITLE CELL ── */
     .tracker-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem; }
-    .tracker-desc { font-size: 0.8rem; color: var(--mid); line-height: 1.5; display: none; margin-top: 0.35rem; }
+    .tracker-desc { font-size: 0.8rem; color: var(--mid); line-height: 1.5; display: none; margin-top: 0.35rem; white-space: pre-wrap; }
     .tracker-expand-btn {
       font-size: 0.72rem;
       font-weight: 600;
@@ -166,6 +170,15 @@
       background: var(--light);
       color: var(--mid);
       border: 1px solid var(--border);
+    }
+    .tracker-category-pill {
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.1rem 0.45rem;
+      border-radius: 99px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
     }
 
     /* ── JIRA LINK ── */
@@ -252,6 +265,125 @@
     }
     .comment-submit-btn:hover { opacity: 0.88; }
 
+    /* ── INLINE EDIT ── */
+    .edit-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.45rem;
+      color: var(--mid);
+      white-space: nowrap;
+    }
+    .edit-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .edit-form {
+      display: none;
+      margin-top: 0.75rem;
+      padding: 0.75rem;
+      background: #fafafa;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: none;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .edit-form.open { display: flex; }
+    .edit-row { display: flex; flex-direction: column; gap: 0.2rem; }
+    .edit-row label { font-size: 0.7rem; font-weight: 700; color: var(--mid); text-transform: uppercase; letter-spacing: 0.04em; }
+    .edit-row input, .edit-row textarea, .edit-row select {
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-family: inherit;
+      outline: none;
+      background: white;
+    }
+    .edit-row input:focus, .edit-row textarea:focus, .edit-row select:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 2px rgba(255,92,0,0.08);
+    }
+    .edit-actions { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.25rem; }
+    .edit-save-btn {
+      padding: 0.4rem 1rem;
+      background: var(--orange);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .edit-save-btn:hover { opacity: 0.88; }
+    .edit-save-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .edit-cancel-btn {
+      padding: 0.4rem 1rem;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--mid);
+    }
+    .edit-cancel-btn:hover { border-color: #aaa; color: var(--dark); }
+
+    /* ── SUBMIT FORM ── */
+    .submit-form-wrap {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+    .submit-form-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .submit-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    @media (max-width: 600px) { .submit-form-grid { grid-template-columns: 1fr; } }
+    .submit-form-grid .full-width { grid-column: 1 / -1; }
+    .submit-field { display: flex; flex-direction: column; gap: 0.25rem; }
+    .submit-field label { font-size: 0.72rem; font-weight: 700; color: var(--mid); text-transform: uppercase; letter-spacing: 0.04em; }
+    .submit-field input, .submit-field textarea, .submit-field select {
+      padding: 0.5rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      font-size: 0.875rem;
+      font-family: inherit;
+      outline: none;
+      background: white;
+    }
+    .submit-field input:focus, .submit-field textarea:focus, .submit-field select:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(255,92,0,0.08);
+    }
+    .submit-actions { margin-top: 0.75rem; display: flex; align-items: center; gap: 0.75rem; }
+    .submit-btn {
+      padding: 0.55rem 1.5rem;
+      background: var(--orange);
+      color: white;
+      border: none;
+      border-radius: 7px;
+      font-size: 0.875rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .submit-btn:hover { opacity: 0.88; }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .submit-status { font-size: 0.8rem; color: var(--mid); }
+    .submit-status.ok { color: #16a34a; }
+    .submit-status.err { color: #c0392b; }
+
     /* ── EMPTY STATE ── */
     .tracker-empty {
       text-align: center;
@@ -281,6 +413,24 @@
       color: #78350f;
       margin-bottom: 1.5rem;
     }
+
+    /* ── LOADING ── */
+    .tracker-loading {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      color: var(--mid);
+      font-size: 0.875rem;
+    }
+    .tracker-loading-spinner {
+      display: inline-block;
+      width: 20px; height: 20px;
+      border: 2px solid var(--border);
+      border-top-color: var(--orange);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-bottom: 0.5rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
@@ -308,18 +458,77 @@
 
 <div class="content" style="max-width: 1100px;">
 
-  <div class="tracker-update-notice">
-    <span>ℹ️</span>
-    <span>This tracker is updated manually from Jira. Content is edited in <code>assets/js/tracker-data.js</code> — submit a PR to add or update items. Jira links open the source ticket.</span>
+  <!-- CONFIG NOTICE (shown only if worker URL not set) -->
+  <div class="tracker-update-notice" id="config-notice" style="display:none">
+    <span>⚠️</span>
+    <span>Worker URL not configured. Edit <code>WORKER_URL</code> at the top of this page's script block, or deploy the Cloudflare Worker and update the URL.</span>
+  </div>
+
+  <!-- SUBMIT FORM — visible to all -->
+  <div class="submit-form-wrap">
+    <div class="submit-form-title">➕ Submit a request</div>
+    <div class="submit-form-grid">
+      <div class="submit-field full-width">
+        <label>Type</label>
+        <select id="sf-type">
+          <option value="feature">Feature Request</option>
+          <option value="issue">Known Issue / Bug</option>
+        </select>
+      </div>
+      <div class="submit-field full-width">
+        <label>Title <span style="color:#c0392b">*</span></label>
+        <input id="sf-title" type="text" placeholder="Short summary of the request or issue" />
+      </div>
+      <div class="submit-field full-width">
+        <label>Description</label>
+        <textarea id="sf-description" rows="3" placeholder="Details, use cases, affected customers…"></textarea>
+      </div>
+      <div class="submit-field">
+        <label>Category</label>
+        <select id="sf-category">
+          <option value="">— Select —</option>
+          <option value="Catalog">Catalog</option>
+          <option value="Cycle Counts">Cycle Counts</option>
+          <option value="Discount">Discount</option>
+          <option value="Guest">Guest</option>
+          <option value="Loyalty">Loyalty</option>
+          <option value="Mobile">Mobile</option>
+          <option value="POS">POS</option>
+          <option value="Purchasing &amp; Receiving">Purchasing &amp; Receiving</option>
+          <option value="Reports">Reports</option>
+          <option value="Stock Counts">Stock Counts</option>
+          <option value="Wholesale">Wholesale</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="submit-field">
+        <label>Urgency</label>
+        <select id="sf-urgency">
+          <option value="">— Select —</option>
+          <option value="showstopping">Showstopping / Causing Risk</option>
+          <option value="must-have">Must Have</option>
+          <option value="should-have">Should Have</option>
+          <option value="could-have">Could Have</option>
+        </select>
+      </div>
+      <div class="submit-field full-width" id="sf-workaround-row">
+        <label>Known Workaround (for bugs)</label>
+        <input id="sf-workaround" type="text" placeholder="Any existing workaround steps" />
+      </div>
+    </div>
+    <div class="submit-actions">
+      <button class="submit-btn" id="sf-submit">Submit to Jira</button>
+      <span class="submit-status" id="sf-status"></span>
+    </div>
   </div>
 
   <!-- TABS -->
   <div class="tracker-tabs">
     <button class="tracker-tab active" data-view="issue" id="tab-issue">
-      Known Issues <span class="tracker-tab-count" id="tab-issue-count">0</span>
+      Known Issues <span class="tracker-tab-count" id="tab-issue-count">—</span>
     </button>
     <button class="tracker-tab" data-view="feature" id="tab-feature">
-      Feature Requests <span class="tracker-tab-count" id="tab-feature-count">0</span>
+      Feature Requests <span class="tracker-tab-count" id="tab-feature-count">—</span>
     </button>
   </div>
 
@@ -327,13 +536,17 @@
   <div class="tracker-controls">
     <div class="tracker-search-wrap">
       <span class="tracker-search-icon">🔍</span>
-      <input type="text" id="tracker-search" placeholder="Search by title, description, or tag…" />
+      <input type="text" id="tracker-search" placeholder="Search by title, description, or category…" />
     </div>
     <div class="tracker-tag-filters" id="tracker-tag-filters"></div>
+    <button id="tracker-refresh-btn" style="font-size:0.8rem;padding:0.4rem 0.8rem;border:1px solid var(--border);border-radius:7px;background:none;cursor:pointer;color:var(--mid);" title="Refresh from Jira">↻ Refresh</button>
   </div>
 
   <!-- TABLE -->
-  <div class="tracker-table-wrap">
+  <div id="tracker-loading" class="tracker-loading">
+    <div class="tracker-loading-spinner"></div><br>Loading from Jira…
+  </div>
+  <div class="tracker-table-wrap" id="tracker-table-wrap" style="display:none">
     <table class="tracker-table" id="tracker-table">
       <thead id="tracker-thead"></thead>
       <tbody id="tracker-tbody"></tbody>
@@ -350,41 +563,75 @@
 
 <script src="../assets/js/analytics.js"></script>
 <script src="../assets/js/internal.js"></script>
-<script src="../assets/js/tracker-data.js"></script>
 <script>
 (function () {
-  var STORAGE_VOTES    = 'ti_tracker_votes';    // { id: 'up'|'down'|null }
-  var STORAGE_COMMENTS = 'ti_tracker_comments'; // { id: [{text, ts}] }
+  // ── CONFIG — set this to your deployed Cloudflare Worker URL ──────────
+  var WORKER_URL = 'https://api.toast-inventory.com';
+  // e.g. 'https://toast-inventory-tracker.aqassam.workers.dev'
+  // ──────────────────────────────────────────────────────────────────────
 
+  var STORAGE_VOTES    = 'ti_tracker_votes';
+  var STORAGE_COMMENTS = 'ti_tracker_comments';
+  var NET_VOTES_KEY    = 'ti_tracker_net_votes';
+
+  var allIssues   = [];
   var currentView = 'issue';
   var activeTag   = 'all';
   var searchQ     = '';
   var sortField   = 'votes';
   var sortDir     = 'desc';
+  var isInternalUser = false;
 
-  function loadVotes()    { try { return JSON.parse(localStorage.getItem(STORAGE_VOTES) || '{}'); }    catch(e) { return {}; } }
-  function saveVotes(v)   { localStorage.setItem(STORAGE_VOTES, JSON.stringify(v)); }
-  function loadComments() { try { return JSON.parse(localStorage.getItem(STORAGE_COMMENTS) || '{}'); } catch(e) { return {}; } }
-  function saveComments(c){ localStorage.setItem(STORAGE_COMMENTS, JSON.stringify(c)); }
-
-  // Persistent net-vote counts: stored per-id so they survive re-render
-  var NET_VOTES_KEY = 'ti_tracker_net_votes';
-  function loadNetVotes()  { try { return JSON.parse(localStorage.getItem(NET_VOTES_KEY) || '{}'); }   catch(e) { return {}; } }
-  function saveNetVotes(v) { localStorage.setItem(NET_VOTES_KEY, JSON.stringify(v)); }
-
-  function getNetVote(id) {
-    var nv = loadNetVotes();
-    return nv[id] || 0;
+  // Detect internal state (set by internal.js via sessionStorage)
+  function checkInternal() {
+    // internal.js sets this hash in sessionStorage on unlock
+    var HASH = 'ecd64d4210349796828b6e9a336506121b6afad4b907ee2b78cf8ec93a227824';
+    isInternalUser = sessionStorage.getItem('ti_internal_auth') === HASH;
   }
 
+  // ── STORAGE HELPERS ──
+  function loadVotes()     { try { return JSON.parse(localStorage.getItem(STORAGE_VOTES) || '{}');    } catch(e) { return {}; } }
+  function saveVotes(v)    { localStorage.setItem(STORAGE_VOTES, JSON.stringify(v)); }
+  function loadComments()  { try { return JSON.parse(localStorage.getItem(STORAGE_COMMENTS) || '{}'); } catch(e) { return {}; } }
+  function saveComments(c) { localStorage.setItem(STORAGE_COMMENTS, JSON.stringify(c)); }
+  function loadNetVotes()  { try { return JSON.parse(localStorage.getItem(NET_VOTES_KEY) || '{}');    } catch(e) { return {}; } }
+  function saveNetVotes(v) { localStorage.setItem(NET_VOTES_KEY, JSON.stringify(v)); }
+  function getNetVote(id)  { return (loadNetVotes()[id] || 0); }
+
+  // ── FETCH FROM WORKER ──
+  function fetchIssues() {
+    if (!WORKER_URL || WORKER_URL.includes('YOUR_SUBDOMAIN')) {
+      document.getElementById('config-notice').style.display = 'flex';
+      document.getElementById('tracker-loading').style.display = 'none';
+      document.getElementById('tracker-table-wrap').style.display = '';
+      render();
+      return;
+    }
+    document.getElementById('tracker-loading').style.display = '';
+    document.getElementById('tracker-table-wrap').style.display = 'none';
+
+    fetch(WORKER_URL + '/tracker')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        allIssues = data.issues || [];
+        document.getElementById('tracker-loading').style.display = 'none';
+        document.getElementById('tracker-table-wrap').style.display = '';
+        render();
+      })
+      .catch(function(err) {
+        document.getElementById('tracker-loading').innerHTML =
+          '<span style="color:#c0392b">Failed to load from Jira. ' + escHtml(String(err)) + '</span>';
+      });
+  }
+
+  // ── UTILS ──
   function jiraStatusClass(s) {
     if (!s) return '';
     var l = s.toLowerCase();
     if (l === 'open') return 'jira-status-open';
-    if (l.includes('progress') || l.includes('dev')) return 'jira-status-inprogress';
-    if (l === 'done' || l === 'resolved') return 'jira-status-done';
-    if (l === 'closed' || l === 'cancelled') return 'jira-status-closed';
-    if (l.includes('not planned')) return 'jira-status-notplanned';
+    if (l.includes('progress') || l.includes('dev') || l.includes('review')) return 'jira-status-inprogress';
+    if (l === 'done' || l === 'resolved' || l === 'closed') return 'jira-status-done';
+    if (l === 'cancelled' || l.includes('not planned')) return 'jira-status-notplanned';
     return 'jira-status-open';
   }
 
@@ -394,14 +641,15 @@
       .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
 
+  // ── TAG FILTERS ── built from category field
   function buildTagFilters() {
-    var tags = { all: true };
-    trackerData.filter(function(d){ return d.type === currentView; }).forEach(function(d){
-      (d.tags || []).forEach(function(t){ tags[t] = true; });
+    var cats = { all: true };
+    allIssues.filter(function(d){ return d.type === currentView; }).forEach(function(d){
+      if (d.category) cats[d.category] = true;
     });
     var wrap = document.getElementById('tracker-tag-filters');
     wrap.innerHTML = '';
-    Object.keys(tags).forEach(function(t) {
+    Object.keys(cats).forEach(function(t) {
       var btn = document.createElement('button');
       btn.className = 'tracker-tag-btn' + (t === activeTag ? ' active' : '');
       btn.textContent = t === 'all' ? 'All' : t;
@@ -427,6 +675,7 @@
       '<th class="th-status">Jira Status</th>' +
       '<th class="th-timeline sortable" data-sort="timeline">Est. Timeline <span class="sort-icon"></span></th>' +
       (isIssue ? '<th class="th-workaround">Workaround</th>' : '') +
+      (isInternalUser ? '<th class="th-edit"></th>' : '') +
       '</tr>';
 
     thead.querySelectorAll('.sortable').forEach(function(th) {
@@ -453,6 +702,7 @@
   }
 
   function render() {
+    checkInternal();
     buildHeader();
     buildTagFilters();
     updateSortIndicators();
@@ -461,21 +711,28 @@
     var comments = loadComments();
     var isIssue  = currentView === 'issue';
 
-    var items = trackerData.filter(function(d){ return d.type === currentView; });
+    var items = allIssues.filter(function(d){ return d.type === currentView; });
 
-    // Tag filter
+    // Tab counts
+    var issueCount   = allIssues.filter(function(d){ return d.type === 'issue'; }).length;
+    var featureCount = allIssues.filter(function(d){ return d.type === 'feature'; }).length;
+    document.getElementById('tab-issue-count').textContent   = issueCount;
+    document.getElementById('tab-feature-count').textContent = featureCount;
+
+    // Category filter
     if (activeTag !== 'all') {
-      items = items.filter(function(d){ return (d.tags || []).indexOf(activeTag) !== -1; });
+      items = items.filter(function(d){ return d.category === activeTag; });
     }
 
-    // Search filter
+    // Search
     if (searchQ) {
       var q = searchQ.toLowerCase();
       items = items.filter(function(d){
         return d.title.toLowerCase().includes(q) ||
-               d.description.toLowerCase().includes(q) ||
-               (d.tags || []).join(' ').toLowerCase().includes(q) ||
-               (d.jira || '').toLowerCase().includes(q);
+               (d.description || '').toLowerCase().includes(q) ||
+               (d.category || '').toLowerCase().includes(q) ||
+               (d.jira || '').toLowerCase().includes(q) ||
+               (d.tags || []).join(' ').toLowerCase().includes(q);
       });
     }
 
@@ -504,11 +761,7 @@
     tbody.innerHTML = '';
 
     var empty = document.getElementById('tracker-empty');
-    if (items.length === 0) {
-      empty.style.display = '';
-    } else {
-      empty.style.display = 'none';
-    }
+    empty.style.display = items.length === 0 ? '' : 'none';
 
     items.forEach(function(item) {
       var myVote  = votes[item.id] || null;
@@ -518,16 +771,20 @@
       var tr = document.createElement('tr');
       tr.id = 'row-' + item.id;
 
-      // --- Vote cell ---
       var voteClass = myVote === 'up' ? ' voted-up' : myVote === 'down' ? ' voted-down' : '';
-      var voteArrow = myVote === 'up' ? '▲' : myVote === 'down' ? '▼' : '▲';
+      var voteArrow = myVote === 'down' ? '▼' : '▲';
 
-      // --- Tags ---
+      // Category pill
+      var categoryHtml = item.category
+        ? '<span class="tracker-category-pill">' + escHtml(item.category) + '</span>'
+        : '';
+
+      // Extra tags
       var tagsHtml = (item.tags || []).map(function(t){
         return '<span class="tracker-tag-pill">' + escHtml(t) + '</span>';
       }).join('');
 
-      // --- Jira ---
+      // Jira link + status
       var jiraHtml = item.jira
         ? '<a class="jira-link" href="https://toasttab.atlassian.net/browse/' + escHtml(item.jira) + '" target="_blank">' + escHtml(item.jira) + ' ↗</a>'
         : '<span style="color:var(--mid);font-size:0.8rem;">—</span>';
@@ -536,34 +793,61 @@
         ? '<span class="jira-status-badge ' + jiraStatusClass(item.jiraStatus) + '">' + escHtml(item.jiraStatus) + '</span>'
         : '<span style="color:var(--mid);font-size:0.8rem;">—</span>';
 
-      // --- Comments (features only) ---
-      var commentsHtml = '';
-      if (!isIssue) {
-        var commentListHtml = itemComments.map(function(c){
-          return '<div class="comment-item"><div class="comment-item-meta">' + escHtml(c.ts) + '</div>' + escHtml(c.text) + '</div>';
-        }).join('');
-        var commentCount = itemComments.length;
-        commentsHtml = '<button class="comment-toggle-btn" data-id="' + item.id + '">💬 ' +
-          (commentCount > 0 ? commentCount + ' comment' + (commentCount !== 1 ? 's' : '') : 'Add comment') +
-          '</button>' +
-          '<div class="comment-area" id="comments-' + item.id + '">' +
-          '<div class="comment-list" id="comment-list-' + item.id + '">' + commentListHtml + '</div>' +
-          '<div class="comment-form">' +
-          '<textarea id="comment-input-' + item.id + '" placeholder="Share additional context or use cases…" rows="2"></textarea>' +
-          '<button class="comment-submit-btn" data-id="' + item.id + '">Post</button>' +
-          '</div>' +
-          '</div>';
-      }
+      // Comments
+      var commentListHtml = itemComments.map(function(c){
+        return '<div class="comment-item"><div class="comment-item-meta">' + escHtml(c.ts) + '</div>' + escHtml(c.text) + '</div>';
+      }).join('');
+      var commentCount = itemComments.length;
+      var commentsHtml = '<button class="comment-toggle-btn" data-id="' + item.id + '">💬 ' +
+        (commentCount > 0 ? commentCount + ' comment' + (commentCount !== 1 ? 's' : '') : 'Add comment') +
+        '</button>' +
+        '<div class="comment-area" id="comments-' + item.id + '">' +
+        '<div class="comment-list" id="comment-list-' + item.id + '">' + commentListHtml + '</div>' +
+        '<div class="comment-form">' +
+        '<textarea id="comment-input-' + item.id + '" placeholder="Share additional context or use cases…" rows="2"></textarea>' +
+        '<button class="comment-submit-btn" data-id="' + item.id + '">Post</button>' +
+        '</div></div>';
 
-      // --- Workaround ---
+      // Workaround column (issues only)
       var workaroundHtml = isIssue
         ? '<td style="font-size:0.8rem;color:var(--mid);line-height:1.5;">' + (item.workaround ? escHtml(item.workaround) : '<em>None</em>') + '</td>'
         : '';
 
-      // --- Version ---
+      // Version column (issues only)
       var versionHtml = isIssue
         ? '<td style="font-size:0.8rem;color:var(--mid);">' + escHtml(item.version || '—') + '</td>'
         : '';
+
+      // Inline edit form (internal users only)
+      var editHtml = '';
+      if (isInternalUser) {
+        editHtml =
+          '<td>' +
+          '<button class="edit-btn" data-id="' + item.id + '">Edit</button>' +
+          '</td>';
+      }
+
+      var editFormHtml = isInternalUser ? (
+        '<div class="edit-form" id="edit-form-' + item.id + '">' +
+        '<div class="edit-row"><label>Title</label>' +
+        '<input type="text" id="ef-title-' + item.id + '" value="' + escHtml(item.title) + '" /></div>' +
+        '<div class="edit-row"><label>Description</label>' +
+        '<textarea id="ef-desc-' + item.id + '" rows="3">' + escHtml(item.description || '') + '</textarea></div>' +
+        '<div class="edit-row"><label>Est. Timeline</label>' +
+        '<input type="text" id="ef-timeline-' + item.id + '" value="' + escHtml(item.timeline || '') + '" placeholder="e.g. Q3 2026 or 2026-09-30" /></div>' +
+        (isIssue ? '<div class="edit-row"><label>Known Workaround</label>' +
+        '<input type="text" id="ef-workaround-' + item.id + '" value="' + escHtml(item.workaround || '') + '" /></div>' : '') +
+        '<div class="edit-row"><label>Category</label>' +
+        '<select id="ef-cat-' + item.id + '">' +
+        ['','Catalog','Cycle Counts','Discount','Guest','Loyalty','Mobile','POS','Purchasing & Receiving','Reports','Stock Counts','Wholesale','Other'].map(function(c){
+          return '<option value="' + escHtml(c) + '"' + (item.category === c ? ' selected' : '') + '>' + (c || '— Select —') + '</option>';
+        }).join('') +
+        '</select></div>' +
+        '<div class="edit-actions">' +
+        '<button class="edit-cancel-btn" data-id="' + item.id + '">Cancel</button>' +
+        '<button class="edit-save-btn" data-id="' + item.id + '">Save to Jira</button>' +
+        '</div></div>'
+      ) : '';
 
       tr.innerHTML =
         '<td class="vote-cell">' +
@@ -575,47 +859,45 @@
         '<td>' +
         '<div class="tracker-title">' + escHtml(item.title) + '</div>' +
         '<button class="tracker-expand-btn" data-id="' + item.id + '">Show details</button>' +
-        '<div class="tracker-desc" id="desc-' + item.id + '">' + escHtml(item.description) + '</div>' +
-        (tagsHtml ? '<div class="tracker-tags">' + tagsHtml + '</div>' : '') +
+        '<div class="tracker-desc" id="desc-' + item.id + '">' + escHtml(item.description || '') + '</div>' +
+        (categoryHtml || tagsHtml ? '<div class="tracker-tags">' + categoryHtml + tagsHtml + '</div>' : '') +
         commentsHtml +
+        editFormHtml +
         '</td>' +
         versionHtml +
         '<td>' + jiraHtml + '</td>' +
         '<td>' + jiraStatusHtml + '</td>' +
         '<td style="font-size:0.8rem;color:var(--mid);">' + escHtml(item.timeline || '—') + '</td>' +
-        workaroundHtml;
+        workaroundHtml +
+        editHtml;
 
       tbody.appendChild(tr);
     });
 
-    // Wire vote buttons
+    wireVotes();
+    wireExpand();
+    wireComments();
+    if (isInternalUser) wireEdit();
+  }
+
+  function wireVotes() {
     document.querySelectorAll('.vote-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var id = btn.dataset.id;
         var allVotes = loadVotes();
         var allNet   = loadNetVotes();
         var prev = allVotes[id] || null;
-        var net  = allNet[id]   || 0;
+        var net  = allNet[id]  || 0;
 
-        if (prev === 'up') {
-          // undo upvote
-          allVotes[id] = null;
-          allNet[id]   = net - 1;
-        } else if (prev === 'down') {
-          // flip down→up
-          allVotes[id] = 'up';
-          allNet[id]   = net + 2;
-        } else {
-          // new upvote
-          allVotes[id] = 'up';
-          allNet[id]   = net + 1;
-        }
+        if (prev === 'up')   { allVotes[id] = null; allNet[id] = net - 1; }
+        else if (prev === 'down') { allVotes[id] = 'up'; allNet[id] = net + 2; }
+        else                 { allVotes[id] = 'up';  allNet[id] = net + 1; }
+
         saveVotes(allVotes);
         saveNetVotes(allNet);
 
-        // Update button in-place
-        var newVote   = allVotes[id];
-        var newNet    = allNet[id];
+        var newVote = allVotes[id];
+        var newNet  = allNet[id];
         var vc = document.getElementById('vc-' + id);
         if (vc) vc.textContent = (newNet >= 0 ? '+' : '') + newNet;
         btn.classList.remove('voted-up', 'voted-down');
@@ -625,8 +907,9 @@
         if (arrow) arrow.textContent = newVote === 'down' ? '▼' : '▲';
       });
     });
+  }
 
-    // Wire expand buttons
+  function wireExpand() {
     document.querySelectorAll('.tracker-expand-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var id = btn.dataset.id;
@@ -637,19 +920,18 @@
         btn.textContent = open ? 'Show details' : 'Hide details';
       });
     });
+  }
 
-    // Wire comment toggles (features only)
+  function wireComments() {
     document.querySelectorAll('.comment-toggle-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var id = btn.dataset.id;
         var area = document.getElementById('comments-' + id);
         if (!area) return;
-        var open = area.style.display === 'block';
-        area.style.display = open ? 'none' : 'block';
+        area.style.display = area.style.display === 'block' ? 'none' : 'block';
       });
     });
 
-    // Wire comment submit
     document.querySelectorAll('.comment-submit-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var id = btn.dataset.id;
@@ -664,8 +946,6 @@
         allComments[id].push({ text: text, ts: ts });
         saveComments(allComments);
         input.value = '';
-
-        // Re-render comment list in-place
         var list = document.getElementById('comment-list-' + id);
         if (list) {
           var c = allComments[id][allComments[id].length - 1];
@@ -674,7 +954,6 @@
           div.innerHTML = '<div class="comment-item-meta">' + escHtml(c.ts) + '</div>' + escHtml(c.text);
           list.appendChild(div);
         }
-        // Update toggle button count
         var toggle = document.querySelector('.comment-toggle-btn[data-id="' + id + '"]');
         if (toggle) {
           var count = allComments[id].length;
@@ -682,15 +961,149 @@
         }
       });
     });
-
-    // Update tab counts
-    var issues   = trackerData.filter(function(d){ return d.type === 'issue'; }).length;
-    var features = trackerData.filter(function(d){ return d.type === 'feature'; }).length;
-    document.getElementById('tab-issue-count').textContent   = issues;
-    document.getElementById('tab-feature-count').textContent = features;
   }
 
-  // Tab switching
+  function wireEdit() {
+    // Edit button toggles form
+    document.querySelectorAll('.edit-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var id = btn.dataset.id;
+        var form = document.getElementById('edit-form-' + id);
+        if (!form) return;
+        var open = form.classList.contains('open');
+        form.classList.toggle('open', !open);
+        btn.textContent = open ? 'Edit' : 'Cancel';
+      });
+    });
+
+    // Cancel buttons
+    document.querySelectorAll('.edit-cancel-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var id = btn.dataset.id;
+        var form = document.getElementById('edit-form-' + id);
+        if (form) form.classList.remove('open');
+        var editBtn = document.querySelector('.edit-btn[data-id="' + id + '"]');
+        if (editBtn) editBtn.textContent = 'Edit';
+      });
+    });
+
+    // Save buttons — PUT to worker
+    document.querySelectorAll('.edit-save-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var id = btn.dataset.id;
+        btn.disabled = true;
+        btn.textContent = 'Saving…';
+
+        var payload = {
+          title:      document.getElementById('ef-title-' + id)?.value.trim(),
+          description: document.getElementById('ef-desc-' + id)?.value.trim(),
+          timeline:   document.getElementById('ef-timeline-' + id)?.value.trim(),
+          workaround: document.getElementById('ef-workaround-' + id)?.value.trim(),
+          category:   document.getElementById('ef-cat-' + id)?.value,
+        };
+
+        fetch(WORKER_URL + '/tracker/' + id, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          btn.disabled = false;
+          if (data.ok) {
+            btn.textContent = 'Saved ✓';
+            // Update local data and re-render
+            var item = allIssues.find(function(i){ return i.id === id; });
+            if (item) {
+              if (payload.title)       item.title       = payload.title;
+              if (payload.description) item.description = payload.description;
+              if (payload.timeline !== undefined) item.timeline = payload.timeline;
+              if (payload.workaround !== undefined) item.workaround = payload.workaround;
+              if (payload.category !== undefined) item.category = payload.category;
+            }
+            setTimeout(function() { render(); }, 800);
+          } else {
+            btn.textContent = 'Save to Jira';
+            alert('Save failed: ' + JSON.stringify(data.error));
+          }
+        })
+        .catch(function(err) {
+          btn.disabled = false;
+          btn.textContent = 'Save to Jira';
+          alert('Error: ' + err);
+        });
+      });
+    });
+  }
+
+  // ── SUBMIT FORM ──
+  document.getElementById('sf-type').addEventListener('change', function() {
+    var isIssue = this.value === 'issue';
+    document.getElementById('sf-workaround-row').style.display = isIssue ? '' : 'none';
+  });
+  // Default: hide workaround for feature type
+  document.getElementById('sf-workaround-row').style.display = 'none';
+
+  document.getElementById('sf-submit').addEventListener('click', function() {
+    var btn    = this;
+    var status = document.getElementById('sf-status');
+    var title  = document.getElementById('sf-title').value.trim();
+    if (!title) {
+      status.className = 'submit-status err';
+      status.textContent = 'Title is required.';
+      return;
+    }
+    if (!WORKER_URL || WORKER_URL.includes('YOUR_SUBDOMAIN')) {
+      status.className = 'submit-status err';
+      status.textContent = 'Worker URL not configured — cannot submit to Jira.';
+      return;
+    }
+
+    btn.disabled = true;
+    status.className = 'submit-status';
+    status.textContent = 'Submitting…';
+
+    var payload = {
+      type:        document.getElementById('sf-type').value,
+      title:       title,
+      description: document.getElementById('sf-description').value.trim(),
+      category:    document.getElementById('sf-category').value,
+      urgency:     document.getElementById('sf-urgency').value,
+      workaround:  document.getElementById('sf-workaround').value.trim(),
+    };
+
+    fetch(WORKER_URL + '/tracker', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      btn.disabled = false;
+      if (data.key) {
+        status.className = 'submit-status ok';
+        status.textContent = 'Created ' + data.key + ' ✓';
+        // Clear form
+        ['sf-title','sf-description','sf-workaround'].forEach(function(id){
+          document.getElementById(id).value = '';
+        });
+        document.getElementById('sf-category').value = '';
+        document.getElementById('sf-urgency').value  = '';
+        // Refresh list after a moment
+        setTimeout(fetchIssues, 1200);
+      } else {
+        status.className = 'submit-status err';
+        status.textContent = 'Failed: ' + JSON.stringify(data.error);
+      }
+    })
+    .catch(function(err) {
+      btn.disabled = false;
+      status.className = 'submit-status err';
+      status.textContent = 'Error: ' + err;
+    });
+  });
+
+  // ── TAB SWITCHING ──
   document.querySelectorAll('.tracker-tab').forEach(function(tab) {
     tab.addEventListener('click', function() {
       currentView = tab.dataset.view;
@@ -698,21 +1111,37 @@
       sortField   = 'votes';
       sortDir     = 'desc';
       document.getElementById('tracker-search').value = '';
-      searchQ     = '';
+      searchQ = '';
       document.querySelectorAll('.tracker-tab').forEach(function(t){ t.classList.remove('active'); });
       tab.classList.add('active');
       render();
     });
   });
 
-  // Search
+  // ── SEARCH ──
   document.getElementById('tracker-search').addEventListener('input', function() {
     searchQ = this.value.trim();
     render();
   });
 
-  // Initial render
-  render();
+  // ── REFRESH ──
+  document.getElementById('tracker-refresh-btn').addEventListener('click', fetchIssues);
+
+  // ── Re-render when internal state changes (user unlocks/exits) ──
+  // Poll for session storage change every 500ms (simple, no cross-tab needed)
+  var lastInternal = false;
+  setInterval(function() {
+    checkInternal();
+    if (isInternalUser !== lastInternal) {
+      lastInternal = isInternalUser;
+      render();
+    }
+  }, 500);
+
+  // ── INIT ──
+  checkInternal();
+  lastInternal = isInternalUser;
+  fetchIssues();
 })();
 </script>
 </body>
