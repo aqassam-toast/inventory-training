@@ -145,7 +145,7 @@ async function handleGet(env) {
   try {
     const [featureRaw, bugRaw] = await Promise.all([
       search(`project = ${NVR_PROJECT} AND issuetype = "Feature Request" AND labels = "FeatureRequest" ORDER BY created DESC`),
-      search(`project = ${NVR_PROJECT} AND issuetype = "Bug" ORDER BY created DESC`),
+      search(`project = ${NVR_PROJECT} AND issuetype = "Bug" AND labels = "Important_Bugs" ORDER BY created DESC`),
     ]);
     const issues = [...featureRaw, ...bugRaw].map(mapIssue);
     return json({ issues, total: issues.length }, 200, env);
