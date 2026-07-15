@@ -14,6 +14,6 @@
     if (last.indexOf('.') !== -1) depth = depth - 1;
     var prefix = '';
     for (var i = 0; i < depth; i++) prefix += '../';
-    window.location.replace(prefix + 'gate.html');
+    window.location.replace(prefix + 'gate.html?redirect=' + encodeURIComponent(window.location.href));
   }
 })();

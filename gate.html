@@ -165,9 +165,11 @@
   const BETA_KEY      = "ti_beta_auth";
   const INTERNAL_KEY  = "ti_internal_auth";
 
-  // If already authenticated, go straight to the main site
+  const REDIRECT_URL = new URLSearchParams(window.location.search).get('redirect') || 'index.html';
+
+  // If already authenticated, go straight to the intended page
   if (sessionStorage.getItem(BETA_KEY) === BETA_HASH) {
-    window.location.replace("index.html");
+    window.location.replace(REDIRECT_URL);
   }
 
   document.getElementById("password-input").addEventListener("keydown", function(e) {
@@ -181,12 +183,12 @@
 
     if (BETA_HASHES.includes(hash)) {
       sessionStorage.setItem(BETA_KEY, BETA_HASH);
-      window.location.replace("index.html");
+      window.location.replace(REDIRECT_URL);
     } else if (hash === INTERNAL_HASH) {
       // Internal password grants beta access + activates internal view for the session
       sessionStorage.setItem(BETA_KEY, BETA_HASH);
       sessionStorage.setItem(INTERNAL_KEY, INTERNAL_HASH);
-      window.location.replace("index.html");
+      window.location.replace(REDIRECT_URL);
     } else {
       document.getElementById("password-input").classList.add("error");
       document.getElementById("error-msg").classList.add("visible");
