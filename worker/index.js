@@ -23,7 +23,7 @@ const TYPE_BUG     = '10602'; // Bug
 // Field IDs
 const FIELD_RELEASE_NOTE  = 'customfield_13117';      // workaround (both types)
 const FIELD_EST_DELIVERY  = 'customfield_13254';       // timeline for Bugs
-const FIELD_STORY_POINTS  = 'customfield_10016';       // votes (story points)
+const FIELD_STORY_POINTS  = 'customfield_10004';       // votes (story points — NVR uses 10004)
 // Features use standard duedate for timeline
 
 function cors(env) {
