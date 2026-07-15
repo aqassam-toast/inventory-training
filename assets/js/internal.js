@@ -1,6 +1,6 @@
 // Internal view — password modal, banner, and content filtering
 (function() {
-  var HASH       = "ecd64d4210349796828b6e9a336506121b6afad4b907ee2b78cf8ec93a227824";
+  var HASH       = "8dd40795099ef28537203f1668d2812d4357c9176fcd6345389f224e3ae390b1";
   var ADMIN_HASH = "5ab59b0f23217a8b65039340ed2857430abf52f10ab4c34a94aac0ace660b161";
   var KEY        = "ti_internal_auth";
   var ADMIN_KEY  = "ti_admin_auth";
