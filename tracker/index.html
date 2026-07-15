@@ -423,17 +423,8 @@
     .open-submit-btn:hover { opacity: 0.88; }
 
     /* ── STATUS FILTER ── */
-    .tracker-status-filter {
-      font-size: 0.8rem;
-      padding: 0.45rem 0.65rem;
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      background: white;
-      color: var(--dark);
-      outline: none;
-      cursor: pointer;
-    }
-    .tracker-status-filter:focus { border-color: var(--orange); }
+    .tracker-status-filters { display: flex; gap: 0.35rem; flex-wrap: wrap; align-items: center; }
+    .tracker-status-label { font-size: 0.72rem; font-weight: 700; color: var(--mid); text-transform: uppercase; letter-spacing: 0.04em; margin-right: 0.15rem; white-space: nowrap; }
 
     /* ── PAGINATION ── */
     .tracker-pagination {
@@ -622,14 +613,7 @@
       <span class="tracker-search-icon">🔍</span>
       <input type="text" id="tracker-search" placeholder="Search by title, description, or category…" />
     </div>
-    <select id="tracker-status-filter" class="tracker-status-filter">
-      <option value="">All statuses</option>
-      <option value="Open">Open</option>
-      <option value="In Progress">In Progress</option>
-      <option value="Done">Done</option>
-      <option value="Closed">Closed</option>
-      <option value="Cancelled">Cancelled</option>
-    </select>
+    <div class="tracker-status-filters" id="tracker-status-filters"></div>
     <div class="tracker-tag-filters" id="tracker-tag-filters"></div>
     <button id="tracker-refresh-btn" style="font-size:0.8rem;padding:0.4rem 0.8rem;border:1px solid var(--border);border-radius:7px;background:none;cursor:pointer;color:var(--mid);" title="Refresh from Jira">↻ Refresh</button>
   </div>
@@ -674,13 +658,13 @@
   var STORAGE_COMMENTS = 'ti_tracker_comments';
   var NET_VOTES_KEY    = 'ti_tracker_net_votes';
 
-  var allIssues   = [];
-  var currentView = 'issue';
-  var activeTag   = 'all';
-  var statusFilter = '';
-  var searchQ     = '';
-  var sortField   = 'status';   // issues default: Open first
-  var sortDir     = 'asc';
+  var allIssues    = [];
+  var currentView  = 'issue';
+  var activeTag    = 'all';
+  var statusFilter = ['Open', 'In Progress'];  // multi-select, default for issues
+  var searchQ      = '';
+  var sortField    = 'status';
+  var sortDir      = 'asc';
   var currentPage = 1;
   var PAGE_SIZE   = 25;
   var isInternalUser = false;
@@ -757,16 +741,44 @@
       .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
 
-  // ── TAG FILTERS ── built from Jira labels (excluding noise labels)
+  // ── STATUS FILTER PILLS (multi-select) ──
+  var STATUS_OPTIONS = ['Open', 'In Progress', 'Done', 'Closed', 'Cancelled'];
+
+  function buildStatusFilters() {
+    var wrap = document.getElementById('tracker-status-filters');
+    wrap.innerHTML = '';
+    var lbl = document.createElement('span');
+    lbl.className = 'tracker-status-label';
+    lbl.textContent = 'Status:';
+    wrap.appendChild(lbl);
+    STATUS_OPTIONS.forEach(function(s) {
+      var btn = document.createElement('button');
+      var active = statusFilter.indexOf(s) !== -1;
+      btn.className = 'tracker-tag-btn' + (active ? ' active' : '');
+      btn.textContent = s;
+      btn.addEventListener('click', function() {
+        var idx = statusFilter.indexOf(s);
+        if (idx !== -1) statusFilter.splice(idx, 1);
+        else statusFilter.push(s);
+        currentPage = 1;
+        btn.classList.toggle('active', statusFilter.indexOf(s) !== -1);
+        render();
+      });
+      wrap.appendChild(btn);
+    });
+  }
+
+  // ── TAG FILTERS ── features only
   function buildTagFilters() {
+    var wrap = document.getElementById('tracker-tag-filters');
+    wrap.innerHTML = '';
+    if (currentView !== 'feature') return;
     var tagSet = {};
-    allIssues.filter(function(d){ return d.type === currentView; }).forEach(function(d){
+    allIssues.filter(function(d){ return d.type === 'feature'; }).forEach(function(d){
       (d.tags || []).forEach(function(t){
         if (!HIDDEN_TAGS[t] && !/^retail-/.test(t)) tagSet[t] = true;
       });
     });
-    var wrap = document.getElementById('tracker-tag-filters');
-    wrap.innerHTML = '';
     var allBtn = document.createElement('button');
     allBtn.className = 'tracker-tag-btn' + (activeTag === 'all' ? ' active' : '');
     allBtn.textContent = 'All';
@@ -798,7 +810,6 @@
     thead.innerHTML = '<tr>' +
       '<th class="th-votes sortable" data-sort="votes">Votes <span class="sort-icon"></span></th>' +
       '<th class="sortable" data-sort="title">Title <span class="sort-icon"></span></th>' +
-      (isIssue ? '<th class="th-version sortable" data-sort="version">Reported Version <span class="sort-icon"></span></th>' : '') +
       '<th class="th-jira sortable" data-sort="jira">Jira Ticket <span class="sort-icon"></span></th>' +
       '<th class="th-status sortable" data-sort="status">Status <span class="sort-icon"></span></th>' +
       '<th class="th-timeline sortable" data-sort="timeline">Est. Timeline <span class="sort-icon"></span></th>' +
@@ -832,6 +843,7 @@
   function render() {
     checkInternal();
     buildHeader();
+    buildStatusFilters();
     buildTagFilters();
     updateSortIndicators();
 
@@ -847,10 +859,11 @@
     document.getElementById('tab-issue-count').textContent   = issueCount;
     document.getElementById('tab-feature-count').textContent = featureCount;
 
-    // Status filter (compare against normalized status)
-    if (statusFilter) {
+    // Status filter — multi-select; empty array = show all
+    if (statusFilter.length > 0) {
       items = items.filter(function(d){
-        return normalizeStatus(d.jiraStatus || '').toLowerCase() === statusFilter.toLowerCase();
+        var norm = normalizeStatus(d.jiraStatus || '');
+        return statusFilter.some(function(s){ return s.toLowerCase() === norm.toLowerCase(); });
       });
     }
 
@@ -926,8 +939,8 @@
         ? '<span class="tracker-category-pill">' + escHtml(item.category) + '</span>'
         : '';
 
-      // Extra tags (suppress noise labels)
-      var tagsHtml = (item.tags || []).filter(function(t){
+      // Tag pills — features only
+      var tagsHtml = isIssue ? '' : (item.tags || []).filter(function(t){
         return !HIDDEN_TAGS[t] && !/^retail-/.test(t);
       }).map(function(t){
         return '<span class="tracker-tag-pill">' + escHtml(t) + '</span>';
@@ -965,10 +978,7 @@
         ? '<td style="font-size:0.8rem;color:var(--mid);line-height:1.5;">' + (item.workaround ? escHtml(item.workaround) : '<em>None</em>') + '</td>'
         : '';
 
-      // Version column (issues only)
-      var versionHtml = isIssue
-        ? '<td style="font-size:0.8rem;color:var(--mid);">' + escHtml(item.version || '—') + '</td>'
-        : '';
+      var versionHtml = '';
 
       // Inline edit form (internal users only)
       var editHtml = '';
@@ -1324,24 +1334,16 @@
     });
   });
 
-  // ── STATUS FILTER ──
-  document.getElementById('tracker-status-filter').addEventListener('change', function() {
-    statusFilter = this.value;
-    currentPage  = 1;
-    render();
-  });
-
   // ── TAB SWITCHING ──
   document.querySelectorAll('.tracker-tab').forEach(function(tab) {
     tab.addEventListener('click', function() {
       currentView  = tab.dataset.view;
       activeTag    = 'all';
-      statusFilter = '';
+      statusFilter = currentView === 'issue' ? ['Open', 'In Progress'] : [];
       sortField    = currentView === 'issue' ? 'status' : 'votes';
       sortDir      = currentView === 'issue' ? 'asc' : 'desc';
       currentPage  = 1;
       document.getElementById('tracker-search').value = '';
-      document.getElementById('tracker-status-filter').value = '';
       searchQ = '';
       document.querySelectorAll('.tracker-tab').forEach(function(t){ t.classList.remove('active'); });
       tab.classList.add('active');
