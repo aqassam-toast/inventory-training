@@ -422,6 +422,46 @@
     }
     .open-submit-btn:hover { opacity: 0.88; }
 
+    /* ── STATUS FILTER ── */
+    .tracker-status-filter {
+      font-size: 0.8rem;
+      padding: 0.45rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      background: white;
+      color: var(--dark);
+      outline: none;
+      cursor: pointer;
+    }
+    .tracker-status-filter:focus { border-color: var(--orange); }
+
+    /* ── PAGINATION ── */
+    .tracker-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 1.25rem 0 0.5rem;
+      flex-wrap: wrap;
+    }
+    .page-btn {
+      min-width: 32px;
+      height: 32px;
+      padding: 0 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: white;
+      color: var(--dark);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.1s, border-color 0.1s;
+    }
+    .page-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .page-btn.active { background: var(--orange); color: white; border-color: var(--orange); }
+    .page-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .page-info { font-size: 0.78rem; color: var(--mid); padding: 0 0.5rem; }
+
     /* ── EMPTY STATE ── */
     .tracker-empty {
       text-align: center;
@@ -582,6 +622,13 @@
       <span class="tracker-search-icon">🔍</span>
       <input type="text" id="tracker-search" placeholder="Search by title, description, or category…" />
     </div>
+    <select id="tracker-status-filter" class="tracker-status-filter">
+      <option value="">All statuses</option>
+      <option value="Backlog">Backlog</option>
+      <option value="In Progress">In Progress</option>
+      <option value="Done">Done</option>
+      <option value="Cancelled">Cancelled</option>
+    </select>
     <div class="tracker-tag-filters" id="tracker-tag-filters"></div>
     <button id="tracker-refresh-btn" style="font-size:0.8rem;padding:0.4rem 0.8rem;border:1px solid var(--border);border-radius:7px;background:none;cursor:pointer;color:var(--mid);" title="Refresh from Jira">↻ Refresh</button>
   </div>
@@ -596,6 +643,7 @@
       <tbody id="tracker-tbody"></tbody>
     </table>
     <div class="tracker-empty" id="tracker-empty" style="display:none">No items match your search.</div>
+    <div class="tracker-pagination" id="tracker-pagination"></div>
   </div>
 
 </div>
@@ -627,10 +675,16 @@
   var allIssues   = [];
   var currentView = 'issue';
   var activeTag   = 'all';
+  var statusFilter = '';
   var searchQ     = '';
   var sortField   = 'votes';
   var sortDir     = 'desc';
+  var currentPage = 1;
+  var PAGE_SIZE   = 25;
   var isInternalUser = false;
+
+  // Labels to suppress from the tag filter pills
+  var HIDDEN_TAGS = { 'FeatureRequest': true, 'Important_Bugs': true, 'tracker-visible': true };
 
   // Detect internal state (set by internal.js via sessionStorage)
   function checkInternal() {
@@ -691,27 +745,39 @@
       .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
 
-  // ── TAG FILTERS ── built from category field
+  // ── TAG FILTERS ── built from Jira labels (excluding noise labels)
   function buildTagFilters() {
-    var cats = { all: true };
+    var tagSet = {};
     allIssues.filter(function(d){ return d.type === currentView; }).forEach(function(d){
-      if (d.category) cats[d.category] = true;
+      (d.tags || []).forEach(function(t){
+        if (!HIDDEN_TAGS[t] && !/^retail-/.test(t)) tagSet[t] = true;
+      });
     });
     var wrap = document.getElementById('tracker-tag-filters');
     wrap.innerHTML = '';
-    Object.keys(cats).forEach(function(t) {
+    var allBtn = document.createElement('button');
+    allBtn.className = 'tracker-tag-btn' + (activeTag === 'all' ? ' active' : '');
+    allBtn.textContent = 'All';
+    allBtn.dataset.tag = 'all';
+    allBtn.addEventListener('click', function() { setTag('all'); });
+    wrap.appendChild(allBtn);
+    Object.keys(tagSet).sort().forEach(function(t) {
       var btn = document.createElement('button');
       btn.className = 'tracker-tag-btn' + (t === activeTag ? ' active' : '');
-      btn.textContent = t === 'all' ? 'All' : t;
+      btn.textContent = t;
       btn.dataset.tag = t;
-      btn.addEventListener('click', function() {
-        activeTag = t;
-        document.querySelectorAll('.tracker-tag-btn').forEach(function(b){ b.classList.remove('active'); });
-        btn.classList.add('active');
-        render();
-      });
+      btn.addEventListener('click', function() { setTag(t); });
       wrap.appendChild(btn);
     });
+  }
+
+  function setTag(t) {
+    activeTag = t;
+    currentPage = 1;
+    document.querySelectorAll('.tracker-tag-btn').forEach(function(b){ b.classList.remove('active'); });
+    var btn = document.querySelector('.tracker-tag-btn[data-tag="' + t + '"]');
+    if (btn) btn.classList.add('active');
+    render();
   }
 
   function buildHeader() {
@@ -769,9 +835,18 @@
     document.getElementById('tab-issue-count').textContent   = issueCount;
     document.getElementById('tab-feature-count').textContent = featureCount;
 
-    // Category filter
+    // Status filter
+    if (statusFilter) {
+      items = items.filter(function(d){
+        return (d.jiraStatus || '').toLowerCase() === statusFilter.toLowerCase();
+      });
+    }
+
+    // Tag filter (from Jira labels)
     if (activeTag !== 'all') {
-      items = items.filter(function(d){ return d.category === activeTag; });
+      items = items.filter(function(d){
+        return (d.tags || []).indexOf(activeTag) !== -1;
+      });
     }
 
     // Search
@@ -807,13 +882,19 @@
       return 0;
     });
 
+    var totalItems = items.length;
+    var totalPages = Math.max(1, Math.ceil(totalItems / PAGE_SIZE));
+    if (currentPage > totalPages) currentPage = totalPages;
+    var pageStart = (currentPage - 1) * PAGE_SIZE;
+    var pageItems = items.slice(pageStart, pageStart + PAGE_SIZE);
+
     var tbody = document.getElementById('tracker-tbody');
     tbody.innerHTML = '';
 
     var empty = document.getElementById('tracker-empty');
-    empty.style.display = items.length === 0 ? '' : 'none';
+    empty.style.display = totalItems === 0 ? '' : 'none';
 
-    items.forEach(function(item) {
+    pageItems.forEach(function(item) {
       var myVote  = votes[item.id] || null;
       var netVote = getNetVote(item.id);
       var itemComments = comments[item.id] || [];
@@ -829,8 +910,10 @@
         ? '<span class="tracker-category-pill">' + escHtml(item.category) + '</span>'
         : '';
 
-      // Extra tags
-      var tagsHtml = (item.tags || []).map(function(t){
+      // Extra tags (suppress noise labels)
+      var tagsHtml = (item.tags || []).filter(function(t){
+        return !HIDDEN_TAGS[t] && !/^retail-/.test(t);
+      }).map(function(t){
         return '<span class="tracker-tag-pill">' + escHtml(t) + '</span>';
       }).join('');
 
@@ -928,6 +1011,49 @@
     wireExpand();
     wireComments();
     if (isInternalUser) wireEdit();
+    renderPagination(totalPages, totalItems);
+  }
+
+  function renderPagination(totalPages, totalItems) {
+    var wrap = document.getElementById('tracker-pagination');
+    wrap.innerHTML = '';
+    if (totalPages <= 1) return;
+
+    var pageStart = (currentPage - 1) * PAGE_SIZE + 1;
+    var pageEnd   = Math.min(currentPage * PAGE_SIZE, totalItems);
+
+    function mkBtn(label, page, disabled, active) {
+      var btn = document.createElement('button');
+      btn.className = 'page-btn' + (active ? ' active' : '');
+      btn.textContent = label;
+      btn.disabled = disabled;
+      if (!disabled && !active) {
+        btn.addEventListener('click', function() {
+          currentPage = page;
+          render();
+          document.getElementById('tracker-table-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+      return btn;
+    }
+
+    wrap.appendChild(mkBtn('←', currentPage - 1, currentPage === 1, false));
+
+    // Page number window: show up to 7 pages around current
+    var start = Math.max(1, currentPage - 3);
+    var end   = Math.min(totalPages, currentPage + 3);
+    if (start > 1) { wrap.appendChild(mkBtn('1', 1, false, false)); if (start > 2) { var sp = document.createElement('span'); sp.className = 'page-info'; sp.textContent = '…'; wrap.appendChild(sp); } }
+    for (var p = start; p <= end; p++) {
+      wrap.appendChild(mkBtn(String(p), p, false, p === currentPage));
+    }
+    if (end < totalPages) { if (end < totalPages - 1) { var sp2 = document.createElement('span'); sp2.className = 'page-info'; sp2.textContent = '…'; wrap.appendChild(sp2); } wrap.appendChild(mkBtn(String(totalPages), totalPages, false, false)); }
+
+    wrap.appendChild(mkBtn('→', currentPage + 1, currentPage === totalPages, false));
+
+    var info = document.createElement('span');
+    info.className = 'page-info';
+    info.textContent = pageStart + '–' + pageEnd + ' of ' + totalItems;
+    wrap.appendChild(info);
   }
 
   function wireVotes() {
@@ -1179,14 +1305,24 @@
     });
   });
 
+  // ── STATUS FILTER ──
+  document.getElementById('tracker-status-filter').addEventListener('change', function() {
+    statusFilter = this.value;
+    currentPage  = 1;
+    render();
+  });
+
   // ── TAB SWITCHING ──
   document.querySelectorAll('.tracker-tab').forEach(function(tab) {
     tab.addEventListener('click', function() {
-      currentView = tab.dataset.view;
-      activeTag   = 'all';
-      sortField   = 'votes';
-      sortDir     = 'desc';
+      currentView  = tab.dataset.view;
+      activeTag    = 'all';
+      statusFilter = '';
+      sortField    = 'votes';
+      sortDir      = 'desc';
+      currentPage  = 1;
       document.getElementById('tracker-search').value = '';
+      document.getElementById('tracker-status-filter').value = '';
       searchQ = '';
       document.querySelectorAll('.tracker-tab').forEach(function(t){ t.classList.remove('active'); });
       tab.classList.add('active');
@@ -1196,7 +1332,8 @@
 
   // ── SEARCH ──
   document.getElementById('tracker-search').addEventListener('input', function() {
-    searchQ = this.value.trim();
+    searchQ     = this.value.trim();
+    currentPage = 1;
     render();
   });
 
