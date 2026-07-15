@@ -809,7 +809,7 @@
   // Labels to suppress from the tag filter pills
   var HIDDEN_TAGS_SET = ['featurerequest', 'important_bugs', 'tracker-visible'];
   function isHiddenTag(t) {
-    return HIDDEN_TAGS_SET.indexOf(t.toLowerCase()) !== -1 || /^retail-/.test(t);
+    return HIDDEN_TAGS_SET.indexOf(t.toLowerCase()) !== -1 || /^retail-/i.test(t);
   }
 
   // Detect admin state (edit access requires admin password)
