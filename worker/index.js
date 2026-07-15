@@ -21,8 +21,9 @@ const TYPE_FEATURE = '10200'; // Feature Request
 const TYPE_BUG     = '10602'; // Bug
 
 // Field IDs
-const FIELD_RELEASE_NOTE = 'customfield_13117';      // workaround (both types)
-const FIELD_EST_DELIVERY = 'customfield_13254';       // timeline for Bugs
+const FIELD_RELEASE_NOTE  = 'customfield_13117';      // workaround (both types)
+const FIELD_EST_DELIVERY  = 'customfield_13254';       // timeline for Bugs
+const FIELD_STORY_POINTS  = 'customfield_10016';       // votes (story points)
 // Features use standard duedate for timeline
 
 function cors(env) {
@@ -94,6 +95,7 @@ function mapIssue(issue) {
     tags: (f.labels || [])
       .filter(l => !l.startsWith('cat-') && !l.startsWith('ver-') && l !== TRACKER_LABEL),
     priority: f.priority?.name || '',
+    votes: typeof f[FIELD_STORY_POINTS] === 'number' ? f[FIELD_STORY_POINTS] : 0,
     created: f.created,
     updated: f.updated,
   };
@@ -127,7 +129,7 @@ async function handleGet(env) {
     'summary', 'description', 'status', 'issuetype', 'labels',
     'priority', 'created', 'updated', 'versions', 'duedate',
     'resolution',
-    FIELD_RELEASE_NOTE, FIELD_EST_DELIVERY,
+    FIELD_RELEASE_NOTE, FIELD_EST_DELIVERY, FIELD_STORY_POINTS,
   ];
 
   async function search(jql) {
@@ -198,6 +200,34 @@ async function handlePost(body, env) {
 
   if (status !== 201) return json({ error: resp }, status, env);
   return json({ key: resp.key, id: resp.id }, 201, env);
+}
+
+// POST /tracker/:key/vote — increment or decrement story points by 1
+async function handleVote(key, body, env) {
+  if (!key) return json({ error: 'issue key required' }, 400, env);
+  const delta = body.delta === -1 ? -1 : 1;
+
+  // Fetch current story points
+  const { status: getStatus, body: current } = await jiraFetch(
+    `/issue/${key}?fields=${FIELD_STORY_POINTS}`,
+    { method: 'GET' },
+    env
+  );
+  if (getStatus !== 200) return json({ error: current }, getStatus, env);
+
+  const current_points = typeof current.fields?.[FIELD_STORY_POINTS] === 'number'
+    ? current.fields[FIELD_STORY_POINTS]
+    : 0;
+  const new_points = Math.max(0, current_points + delta);
+
+  const { status, body: resp } = await jiraFetch(
+    `/issue/${key}`,
+    { method: 'PUT', body: JSON.stringify({ fields: { [FIELD_STORY_POINTS]: new_points } }) },
+    env
+  );
+
+  if (status !== 204) return json({ error: resp }, status, env);
+  return json({ votes: new_points }, 200, env);
 }
 
 // PUT /tracker/:key — update editable fields on an existing ticket
@@ -290,6 +320,14 @@ export default {
       let body;
       try { body = await request.json(); } catch { return json({ error: 'invalid json' }, 400, env); }
       return handlePost(body, env);
+    }
+
+    // POST /tracker/:key/vote — cast or retract a vote
+    const voteMatch = path.match(/^\/tracker\/([A-Z]+-\d+)\/vote$/);
+    if (method === 'POST' && voteMatch) {
+      let body;
+      try { body = await request.json(); } catch { return json({ error: 'invalid json' }, 400, env); }
+      return handleVote(voteMatch[1], body, env);
     }
 
     // PUT /tracker/:key — update

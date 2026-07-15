@@ -144,8 +144,6 @@
     .vote-arrow { font-size: 0.75rem; color: var(--mid); line-height: 1; }
     .vote-btn.voted-up .vote-count { color: #16a34a; }
     .vote-btn.voted-up .vote-arrow { color: #16a34a; }
-    .vote-btn.voted-down .vote-count { color: #c0392b; }
-    .vote-btn.voted-down .vote-arrow { color: #c0392b; }
 
     /* ── TITLE CELL ── */
     .tracker-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem; }
@@ -793,9 +791,8 @@
     window.location.replace('../index.html');
   }
 
-  var STORAGE_VOTES    = 'ti_tracker_votes';
+  var STORAGE_VOTES    = 'ti_tracker_votes';   // tracks which items this browser has upvoted
   var STORAGE_COMMENTS = 'ti_tracker_comments';
-  var NET_VOTES_KEY    = 'ti_tracker_net_votes';
 
   var allIssues    = [];
   var currentView  = 'issue';
@@ -825,9 +822,6 @@
   function saveVotes(v)    { localStorage.setItem(STORAGE_VOTES, JSON.stringify(v)); }
   function loadComments()  { try { return JSON.parse(localStorage.getItem(STORAGE_COMMENTS) || '{}'); } catch(e) { return {}; } }
   function saveComments(c) { localStorage.setItem(STORAGE_COMMENTS, JSON.stringify(c)); }
-  function loadNetVotes()  { try { return JSON.parse(localStorage.getItem(NET_VOTES_KEY) || '{}');    } catch(e) { return {}; } }
-  function saveNetVotes(v) { localStorage.setItem(NET_VOTES_KEY, JSON.stringify(v)); }
-  function getNetVote(id)  { return (loadNetVotes()[id] || 0); }
 
   // ── FETCH FROM WORKER ──
   function fetchIssues() {
@@ -1086,7 +1080,7 @@
     items = items.slice().sort(function(a, b) {
       var av, bv;
       if (sortField === 'votes') {
-        av = getNetVote(a.id); bv = getNetVote(b.id);
+        av = (a.votes || 0); bv = (b.votes || 0);
       } else if (sortField === 'title') {
         av = a.title.toLowerCase(); bv = b.title.toLowerCase();
       } else if (sortField === 'version') {
@@ -1121,14 +1115,14 @@
 
     pageItems.forEach(function(item) {
       var myVote  = votes[item.id] || null;
-      var netVote = getNetVote(item.id);
+      var jiraVotes = (item.votes || 0) + (myVote === 'up' ? 0 : 0); // display from Jira
       var itemComments = comments[item.id] || [];
 
       var tr = document.createElement('tr');
       tr.id = 'row-' + item.id;
 
-      var voteClass = myVote === 'up' ? ' voted-up' : myVote === 'down' ? ' voted-down' : '';
-      var voteArrow = myVote === 'down' ? '▼' : '▲';
+      var voteClass = myVote === 'up' ? ' voted-up' : '';
+      var voteArrow = '▲';
 
       // Category pill
       var categoryHtml = item.category
@@ -1217,9 +1211,9 @@
 
       tr.innerHTML =
         '<td class="vote-cell">' +
-        '<button class="vote-btn' + voteClass + '" data-id="' + item.id + '" title="Vote">' +
+        '<button class="vote-btn' + voteClass + '" data-id="' + item.id + '" title="' + (myVote === 'up' ? 'Remove vote' : 'Upvote') + '">' +
         '<span class="vote-arrow">' + voteArrow + '</span>' +
-        '<span class="vote-count" id="vc-' + item.id + '">' + (netVote >= 0 ? '+' : '') + netVote + '</span>' +
+        '<span class="vote-count" id="vc-' + item.id + '">' + item.votes + '</span>' +
         '</button>' +
         '</td>' +
         '<td>' +
@@ -1294,26 +1288,41 @@
       btn.addEventListener('click', function() {
         var id = btn.dataset.id;
         var allVotes = loadVotes();
-        var allNet   = loadNetVotes();
         var prev = allVotes[id] || null;
-        var net  = allNet[id]  || 0;
+        var delta = prev === 'up' ? -1 : 1;  // toggle: retract if already voted
 
-        if (prev === 'up')   { allVotes[id] = null; allNet[id] = net - 1; }
-        else if (prev === 'down') { allVotes[id] = 'up'; allNet[id] = net + 2; }
-        else                 { allVotes[id] = 'up';  allNet[id] = net + 1; }
+        btn.disabled = true;
 
-        saveVotes(allVotes);
-        saveNetVotes(allNet);
+        fetch(WORKER_URL + '/tracker/' + id + '/vote', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ delta: delta }),
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          btn.disabled = false;
+          if (typeof data.votes === 'number') {
+            // Update local voted state
+            allVotes[id] = delta === 1 ? 'up' : null;
+            saveVotes(allVotes);
 
-        var newVote = allVotes[id];
-        var newNet  = allNet[id];
-        var vc = document.getElementById('vc-' + id);
-        if (vc) vc.textContent = (newNet >= 0 ? '+' : '') + newNet;
-        btn.classList.remove('voted-up', 'voted-down');
-        if (newVote === 'up')   btn.classList.add('voted-up');
-        if (newVote === 'down') btn.classList.add('voted-down');
-        var arrow = btn.querySelector('.vote-arrow');
-        if (arrow) arrow.textContent = newVote === 'down' ? '▼' : '▲';
+            // Update allIssues so sort stays correct
+            var item = allIssues.find(function(i) { return i.id === id; });
+            if (item) item.votes = data.votes;
+
+            // Update display
+            var vc = document.getElementById('vc-' + id);
+            if (vc) vc.textContent = data.votes;
+            btn.classList.toggle('voted-up', allVotes[id] === 'up');
+            btn.title = allVotes[id] === 'up' ? 'Remove vote' : 'Upvote';
+          } else {
+            showSnackbar('Vote failed — please try again');
+          }
+        })
+        .catch(function() {
+          btn.disabled = false;
+          showSnackbar('Vote failed — please try again');
+        });
       });
     });
   }
@@ -1554,32 +1563,41 @@
     if (!dedupeMatchId) return;
     var id = dedupeMatchId;
     var allVotes = loadVotes();
-    var allNet   = loadNetVotes();
-    var prev = allVotes[id] || null;
-    var net  = allNet[id]  || 0;
+    if (allVotes[id] === 'up') {
+      closeModal();
+      return; // already voted
+    }
+    var matchedItem = allIssues.find(function(d) { return d.id === id; });
+    var self = this;
+    self.disabled = true;
 
-    if (prev !== 'up') {
-      allVotes[id] = 'up';
-      allNet[id]   = prev === 'down' ? net + 2 : net + 1;
-      saveVotes(allVotes);
-      saveNetVotes(allNet);
-      // Update vote count display in the table if visible
-      var vc = document.getElementById('vc-' + id);
-      if (vc) {
-        var newNet = allNet[id];
-        vc.textContent = (newNet >= 0 ? '+' : '') + newNet;
+    fetch(WORKER_URL + '/tracker/' + id + '/vote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ delta: 1 }),
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      self.disabled = false;
+      if (typeof data.votes === 'number') {
+        allVotes[id] = 'up';
+        saveVotes(allVotes);
+        if (matchedItem) matchedItem.votes = data.votes;
+        var vc = document.getElementById('vc-' + id);
+        if (vc) vc.textContent = data.votes;
         var voteBtn = document.querySelector('.vote-btn[data-id="' + id + '"]');
         if (voteBtn) {
-          voteBtn.classList.remove('voted-up', 'voted-down');
           voteBtn.classList.add('voted-up');
-          var arrow = voteBtn.querySelector('.vote-arrow');
-          if (arrow) arrow.textContent = '▲';
+          voteBtn.title = 'Remove vote';
         }
       }
-    }
-
-    closeModal();
-    showSnackbar('▲ Upvoted "' + (allIssues.find(function(d){ return d.id === id; }) || {}).title + '"');
+      closeModal();
+      showSnackbar('▲ Upvoted "' + (matchedItem ? matchedItem.title : id) + '"');
+    })
+    .catch(function() {
+      self.disabled = false;
+      showSnackbar('Vote failed — please try again');
+    });
   });
 
   document.getElementById('open-submit-modal').addEventListener('click', openModal);
