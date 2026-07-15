@@ -483,6 +483,58 @@
       margin-bottom: 1.5rem;
     }
 
+    /* ── DEDUPE WARNING ── */
+    .dedupe-warning {
+      display: none;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 7px;
+      padding: 0.65rem 0.85rem;
+      font-size: 0.8rem;
+      color: #78350f;
+      line-height: 1.5;
+    }
+    .dedupe-warning.visible { display: block; }
+    .dedupe-match-title {
+      font-weight: 600;
+      margin: 0.2rem 0 0.5rem;
+      font-size: 0.83rem;
+    }
+    .dedupe-upvote-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.35rem 0.85rem;
+      background: #16a34a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .dedupe-upvote-btn:hover { opacity: 0.88; }
+
+    /* ── SNACKBAR ── */
+    #tracker-snackbar {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: #16a34a;
+      color: white;
+      padding: 0.65rem 1.1rem;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+      z-index: 2000;
+    }
+    #tracker-snackbar.show { opacity: 1; transform: translateY(0); }
+
     /* ── LOADING ── */
     .tracker-loading {
       text-align: center;
@@ -546,6 +598,12 @@
       </p>
       <!-- hidden type field — always feature -->
       <input type="hidden" id="sf-type" value="feature" />
+      <!-- Dedupe warning — shown when title is similar to an existing request -->
+      <div class="dedupe-warning" id="sf-dedupe-warning">
+        <div>This looks similar to an existing feature request:</div>
+        <div class="dedupe-match-title" id="sf-dedupe-title"></div>
+        <button class="dedupe-upvote-btn" id="sf-dedupe-upvote">▲ Upvote that request instead</button>
+      </div>
       <div class="submit-form-grid">
         <div class="submit-field full-width">
           <label>Title <span style="color:#c0392b">*</span></label>
@@ -632,6 +690,7 @@
   <a href="#" class="footer-internal-link internal-trigger">Internal</a>
 </footer>
 
+<div id="tracker-snackbar"></div>
 <script src="../assets/js/analytics.js"></script>
 <script src="../assets/js/internal.js"></script>
 <script>
@@ -662,6 +721,7 @@
   var currentPage = 1;
   var PAGE_SIZE   = 25;
   var isInternalUser = false;
+  var dedupeMatchId  = null;
 
   // Labels to suppress from the tag filter pills
   var HIDDEN_TAGS_SET = ['featurerequest', 'important_bugs', 'tracker-visible'];
@@ -1294,11 +1354,106 @@
   }
   function closeModal() {
     modalOverlay.classList.remove('open');
-    // Reset status message
     var status = document.getElementById('sf-status');
     status.textContent = '';
     status.className = 'submit-status';
+    document.getElementById('sf-dedupe-warning').classList.remove('visible');
+    dedupeMatchId = null;
   }
+
+  // ── SNACKBAR ──
+  function showSnackbar(msg) {
+    var sb = document.getElementById('tracker-snackbar');
+    sb.textContent = msg;
+    sb.classList.add('show');
+    setTimeout(function() { sb.classList.remove('show'); }, 3000);
+  }
+
+  // ── DEDUPE CHECK ──
+  // Tokenise a string into lowercase words (3+ chars), stripping punctuation
+  function tokenise(s) {
+    return s.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(function(w){ return w.length >= 3; });
+  }
+
+  // Jaccard similarity between two token sets
+  function similarity(a, b) {
+    if (!a.length || !b.length) return 0;
+    var setA = {};
+    a.forEach(function(t){ setA[t] = true; });
+    var inter = 0, union = Object.assign({}, setA);
+    b.forEach(function(t){ if (setA[t]) inter++; union[t] = true; });
+    return inter / Object.keys(union).length;
+  }
+
+  var DEDUPE_THRESHOLD = 0.25; // 25% token overlap triggers warning
+
+  function checkDedupe(title) {
+    var warn  = document.getElementById('sf-dedupe-warning');
+    var titleEl = document.getElementById('sf-dedupe-title');
+    if (!title || title.length < 6) {
+      warn.classList.remove('visible');
+      dedupeMatchId = null;
+      return;
+    }
+    var tokens = tokenise(title);
+    var features = allIssues.filter(function(d){ return d.type === 'feature'; });
+    var best = null, bestScore = 0;
+    features.forEach(function(f) {
+      var score = similarity(tokens, tokenise(f.title));
+      if (score > bestScore) { bestScore = score; best = f; }
+    });
+    if (best && bestScore >= DEDUPE_THRESHOLD) {
+      dedupeMatchId = best.id;
+      titleEl.textContent = best.title;
+      warn.classList.add('visible');
+    } else {
+      dedupeMatchId = null;
+      warn.classList.remove('visible');
+    }
+  }
+
+  // Debounce helper
+  function debounce(fn, ms) {
+    var t;
+    return function() { var args = arguments; clearTimeout(t); t = setTimeout(function(){ fn.apply(null, args); }, ms); };
+  }
+
+  document.getElementById('sf-title').addEventListener('input', debounce(function() {
+    checkDedupe(document.getElementById('sf-title').value.trim());
+  }, 350));
+
+  // Upvote the matched item from the dedupe warning
+  document.getElementById('sf-dedupe-upvote').addEventListener('click', function() {
+    if (!dedupeMatchId) return;
+    var id = dedupeMatchId;
+    var allVotes = loadVotes();
+    var allNet   = loadNetVotes();
+    var prev = allVotes[id] || null;
+    var net  = allNet[id]  || 0;
+
+    if (prev !== 'up') {
+      allVotes[id] = 'up';
+      allNet[id]   = prev === 'down' ? net + 2 : net + 1;
+      saveVotes(allVotes);
+      saveNetVotes(allNet);
+      // Update vote count display in the table if visible
+      var vc = document.getElementById('vc-' + id);
+      if (vc) {
+        var newNet = allNet[id];
+        vc.textContent = (newNet >= 0 ? '+' : '') + newNet;
+        var voteBtn = document.querySelector('.vote-btn[data-id="' + id + '"]');
+        if (voteBtn) {
+          voteBtn.classList.remove('voted-up', 'voted-down');
+          voteBtn.classList.add('voted-up');
+          var arrow = voteBtn.querySelector('.vote-arrow');
+          if (arrow) arrow.textContent = '▲';
+        }
+      }
+    }
+
+    closeModal();
+    showSnackbar('▲ Upvoted "' + (allIssues.find(function(d){ return d.id === id; }) || {}).title + '"');
+  });
 
   document.getElementById('open-submit-modal').addEventListener('click', openModal);
   document.getElementById('submit-modal-close').addEventListener('click', closeModal);
