@@ -881,9 +881,13 @@
 
     var items = allIssues.filter(function(d){ return d.type === currentView; });
 
-    // Tab counts
-    var issueCount   = allIssues.filter(function(d){ return d.type === 'issue'; }).length;
-    var featureCount = allIssues.filter(function(d){ return d.type === 'feature'; }).length;
+    // Tab counts — only Open / In Progress
+    function isActiveStatus(d) {
+      var n = normalizeStatus(d.jiraStatus || '').toLowerCase();
+      return n === 'open' || n === 'in progress' || n === 'in review' || n === 'in development';
+    }
+    var issueCount   = allIssues.filter(function(d){ return d.type === 'issue'   && isActiveStatus(d); }).length;
+    var featureCount = allIssues.filter(function(d){ return d.type === 'feature' && isActiveStatus(d); }).length;
     document.getElementById('tab-issue-count').textContent   = issueCount;
     document.getElementById('tab-feature-count').textContent = featureCount;
 
