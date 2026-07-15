@@ -1,7 +1,9 @@
 // Internal view — password modal, banner, and content filtering
 (function() {
-  var HASH = "ecd64d4210349796828b6e9a336506121b6afad4b907ee2b78cf8ec93a227824";
-  var KEY  = "ti_internal_auth";
+  var HASH       = "ecd64d4210349796828b6e9a336506121b6afad4b907ee2b78cf8ec93a227824";
+  var ADMIN_HASH = "5ab59b0f23217a8b65039340ed2857430abf52f10ab4c34a94aac0ace660b161";
+  var KEY        = "ti_internal_auth";
+  var ADMIN_KEY  = "ti_admin_auth";
 
   function isInternal() {
     return sessionStorage.getItem(KEY) === HASH;
@@ -33,8 +35,14 @@
     var val = document.getElementById("internal-pwd-input").value;
     var buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
     var hash = Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2,"0"); }).join("");
-    if (hash === HASH) {
+    if (hash === ADMIN_HASH) {
       sessionStorage.setItem(KEY, HASH);
+      sessionStorage.setItem(ADMIN_KEY, ADMIN_HASH);
+      hideModal();
+      applyInternalState();
+    } else if (hash === HASH) {
+      sessionStorage.setItem(KEY, HASH);
+      sessionStorage.removeItem(ADMIN_KEY);
       hideModal();
       applyInternalState();
     } else {
@@ -44,6 +52,7 @@
 
   function exitInternal() {
     sessionStorage.removeItem(KEY);
+    sessionStorage.removeItem(ADMIN_KEY);
     applyInternalState();
   }
 

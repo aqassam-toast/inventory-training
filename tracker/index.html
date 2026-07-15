@@ -664,6 +664,7 @@
 
   // Internal-only gate
   var INTERNAL_HASH = 'ecd64d4210349796828b6e9a336506121b6afad4b907ee2b78cf8ec93a227824';
+  var ADMIN_HASH    = '5ab59b0f23217a8b65039340ed2857430abf52f10ab4c34a94aac0ace660b161';
   if (sessionStorage.getItem('ti_internal_auth') !== INTERNAL_HASH) {
     window.location.replace('../index.html');
   }
@@ -686,11 +687,9 @@
   // Labels to suppress from the tag filter pills
   var HIDDEN_TAGS = { 'FeatureRequest': true, 'Important_Bugs': true, 'tracker-visible': true };
 
-  // Detect internal state (set by internal.js via sessionStorage)
+  // Detect admin state (edit access requires admin password)
   function checkInternal() {
-    // internal.js sets this hash in sessionStorage on unlock
-    var HASH = 'ecd64d4210349796828b6e9a336506121b6afad4b907ee2b78cf8ec93a227824';
-    isInternalUser = sessionStorage.getItem('ti_internal_auth') === HASH;
+    isInternalUser = sessionStorage.getItem('ti_admin_auth') === ADMIN_HASH;
   }
 
   // ── STORAGE HELPERS ──
@@ -1344,11 +1343,10 @@
   // Poll for session storage change every 500ms (simple, no cross-tab needed)
   var lastInternal = false;
   setInterval(function() {
+    var prev = lastInternal;
     checkInternal();
-    if (isInternalUser !== lastInternal) {
-      lastInternal = isInternalUser;
-      render();
-    }
+    lastInternal = isInternalUser;
+    if (isInternalUser !== prev) render();
   }, 500);
 
   // ── INIT ──
