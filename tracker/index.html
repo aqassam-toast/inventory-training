@@ -1701,6 +1701,7 @@
       currentPage  = 1;
       document.getElementById('tracker-search').value = '';
       searchQ = '';
+      sessionStorage.setItem('ti_tracker_view', currentView);
       document.querySelectorAll('.tracker-tab').forEach(function(t){ t.classList.remove('active'); });
       tab.classList.add('active');
       render();
@@ -1730,6 +1731,14 @@
   // ── INIT ──
   checkInternal();
   lastInternal = isInternalUser;
+  var savedView = sessionStorage.getItem('ti_tracker_view');
+  if (savedView === 'feature' || savedView === 'issue') {
+    currentView  = savedView;
+    statusFilter = currentView === 'issue' ? ['Open', 'In Progress'] : [];
+    document.querySelectorAll('.tracker-tab').forEach(function(t){
+      t.classList.toggle('active', t.dataset.view === currentView);
+    });
+  }
   fetchIssues();
 })();
 </script>
