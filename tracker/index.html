@@ -792,7 +792,6 @@
   }
 
   var STORAGE_VOTES    = 'ti_tracker_votes';   // tracks which items this browser has upvoted
-  var STORAGE_COMMENTS = 'ti_tracker_comments';
 
   var allIssues    = [];
   var currentView  = 'issue';
@@ -818,10 +817,8 @@
   }
 
   // ── STORAGE HELPERS ──
-  function loadVotes()     { try { return JSON.parse(localStorage.getItem(STORAGE_VOTES) || '{}');    } catch(e) { return {}; } }
-  function saveVotes(v)    { localStorage.setItem(STORAGE_VOTES, JSON.stringify(v)); }
-  function loadComments()  { try { return JSON.parse(localStorage.getItem(STORAGE_COMMENTS) || '{}'); } catch(e) { return {}; } }
-  function saveComments(c) { localStorage.setItem(STORAGE_COMMENTS, JSON.stringify(c)); }
+  function loadVotes()  { try { return JSON.parse(localStorage.getItem(STORAGE_VOTES) || '{}'); } catch(e) { return {}; } }
+  function saveVotes(v) { localStorage.setItem(STORAGE_VOTES, JSON.stringify(v)); }
 
   // ── FETCH FROM WORKER ──
   function fetchIssues() {
@@ -1034,9 +1031,8 @@
     buildTagFilters();
     updateSortIndicators();
 
-    var votes    = loadVotes();
-    var comments = loadComments();
-    var isIssue  = currentView === 'issue';
+    var votes   = loadVotes();
+    var isIssue = currentView === 'issue';
 
     var items = allIssues.filter(function(d){ return d.type === currentView; });
 
@@ -1114,9 +1110,8 @@
     empty.style.display = totalItems === 0 ? '' : 'none';
 
     pageItems.forEach(function(item) {
-      var myVote  = votes[item.id] || null;
-      var jiraVotes = (item.votes || 0) + (myVote === 'up' ? 0 : 0); // display from Jira
-      var itemComments = comments[item.id] || [];
+      var myVote       = votes[item.id] || null;
+      var itemComments = item.comments || [];
 
       var tr = document.createElement('tr');
       tr.id = 'row-' + item.id;
@@ -1158,7 +1153,8 @@
 
       // Comments
       var commentListHtml = itemComments.map(function(c){
-        return '<div class="comment-item"><div class="comment-item-meta">' + escHtml(c.ts) + '</div>' + escHtml(c.text) + '</div>';
+        var ts = c.ts ? new Date(c.ts).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' }) : '';
+        return '<div class="comment-item"><div class="comment-item-meta">' + escHtml(c.author) + (ts ? ' · ' + escHtml(ts) : '') + '</div>' + escHtml(c.text) + '</div>';
       }).join('');
       var commentCount = itemComments.length;
       var commentsHtml = '<button class="comment-toggle-btn" data-id="' + item.id + '">💬 ' +
@@ -1357,26 +1353,48 @@
         if (!input) return;
         var text = input.value.trim();
         if (!text) return;
-        var allComments = loadComments();
-        if (!allComments[id]) allComments[id] = [];
-        var now = new Date();
-        var ts = now.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
-        allComments[id].push({ text: text, ts: ts });
-        saveComments(allComments);
-        input.value = '';
-        var list = document.getElementById('comment-list-' + id);
-        if (list) {
-          var c = allComments[id][allComments[id].length - 1];
-          var div = document.createElement('div');
-          div.className = 'comment-item';
-          div.innerHTML = '<div class="comment-item-meta">' + escHtml(c.ts) + '</div>' + escHtml(c.text);
-          list.appendChild(div);
-        }
-        var toggle = document.querySelector('.comment-toggle-btn[data-id="' + id + '"]');
-        if (toggle) {
-          var count = allComments[id].length;
-          toggle.textContent = '💬 ' + count + ' comment' + (count !== 1 ? 's' : '');
-        }
+
+        btn.disabled = true;
+        btn.textContent = 'Posting…';
+
+        fetch(WORKER_URL + '/tracker/' + id + '/comment', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: text }),
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          btn.disabled = false;
+          btn.textContent = 'Post';
+          if (data.id) {
+            input.value = '';
+            // Update allIssues in place
+            var item = allIssues.find(function(i) { return i.id === id; });
+            if (item) {
+              if (!item.comments) item.comments = [];
+              item.comments.push(data);
+            }
+            // Append to the visible list
+            var list = document.getElementById('comment-list-' + id);
+            if (list) {
+              var ts = data.ts ? new Date(data.ts).toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' }) : '';
+              var div = document.createElement('div');
+              div.className = 'comment-item';
+              div.innerHTML = '<div class="comment-item-meta">' + escHtml(data.author) + (ts ? ' · ' + escHtml(ts) : '') + '</div>' + escHtml(data.text);
+              list.appendChild(div);
+            }
+            var count = item ? item.comments.length : 0;
+            var toggle = document.querySelector('.comment-toggle-btn[data-id="' + id + '"]');
+            if (toggle) toggle.textContent = '💬 ' + count + ' comment' + (count !== 1 ? 's' : '');
+          } else {
+            showSnackbar('Failed to post comment — please try again');
+          }
+        })
+        .catch(function() {
+          btn.disabled = false;
+          btn.textContent = 'Post';
+          showSnackbar('Failed to post comment — please try again');
+        });
       });
     });
   }

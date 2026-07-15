@@ -96,6 +96,12 @@ function mapIssue(issue) {
       .filter(l => !l.startsWith('cat-') && !l.startsWith('ver-') && l !== TRACKER_LABEL),
     priority: f.priority?.name || '',
     votes: typeof f[FIELD_STORY_POINTS] === 'number' ? f[FIELD_STORY_POINTS] : 0,
+    comments: (f.comment?.comments || []).map(c => ({
+      id: c.id,
+      author: c.author?.displayName || 'Unknown',
+      text: extractPlainText(c.body),
+      ts: c.created,
+    })),
     created: f.created,
     updated: f.updated,
   };
@@ -128,7 +134,7 @@ async function handleGet(env) {
   const fields = [
     'summary', 'description', 'status', 'issuetype', 'labels',
     'priority', 'created', 'updated', 'versions', 'duedate',
-    'resolution',
+    'resolution', 'comment',
     FIELD_RELEASE_NOTE, FIELD_EST_DELIVERY, FIELD_STORY_POINTS,
   ];
 
@@ -200,6 +206,27 @@ async function handlePost(body, env) {
 
   if (status !== 201) return json({ error: resp }, status, env);
   return json({ key: resp.key, id: resp.id }, 201, env);
+}
+
+// POST /tracker/:key/comment — add a comment to a Jira issue
+async function handleComment(key, body, env) {
+  if (!key) return json({ error: 'issue key required' }, 400, env);
+  const text = body.text?.trim();
+  if (!text) return json({ error: 'text is required' }, 400, env);
+
+  const { status, body: resp } = await jiraFetch(
+    `/issue/${key}/comment`,
+    { method: 'POST', body: JSON.stringify({ body: toAdf(text) }) },
+    env
+  );
+
+  if (status !== 201) return json({ error: resp }, status, env);
+  return json({
+    id: resp.id,
+    author: resp.author?.displayName || 'Unknown',
+    text,
+    ts: resp.created,
+  }, 201, env);
 }
 
 // POST /tracker/:key/vote — increment or decrement story points by 1
@@ -320,6 +347,14 @@ export default {
       let body;
       try { body = await request.json(); } catch { return json({ error: 'invalid json' }, 400, env); }
       return handlePost(body, env);
+    }
+
+    // POST /tracker/:key/comment — add a comment
+    const commentMatch = path.match(/^\/tracker\/([A-Z]+-\d+)\/comment$/);
+    if (method === 'POST' && commentMatch) {
+      let body;
+      try { body = await request.json(); } catch { return json({ error: 'invalid json' }, 400, env); }
+      return handleComment(commentMatch[1], body, env);
     }
 
     // POST /tracker/:key/vote — cast or retract a vote
