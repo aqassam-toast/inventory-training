@@ -614,6 +614,12 @@
   // e.g. 'https://toast-inventory-tracker.aqassam.workers.dev'
   // ──────────────────────────────────────────────────────────────────────
 
+  // Internal-only gate
+  var INTERNAL_HASH = 'ecd64d4210349796828b6e9a336506121b6afad4b907ee2b78cf8ec93a227824';
+  if (sessionStorage.getItem('ti_internal_auth') !== INTERNAL_HASH) {
+    window.location.replace('../index.html');
+  }
+
   var STORAGE_VOTES    = 'ti_tracker_votes';
   var STORAGE_COMMENTS = 'ti_tracker_comments';
   var NET_VOTES_KEY    = 'ti_tracker_net_votes';
