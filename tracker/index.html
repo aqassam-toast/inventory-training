@@ -203,6 +203,7 @@
     .jira-status-done        { background: #d1fae5; color: #065f46; }
     .jira-status-closed      { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
     .jira-status-notplanned  { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
+    .jira-status-prioritized { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
 
     /* ── COMMENTS (features only) ── */
     .comment-toggle-btn {
@@ -847,11 +848,17 @@
   }
 
   // ── UTILS ──
+  function isPrioritized(s) {
+    var l = (s || '').toLowerCase();
+    return l === 'up next' || l === 'prioritized this week';
+  }
+
   function normalizeStatus(s) {
     if (!s) return '';
     var l = s.toLowerCase();
     if (l === 'backlog') return 'Open';
     if (l === 'cancelled' || l === 'not planned') return 'Done';
+    if (isPrioritized(l)) return 'Prioritized';
     return s;
   }
 
@@ -860,16 +867,19 @@
     var l = s.toLowerCase();
     if (l === 'backlog') return 'Open';
     if (l === 'cancelled' || l === 'not planned') return 'Done — Cancelled';
+    if (isPrioritized(l)) return 'Prioritized';
     if ((l === 'done' || l === 'closed' || l === 'resolved') && item && isRecentlyDone(item)) return 'Recently Done';
     return s;
   }
 
   function jiraStatusClass(s) {
     if (!s) return '';
-    var l = normalizeStatus(s).toLowerCase();
-    if (l === 'open') return 'jira-status-open';
-    if (l.includes('progress') || l.includes('dev') || l.includes('review')) return 'jira-status-inprogress';
-    if (l === 'done' || l === 'resolved' || l === 'closed') return 'jira-status-done';
+    var l = (s || '').toLowerCase();
+    if (isPrioritized(l)) return 'jira-status-prioritized';
+    var n = normalizeStatus(s).toLowerCase();
+    if (n === 'open') return 'jira-status-open';
+    if (n.includes('progress') || n.includes('dev') || n.includes('review')) return 'jira-status-inprogress';
+    if (n === 'done' || n === 'resolved' || n === 'closed') return 'jira-status-done';
     return 'jira-status-open';
   }
 
@@ -886,14 +896,16 @@
 
   // Sort order for Known Issues: Open first, in-progress, then closed/done/cancelled
   var ISSUE_STATUS_ORDER = { 'open': 0, 'in progress': 1, 'in review': 1, 'in development': 1, 'done': 2, 'resolved': 2, 'closed': 2, 'cancelled': 3, 'not planned': 3 };
-  // Sort order for Feature Requests: In Progress → Recently Done → Closed/Done → Open → rest
+  // Sort order for Feature Requests: In Progress → Prioritized → Recently Done → Closed/Done → Open → rest
   function featureStatusSortKey(item) {
+    var raw = (item.jiraStatus || '').toLowerCase();
     var n = normalizeStatus(item.jiraStatus || '').toLowerCase();
     if (n === 'in progress' || n === 'in review' || n === 'in development') return 0;
-    if ((n === 'done' || n === 'closed') && isRecentlyDone(item)) return 1;
-    if (n === 'done' || n === 'closed' || n === 'resolved') return 2;
-    if (n === 'open') return 3;
-    return 4;
+    if (isPrioritized(raw)) return 1;
+    if ((n === 'done' || n === 'closed') && isRecentlyDone(item)) return 2;
+    if (n === 'done' || n === 'closed' || n === 'resolved') return 3;
+    if (n === 'open') return 4;
+    return 5;
   }
   function statusSortKey(item) {
     if (currentView === 'feature') return featureStatusSortKey(item);
@@ -911,12 +923,12 @@
   // Issues: Done and Closed are separate Jira statuses
   // Features: Done+Closed merged into one "Done" pill; "Recently Done" is a distinct pill
   var ISSUE_STATUS_OPTIONS   = ['Open', 'In Progress', 'Done', 'Closed'];
-  var FEATURE_STATUS_OPTIONS = ['Open', 'In Progress', 'Recently Done', 'Done'];
+  var FEATURE_STATUS_OPTIONS = ['Open', 'In Progress', 'Prioritized', 'Recently Done', 'Done'];
 
   function matchesStatusFilter(d, s) {
     if (s === 'Recently Done') return isRecentlyDone(d);
+    if (s === 'Prioritized') return isPrioritized(d.jiraStatus || '');
     if (currentView === 'feature' && s === 'Done') {
-      // Covers both "Done" and "Closed" Jira statuses (including recently-done)
       var nf = normalizeStatus(d.jiraStatus || '').toLowerCase();
       return nf === 'done' || nf === 'closed';
     }
@@ -1039,7 +1051,7 @@
     // Tab counts — only Open / In Progress
     function isActiveStatus(d) {
       var n = normalizeStatus(d.jiraStatus || '').toLowerCase();
-      return n === 'open' || n === 'in progress' || n === 'in review' || n === 'in development';
+      return n === 'open' || n === 'in progress' || n === 'in review' || n === 'in development' || n === 'prioritized';
     }
     var issueCount   = allIssues.filter(function(d){ return d.type === 'issue'   && isActiveStatus(d); }).length;
     var featureCount = allIssues.filter(function(d){ return d.type === 'feature' && isActiveStatus(d); }).length;
