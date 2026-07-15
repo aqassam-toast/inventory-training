@@ -1383,9 +1383,9 @@
   }
 
   // ── DEDUPE CHECK ──
-  // Tokenise a string into lowercase words (3+ chars), stripping punctuation
+  // Tokenise a string into lowercase words (2+ chars), stripping punctuation
   function tokenise(s) {
-    return s.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(function(w){ return w.length >= 3; });
+    return s.toLowerCase().replace(/[^a-z0-9 ]/g, ' ').split(/\s+/).filter(function(w){ return w.length >= 2; });
   }
 
   // Jaccard similarity between two token sets
@@ -1398,12 +1398,12 @@
     return inter / Object.keys(union).length;
   }
 
-  var DEDUPE_THRESHOLD = 0.25; // 25% token overlap triggers warning
+  var DEDUPE_THRESHOLD = 0.12; // ~12% token overlap triggers warning
 
   function checkDedupe(title) {
     var warn  = document.getElementById('sf-dedupe-warning');
     var titleEl = document.getElementById('sf-dedupe-title');
-    if (!title || title.length < 6) {
+    if (!title || title.length < 4) {
       warn.classList.remove('visible');
       dedupeMatchId = null;
       return;
