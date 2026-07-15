@@ -896,15 +896,15 @@
 
   // Sort order for Known Issues: Open first, in-progress, then closed/done/cancelled
   var ISSUE_STATUS_ORDER = { 'open': 0, 'in progress': 1, 'in review': 1, 'in development': 1, 'done': 2, 'resolved': 2, 'closed': 2, 'cancelled': 3, 'not planned': 3 };
-  // Sort order for Feature Requests: In Progress → Prioritized → Recently Done → Closed/Done → Open → rest
+  // Sort order for Feature Requests: In Progress → Recently Done → Prioritized → Open → Done/Closed → rest
   function featureStatusSortKey(item) {
     var raw = (item.jiraStatus || '').toLowerCase();
     var n = normalizeStatus(item.jiraStatus || '').toLowerCase();
     if (n === 'in progress' || n === 'in review' || n === 'in development') return 0;
-    if (isPrioritized(raw)) return 1;
-    if ((n === 'done' || n === 'closed') && isRecentlyDone(item)) return 2;
-    if (n === 'done' || n === 'closed' || n === 'resolved') return 3;
-    if (n === 'open') return 4;
+    if ((n === 'done' || n === 'closed') && isRecentlyDone(item)) return 1;
+    if (isPrioritized(raw)) return 2;
+    if (n === 'open') return 3;
+    if (n === 'done' || n === 'closed' || n === 'resolved') return 4;
     return 5;
   }
   function statusSortKey(item) {
