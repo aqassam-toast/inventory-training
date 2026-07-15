@@ -655,7 +655,7 @@
   var allIssues    = [];
   var currentView  = 'issue';
   var activeTag    = 'all';
-  var statusFilter = ['Open', 'In Progress'];  // multi-select, default for issues
+  var statusFilter = ['Open', 'In Progress'];  // issues default; features = []
   var searchQ      = '';
   var sortField    = 'status';
   var sortDir      = 'asc';
@@ -709,7 +709,18 @@
   // ── UTILS ──
   function normalizeStatus(s) {
     if (!s) return '';
-    return s.toLowerCase() === 'backlog' ? 'Open' : s;
+    var l = s.toLowerCase();
+    if (l === 'backlog') return 'Open';
+    if (l === 'cancelled' || l === 'not planned') return 'Done';
+    return s;
+  }
+
+  function displayStatus(s) {
+    if (!s) return '';
+    var l = s.toLowerCase();
+    if (l === 'backlog') return 'Open';
+    if (l === 'cancelled' || l === 'not planned') return 'Done — Cancelled';
+    return s;
   }
 
   function jiraStatusClass(s) {
@@ -718,15 +729,34 @@
     if (l === 'open') return 'jira-status-open';
     if (l.includes('progress') || l.includes('dev') || l.includes('review')) return 'jira-status-inprogress';
     if (l === 'done' || l === 'resolved' || l === 'closed') return 'jira-status-done';
-    if (l === 'cancelled' || l.includes('not planned')) return 'jira-status-notplanned';
     return 'jira-status-open';
   }
 
+  var THIRTY_DAYS_MS = 30 * 24 * 60 * 60 * 1000;
+  var NOW_MS = Date.now();
+
+  function isRecentlyDone(item) {
+    var norm = normalizeStatus(item.jiraStatus || '').toLowerCase();
+    if (norm !== 'done' && norm !== 'closed') return false;
+    var updated = item.updated ? new Date(item.updated).getTime() : 0;
+    return (NOW_MS - updated) <= THIRTY_DAYS_MS;
+  }
+
   // Sort order for Known Issues: Open first, in-progress, then closed/done/cancelled
-  var STATUS_ORDER = { 'open': 0, 'in progress': 1, 'in review': 1, 'in development': 1, 'done': 2, 'resolved': 2, 'closed': 2, 'cancelled': 3, 'not planned': 3 };
-  function statusSortKey(s) {
-    var n = normalizeStatus(s || '').toLowerCase();
-    return STATUS_ORDER[n] !== undefined ? STATUS_ORDER[n] : 1;
+  var ISSUE_STATUS_ORDER = { 'open': 0, 'in progress': 1, 'in review': 1, 'in development': 1, 'done': 2, 'resolved': 2, 'closed': 2, 'cancelled': 3, 'not planned': 3 };
+  // Sort order for Feature Requests: In Progress → Recently Done → Closed/Done → Open → rest
+  function featureStatusSortKey(item) {
+    var n = normalizeStatus(item.jiraStatus || '').toLowerCase();
+    if (n === 'in progress' || n === 'in review' || n === 'in development') return 0;
+    if ((n === 'done' || n === 'closed') && isRecentlyDone(item)) return 1;
+    if (n === 'done' || n === 'closed' || n === 'resolved') return 2;
+    if (n === 'open') return 3;
+    return 4;
+  }
+  function statusSortKey(item) {
+    if (currentView === 'feature') return featureStatusSortKey(item);
+    var n = normalizeStatus((item.jiraStatus || '')).toLowerCase();
+    return ISSUE_STATUS_ORDER[n] !== undefined ? ISSUE_STATUS_ORDER[n] : 1;
   }
 
   function escHtml(s) {
@@ -736,7 +766,7 @@
   }
 
   // ── STATUS FILTER PILLS (multi-select) ──
-  var STATUS_OPTIONS = ['Open', 'In Progress', 'Done', 'Closed', 'Cancelled'];
+  var STATUS_OPTIONS = ['Open', 'In Progress', 'Done', 'Closed'];
 
   function buildStatusFilters() {
     var wrap = document.getElementById('tracker-status-filters');
@@ -767,10 +797,14 @@
     var wrap = document.getElementById('tracker-tag-filters');
     wrap.innerHTML = '';
     if (currentView !== 'feature') return;
+    // Dedupe tags case-insensitively — keep first-seen casing
+    var tagLower = {};
     var tagSet = {};
     allIssues.filter(function(d){ return d.type === 'feature'; }).forEach(function(d){
       (d.tags || []).forEach(function(t){
-        if (!HIDDEN_TAGS[t] && !/^retail-/.test(t)) tagSet[t] = true;
+        if (HIDDEN_TAGS[t] || /^retail-/.test(t)) return;
+        var key = t.toLowerCase();
+        if (!tagLower[key]) { tagLower[key] = t; tagSet[t] = true; }
       });
     });
     var allBtn = document.createElement('button');
@@ -894,7 +928,7 @@
       } else if (sortField === 'timeline') {
         av = (a.timeline || '').toLowerCase(); bv = (b.timeline || '').toLowerCase();
       } else if (sortField === 'status') {
-        av = statusSortKey(a.jiraStatus); bv = statusSortKey(b.jiraStatus);
+        av = statusSortKey(a); bv = statusSortKey(b);
       } else {
         av = 0; bv = 0;
       }
@@ -933,12 +967,20 @@
         ? '<span class="tracker-category-pill">' + escHtml(item.category) + '</span>'
         : '';
 
-      // Tag pills — features only
-      var tagsHtml = isIssue ? '' : (item.tags || []).filter(function(t){
-        return !HIDDEN_TAGS[t] && !/^retail-/.test(t);
-      }).map(function(t){
-        return '<span class="tracker-tag-pill">' + escHtml(t) + '</span>';
-      }).join('');
+      // Tag pills — features only, case-deduped
+      var tagsHtml = '';
+      if (!isIssue) {
+        var seenLower = {};
+        tagsHtml = (item.tags || []).filter(function(t){
+          if (HIDDEN_TAGS[t] || /^retail-/.test(t)) return false;
+          var k = t.toLowerCase();
+          if (seenLower[k]) return false;
+          seenLower[k] = true;
+          return true;
+        }).map(function(t){
+          return '<span class="tracker-tag-pill">' + escHtml(t) + '</span>';
+        }).join('');
+      }
 
       // Jira link + status
       var jiraHtml = item.jira
@@ -946,7 +988,7 @@
         : '<span style="color:var(--mid);font-size:0.8rem;">—</span>';
 
       var jiraStatusHtml = item.jiraStatus
-        ? '<span class="jira-status-badge ' + jiraStatusClass(item.jiraStatus) + '">' + escHtml(normalizeStatus(item.jiraStatus)) + '</span>' +
+        ? '<span class="jira-status-badge ' + jiraStatusClass(item.jiraStatus) + '">' + escHtml(displayStatus(item.jiraStatus)) + '</span>' +
           (item.jiraStatus.toLowerCase() === 'closed' && item.resolution
             ? '<div style="font-size:0.72rem;color:var(--mid);margin-top:0.25rem;">' + escHtml(item.resolution) + '</div>'
             : '')
@@ -1328,8 +1370,8 @@
       currentView  = tab.dataset.view;
       activeTag    = 'all';
       statusFilter = currentView === 'issue' ? ['Open', 'In Progress'] : [];
-      sortField    = currentView === 'issue' ? 'status' : 'votes';
-      sortDir      = currentView === 'issue' ? 'asc' : 'desc';
+      sortField    = 'status';
+      sortDir      = 'asc';
       currentPage  = 1;
       document.getElementById('tracker-search').value = '';
       searchQ = '';
