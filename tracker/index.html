@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Issue &amp; Feature Tracker — Toast Inventory</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="../assets/js/auth.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4G4QQHWDEG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4G4QQHWDEG');
+  </script>
+  <style>
+    /* ── TRACKER TABS ── */
+    .tracker-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 1.75rem;
+    }
+    .tracker-tab {
+      padding: 0.65rem 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--mid);
+      cursor: pointer;
+      border: none;
+      background: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .tracker-tab:hover { color: var(--dark); }
+    .tracker-tab.active { color: var(--orange); border-bottom-color: var(--orange); }
+    .tracker-tab-count {
+      display: inline-block;
+      background: var(--light);
+      border: 1px solid var(--border);
+      color: var(--mid);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.1rem 0.45rem;
+      border-radius: 99px;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+    .tracker-tab.active .tracker-tab-count { background: #fff3eb; border-color: #ffc9a0; color: var(--orange); }
+
+    /* ── SEARCH + FILTERS ── */
+    .tracker-controls {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .tracker-search-wrap { position: relative; flex: 1; min-width: 200px; }
+    .tracker-search-icon { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); font-size: 0.9rem; pointer-events: none; }
+    .tracker-search-wrap input {
+      width: 100%;
+      padding: 0.55rem 0.75rem 0.55rem 2.25rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.875rem;
+      outline: none;
+    }
+    .tracker-search-wrap input:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,92,0,0.08); }
+    .tracker-tag-filters { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+    .tracker-tag-btn {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.25rem 0.65rem;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--mid);
+      cursor: pointer;
+      transition: background 0.12s, color 0.12s, border-color 0.12s;
+    }
+    .tracker-tag-btn:hover { border-color: var(--orange); color: var(--orange); }
+    .tracker-tag-btn.active { background: var(--orange); color: #fff; border-color: var(--orange); }
+
+    /* ── TABLE ── */
+    .tracker-table-wrap { overflow-x: auto; }
+    .tracker-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+    }
+    .tracker-table thead th {
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--mid);
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+      background: var(--white);
+    }
+    .tracker-table thead th.th-votes { text-align: center; width: 72px; }
+    .tracker-table thead th.th-version { width: 120px; }
+    .tracker-table thead th.th-jira { width: 110px; }
+    .tracker-table thead th.th-status { width: 130px; }
+    .tracker-table thead th.th-timeline { width: 130px; }
+    .tracker-table thead th.th-workaround { width: 200px; }
+    .tracker-table tbody tr { border-bottom: 1px solid #f0f0f0; transition: background 0.1s; }
+    .tracker-table tbody tr:last-child { border-bottom: none; }
+    .tracker-table tbody tr:hover { background: #fafafa; }
+    .tracker-table td { padding: 0.85rem 0.75rem; vertical-align: top; }
+
+    /* ── VOTE CELL ── */
+    .vote-cell { text-align: center; }
+    .vote-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.1rem;
+      cursor: pointer;
+      border: none;
+      background: none;
+      padding: 0.25rem 0.5rem;
+      border-radius: 8px;
+      min-width: 44px;
+    }
+    .vote-btn:hover { background: #f5f5f5; }
+    .vote-count {
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--dark);
+      transition: color 0.15s;
+    }
+    .vote-arrow { font-size: 0.75rem; color: var(--mid); line-height: 1; }
+    .vote-btn.voted-up .vote-count { color: #16a34a; }
+    .vote-btn.voted-up .vote-arrow { color: #16a34a; }
+    .vote-btn.voted-down .vote-count { color: #c0392b; }
+    .vote-btn.voted-down .vote-arrow { color: #c0392b; }
+
+    /* ── TITLE CELL ── */
+    .tracker-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .tracker-desc { font-size: 0.8rem; color: var(--mid); line-height: 1.5; display: none; margin-top: 0.35rem; }
+    .tracker-expand-btn {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--orange);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      margin-top: 0.25rem;
+    }
+    .tracker-expand-btn:hover { text-decoration: underline; }
+    .tracker-tags { display: flex; gap: 0.3rem; margin-top: 0.4rem; flex-wrap: wrap; }
+    .tracker-tag-pill {
+      font-size: 0.65rem;
+      font-weight: 600;
+      padding: 0.1rem 0.45rem;
+      border-radius: 99px;
+      background: var(--light);
+      color: var(--mid);
+      border: 1px solid var(--border);
+    }
+
+    /* ── JIRA LINK ── */
+    .jira-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+    }
+    .jira-link:hover { text-decoration: underline; }
+    .jira-status-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+      margin-top: 0.3rem;
+    }
+    .jira-status-open       { background: #dbeafe; color: #1e40af; }
+    .jira-status-inprogress { background: #e0e7ff; color: #3730a3; }
+    .jira-status-done       { background: #d1fae5; color: #065f46; }
+    .jira-status-closed     { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
+    .jira-status-notplanned { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
+
+    /* ── COMMENTS (features only) ── */
+    .comment-toggle-btn {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--mid);
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      padding: 0.2rem 0.55rem;
+      margin-top: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .comment-toggle-btn:hover { border-color: #aaa; color: var(--dark); }
+    .comment-area {
+      display: none;
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid #f0f0f0;
+    }
+    .comment-list { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.6rem; }
+    .comment-item {
+      background: var(--light);
+      border-radius: 6px;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.8rem;
+      color: var(--dark);
+      line-height: 1.5;
+    }
+    .comment-item-meta { font-size: 0.7rem; color: var(--mid); margin-bottom: 0.2rem; }
+    .comment-form { display: flex; gap: 0.5rem; align-items: flex-end; }
+    .comment-form textarea {
+      flex: 1;
+      padding: 0.5rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-family: inherit;
+      resize: vertical;
+      min-height: 56px;
+      outline: none;
+    }
+    .comment-form textarea:focus { border-color: var(--orange); box-shadow: 0 0 0 2px rgba(255,92,0,0.08); }
+    .comment-submit-btn {
+      padding: 0.45rem 0.9rem;
+      background: var(--blue);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      align-self: flex-end;
+    }
+    .comment-submit-btn:hover { opacity: 0.88; }
+
+    /* ── EMPTY STATE ── */
+    .tracker-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: var(--mid);
+      font-size: 0.875rem;
+    }
+
+    /* ── SORT HEADER ── */
+    .sortable { cursor: pointer; user-select: none; }
+    .sortable:hover { color: var(--dark); }
+    .sort-icon { margin-left: 0.25rem; opacity: 0.4; font-size: 0.65rem; }
+    .sortable.sort-asc .sort-icon::after { content: "▲"; opacity: 1; }
+    .sortable.sort-desc .sort-icon::after { content: "▼"; opacity: 1; }
+    .sortable:not(.sort-asc):not(.sort-desc) .sort-icon::after { content: "⇅"; }
+
+    /* ── UPDATE NOTICE ── */
+    .tracker-update-notice {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      padding: 0.65rem 1rem;
+      font-size: 0.8rem;
+      color: #78350f;
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="../index.html">
+    <div class="logo-icon">t</div>
+    <span>Toast Inventory</span>
+  </a>
+  <div class="nav-links">
+    <a href="../videos/index.html">Videos</a>
+    <a href="../tutorials/index.html">Tutorials</a>
+    <a href="../faqs/index.html">FAQs</a>
+  </div>
+  <div class="nav-actions">
+    <a href="../faqs/index.html" class="btn-outline" data-track="nav_get_help">Get help now</a>
+    <a href="https://docs.google.com/forms/d/1fGYNrUxSuVLAZEoHQGNhTPxGZmjCKjUJVmtkaNbt0Do/viewform" target="_blank" class="btn-primary" data-track="nav_submit_feedback">Submit Feedback</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <h1><span>Issue &amp; Feature Tracker</span></h1>
+  <p>Known issues and feature requests from the Toast Inventory beta. Vote to signal priority, add comments to share context.</p>
+</div>
+
+<div class="content" style="max-width: 1100px;">
+
+  <div class="tracker-update-notice">
+    <span>ℹ️</span>
+    <span>This tracker is updated manually from Jira. Content is edited in <code>assets/js/tracker-data.js</code> — submit a PR to add or update items. Jira links open the source ticket.</span>
+  </div>
+
+  <!-- TABS -->
+  <div class="tracker-tabs">
+    <button class="tracker-tab active" data-view="issue" id="tab-issue">
+      Known Issues <span class="tracker-tab-count" id="tab-issue-count">0</span>
+    </button>
+    <button class="tracker-tab" data-view="feature" id="tab-feature">
+      Feature Requests <span class="tracker-tab-count" id="tab-feature-count">0</span>
+    </button>
+  </div>
+
+  <!-- CONTROLS -->
+  <div class="tracker-controls">
+    <div class="tracker-search-wrap">
+      <span class="tracker-search-icon">🔍</span>
+      <input type="text" id="tracker-search" placeholder="Search by title, description, or tag…" />
+    </div>
+    <div class="tracker-tag-filters" id="tracker-tag-filters"></div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="tracker-table-wrap">
+    <table class="tracker-table" id="tracker-table">
+      <thead id="tracker-thead"></thead>
+      <tbody id="tracker-tbody"></tbody>
+    </table>
+    <div class="tracker-empty" id="tracker-empty" style="display:none">No items match your search.</div>
+  </div>
+
+</div>
+
+<footer>
+  Toast Inventory Training &amp; Support
+  <a href="#" class="footer-internal-link internal-trigger">Internal</a>
+</footer>
+
+<script src="../assets/js/analytics.js"></script>
+<script src="../assets/js/internal.js"></script>
+<script src="../assets/js/tracker-data.js"></script>
+<script>
+(function () {
+  var STORAGE_VOTES    = 'ti_tracker_votes';    // { id: 'up'|'down'|null }
+  var STORAGE_COMMENTS = 'ti_tracker_comments'; // { id: [{text, ts}] }
+
+  var currentView = 'issue';
+  var activeTag   = 'all';
+  var searchQ     = '';
+  var sortField   = 'votes';
+  var sortDir     = 'desc';
+
+  function loadVotes()    { try { return JSON.parse(localStorage.getItem(STORAGE_VOTES) || '{}'); }    catch(e) { return {}; } }
+  function saveVotes(v)   { localStorage.setItem(STORAGE_VOTES, JSON.stringify(v)); }
+  function loadComments() { try { return JSON.parse(localStorage.getItem(STORAGE_COMMENTS) || '{}'); } catch(e) { return {}; } }
+  function saveComments(c){ localStorage.setItem(STORAGE_COMMENTS, JSON.stringify(c)); }
+
+  // Persistent net-vote counts: stored per-id so they survive re-render
+  var NET_VOTES_KEY = 'ti_tracker_net_votes';
+  function loadNetVotes()  { try { return JSON.parse(localStorage.getItem(NET_VOTES_KEY) || '{}'); }   catch(e) { return {}; } }
+  function saveNetVotes(v) { localStorage.setItem(NET_VOTES_KEY, JSON.stringify(v)); }
+
+  function getNetVote(id) {
+    var nv = loadNetVotes();
+    return nv[id] || 0;
+  }
+
+  function jiraStatusClass(s) {
+    if (!s) return '';
+    var l = s.toLowerCase();
+    if (l === 'open') return 'jira-status-open';
+    if (l.includes('progress') || l.includes('dev')) return 'jira-status-inprogress';
+    if (l === 'done' || l === 'resolved') return 'jira-status-done';
+    if (l === 'closed' || l === 'cancelled') return 'jira-status-closed';
+    if (l.includes('not planned')) return 'jira-status-notplanned';
+    return 'jira-status-open';
+  }
+
+  function escHtml(s) {
+    return String(s)
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+
+  function buildTagFilters() {
+    var tags = { all: true };
+    trackerData.filter(function(d){ return d.type === currentView; }).forEach(function(d){
+      (d.tags || []).forEach(function(t){ tags[t] = true; });
+    });
+    var wrap = document.getElementById('tracker-tag-filters');
+    wrap.innerHTML = '';
+    Object.keys(tags).forEach(function(t) {
+      var btn = document.createElement('button');
+      btn.className = 'tracker-tag-btn' + (t === activeTag ? ' active' : '');
+      btn.textContent = t === 'all' ? 'All' : t;
+      btn.dataset.tag = t;
+      btn.addEventListener('click', function() {
+        activeTag = t;
+        document.querySelectorAll('.tracker-tag-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        render();
+      });
+      wrap.appendChild(btn);
+    });
+  }
+
+  function buildHeader() {
+    var isIssue = currentView === 'issue';
+    var thead = document.getElementById('tracker-thead');
+    thead.innerHTML = '<tr>' +
+      '<th class="th-votes sortable" data-sort="votes">Votes <span class="sort-icon"></span></th>' +
+      '<th class="sortable" data-sort="title">Title <span class="sort-icon"></span></th>' +
+      (isIssue ? '<th class="th-version sortable" data-sort="version">Reported Version <span class="sort-icon"></span></th>' : '') +
+      '<th class="th-jira sortable" data-sort="jira">Jira Ticket <span class="sort-icon"></span></th>' +
+      '<th class="th-status">Jira Status</th>' +
+      '<th class="th-timeline sortable" data-sort="timeline">Est. Timeline <span class="sort-icon"></span></th>' +
+      (isIssue ? '<th class="th-workaround">Workaround</th>' : '') +
+      '</tr>';
+
+    thead.querySelectorAll('.sortable').forEach(function(th) {
+      th.addEventListener('click', function() {
+        var f = th.dataset.sort;
+        if (sortField === f) {
+          sortDir = sortDir === 'asc' ? 'desc' : 'asc';
+        } else {
+          sortField = f;
+          sortDir = f === 'votes' ? 'desc' : 'asc';
+        }
+        render();
+      });
+    });
+  }
+
+  function updateSortIndicators() {
+    document.querySelectorAll('.sortable').forEach(function(th) {
+      th.classList.remove('sort-asc', 'sort-desc');
+      if (th.dataset.sort === sortField) {
+        th.classList.add(sortDir === 'asc' ? 'sort-asc' : 'sort-desc');
+      }
+    });
+  }
+
+  function render() {
+    buildHeader();
+    buildTagFilters();
+    updateSortIndicators();
+
+    var votes    = loadVotes();
+    var comments = loadComments();
+    var isIssue  = currentView === 'issue';
+
+    var items = trackerData.filter(function(d){ return d.type === currentView; });
+
+    // Tag filter
+    if (activeTag !== 'all') {
+      items = items.filter(function(d){ return (d.tags || []).indexOf(activeTag) !== -1; });
+    }
+
+    // Search filter
+    if (searchQ) {
+      var q = searchQ.toLowerCase();
+      items = items.filter(function(d){
+        return d.title.toLowerCase().includes(q) ||
+               d.description.toLowerCase().includes(q) ||
+               (d.tags || []).join(' ').toLowerCase().includes(q) ||
+               (d.jira || '').toLowerCase().includes(q);
+      });
+    }
+
+    // Sort
+    items = items.slice().sort(function(a, b) {
+      var av, bv;
+      if (sortField === 'votes') {
+        av = getNetVote(a.id); bv = getNetVote(b.id);
+      } else if (sortField === 'title') {
+        av = a.title.toLowerCase(); bv = b.title.toLowerCase();
+      } else if (sortField === 'version') {
+        av = (a.version || '').toLowerCase(); bv = (b.version || '').toLowerCase();
+      } else if (sortField === 'jira') {
+        av = (a.jira || '').toLowerCase(); bv = (b.jira || '').toLowerCase();
+      } else if (sortField === 'timeline') {
+        av = (a.timeline || '').toLowerCase(); bv = (b.timeline || '').toLowerCase();
+      } else {
+        av = 0; bv = 0;
+      }
+      if (av < bv) return sortDir === 'asc' ? -1 : 1;
+      if (av > bv) return sortDir === 'asc' ? 1 : -1;
+      return 0;
+    });
+
+    var tbody = document.getElementById('tracker-tbody');
+    tbody.innerHTML = '';
+
+    var empty = document.getElementById('tracker-empty');
+    if (items.length === 0) {
+      empty.style.display = '';
+    } else {
+      empty.style.display = 'none';
+    }
+
+    items.forEach(function(item) {
+      var myVote  = votes[item.id] || null;
+      var netVote = getNetVote(item.id);
+      var itemComments = comments[item.id] || [];
+
+      var tr = document.createElement('tr');
+      tr.id = 'row-' + item.id;
+
+      // --- Vote cell ---
+      var voteClass = myVote === 'up' ? ' voted-up' : myVote === 'down' ? ' voted-down' : '';
+      var voteArrow = myVote === 'up' ? '▲' : myVote === 'down' ? '▼' : '▲';
+
+      // --- Tags ---
+      var tagsHtml = (item.tags || []).map(function(t){
+        return '<span class="tracker-tag-pill">' + escHtml(t) + '</span>';
+      }).join('');
+
+      // --- Jira ---
+      var jiraHtml = item.jira
+        ? '<a class="jira-link" href="https://toasttab.atlassian.net/browse/' + escHtml(item.jira) + '" target="_blank">' + escHtml(item.jira) + ' ↗</a>'
+        : '<span style="color:var(--mid);font-size:0.8rem;">—</span>';
+
+      var jiraStatusHtml = item.jiraStatus
+        ? '<span class="jira-status-badge ' + jiraStatusClass(item.jiraStatus) + '">' + escHtml(item.jiraStatus) + '</span>'
+        : '<span style="color:var(--mid);font-size:0.8rem;">—</span>';
+
+      // --- Comments (features only) ---
+      var commentsHtml = '';
+      if (!isIssue) {
+        var commentListHtml = itemComments.map(function(c){
+          return '<div class="comment-item"><div class="comment-item-meta">' + escHtml(c.ts) + '</div>' + escHtml(c.text) + '</div>';
+        }).join('');
+        var commentCount = itemComments.length;
+        commentsHtml = '<button class="comment-toggle-btn" data-id="' + item.id + '">💬 ' +
+          (commentCount > 0 ? commentCount + ' comment' + (commentCount !== 1 ? 's' : '') : 'Add comment') +
+          '</button>' +
+          '<div class="comment-area" id="comments-' + item.id + '">' +
+          '<div class="comment-list" id="comment-list-' + item.id + '">' + commentListHtml + '</div>' +
+          '<div class="comment-form">' +
+          '<textarea id="comment-input-' + item.id + '" placeholder="Share additional context or use cases…" rows="2"></textarea>' +
+          '<button class="comment-submit-btn" data-id="' + item.id + '">Post</button>' +
+          '</div>' +
+          '</div>';
+      }
+
+      // --- Workaround ---
+      var workaroundHtml = isIssue
+        ? '<td style="font-size:0.8rem;color:var(--mid);line-height:1.5;">' + (item.workaround ? escHtml(item.workaround) : '<em>None</em>') + '</td>'
+        : '';
+
+      // --- Version ---
+      var versionHtml = isIssue
+        ? '<td style="font-size:0.8rem;color:var(--mid);">' + escHtml(item.version || '—') + '</td>'
+        : '';
+
+      tr.innerHTML =
+        '<td class="vote-cell">' +
+        '<button class="vote-btn' + voteClass + '" data-id="' + item.id + '" title="Vote">' +
+        '<span class="vote-arrow">' + voteArrow + '</span>' +
+        '<span class="vote-count" id="vc-' + item.id + '">' + (netVote >= 0 ? '+' : '') + netVote + '</span>' +
+        '</button>' +
+        '</td>' +
+        '<td>' +
+        '<div class="tracker-title">' + escHtml(item.title) + '</div>' +
+        '<button class="tracker-expand-btn" data-id="' + item.id + '">Show details</button>' +
+        '<div class="tracker-desc" id="desc-' + item.id + '">' + escHtml(item.description) + '</div>' +
+        (tagsHtml ? '<div class="tracker-tags">' + tagsHtml + '</div>' : '') +
+        commentsHtml +
+        '</td>' +
+        versionHtml +
+        '<td>' + jiraHtml + '</td>' +
+        '<td>' + jiraStatusHtml + '</td>' +
+        '<td style="font-size:0.8rem;color:var(--mid);">' + escHtml(item.timeline || '—') + '</td>' +
+        workaroundHtml;
+
+      tbody.appendChild(tr);
+    });
+
+    // Wire vote buttons
+    document.querySelectorAll('.vote-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var id = btn.dataset.id;
+        var allVotes = loadVotes();
+        var allNet   = loadNetVotes();
+        var prev = allVotes[id] || null;
+        var net  = allNet[id]   || 0;
+
+        if (prev === 'up') {
+          // undo upvote
+          allVotes[id] = null;
+          allNet[id]   = net - 1;
+        } else if (prev === 'down') {
+          // flip down→up
+          allVotes[id] = 'up';
+          allNet[id]   = net + 2;
+        } else {
+          // new upvote
+          allVotes[id] = 'up';
+          allNet[id]   = net + 1;
+        }
+        saveVotes(allVotes);
+        saveNetVotes(allNet);
+
+        // Update button in-place
+        var newVote   = allVotes[id];
+        var newNet    = allNet[id];
+        var vc = document.getElementById('vc-' + id);
+        if (vc) vc.textContent = (newNet >= 0 ? '+' : '') + newNet;
+        btn.classList.remove('voted-up', 'voted-down');
+        if (newVote === 'up')   btn.classList.add('voted-up');
+        if (newVote === 'down') btn.classList.add('voted-down');
+        var arrow = btn.querySelector('.vote-arrow');
+        if (arrow) arrow.textContent = newVote === 'down' ? '▼' : '▲';
+      });
+    });
+
+    // Wire expand buttons
+    document.querySelectorAll('.tracker-expand-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var id = btn.dataset.id;
+        var desc = document.getElementById('desc-' + id);
+        if (!desc) return;
+        var open = desc.style.display === 'block';
+        desc.style.display = open ? 'none' : 'block';
+        btn.textContent = open ? 'Show details' : 'Hide details';
+      });
+    });
+
+    // Wire comment toggles (features only)
+    document.querySelectorAll('.comment-toggle-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var id = btn.dataset.id;
+        var area = document.getElementById('comments-' + id);
+        if (!area) return;
+        var open = area.style.display === 'block';
+        area.style.display = open ? 'none' : 'block';
+      });
+    });
+
+    // Wire comment submit
+    document.querySelectorAll('.comment-submit-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var id = btn.dataset.id;
+        var input = document.getElementById('comment-input-' + id);
+        if (!input) return;
+        var text = input.value.trim();
+        if (!text) return;
+        var allComments = loadComments();
+        if (!allComments[id]) allComments[id] = [];
+        var now = new Date();
+        var ts = now.toLocaleString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' });
+        allComments[id].push({ text: text, ts: ts });
+        saveComments(allComments);
+        input.value = '';
+
+        // Re-render comment list in-place
+        var list = document.getElementById('comment-list-' + id);
+        if (list) {
+          var c = allComments[id][allComments[id].length - 1];
+          var div = document.createElement('div');
+          div.className = 'comment-item';
+          div.innerHTML = '<div class="comment-item-meta">' + escHtml(c.ts) + '</div>' + escHtml(c.text);
+          list.appendChild(div);
+        }
+        // Update toggle button count
+        var toggle = document.querySelector('.comment-toggle-btn[data-id="' + id + '"]');
+        if (toggle) {
+          var count = allComments[id].length;
+          toggle.textContent = '💬 ' + count + ' comment' + (count !== 1 ? 's' : '');
+        }
+      });
+    });
+
+    // Update tab counts
+    var issues   = trackerData.filter(function(d){ return d.type === 'issue'; }).length;
+    var features = trackerData.filter(function(d){ return d.type === 'feature'; }).length;
+    document.getElementById('tab-issue-count').textContent   = issues;
+    document.getElementById('tab-feature-count').textContent = features;
+  }
+
+  // Tab switching
+  document.querySelectorAll('.tracker-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      currentView = tab.dataset.view;
+      activeTag   = 'all';
+      sortField   = 'votes';
+      sortDir     = 'desc';
+      document.getElementById('tracker-search').value = '';
+      searchQ     = '';
+      document.querySelectorAll('.tracker-tab').forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      render();
+    });
+  });
+
+  // Search
+  document.getElementById('tracker-search').addEventListener('input', function() {
+    searchQ = this.value.trim();
+    render();
+  });
+
+  // Initial render
+  render();
+})();
+</script>
+</body>
+</html>
