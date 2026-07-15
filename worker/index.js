@@ -11,8 +11,8 @@
  *   PUT  /tracker/:key   — update a ticket's editable fields
  */
 
-const JIRA_BASE = 'https://toasttab.atlassian.net/rest/api/3';
 const JIRA_CLOUD_ID = '44d13531-925f-44fb-a70c-706711bed47d';
+const JIRA_BASE = `https://api.atlassian.com/ex/jira/${JIRA_CLOUD_ID}/rest/api/3`;
 const NVR_PROJECT = 'NVR';
 const TRACKER_LABEL = 'tracker-visible';
 
@@ -120,26 +120,34 @@ function toAdf(text) {
   };
 }
 
-// GET /tracker — fetch all tracker-visible tickets
+// GET /tracker — fetch Feature Requests and Important Bugs in NVR
 async function handleGet(env) {
-  const jql = encodeURIComponent(
-    `project = ${NVR_PROJECT} AND labels = "${TRACKER_LABEL}" ORDER BY created DESC`
-  );
   const fields = [
     'summary', 'description', 'status', 'issuetype', 'labels',
     'priority', 'created', 'updated', 'versions', 'duedate',
     FIELD_RELEASE_NOTE, FIELD_EST_DELIVERY,
-  ].join(',');
+  ];
 
   const { status, body } = await jiraFetch(
-    `/search?jql=${jql}&maxResults=200&fields=${fields}`,
-    { method: 'GET' },
+    '/search/jql',
+    {
+      method: 'POST',
+      body: JSON.stringify({
+        jql: `project in (${NVR_PROJECT}) AND labels in (FeatureRequest, Important_Bugs) ORDER BY created DESC`,
+        maxResults: 200,
+        fields,
+      }),
+    },
     env
   );
 
   if (status !== 200) return json({ error: body }, status, env);
 
-  const issues = (body.issues || []).map(mapIssue);
+  // /search/jql (POST) returns issues as a flat array under body.issues
+  const raw = Array.isArray(body.issues) ? body.issues
+    : Array.isArray(body.issues?.nodes) ? body.issues.nodes
+    : [];
+  const issues = raw.map(mapIssue);
   return json({ issues, total: issues.length }, 200, env);
 }
 
@@ -272,6 +280,7 @@ export default {
     if (method === 'GET' && path === '/tracker') {
       return handleGet(env);
     }
+
 
     // POST /tracker — create
     if (method === 'POST' && path === '/tracker') {
