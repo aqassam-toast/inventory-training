@@ -329,38 +329,44 @@
     }
     .edit-cancel-btn:hover { border-color: #aaa; color: var(--dark); }
 
-    /* ── SUBMIT MODAL ── */
-    .submit-modal-overlay {
+    /* ── SUBMIT DRAWER ── */
+    .submit-drawer-backdrop {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.45);
+      background: rgba(0,0,0,0.35);
       z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
     }
-    .submit-modal-overlay.open { display: flex; }
-    .submit-modal-box {
+    .submit-drawer-backdrop.open { display: block; }
+    .submit-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 420px;
+      max-width: 100vw;
       background: white;
-      border-radius: 12px;
-      padding: 1.75rem;
-      width: 100%;
-      max-width: 540px;
-      max-height: 90vh;
-      overflow-y: auto;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.18);
-      position: relative;
+      box-shadow: -8px 0 40px rgba(0,0,0,0.14);
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
     }
-    .submit-modal-title {
-      font-size: 1.05rem;
+    .submit-drawer.open { transform: translateX(0); }
+    .submit-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+    .submit-drawer-title {
+      font-size: 1rem;
       font-weight: 700;
-      margin-bottom: 1.25rem;
     }
     .submit-modal-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
       background: none;
       border: none;
       font-size: 1.2rem;
@@ -370,13 +376,19 @@
       padding: 0.25rem;
     }
     .submit-modal-close:hover { color: var(--dark); }
+    .submit-drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
     .submit-form-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 0.75rem;
     }
-    @media (max-width: 600px) { .submit-form-grid { grid-template-columns: 1fr; } }
-    .submit-form-grid .full-width { grid-column: 1 / -1; }
     .submit-field { display: flex; flex-direction: column; gap: 0.25rem; }
     .submit-field label { font-size: 0.72rem; font-weight: 700; color: var(--mid); text-transform: uppercase; letter-spacing: 0.04em; }
     .submit-field input, .submit-field textarea, .submit-field select {
@@ -408,7 +420,7 @@
     .submit-status { font-size: 0.8rem; color: var(--mid); }
     .submit-status.ok { color: #16a34a; }
     .submit-status.err { color: #c0392b; }
-    /* open-modal trigger button */
+    /* open-drawer trigger button */
     .open-submit-btn {
       padding: 0.55rem 1.25rem;
       background: var(--orange);
@@ -421,6 +433,97 @@
       margin-bottom: 1.75rem;
     }
     .open-submit-btn:hover { opacity: 0.88; }
+
+    /* ── DEDUPE PEEK PANEL (inside drawer) ── */
+    .dedupe-peek {
+      display: none;
+      margin-top: 0.75rem;
+      border: 1px solid #fde68a;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .dedupe-peek.visible { display: block; }
+    .dedupe-peek-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.5rem;
+      background: #fffbeb;
+      padding: 0.65rem 0.85rem;
+    }
+    .dedupe-peek-label {
+      font-size: 0.75rem;
+      color: #92400e;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .dedupe-match-title {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: #78350f;
+    }
+    .dedupe-peek-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      flex-shrink: 0;
+    }
+    .dedupe-upvote-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.3rem 0.75rem;
+      background: #16a34a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .dedupe-upvote-btn:hover { opacity: 0.88; }
+    .dedupe-view-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.3rem 0.75rem;
+      background: none;
+      border: 1px solid #fbbf24;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #92400e;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .dedupe-view-btn:hover { background: #fef3c7; }
+    .dedupe-item-body {
+      display: none;
+      padding: 0.75rem 0.85rem;
+      background: white;
+      border-top: 1px solid #fde68a;
+      font-size: 0.8rem;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    .dedupe-item-body.open { display: block; }
+    .dedupe-item-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+    .dedupe-item-meta span {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.1rem 0.45rem;
+      border-radius: 4px;
+    }
+    .dedupe-item-desc {
+      color: var(--mid);
+      white-space: pre-wrap;
+    }
 
     /* ── STATUS FILTER ── */
     .tracker-status-filters { display: flex; gap: 0.35rem; flex-wrap: wrap; align-items: center; }
@@ -483,37 +586,6 @@
       margin-bottom: 1.5rem;
     }
 
-    /* ── DEDUPE WARNING ── */
-    .dedupe-warning {
-      display: none;
-      background: #fffbeb;
-      border: 1px solid #fde68a;
-      border-radius: 7px;
-      padding: 0.65rem 0.85rem;
-      font-size: 0.8rem;
-      color: #78350f;
-      line-height: 1.5;
-    }
-    .dedupe-warning.visible { display: block; }
-    .dedupe-match-title {
-      font-weight: 600;
-      margin: 0.2rem 0 0.5rem;
-      font-size: 0.83rem;
-    }
-    .dedupe-upvote-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      padding: 0.35rem 0.85rem;
-      background: #16a34a;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-    .dedupe-upvote-btn:hover { opacity: 0.88; }
 
     /* ── SNACKBAR ── */
     #tracker-snackbar {
@@ -588,30 +660,44 @@
   <!-- SUBMIT BUTTON -->
   <button class="open-submit-btn" id="open-submit-modal">+ Submit a feature request</button>
 
-  <!-- SUBMIT MODAL -->
-  <div class="submit-modal-overlay" id="submit-modal-overlay">
-    <div class="submit-modal-box">
+  <!-- SUBMIT DRAWER -->
+  <div class="submit-drawer-backdrop" id="submit-modal-overlay"></div>
+  <div class="submit-drawer" id="submit-drawer">
+    <div class="submit-drawer-header">
+      <div class="submit-drawer-title">Submit a feature request</div>
       <button class="submit-modal-close" id="submit-modal-close" aria-label="Close">✕</button>
-      <div class="submit-modal-title">Submit a feature request</div>
+    </div>
+    <div class="submit-drawer-body">
       <p style="font-size:0.8rem;color:var(--mid);margin:0 0 1rem;">
         Reporting a known issue? Use the <strong>#retail-cx-bugs</strong> Slack workflow to log it with the team.
       </p>
       <!-- hidden type field — always feature -->
       <input type="hidden" id="sf-type" value="feature" />
-      <!-- Dedupe warning — shown when title is similar to an existing request -->
-      <div class="dedupe-warning" id="sf-dedupe-warning">
-        <div>This looks similar to an existing feature request:</div>
-        <div class="dedupe-match-title" id="sf-dedupe-title"></div>
-        <button class="dedupe-upvote-btn" id="sf-dedupe-upvote">▲ Upvote that request instead</button>
-      </div>
       <div class="submit-form-grid">
-        <div class="submit-field full-width">
+        <div class="submit-field">
           <label>Title <span style="color:#c0392b">*</span></label>
           <input id="sf-title" type="text" placeholder="Short summary of the feature request" />
         </div>
-        <div class="submit-field full-width">
+        <!-- Dedupe peek panel — shown inline under the title -->
+        <div class="dedupe-peek" id="sf-dedupe-warning">
+          <div class="dedupe-peek-header">
+            <div>
+              <div class="dedupe-peek-label">Similar request already exists</div>
+              <div class="dedupe-match-title" id="sf-dedupe-title"></div>
+            </div>
+            <div class="dedupe-peek-actions">
+              <button class="dedupe-upvote-btn" id="sf-dedupe-upvote">▲ Upvote instead</button>
+              <button class="dedupe-view-btn" id="sf-dedupe-view">▾ View details</button>
+            </div>
+          </div>
+          <div class="dedupe-item-body" id="sf-dedupe-body">
+            <div class="dedupe-item-meta" id="sf-dedupe-meta"></div>
+            <div class="dedupe-item-desc" id="sf-dedupe-desc"></div>
+          </div>
+        </div>
+        <div class="submit-field">
           <label>Description</label>
-          <textarea id="sf-description" rows="3" placeholder="Details, use cases, affected customers…"></textarea>
+          <textarea id="sf-description" rows="4" placeholder="Details, use cases, affected customers…"></textarea>
         </div>
         <div class="submit-field">
           <label>Category</label>
@@ -1358,19 +1444,23 @@
     });
   }
 
-  // ── MODAL OPEN / CLOSE ──
+  // ── DRAWER OPEN / CLOSE ──
   var modalOverlay = document.getElementById('submit-modal-overlay');
+  var submitDrawer = document.getElementById('submit-drawer');
 
   function openModal() {
     modalOverlay.classList.add('open');
-    document.getElementById('sf-title').focus();
+    submitDrawer.classList.add('open');
+    setTimeout(function() { document.getElementById('sf-title').focus(); }, 250);
   }
   function closeModal() {
     modalOverlay.classList.remove('open');
+    submitDrawer.classList.remove('open');
     var status = document.getElementById('sf-status');
     status.textContent = '';
     status.className = 'submit-status';
     document.getElementById('sf-dedupe-warning').classList.remove('visible');
+    document.getElementById('sf-dedupe-body').classList.remove('open');
     dedupeMatchId = null;
   }
 
@@ -1401,10 +1491,12 @@
   var DEDUPE_THRESHOLD = 0.12; // ~12% token overlap triggers warning
 
   function checkDedupe(title) {
-    var warn  = document.getElementById('sf-dedupe-warning');
+    var warn    = document.getElementById('sf-dedupe-warning');
     var titleEl = document.getElementById('sf-dedupe-title');
+    var body    = document.getElementById('sf-dedupe-body');
     if (!title || title.length < 4) {
       warn.classList.remove('visible');
+      body.classList.remove('open');
       dedupeMatchId = null;
       return;
     }
@@ -1416,14 +1508,35 @@
       if (score > bestScore) { bestScore = score; best = f; }
     });
     if (best && bestScore >= DEDUPE_THRESHOLD) {
+      if (dedupeMatchId !== best.id) {
+        // New match — collapse any open peek body
+        body.classList.remove('open');
+        document.getElementById('sf-dedupe-view').textContent = '▾ View details';
+      }
       dedupeMatchId = best.id;
       titleEl.textContent = best.title;
+      // Populate peek body
+      var statusDisp = displayStatus(best.jiraStatus, best);
+      var metaHtml =
+        '<span class="jira-status-badge ' + jiraStatusClass(best.jiraStatus) + '">' + escHtml(statusDisp) + '</span>' +
+        (best.category ? ' <span style="background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:4px;padding:0.1rem 0.45rem;font-size:0.7rem;font-weight:600;">' + escHtml(best.category) + '</span>' : '') +
+        (best.jira ? ' <a class="jira-link" href="https://toasttab.atlassian.net/browse/' + escHtml(best.jira) + '" target="_blank" style="font-size:0.72rem;">' + escHtml(best.jira) + ' ↗</a>' : '');
+      document.getElementById('sf-dedupe-meta').innerHTML = metaHtml;
+      document.getElementById('sf-dedupe-desc').textContent = best.description || 'No description.';
       warn.classList.add('visible');
     } else {
       dedupeMatchId = null;
+      body.classList.remove('open');
       warn.classList.remove('visible');
     }
   }
+
+  // Toggle "View details" in the peek panel
+  document.getElementById('sf-dedupe-view').addEventListener('click', function() {
+    var body = document.getElementById('sf-dedupe-body');
+    var open = body.classList.toggle('open');
+    this.textContent = open ? '▴ Hide details' : '▾ View details';
+  });
 
   // Debounce helper
   function debounce(fn, ms) {
