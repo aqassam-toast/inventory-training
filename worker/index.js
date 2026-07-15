@@ -139,15 +139,25 @@ async function handleGet(env) {
   ];
 
   async function search(jql) {
-    const { status, body } = await jiraFetch(
-      '/search/jql',
-      { method: 'POST', body: JSON.stringify({ jql, maxResults: 200, fields }) },
-      env
-    );
-    if (status !== 200) throw new Error(JSON.stringify(body));
-    return Array.isArray(body.issues) ? body.issues
-      : Array.isArray(body.issues?.nodes) ? body.issues.nodes
-      : [];
+    const PAGE = 100;
+    let all = [], nextPageToken = undefined;
+    while (true) {
+      const reqBody = { jql, maxResults: PAGE, fields };
+      if (nextPageToken) reqBody.nextPageToken = nextPageToken;
+      const { status, body } = await jiraFetch(
+        '/search/jql',
+        { method: 'POST', body: JSON.stringify(reqBody) },
+        env
+      );
+      if (status !== 200) throw new Error(JSON.stringify(body));
+      const page = Array.isArray(body.issues) ? body.issues
+        : Array.isArray(body.issues?.nodes) ? body.issues.nodes
+        : [];
+      all = all.concat(page);
+      if (!body.nextPageToken || page.length < PAGE) break;
+      nextPageToken = body.nextPageToken;
+    }
+    return all;
   }
 
   try {
