@@ -534,24 +534,22 @@
   </div>
 
   <!-- SUBMIT BUTTON -->
-  <button class="open-submit-btn" id="open-submit-modal">+ Submit a request</button>
+  <button class="open-submit-btn" id="open-submit-modal">+ Submit a feature request</button>
 
   <!-- SUBMIT MODAL -->
   <div class="submit-modal-overlay" id="submit-modal-overlay">
     <div class="submit-modal-box">
       <button class="submit-modal-close" id="submit-modal-close" aria-label="Close">✕</button>
-      <div class="submit-modal-title">Submit a request</div>
+      <div class="submit-modal-title">Submit a feature request</div>
+      <p style="font-size:0.8rem;color:var(--mid);margin:0 0 1rem;">
+        Reporting a known issue? Use the <strong>#retail-cx-bugs</strong> Slack workflow to log it with the team.
+      </p>
+      <!-- hidden type field — always feature -->
+      <input type="hidden" id="sf-type" value="feature" />
       <div class="submit-form-grid">
         <div class="submit-field full-width">
-          <label>Type</label>
-          <select id="sf-type">
-            <option value="feature">Feature Request</option>
-            <option value="issue">Known Issue / Bug</option>
-          </select>
-        </div>
-        <div class="submit-field full-width">
           <label>Title <span style="color:#c0392b">*</span></label>
-          <input id="sf-title" type="text" placeholder="Short summary of the request or issue" />
+          <input id="sf-title" type="text" placeholder="Short summary of the feature request" />
         </div>
         <div class="submit-field full-width">
           <label>Description</label>
@@ -584,10 +582,6 @@
             <option value="should-have">Should Have</option>
             <option value="could-have">Could Have</option>
           </select>
-        </div>
-        <div class="submit-field full-width" id="sf-workaround-row" style="display:none">
-          <label>Known Workaround (for bugs)</label>
-          <input id="sf-workaround" type="text" placeholder="Any existing workaround steps" />
         </div>
       </div>
       <div class="submit-actions">
@@ -1270,11 +1264,6 @@
   });
 
   // ── SUBMIT FORM ──
-  document.getElementById('sf-type').addEventListener('change', function() {
-    var isIssue = this.value === 'issue';
-    document.getElementById('sf-workaround-row').style.display = isIssue ? '' : 'none';
-  });
-
   document.getElementById('sf-submit').addEventListener('click', function() {
     var btn    = this;
     var status = document.getElementById('sf-status');
@@ -1295,12 +1284,11 @@
     status.textContent = 'Submitting…';
 
     var payload = {
-      type:        document.getElementById('sf-type').value,
+      type:        'feature',
       title:       title,
       description: document.getElementById('sf-description').value.trim(),
       category:    document.getElementById('sf-category').value,
       urgency:     document.getElementById('sf-urgency').value,
-      workaround:  document.getElementById('sf-workaround').value.trim(),
     };
 
     fetch(WORKER_URL + '/tracker', {
@@ -1315,7 +1303,7 @@
         status.className = 'submit-status ok';
         status.textContent = 'Created ' + data.key + ' ✓';
         // Clear form
-        ['sf-title','sf-description','sf-workaround'].forEach(function(fid){
+        ['sf-title','sf-description'].forEach(function(fid){
           document.getElementById(fid).value = '';
         });
         document.getElementById('sf-category').value = '';
