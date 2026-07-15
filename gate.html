@@ -159,8 +159,9 @@
 </footer>
 
 <script>
-  const BETA_HASH     = "e9fb34ce28a625b0f56cecc4cf6d7fcf74dc21282dc3f94d8c5cf35527d46fea";
-  const INTERNAL_HASH = "ecd64d4210349796828b6e9a336506121b6afad4b907ee2b78cf8ec93a227824";
+  const BETA_HASHES   = ["e9fb34ce28a625b0f56cecc4cf6d7fcf74dc21282dc3f94d8c5cf35527d46fea","7c161375afc1ca1c41ee7c49ab6a363d2465fe6b1a119bef2228b9af9287af67"];
+  const BETA_HASH     = BETA_HASHES[0];
+  const INTERNAL_HASH = "8dd40795099ef28537203f1668d2812d4357c9176fcd6345389f224e3ae390b1";
   const BETA_KEY      = "ti_beta_auth";
   const INTERNAL_KEY  = "ti_internal_auth";
 
@@ -178,7 +179,7 @@
     const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
     const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
 
-    if (hash === BETA_HASH) {
+    if (BETA_HASHES.includes(hash)) {
       sessionStorage.setItem(BETA_KEY, BETA_HASH);
       window.location.replace("index.html");
     } else if (hash === INTERNAL_HASH) {
