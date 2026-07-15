@@ -624,9 +624,10 @@
     </div>
     <select id="tracker-status-filter" class="tracker-status-filter">
       <option value="">All statuses</option>
-      <option value="Backlog">Backlog</option>
+      <option value="Open">Open</option>
       <option value="In Progress">In Progress</option>
       <option value="Done">Done</option>
+      <option value="Closed">Closed</option>
       <option value="Cancelled">Cancelled</option>
     </select>
     <div class="tracker-tag-filters" id="tracker-tag-filters"></div>
@@ -678,8 +679,8 @@
   var activeTag   = 'all';
   var statusFilter = '';
   var searchQ     = '';
-  var sortField   = 'votes';
-  var sortDir     = 'desc';
+  var sortField   = 'status';   // issues default: Open first
+  var sortDir     = 'asc';
   var currentPage = 1;
   var PAGE_SIZE   = 25;
   var isInternalUser = false;
@@ -728,14 +729,26 @@
   }
 
   // ── UTILS ──
+  function normalizeStatus(s) {
+    if (!s) return '';
+    return s.toLowerCase() === 'backlog' ? 'Open' : s;
+  }
+
   function jiraStatusClass(s) {
     if (!s) return '';
-    var l = s.toLowerCase();
+    var l = normalizeStatus(s).toLowerCase();
     if (l === 'open') return 'jira-status-open';
     if (l.includes('progress') || l.includes('dev') || l.includes('review')) return 'jira-status-inprogress';
     if (l === 'done' || l === 'resolved' || l === 'closed') return 'jira-status-done';
     if (l === 'cancelled' || l.includes('not planned')) return 'jira-status-notplanned';
     return 'jira-status-open';
+  }
+
+  // Sort order for Known Issues: Open first, in-progress, then closed/done/cancelled
+  var STATUS_ORDER = { 'open': 0, 'in progress': 1, 'in review': 1, 'in development': 1, 'done': 2, 'resolved': 2, 'closed': 2, 'cancelled': 3, 'not planned': 3 };
+  function statusSortKey(s) {
+    var n = normalizeStatus(s || '').toLowerCase();
+    return STATUS_ORDER[n] !== undefined ? STATUS_ORDER[n] : 1;
   }
 
   function escHtml(s) {
@@ -787,7 +800,7 @@
       '<th class="sortable" data-sort="title">Title <span class="sort-icon"></span></th>' +
       (isIssue ? '<th class="th-version sortable" data-sort="version">Reported Version <span class="sort-icon"></span></th>' : '') +
       '<th class="th-jira sortable" data-sort="jira">Jira Ticket <span class="sort-icon"></span></th>' +
-      '<th class="th-status">Jira Status</th>' +
+      '<th class="th-status sortable" data-sort="status">Status <span class="sort-icon"></span></th>' +
       '<th class="th-timeline sortable" data-sort="timeline">Est. Timeline <span class="sort-icon"></span></th>' +
       (isIssue ? '<th class="th-workaround">Workaround</th>' : '') +
       (isInternalUser ? '<th class="th-edit"></th>' : '') +
@@ -834,10 +847,10 @@
     document.getElementById('tab-issue-count').textContent   = issueCount;
     document.getElementById('tab-feature-count').textContent = featureCount;
 
-    // Status filter
+    // Status filter (compare against normalized status)
     if (statusFilter) {
       items = items.filter(function(d){
-        return (d.jiraStatus || '').toLowerCase() === statusFilter.toLowerCase();
+        return normalizeStatus(d.jiraStatus || '').toLowerCase() === statusFilter.toLowerCase();
       });
     }
 
@@ -873,11 +886,15 @@
         av = (a.jira || '').toLowerCase(); bv = (b.jira || '').toLowerCase();
       } else if (sortField === 'timeline') {
         av = (a.timeline || '').toLowerCase(); bv = (b.timeline || '').toLowerCase();
+      } else if (sortField === 'status') {
+        av = statusSortKey(a.jiraStatus); bv = statusSortKey(b.jiraStatus);
       } else {
         av = 0; bv = 0;
       }
       if (av < bv) return sortDir === 'asc' ? -1 : 1;
       if (av > bv) return sortDir === 'asc' ? 1 : -1;
+      // Secondary sort: for status, break ties by title
+      if (sortField === 'status') return a.title.toLowerCase() < b.title.toLowerCase() ? -1 : 1;
       return 0;
     });
 
@@ -922,7 +939,7 @@
         : '<span style="color:var(--mid);font-size:0.8rem;">—</span>';
 
       var jiraStatusHtml = item.jiraStatus
-        ? '<span class="jira-status-badge ' + jiraStatusClass(item.jiraStatus) + '">' + escHtml(item.jiraStatus) + '</span>' +
+        ? '<span class="jira-status-badge ' + jiraStatusClass(item.jiraStatus) + '">' + escHtml(normalizeStatus(item.jiraStatus)) + '</span>' +
           (item.jiraStatus.toLowerCase() === 'closed' && item.resolution
             ? '<div style="font-size:0.72rem;color:var(--mid);margin-top:0.25rem;">' + escHtml(item.resolution) + '</div>'
             : '')
@@ -1320,8 +1337,8 @@
       currentView  = tab.dataset.view;
       activeTag    = 'all';
       statusFilter = '';
-      sortField    = 'votes';
-      sortDir      = 'desc';
+      sortField    = currentView === 'issue' ? 'status' : 'votes';
+      sortDir      = currentView === 'issue' ? 'asc' : 'desc';
       currentPage  = 1;
       document.getElementById('tracker-search').value = '';
       document.getElementById('tracker-status-filter').value = '';
