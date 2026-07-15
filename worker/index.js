@@ -87,6 +87,7 @@ function mapIssue(issue) {
     version,
     jira: issue.key,
     jiraStatus: f.status?.name || '',
+    resolution: f.resolution?.name || '',
     timeline,
     workaround,
     category,
@@ -125,6 +126,7 @@ async function handleGet(env) {
   const fields = [
     'summary', 'description', 'status', 'issuetype', 'labels',
     'priority', 'created', 'updated', 'versions', 'duedate',
+    'resolution',
     FIELD_RELEASE_NOTE, FIELD_EST_DELIVERY,
   ];
 

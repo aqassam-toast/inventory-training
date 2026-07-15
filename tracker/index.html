@@ -922,7 +922,10 @@
         : '<span style="color:var(--mid);font-size:0.8rem;">—</span>';
 
       var jiraStatusHtml = item.jiraStatus
-        ? '<span class="jira-status-badge ' + jiraStatusClass(item.jiraStatus) + '">' + escHtml(item.jiraStatus) + '</span>'
+        ? '<span class="jira-status-badge ' + jiraStatusClass(item.jiraStatus) + '">' + escHtml(item.jiraStatus) + '</span>' +
+          (item.jiraStatus.toLowerCase() === 'closed' && item.resolution
+            ? '<div style="font-size:0.72rem;color:var(--mid);margin-top:0.25rem;">' + escHtml(item.resolution) + '</div>'
+            : '')
         : '<span style="color:var(--mid);font-size:0.8rem;">—</span>';
 
       // Comments
