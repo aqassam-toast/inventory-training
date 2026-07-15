@@ -830,7 +830,20 @@
   }
 
   // ── STATUS FILTER PILLS (multi-select) ──
-  var STATUS_OPTIONS = ['Open', 'In Progress', 'Done', 'Closed'];
+  // Issues: Done and Closed are separate Jira statuses
+  // Features: Done+Closed merged into one "Done" pill; "Recently Done" is a distinct pill
+  var ISSUE_STATUS_OPTIONS   = ['Open', 'In Progress', 'Done', 'Closed'];
+  var FEATURE_STATUS_OPTIONS = ['Open', 'In Progress', 'Recently Done', 'Done'];
+
+  function matchesStatusFilter(d, s) {
+    if (s === 'Recently Done') return isRecentlyDone(d);
+    if (currentView === 'feature' && s === 'Done') {
+      // Covers both "Done" and "Closed" Jira statuses, excluding recently-done items
+      var nf = normalizeStatus(d.jiraStatus || '').toLowerCase();
+      return (nf === 'done' || nf === 'closed') && !isRecentlyDone(d);
+    }
+    return s.toLowerCase() === normalizeStatus(d.jiraStatus || '').toLowerCase();
+  }
 
   function buildStatusFilters() {
     var wrap = document.getElementById('tracker-status-filters');
@@ -839,7 +852,8 @@
     lbl.className = 'tracker-status-label';
     lbl.textContent = 'Status:';
     wrap.appendChild(lbl);
-    STATUS_OPTIONS.forEach(function(s) {
+    var opts = currentView === 'feature' ? FEATURE_STATUS_OPTIONS : ISSUE_STATUS_OPTIONS;
+    opts.forEach(function(s) {
       var btn = document.createElement('button');
       var active = statusFilter.indexOf(s) !== -1;
       btn.className = 'tracker-tag-btn' + (active ? ' active' : '');
@@ -958,8 +972,7 @@
     // Status filter — multi-select; empty array = show all
     if (statusFilter.length > 0) {
       items = items.filter(function(d){
-        var norm = normalizeStatus(d.jiraStatus || '');
-        return statusFilter.some(function(s){ return s.toLowerCase() === norm.toLowerCase(); });
+        return statusFilter.some(function(s){ return matchesStatusFilter(d, s); });
       });
     }
 
