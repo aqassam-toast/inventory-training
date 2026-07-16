@@ -860,6 +860,7 @@
     if (l === 'backlog') return 'Open';
     if (l === 'cancelled' || l === 'not planned') return 'Done';
     if (isPrioritized(l)) return 'Prioritized';
+    if (l === 'release' || l === 'in release' || l === 'ready for release' || l === 'in qa' || l === 'qa' || l === 'in test') return 'In Progress';
     return s;
   }
 
