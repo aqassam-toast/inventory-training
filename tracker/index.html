@@ -919,6 +919,13 @@
       .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
   }
 
+  function formatDesc(s) {
+    if (!s) return '';
+    var parts = s.split(/\bDetails:\s*/);
+    if (parts.length < 2) return escHtml(s);
+    return escHtml(parts[0].trim()) + '<br><br><strong>Details:</strong> ' + escHtml(parts.slice(1).join('Details: ').trim());
+  }
+
   // ── STATUS FILTER PILLS (multi-select) ──
   // Issues: Done and Closed are separate Jira statuses
   // Features: Done+Closed merged into one "Done" pill; "Recently Done" is a distinct pill
@@ -1231,7 +1238,7 @@
         '<td>' +
         '<div class="tracker-title">' + escHtml(item.title) + '</div>' +
         '<button class="tracker-expand-btn" data-id="' + item.id + '">Show details</button>' +
-        '<div class="tracker-desc" id="desc-' + item.id + '">' + escHtml(item.description || '') + '</div>' +
+        '<div class="tracker-desc" id="desc-' + item.id + '">' + formatDesc(item.description || '') + '</div>' +
         (categoryHtml || tagsHtml ? '<div class="tracker-tags">' + categoryHtml + tagsHtml + '</div>' : '') +
         commentsHtml +
         editFormHtml +
