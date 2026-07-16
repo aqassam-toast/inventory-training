@@ -49,8 +49,19 @@
       <button class="ff-btn" data-filter="status" data-value="ft-available">Available to all CX</button>
       <button class="ff-btn" data-filter="status" data-value="ft-beta">Available via Beta</button>
       <button class="ff-btn" data-filter="status" data-value="ft-dev">Development in Progress</button>
+      <button class="ff-btn" data-filter="status" data-value="ft-prioritized">Prioritized</button>
       <button class="ff-btn" data-filter="status" data-value="ft-committed">Committed</button>
       <button class="ff-btn" data-filter="status" data-value="ft-notplanned">Not Planned</button>
+    </div>
+    <div class="ff-group">
+      <span class="ff-label">Section</span>
+      <button class="ff-btn active" data-filter="section" data-value="all">All</button>
+      <button class="ff-btn" data-filter="section" data-value="sec-purchasing">Purchasing &amp; Receiving</button>
+      <button class="ff-btn" data-filter="section" data-value="sec-inventory">Inventory</button>
+      <button class="ff-btn" data-filter="section" data-value="sec-reporting">Reporting</button>
+      <button class="ff-btn" data-filter="section" data-value="sec-prepfood">Prepared Food &amp; Bev</button>
+      <button class="ff-btn" data-filter="section" data-value="sec-modifiers">Modifiers</button>
+      <button class="ff-btn" data-filter="section" data-value="sec-onboarding">Onboarding</button>
     </div>
     <div class="ff-group">
       <span class="ff-label">Tags</span>
@@ -65,6 +76,7 @@
     <span class="fl-item"><span class="fl-badge fl-available">Available to all CX</span></span>
     <span class="fl-item"><span class="fl-badge fl-beta">Available via Beta</span></span>
     <span class="fl-item"><span class="fl-badge fl-dev">Development in Progress</span></span>
+    <span class="fl-item"><span class="fl-badge fl-prioritized">Prioritized</span></span>
     <span class="fl-item"><span class="fl-badge fl-committed">Committed</span></span>
     <span class="fl-item"><span class="fl-badge fl-notplanned">Not Planned</span></span>
     <span class="fl-item"><span class="fl-tag ft-ai">AI</span> AI-powered</span>
@@ -73,7 +85,7 @@
   </div>
 
   <!-- PURCHASING & RECEIVING & ORDERING -->
-  <div class="ft-section">
+  <div class="ft-section" data-section="sec-purchasing">
     <div class="ft-section-header">Purchasing, Receiving &amp; Ordering</div>
     <table class="ft-table">
       <thead>
@@ -138,7 +150,7 @@
   </div>
 
   <!-- INVENTORY -->
-  <div class="ft-section">
+  <div class="ft-section" data-section="sec-inventory">
     <div class="ft-section-header">Inventory</div>
     <table class="ft-table">
       <thead>
@@ -221,7 +233,7 @@
   </div>
 
   <!-- REPORTING -->
-  <div class="ft-section">
+  <div class="ft-section" data-section="sec-reporting">
     <div class="ft-section-header">Reporting</div>
     <table class="ft-table">
       <thead>
@@ -274,7 +286,7 @@
   </div>
 
   <!-- PREPARED FOOD & BEV -->
-  <div class="ft-section">
+  <div class="ft-section" data-section="sec-prepfood">
     <div class="ft-section-header">Prepared Food &amp; Bev Products</div>
     <table class="ft-table">
       <thead>
@@ -405,7 +417,7 @@
   </div>
 
   <!-- MODIFIERS -->
-  <div class="ft-section">
+  <div class="ft-section" data-section="sec-modifiers">
     <div class="ft-section-header">Modifiers</div>
     <table class="ft-table">
       <thead>
@@ -451,6 +463,43 @@
     </table>
   </div>
 
+
+  <!-- ONBOARDING -->
+  <div class="ft-section" data-section="sec-onboarding">
+    <div class="ft-section-header">Onboarding</div>
+    <table class="ft-table">
+      <thead>
+        <tr>
+          <th class="ft-col-feature">Feature</th>
+          <th class="ft-col-tag"></th>
+          <th class="ft-col-status">Toast Inventory</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Category Manager</strong></td>
+          <td></td>
+          <td class="ft-dev"></td>
+        </tr>
+        <tr>
+          <td><strong>Ingredient Import</strong></td>
+          <td></td>
+          <td class="ft-dev"></td>
+        </tr>
+        <tr>
+          <td><strong>Update Ingredients via CSV Import</strong></td>
+          <td></td>
+          <td class="ft-prioritized"></td>
+        </tr>
+        <tr>
+          <td><strong>Onboarding Splash Page</strong></td>
+          <td></td>
+          <td class="ft-prioritized"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>
 
 <footer>
@@ -464,20 +513,24 @@
     (function () {
       let activeStatus = 'all';
       let activeTag = 'all';
+      let activeSection = 'all';
 
       function applyFilters() {
-        document.querySelectorAll('.ft-table tbody tr').forEach(function (row) {
-          const statusCell = row.querySelector('td:nth-child(3)');
-          const tagCell = row.querySelector('td:nth-child(2)');
-          const statusMatch = activeStatus === 'all' || (statusCell && statusCell.classList.contains(activeStatus));
-          const tagMatch = activeTag === 'all' || (tagCell && tagCell.querySelector('.' + activeTag));
-          row.style.display = (statusMatch && tagMatch) ? '' : 'none';
-        });
-
-        // Hide section headers when all rows in that section are hidden
         document.querySelectorAll('.ft-section').forEach(function (section) {
-          const visible = Array.from(section.querySelectorAll('tbody tr')).some(function (r) { return r.style.display !== 'none'; });
-          section.style.display = visible ? '' : 'none';
+          const sectionMatch = activeSection === 'all' || section.dataset.section === activeSection;
+          if (!sectionMatch) { section.style.display = 'none'; return; }
+
+          let anyVisible = false;
+          section.querySelectorAll('tbody tr').forEach(function (row) {
+            const statusCell = row.querySelector('td:nth-child(3)');
+            const tagCell = row.querySelector('td:nth-child(2)');
+            const statusMatch = activeStatus === 'all' || (statusCell && statusCell.classList.contains(activeStatus));
+            const tagMatch = activeTag === 'all' || (tagCell && tagCell.querySelector('.' + activeTag));
+            const show = statusMatch && tagMatch;
+            row.style.display = show ? '' : 'none';
+            if (show) anyVisible = true;
+          });
+          section.style.display = anyVisible ? '' : 'none';
         });
       }
 
@@ -489,6 +542,7 @@
           btn.classList.add('active');
           if (filter === 'status') activeStatus = value;
           if (filter === 'tag') activeTag = value;
+          if (filter === 'section') activeSection = value;
           applyFilters();
         });
       });

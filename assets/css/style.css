@@ -61,6 +61,7 @@ nav .nav-links a {
   font-weight: 500;
 }
 nav .nav-links a:hover, nav .nav-links a.active { color: var(--dark); }
+nav .nav-links a[data-internal="true"] { text-decoration: underline; text-decoration-style: dashed; text-underline-offset: 3px; }
 nav .nav-actions { display: flex; align-items: center; gap: 0.75rem; margin-left: 1rem; }
 .btn-outline {
   display: inline-block;
@@ -567,8 +568,9 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 .fl-available  { background: #d1fae5; color: #065f46; }
 .fl-beta       { background: #fef3c7; color: #92400e; }
 .fl-dev        { background: #e0e7ff; color: #3730a3; }
-.fl-committed  { background: #e8f0fe; color: #2a5ab7; }
-.fl-notplanned { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
+.fl-committed   { background: #e8f0fe; color: #2a5ab7; }
+.fl-prioritized { background: #f3e8ff; color: #6b21a8; border: 1px solid #d8b4fe; }
+.fl-notplanned  { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
 .fl-tag    { font-size: 0.65rem; font-weight: 700; padding: 0.15rem 0.5rem; border-radius: 99px; letter-spacing: 0.04em; }
 .ft-ai     { background: #f0e8ff; color: #6b21a8; }
 .ft-mobile { background: #e0f2fe; color: #0369a1; }
@@ -620,12 +622,13 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 
 .ft-desc { font-size: 0.8rem; color: var(--mid); display: block; margin-top: 0.2rem; font-weight: 400; }
 
-.ft-available, .ft-beta, .ft-dev, .ft-committed, .ft-notplanned { text-align: center; }
-.ft-available::after  { content: "Available to all CX";        background: #d1fae5; color: #065f46; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; }
-.ft-beta::after       { content: "Available via Beta";         background: #fef3c7; color: #92400e; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; }
-.ft-dev::after        { content: "Development in Progress";    background: #e0e7ff; color: #3730a3; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; }
-.ft-committed::after  { content: "Committed";                  background: #e8f0fe; color: #2a5ab7; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; }
-.ft-notplanned::after { content: "Not Planned";                background: var(--light); color: var(--mid); font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; border: 1px solid var(--border); }
+.ft-available, .ft-beta, .ft-dev, .ft-prioritized, .ft-committed, .ft-notplanned { text-align: center; }
+.ft-available::after   { content: "Available to all CX";        background: #d1fae5; color: #065f46; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; }
+.ft-beta::after        { content: "Available via Beta";         background: #fef3c7; color: #92400e; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; }
+.ft-dev::after         { content: "Development in Progress";    background: #e0e7ff; color: #3730a3; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; }
+.ft-prioritized::after { content: "Prioritized";                background: #f3e8ff; color: #6b21a8; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; border: 1px solid #d8b4fe; }
+.ft-committed::after   { content: "Committed";                  background: #e8f0fe; color: #2a5ab7; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; }
+.ft-notplanned::after  { content: "Not Planned";                background: var(--light); color: var(--mid); font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; border: 1px solid var(--border); }
 
 /* TUTORIAL PAGE */
 .tut-hero {
