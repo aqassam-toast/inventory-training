@@ -922,15 +922,19 @@
   // ── STATUS FILTER PILLS (multi-select) ──
   // Issues: Done and Closed are separate Jira statuses
   // Features: Done+Closed merged into one "Done" pill; "Recently Done" is a distinct pill
-  var ISSUE_STATUS_OPTIONS   = ['Open', 'In Progress', 'Done', 'Closed'];
+  var ISSUE_STATUS_OPTIONS   = ['Open', 'In Progress', 'Recently Done', 'Closed'];
   var FEATURE_STATUS_OPTIONS = ['Open', 'In Progress', 'Prioritized', 'Recently Done', 'Done'];
 
   function matchesStatusFilter(d, s) {
     if (s === 'Recently Done') return isRecentlyDone(d);
     if (s === 'Prioritized') return isPrioritized(d.jiraStatus || '');
-    if (currentView === 'feature' && s === 'Done') {
+    if (s === 'Done') {
       var nf = normalizeStatus(d.jiraStatus || '').toLowerCase();
       return nf === 'done' || nf === 'closed';
+    }
+    if (s === 'Closed') {
+      var nc = normalizeStatus(d.jiraStatus || '').toLowerCase();
+      return nc === 'done' || nc === 'closed';
     }
     return s.toLowerCase() === normalizeStatus(d.jiraStatus || '').toLowerCase();
   }
