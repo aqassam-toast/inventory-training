@@ -797,7 +797,7 @@
   var allIssues    = [];
   var currentView  = 'issue';
   var activeTag    = 'all';
-  var statusFilter = ['Open', 'In Progress'];  // issues default; features = []
+  var statusFilter = ['Open', 'In Progress', 'Recently Done'];  // issues default; features = []
   var searchQ      = '';
   var sortField    = 'status';
   var sortDir      = 'asc';
@@ -1711,7 +1711,7 @@
     tab.addEventListener('click', function() {
       currentView  = tab.dataset.view;
       activeTag    = 'all';
-      statusFilter = currentView === 'issue' ? ['Open', 'In Progress'] : [];
+      statusFilter = currentView === 'issue' ? ['Open', 'In Progress', 'Recently Done'] : [];
       sortField    = 'status';
       sortDir      = 'asc';
       currentPage  = 1;
@@ -1750,7 +1750,7 @@
   var savedView = sessionStorage.getItem('ti_tracker_view');
   if (savedView === 'feature' || savedView === 'issue') {
     currentView  = savedView;
-    statusFilter = currentView === 'issue' ? ['Open', 'In Progress'] : [];
+    statusFilter = currentView === 'issue' ? ['Open', 'In Progress', 'Recently Done'] : [];
     document.querySelectorAll('.tracker-tab').forEach(function(t){
       t.classList.toggle('active', t.dataset.view === currentView);
     });
