@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Migration Timelines — Toast Inventory</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <script src="assets/js/auth.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4G4QQHWDEG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4G4QQHWDEG');
+  </script>
+  <style>
+    .mig-internal-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      margin-bottom: 1rem;
+    }
+    .page-header { text-align: center; }
+    .mig-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+    .mig-cohort {
+      margin-bottom: 3rem;
+    }
+    .mig-cohort-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .mig-cohort-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .mig-cohort-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.55rem;
+      border-radius: 99px;
+    }
+    .badge-retail   { background: #fef3c7; color: #92400e; }
+    .badge-intl     { background: #e0e7ff; color: #3730a3; }
+    .badge-xtrachef { background: #f3e8ff; color: #6b21a8; }
+    .badge-new      { background: #d1fae5; color: #065f46; }
+
+    /* Timeline rows */
+    .mig-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-left: 2px solid var(--border);
+      margin-left: 0.75rem;
+      padding-left: 0;
+    }
+    .mig-row {
+      display: flex;
+      gap: 1.25rem;
+      padding: 0 0 1.5rem 1.5rem;
+      position: relative;
+    }
+    .mig-row:last-child { padding-bottom: 0; }
+    .mig-row::before {
+      content: '';
+      position: absolute;
+      left: -0.45rem;
+      top: 0.35rem;
+      width: 0.65rem;
+      height: 0.65rem;
+      border-radius: 50%;
+      background: var(--orange);
+      border: 2px solid white;
+      box-shadow: 0 0 0 2px var(--orange);
+    }
+    .mig-row.tbd::before { background: #ccc; box-shadow: 0 0 0 2px #ccc; }
+    .mig-date {
+      min-width: 140px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--mid);
+      padding-top: 0.15rem;
+      flex-shrink: 0;
+    }
+    .mig-body {}
+    .mig-body strong { font-size: 0.925rem; color: var(--dark); }
+    .mig-body p {
+      font-size: 0.85rem;
+      color: var(--mid);
+      margin: 0.3rem 0 0;
+      line-height: 1.6;
+    }
+    .mig-note {
+      font-size: 0.78rem;
+      color: #888;
+      font-style: italic;
+      margin-top: 0.3rem;
+    }
+    .mig-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+    .mig-section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--mid);
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">
+    <div class="logo-icon">t</div>
+    <span>Toast Inventory</span>
+  </a>
+  <div class="nav-links">
+    <a href="videos/index.html">Videos</a>
+    <a href="tutorials/index.html">Tutorials</a>
+    <a href="faqs/index.html">FAQs</a>
+    <a href="onboarding/index.html" data-internal="true" style="display:none">Onboarding</a>
+  </div>
+  <div class="nav-actions">
+    <a href="mailto:anum.qassam@toasttab.com" class="btn-outline" data-track="nav_get_help">Get help now</a>
+    <a href="https://docs.google.com/forms/d/1fGYNrUxSuVLAZEoHQGNhTPxGZmjCKjUJVmtkaNbt0Do/viewform" target="_blank" class="btn-primary" data-track="nav_submit_feedback">Submit Feedback</a>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="mig-internal-badge">Internal only</div>
+  <h1><span>Migration Timelines</span></h1>
+  <p>How and when different customer cohorts will move to Toast Inventory.</p>
+</div>
+
+<div class="mig-content">
+
+  <!-- NEW CUSTOMERS -->
+  <div class="mig-cohort">
+    <div class="mig-cohort-header">
+      <div class="mig-cohort-title">New Customers</div>
+      <span class="mig-cohort-badge badge-new">All new retail &amp; international</span>
+    </div>
+    <div class="mig-section-label">Timeline</div>
+    <div class="mig-timeline">
+      <div class="mig-row">
+        <div class="mig-date">September 2026</div>
+        <div class="mig-body">
+          <strong>All new retail and international customers onboarded to Toast Inventory</strong>
+          <p>Starting September, new retail and international customers will be onboarded directly into Toast Inventory rather than legacy inventory products.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="mig-divider" />
+
+  <!-- SIMPLE RETAIL -->
+  <div class="mig-cohort">
+    <div class="mig-cohort-header">
+      <div class="mig-cohort-title">Simple Retail — Single Location</div>
+      <span class="mig-cohort-badge badge-retail">Existing retail customers</span>
+    </div>
+    <div class="mig-section-label">Timeline</div>
+    <div class="mig-timeline">
+      <div class="mig-row">
+        <div class="mig-date">September 2026</div>
+        <div class="mig-body">
+          <strong>Opt-in migration available for eligible customers</strong>
+          <p>Single-location retail customers with simple retail products (no alternate packages or bundles) can opt in to the new advanced inventory module. Customers will receive clear messaging that the move is one-way — they cannot revert to the legacy module — but that they're upgrading to a more capable solution.</p>
+          <p class="mig-note">Prerequisite: customers must opt in. The transition is permanent once initiated.</p>
+        </div>
+      </div>
+      <div class="mig-row">
+        <div class="mig-date">Oct – Nov 2026</div>
+        <div class="mig-body">
+          <strong>Multi-location, MLM, and Shopify customers</strong>
+          <p>Customers with multiple locations, multi-location management (MLM), or Shopify integrations will be eligible to migrate.</p>
+        </div>
+      </div>
+      <div class="mig-row">
+        <div class="mig-date">Dec 2026 – Jan 2027</div>
+        <div class="mig-body">
+          <strong>Alternate packages &amp; bundles</strong>
+          <p>Customers using alternate packages or bundles are last to migrate. This cohort requires the shared inventory and bundles work shipping in September before migration tooling can be finalized.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="mig-divider" />
+
+  <!-- INTERNATIONAL INVENTORY -->
+  <div class="mig-cohort">
+    <div class="mig-cohort-header">
+      <div class="mig-cohort-title">Existing International Inventory Customers</div>
+      <span class="mig-cohort-badge badge-intl">International</span>
+    </div>
+    <div class="mig-section-label">Timeline</div>
+    <div class="mig-timeline">
+      <div class="mig-row tbd">
+        <div class="mig-date">No timeline yet</div>
+        <div class="mig-body">
+          <strong>Self-serve migration only</strong>
+          <p>There is currently no planned migration for existing international inventory customers. Customers who want to move to Toast Inventory will need to migrate their own data. Toast will not assist with data migration directly, but customers can use the available import tooling or leverage Claude to automate the process.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="mig-divider" />
+
+  <!-- XTRACHEF -->
+  <div class="mig-cohort">
+    <div class="mig-cohort-header">
+      <div class="mig-cohort-title">xtraChef Customers</div>
+      <span class="mig-cohort-badge badge-xtrachef">xtraChef</span>
+    </div>
+    <div class="mig-section-label">Timeline</div>
+    <div class="mig-timeline">
+      <div class="mig-row">
+        <div class="mig-date">November 2026</div>
+        <div class="mig-body">
+          <strong>Modifier ingredient support ships</strong>
+          <p>xtraChef customers are not eligible to fully migrate until modifier ingredient support is available. This is the earliest point at which the new product reaches sufficient feature parity.</p>
+        </div>
+      </div>
+      <div class="mig-row">
+        <div class="mig-date">End of 2026</div>
+        <div class="mig-body">
+          <strong>Voluntary migration pilot</strong>
+          <p>A pilot will be offered to xtraChef customers with a migration path that includes: products, purchase-to-product mapping, inventory, account setup, and recipes. Historic invoice data will not be migrated — customers will receive an export of their historic invoices for their own records.</p>
+          <p>Success criteria: sufficient opt-in rate and high satisfaction scores from pilot participants.</p>
+        </div>
+      </div>
+      <div class="mig-row">
+        <div class="mig-date">2027 (if pilot succeeds)</div>
+        <div class="mig-body">
+          <strong>Full migration complete</strong>
+          <p>If the pilot demonstrates strong adoption and satisfaction, all xtraChef customers will be ready to go on Toast Inventory by the start of 2027.</p>
+        </div>
+      </div>
+      <div class="mig-row tbd">
+        <div class="mig-date">Spring 2027 (if pilot fails)</div>
+        <div class="mig-body">
+          <strong>Extended timeline — additional feature parity &amp; tooling</strong>
+          <p>If the pilot does not achieve sufficient opt-in or satisfaction, there will be an extended timeline to close feature parity gaps and improve migration tooling before the spring 2027 marketing GA.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Toast Inventory Training &amp; Support
+  <a href="#" class="footer-internal-link internal-trigger">Internal</a>
+</footer>
+
+<script src="assets/js/analytics.js"></script>
+<script src="assets/js/internal.js?v=2"></script>
+</body>
+</html>
