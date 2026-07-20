@@ -103,16 +103,17 @@
     <h2 class="beta-section-title">Beta customer list</h2>
     <p class="beta-section-sub" id="beta-count-line">Customers currently enrolled in the Toast Inventory beta program.</p>
 
-    <div class="beta-search-wrap">
-      <span class="beta-search-icon">🔍</span>
-      <input id="beta-search" type="text" placeholder="Search by customer name, location, country, or location GUID…" />
-    </div>
-
-    <div class="beta-filter-bar">
-      <label>xtraCHEF:</label>
-      <button class="beta-filter-btn active" data-xc="all">All</button>
-      <button class="beta-filter-btn" data-xc="yes">Has active XC location</button>
-      <button class="beta-filter-btn" data-xc="no">No XC</button>
+    <div class="tracker-controls">
+      <div class="tracker-search-wrap">
+        <span class="tracker-search-icon">🔍</span>
+        <input id="beta-search" type="text" placeholder="Search by customer name, location, country, or location GUID…" />
+      </div>
+      <div class="tracker-tag-filters">
+        <span class="tracker-status-label">xtraCHEF:</span>
+        <button class="tracker-tag-btn active" data-xc="all">All</button>
+        <button class="tracker-tag-btn" data-xc="yes">Has active XC location</button>
+        <button class="tracker-tag-btn" data-xc="no">No XC</button>
+      </div>
     </div>
 
     <table class="beta-table" id="beta-table">
@@ -149,7 +150,7 @@
       const searchInput = document.getElementById('beta-search');
       const noResults = document.getElementById('beta-no-results');
       const countLine = document.getElementById('beta-count-line');
-      const filterBtns = document.querySelectorAll('.beta-filter-btn');
+      const filterBtns = document.querySelectorAll('.tracker-tag-btn[data-xc]');
       const sorted = betaCustomers.slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
       const totalCount = sorted.length;
       let activeXcFilter = 'all';
