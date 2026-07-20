@@ -10,7 +10,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "ERIC PAULSON",
@@ -27,7 +28,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Dilmurod Olimjonov",
@@ -40,7 +42,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Tina Ditta",
@@ -53,7 +56,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "MICHAEL GIORGIO",
@@ -68,7 +72,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Amara Kearney",
@@ -81,7 +86,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "SCOTT GERALD SCHMUTZLER",
@@ -98,7 +104,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Simon Harris",
@@ -115,7 +122,8 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Tyler Smith",
@@ -132,7 +140,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Alex Dulong",
@@ -145,7 +154,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Jason Dorman",
@@ -158,7 +168,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Joanne Elizabeth Slater",
@@ -171,7 +182,8 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Henry Eakin",
@@ -184,7 +196,8 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Wilson Barr",
@@ -198,7 +211,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Mark Cullen",
@@ -223,7 +237,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Fresh Boba Admin",
@@ -236,7 +251,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Taelor Carmine",
@@ -249,7 +265,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Elihut Garcia-Vasquez",
@@ -268,7 +285,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "AL McBee",
@@ -290,7 +308,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Vincent Angheloni",
@@ -303,7 +322,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Patrick Wallace",
@@ -318,7 +338,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Jimmy Brophy",
@@ -337,7 +358,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "David Reid",
@@ -354,7 +376,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Tom Whiteley",
@@ -367,7 +390,8 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Michael Busquet",
@@ -390,7 +414,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Dragos Tapu",
@@ -403,7 +428,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Mark Connors",
@@ -418,7 +444,8 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Shaen Harrison",
@@ -433,7 +460,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Chris Perras",
@@ -461,7 +489,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Anthony Gioutsos",
@@ -476,7 +505,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Lahore Karahi Accounts",
@@ -501,7 +531,8 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Alexandre Lussier",
@@ -518,7 +549,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Christian Pappas",
@@ -536,7 +568,8 @@ const betaCustomers = [
       "CA",
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Sarah Baxter",
@@ -549,7 +582,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Holly Stevens",
@@ -562,7 +596,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Kyle Misotaco",
@@ -584,7 +619,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Wesley Myhaver",
@@ -597,7 +633,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Jason Tschida",
@@ -614,7 +651,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Bharat Dhingra",
@@ -627,7 +665,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Anum Qassam",
@@ -662,7 +701,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Ashleigh McKenzie",
@@ -675,7 +715,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Felipe Lucas",
@@ -753,7 +794,8 @@ const betaCustomers = [
       "IE",
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Scott Coolbaugh",
@@ -768,7 +810,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Josh Granberry",
@@ -783,7 +826,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Daniela Gomez",
@@ -796,7 +840,8 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Howard Nadler",
@@ -811,7 +856,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "David Smith",
@@ -830,7 +876,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "matt wood",
@@ -847,7 +894,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Austin Hook",
@@ -860,7 +908,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Jeff Mauldin",
@@ -877,7 +926,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Aaron Mackee",
@@ -918,7 +968,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "John Beifuss",
@@ -935,7 +986,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Ilai South Indian Restaurant",
@@ -948,7 +1000,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Sam Akhtar",
@@ -961,7 +1014,8 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Josh Russell",
@@ -978,7 +1032,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Alexis Blair",
@@ -1006,7 +1061,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Rachelle Abrazado",
@@ -1023,7 +1079,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Andrew Alvarez",
@@ -1038,7 +1095,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Ante Marcelic",
@@ -1071,7 +1129,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Cesar San Vicente",
@@ -1084,7 +1143,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Avo Jabourian",
@@ -1098,7 +1158,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Tyler Simpson",
@@ -1111,7 +1172,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Ron Dick",
@@ -1126,7 +1188,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Sam Elgebeily",
@@ -1142,7 +1205,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "David Glas",
@@ -1161,7 +1225,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Andy Husbands",
@@ -1186,7 +1251,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Kevin Serrano",
@@ -1199,7 +1265,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Luke Pfeifer",
@@ -1214,7 +1281,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Parties Schu’s",
@@ -1227,7 +1295,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Brandon Holzhueter",
@@ -1250,7 +1319,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Osmin Sariles",
@@ -1265,7 +1335,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "justin black",
@@ -1278,7 +1349,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "Steve Campbell",
@@ -1291,7 +1363,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Marnie Burnett",
@@ -1306,7 +1379,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "William Streeter",
@@ -1319,7 +1393,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Jain Johnson Parassery",
@@ -1332,7 +1407,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Adam Impson",
@@ -1345,7 +1421,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": false
   },
   {
     "name": "Ricci Bobbi",
@@ -1358,7 +1435,8 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Sandbox"
+    "access": "Sandbox",
+    "hasXC": true
   },
   {
     "name": "All users",
@@ -1371,7 +1449,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": true
   },
   {
     "name": "All users",
@@ -1384,7 +1463,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1397,7 +1477,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1410,7 +1491,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1423,7 +1505,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1436,7 +1519,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1449,7 +1533,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": true
   },
   {
     "name": "All users",
@@ -1462,7 +1547,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1475,7 +1561,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": true
   },
   {
     "name": "All users",
@@ -1488,7 +1575,8 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1501,7 +1589,8 @@ const betaCustomers = [
     "countries": [
       "IE"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1514,7 +1603,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1527,7 +1617,8 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1540,7 +1631,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1553,7 +1645,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1566,7 +1659,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1579,7 +1673,8 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1592,7 +1687,8 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1605,7 +1701,8 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1618,7 +1715,8 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": false
   },
   {
     "name": "All users",
@@ -1631,6 +1729,7 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production"
+    "access": "Production",
+    "hasXC": true
   }
 ];

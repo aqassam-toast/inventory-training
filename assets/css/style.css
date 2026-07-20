@@ -931,6 +931,13 @@ details a { color: var(--orange); }
 .beta-status-active     { background: #d1fae5; color: #065f46; }
 .beta-status-onboarding { background: #fef3c7; color: #92400e; }
 .beta-status-churned    { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
+.beta-xc-yes { background: #fef3c7; color: #92400e; }
+.beta-xc-no  { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
+.beta-filter-bar { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+.beta-filter-bar label { font-size: 0.8rem; color: var(--mid); white-space: nowrap; }
+.beta-filter-btn { font-size: 0.75rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 20px; border: 1px solid var(--border); background: var(--light); color: var(--mid); cursor: pointer; transition: all 0.15s; }
+.beta-filter-btn:hover { border-color: var(--orange); color: var(--orange); }
+.beta-filter-btn.active { background: var(--orange); color: #fff; border-color: var(--orange); }
 
 /* FOOTER */
 footer {

@@ -108,6 +108,13 @@
       <input id="beta-search" type="text" placeholder="Search by customer name, location, country, or location GUID…" />
     </div>
 
+    <div class="beta-filter-bar">
+      <label>xtraCHEF:</label>
+      <button class="beta-filter-btn active" data-xc="all">All</button>
+      <button class="beta-filter-btn" data-xc="yes">Has active XC location</button>
+      <button class="beta-filter-btn" data-xc="no">No XC</button>
+    </div>
+
     <table class="beta-table" id="beta-table">
       <thead>
         <tr>
@@ -115,6 +122,7 @@
           <th>Locations</th>
           <th>Country</th>
           <th>Access</th>
+          <th>xtraCHEF</th>
         </tr>
       </thead>
       <tbody id="beta-table-body">
@@ -141,8 +149,10 @@
       const searchInput = document.getElementById('beta-search');
       const noResults = document.getElementById('beta-no-results');
       const countLine = document.getElementById('beta-count-line');
+      const filterBtns = document.querySelectorAll('.beta-filter-btn');
       const sorted = betaCustomers.slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
       const totalCount = sorted.length;
+      let activeXcFilter = 'all';
 
       function buildSearchable(c) {
         const countryFull = c.countries.map(function (code) { return (countryNames[code] || code).toLowerCase(); }).join(' ');
@@ -160,24 +170,42 @@
         const countries = c.countries.map(function (code) { return countryNames[code] || code; }).join(', ');
         const locationStr = c.locations.length ? c.locations.join(', ') : '—';
         const accessClass = c.access === 'Production' ? 'beta-access-prod' : 'beta-access-sandbox';
-        tr.innerHTML = '<td><strong>' + c.name + '</strong></td><td class="beta-locations">' + locationStr + '</td><td>' + countries + '</td><td><span class="beta-access-badge ' + accessClass + '">' + (c.access || '—') + '</span></td>';
+        const xcClass = c.hasXC ? 'beta-xc-yes' : 'beta-xc-no';
+        const xcLabel = c.hasXC ? 'Yes' : 'No';
+        tr.innerHTML = '<td><strong>' + c.name + '</strong></td><td class="beta-locations">' + locationStr + '</td><td>' + countries + '</td><td><span class="beta-access-badge ' + accessClass + '">' + (c.access || '—') + '</span></td><td><span class="beta-access-badge ' + xcClass + '">' + xcLabel + '</span></td>';
         tr._searchable = buildSearchable(c);
+        tr._hasXC = c.hasXC;
         tbody.appendChild(tr);
         return tr;
       });
 
       countLine.textContent = totalCount + ' customers currently enrolled in the Toast Inventory beta program.';
 
-      searchInput.addEventListener('input', function () {
+      function applyFilters() {
         const q = searchInput.value.trim().toLowerCase();
         let visible = 0;
         rows.forEach(function (tr) {
-          const match = !q || tr._searchable.includes(q);
-          tr.style.display = match ? '' : 'none';
-          if (match) visible++;
+          const matchSearch = !q || tr._searchable.includes(q);
+          const matchXC = activeXcFilter === 'all' ||
+            (activeXcFilter === 'yes' && tr._hasXC) ||
+            (activeXcFilter === 'no' && !tr._hasXC);
+          const show = matchSearch && matchXC;
+          tr.style.display = show ? '' : 'none';
+          if (show) visible++;
         });
         noResults.style.display = visible === 0 ? '' : 'none';
-        countLine.textContent = (q ? visible + ' of ' + totalCount : totalCount) + ' customers currently enrolled in the Toast Inventory beta program.';
+        countLine.textContent = (visible < totalCount ? visible + ' of ' + totalCount : totalCount) + ' customers currently enrolled in the Toast Inventory beta program.';
+      }
+
+      searchInput.addEventListener('input', applyFilters);
+
+      filterBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          filterBtns.forEach(function (b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+          activeXcFilter = btn.getAttribute('data-xc');
+          applyFilters();
+        });
       });
     })();
   </script>
