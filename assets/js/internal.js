@@ -6,7 +6,7 @@
   var ADMIN_KEY  = "ti_admin_auth";
 
   function isInternal() {
-    return sessionStorage.getItem(KEY) === HASH;
+    return localStorage.getItem(KEY) === HASH;
   }
 
   function applyInternalState() {
@@ -36,13 +36,13 @@
     var buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
     var hash = Array.from(new Uint8Array(buf)).map(function(b) { return b.toString(16).padStart(2,"0"); }).join("");
     if (hash === ADMIN_HASH) {
-      sessionStorage.setItem(KEY, HASH);
-      sessionStorage.setItem(ADMIN_KEY, ADMIN_HASH);
+      localStorage.setItem(KEY, HASH);
+      localStorage.setItem(ADMIN_KEY, ADMIN_HASH);
       hideModal();
       applyInternalState();
     } else if (hash === HASH) {
-      sessionStorage.setItem(KEY, HASH);
-      sessionStorage.removeItem(ADMIN_KEY);
+      localStorage.setItem(KEY, HASH);
+      localStorage.removeItem(ADMIN_KEY);
       hideModal();
       applyInternalState();
     } else {
@@ -51,8 +51,8 @@
   }
 
   function exitInternal() {
-    sessionStorage.removeItem(KEY);
-    sessionStorage.removeItem(ADMIN_KEY);
+    localStorage.removeItem(KEY);
+    localStorage.removeItem(ADMIN_KEY);
     applyInternalState();
   }
 
