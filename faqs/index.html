@@ -30,11 +30,11 @@
     .faq-super-blurb { font-size: 0.875rem; color: var(--mid); margin: 0; line-height: 1.6; }
     /* ── FAQ LAYOUT + SIDENAV ── */
     .faq-layout { display: flex; align-items: flex-start; gap: 2rem; max-width: 1320px; margin: 0 auto; padding: 2.5rem 2rem; }
-    .faq-sidenav { width: 260px; flex-shrink: 0; position: sticky; top: 5rem; }
+    .faq-sidenav { width: 260px; flex-shrink: 0; position: sticky; top: 4.5rem; align-self: flex-start; padding-top: 0.5rem; }
     .faq-sidenav-inner { display: flex; flex-direction: column; }
-    .faq-nav-super { font-size: 0.75rem; font-weight: 700; color: var(--dark); padding: 1.1rem 0.75rem 0.4rem; }
+    .faq-nav-super { font-size: 0.75rem; font-weight: 700; color: var(--dark); padding: 1.1rem 0.75rem 0.4rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .faq-nav-super:first-child { padding-top: 0; }
-    .faq-nav-section { font-size: 0.68rem; font-weight: 700; color: #bbb; padding: 0.5rem 0.75rem 0.3rem 1.1rem; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; display: block; border-radius: 6px; transition: color 0.1s; cursor: pointer; }
+    .faq-nav-section { font-size: 0.68rem; font-weight: 700; color: #bbb; padding: 0.5rem 0.75rem 0.3rem 1.1rem; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; display: block; border-radius: 6px; transition: color 0.1s; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .faq-nav-section:hover { color: var(--dark); }
     .faq-nav-section.active { color: var(--orange); }
     .faq-nav-link { font-size: 0.82rem; color: #555; text-decoration: none; padding: 0.35rem 0.75rem 0.35rem 1.1rem; border-radius: 6px; display: block; line-height: 1.45; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: background 0.1s, color 0.1s; }
