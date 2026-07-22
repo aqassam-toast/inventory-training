@@ -24,6 +24,10 @@
     .faq-copied { position: fixed; bottom: 1.5rem; right: 1.5rem; background: #1a1a1a; color: white; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.8rem; opacity: 0; transition: opacity 0.2s; pointer-events: none; z-index: 999; }
     .faq-copied.show { opacity: 1; }
     details:target { scroll-margin-top: 5rem; }
+    .faq-super-section { margin-bottom: 3rem; }
+    .faq-super-header { border-left: 4px solid var(--orange); padding: 0.75rem 0 0.75rem 1.1rem; margin-bottom: 1.75rem; }
+    .faq-super-title { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin: 0 0 0.35rem; }
+    .faq-super-blurb { font-size: 0.875rem; color: var(--mid); margin: 0; line-height: 1.6; }
   </style>
 </head>
 <body>
@@ -50,6 +54,13 @@
 </div>
 
 <div class="content">
+
+  <!-- ── TEST KITCHEN ── -->
+  <div class="faq-super-section">
+    <div class="faq-super-header">
+      <div class="faq-super-title">Test Kitchen</div>
+      <p class="faq-super-blurb">For restaurant-focused customers exploring Toast Inventory through the Test Kitchen beta program. These customers are not yet paying for Toast Retail — they're trying out new inventory capabilities in a sandbox or early-access environment.</p>
+    </div>
 
   <div class="faq-section">
     <h2>Getting Started</h2>
@@ -178,6 +189,37 @@
       <p>We haven't fully considered catering-specific operations yet, but a lot of great suggestions came up in the webinar. If a significant portion of your orders are catering-based, please reach out — we'd love to learn more about your use case.</p>
     </details>
   </div>
+
+  </div><!-- end .faq-super-section: Test Kitchen -->
+
+  <!-- ── EXISTING TOAST RETAIL CUSTOMERS ── -->
+  <div class="faq-super-section">
+    <div class="faq-super-header">
+      <div class="faq-super-title">Existing Toast Retail Customers</div>
+      <p class="faq-super-blurb">For customers who are actively paying for Toast Retail today. Advanced Inventory (the beta for what will become Toast Inventory) is being rolled out to this group incrementally — these FAQs cover what to expect and how to decide if now is the right time to upgrade.</p>
+    </div>
+
+  <div class="faq-section">
+    <h2>Rollout &amp; Access</h2>
+
+    <details id="retail-should-i-upgrade">
+      <summary>How do I decide whether to upgrade to Advanced Inventory?<button class="faq-link-btn" onclick="copyFaqLink(event,'retail-should-i-upgrade')" title="Copy link">🔗</button></summary>
+      <p>Advanced Inventory is the beta for what will become Toast Inventory. It's actively being developed, and there are a few feature gaps worth knowing about before you upgrade.</p>
+      <p style="margin-top:0.75rem"><strong>You won't see the upgrade option at all if you:</strong></p>
+      <ul>
+        <li>Use <strong>alternate packages or bundles</strong> — these are not yet supported in Advanced Inventory</li>
+        <li>Use <strong>Shopify</strong> — sync of item counts between Advanced Inventory and Shopify is not yet complete</li>
+      </ul>
+      <p style="margin-top:0.75rem"><strong>You can upgrade, but should be aware that:</strong></p>
+      <ul>
+        <li><strong>Auto 86ing is not yet supported.</strong> If keeping your online menu in sync with stock levels is critical to your operations, we recommend waiting until this is available. In the meantime, you'll need to manually sync stock and sales availability quantities — this can be done in bulk, but does require some manual effort.</li>
+      </ul>
+      <p style="margin-top:0.75rem">If none of the above apply to your operation, you're a great candidate for the beta. <a href="#" title="Tutorial coming soon — check back shortly">Watch the upgrade tutorial →</a></p>
+    </details>
+
+  </div>
+
+  </div><!-- end .faq-super-section: Existing Toast Retail Customers -->
 
 </div>
 
