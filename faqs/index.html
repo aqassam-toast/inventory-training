@@ -34,7 +34,9 @@
     .faq-sidenav-inner { display: flex; flex-direction: column; }
     .faq-nav-super { font-size: 0.75rem; font-weight: 700; color: var(--dark); padding: 1.1rem 0.75rem 0.4rem; }
     .faq-nav-super:first-child { padding-top: 0; }
-    .faq-nav-section { font-size: 0.68rem; font-weight: 700; color: #bbb; padding: 0.6rem 0.75rem 0.2rem 1.1rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .faq-nav-section { font-size: 0.68rem; font-weight: 700; color: #bbb; padding: 0.5rem 0.75rem 0.3rem 1.1rem; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; display: block; border-radius: 6px; transition: color 0.1s; cursor: pointer; }
+    .faq-nav-section:hover { color: var(--dark); }
+    .faq-nav-section.active { color: var(--orange); }
     .faq-nav-link { font-size: 0.82rem; color: #555; text-decoration: none; padding: 0.35rem 0.75rem 0.35rem 1.1rem; border-radius: 6px; display: block; line-height: 1.45; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: background 0.1s, color 0.1s; }
     .faq-nav-link:hover { background: var(--light); color: var(--dark); }
     .faq-nav-link.active { color: var(--orange); font-weight: 600; }
@@ -270,45 +272,36 @@
         superEl.querySelectorAll('.faq-section').forEach(function (section) {
           var h2 = section.querySelector('h2');
           if (h2) {
-            var sectionLabel = document.createElement('div');
+            var sectionLabel = document.createElement('a');
             sectionLabel.className = 'faq-nav-section';
             sectionLabel.textContent = h2.textContent;
+            sectionLabel.href = '#';
+            sectionLabel.addEventListener('click', function (sec) {
+              return function (e) {
+                e.preventDefault();
+                sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              };
+            }(section));
             inner.appendChild(sectionLabel);
           }
 
-          section.querySelectorAll('details[id]').forEach(function (det) {
-            var summaryText = det.querySelector('summary').childNodes[0].textContent.trim();
-            var a = document.createElement('a');
-            a.className = 'faq-nav-link';
-            a.href = '#' + det.id;
-            a.textContent = summaryText;
-            a.addEventListener('click', function (e) {
-              e.preventDefault();
-              det.open = true;
-              det.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              history.replaceState(null, '', '#' + det.id);
-            });
-            inner.appendChild(a);
-          });
         });
       });
 
       // ── ACTIVE HIGHLIGHT ON SCROLL ──
-      var links = inner.querySelectorAll('.faq-nav-link');
-      var targets = Array.from(links).map(function (a) {
-        return document.getElementById(a.getAttribute('href').slice(1));
-      }).filter(Boolean);
+      var links = inner.querySelectorAll('.faq-nav-section');
+      var targets = Array.from(document.querySelectorAll('.faq-section'));
 
       function onScroll() {
         var scrollY = window.scrollY + 120;
-        var active = null;
+        var activeIdx = -1;
         for (var i = 0; i < targets.length; i++) {
           if (targets[i].getBoundingClientRect().top + window.scrollY <= scrollY) {
-            active = targets[i].id;
+            activeIdx = i;
           }
         }
-        links.forEach(function (a) {
-          a.classList.toggle('active', a.getAttribute('href') === '#' + active);
+        links.forEach(function (el, i) {
+          el.classList.toggle('active', i === activeIdx);
         });
       }
 
