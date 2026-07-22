@@ -28,6 +28,18 @@
     .faq-super-header { border-left: 4px solid var(--orange); padding: 0.75rem 0 0.75rem 1.1rem; margin-bottom: 1.75rem; }
     .faq-super-title { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin: 0 0 0.35rem; }
     .faq-super-blurb { font-size: 0.875rem; color: var(--mid); margin: 0; line-height: 1.6; }
+    /* ── FAQ LAYOUT + SIDENAV ── */
+    .faq-layout { display: flex; align-items: flex-start; gap: 2.5rem; max-width: 1220px; margin: 0 auto; padding: 2.5rem 2rem; }
+    .faq-sidenav { width: 200px; flex-shrink: 0; position: sticky; top: 5rem; max-height: calc(100vh - 6rem); overflow-y: auto; }
+    .faq-sidenav-inner { display: flex; flex-direction: column; }
+    .faq-nav-super { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); padding: 1rem 0.5rem 0.25rem; }
+    .faq-nav-super:first-child { padding-top: 0; }
+    .faq-nav-section { font-size: 0.68rem; font-weight: 700; color: var(--mid); padding: 0.5rem 0.5rem 0.15rem 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .faq-nav-link { font-size: 0.78rem; color: var(--mid); text-decoration: none; padding: 0.28rem 0.5rem 0.28rem 1.35rem; border-radius: 5px; display: block; line-height: 1.4; transition: background 0.1s, color 0.1s; }
+    .faq-nav-link:hover { background: var(--light); color: var(--dark); }
+    .faq-nav-link.active { background: #fff3eb; color: var(--orange); font-weight: 600; }
+    .faq-body { flex: 1; min-width: 0; }
+    @media (max-width: 800px) { .faq-sidenav { display: none; } .faq-layout { padding: 2rem 1.25rem; } }
   </style>
 </head>
 <body>
@@ -53,7 +65,14 @@
   <p>Quick answers to the most common questions from customers and sales.</p>
 </div>
 
-<div class="content">
+<div class="faq-layout">
+
+  <!-- sidenav — built by JS -->
+  <nav class="faq-sidenav" id="faq-sidenav" aria-label="FAQ navigation">
+    <div class="faq-sidenav-inner" id="faq-sidenav-inner"></div>
+  </nav>
+
+  <div class="faq-body">
 
   <!-- ── TEST KITCHEN ── -->
   <div class="faq-super-section">
@@ -221,7 +240,8 @@
 
   </div><!-- end .faq-super-section: Existing Toast Retail Customers -->
 
-</div>
+  </div><!-- end .faq-body -->
+</div><!-- end .faq-layout -->
 
 <footer>
   Toast Inventory Training &amp; Support
@@ -232,6 +252,70 @@
   <script src="../assets/js/internal.js?v=2"></script>
   <div class="faq-copied" id="faq-copied">Link copied!</div>
   <script>
+    // ── BUILD SIDENAV ──
+    (function () {
+      var inner = document.getElementById('faq-sidenav-inner');
+      if (!inner) return;
+
+      // Collect super-sections, their sub-sections, and FAQs
+      document.querySelectorAll('.faq-super-section').forEach(function (superEl) {
+        var superTitle = superEl.querySelector('.faq-super-title');
+        if (!superTitle) return;
+
+        var superLabel = document.createElement('div');
+        superLabel.className = 'faq-nav-super';
+        superLabel.textContent = superTitle.textContent;
+        inner.appendChild(superLabel);
+
+        superEl.querySelectorAll('.faq-section').forEach(function (section) {
+          var h2 = section.querySelector('h2');
+          if (h2) {
+            var sectionLabel = document.createElement('div');
+            sectionLabel.className = 'faq-nav-section';
+            sectionLabel.textContent = h2.textContent;
+            inner.appendChild(sectionLabel);
+          }
+
+          section.querySelectorAll('details[id]').forEach(function (det) {
+            var summaryText = det.querySelector('summary').childNodes[0].textContent.trim();
+            var a = document.createElement('a');
+            a.className = 'faq-nav-link';
+            a.href = '#' + det.id;
+            a.textContent = summaryText;
+            a.addEventListener('click', function (e) {
+              e.preventDefault();
+              det.open = true;
+              det.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              history.replaceState(null, '', '#' + det.id);
+            });
+            inner.appendChild(a);
+          });
+        });
+      });
+
+      // ── ACTIVE HIGHLIGHT ON SCROLL ──
+      var links = inner.querySelectorAll('.faq-nav-link');
+      var targets = Array.from(links).map(function (a) {
+        return document.getElementById(a.getAttribute('href').slice(1));
+      }).filter(Boolean);
+
+      function onScroll() {
+        var scrollY = window.scrollY + 120;
+        var active = null;
+        for (var i = 0; i < targets.length; i++) {
+          if (targets[i].getBoundingClientRect().top + window.scrollY <= scrollY) {
+            active = targets[i].id;
+          }
+        }
+        links.forEach(function (a) {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + active);
+        });
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
     function copyFaqLink(e, slug) {
       e.preventDefault();
       e.stopPropagation();
