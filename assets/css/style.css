@@ -240,6 +240,10 @@ nav .nav-actions { display: flex; align-items: center; gap: 0.75rem; margin-left
   padding: 2.5rem 2rem;
   border-bottom: 1px solid #e5e5e5;
 }
+.page-header-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+}
 .page-header h1 { font-size: 1.8rem; }
 .page-header h1 span { color: var(--orange); }
 .page-header p { color: var(--mid); margin-top: 0.4rem; }
