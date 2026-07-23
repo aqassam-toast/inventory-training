@@ -29,23 +29,16 @@
     .faq-super-title { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin: 0 0 0.35rem; }
     .faq-super-blurb { font-size: 0.875rem; color: var(--mid); margin: 0; line-height: 1.6; }
     /* ── FAQ LAYOUT + SIDENAV ── */
-    .faq-layout { display: flex; align-items: flex-start; gap: 2rem; max-width: 1320px; margin: 0 auto; padding: 2.5rem 2rem; }
-    .faq-page-header { border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 2rem; }
-    .faq-page-header h1 { font-size: 1.8rem; }
-    .faq-page-header h1 span { color: var(--orange); }
-    .faq-page-header p { color: var(--mid); margin-top: 0.4rem; }
-    .faq-sidenav { width: 260px; flex-shrink: 0; position: sticky; top: 4rem; align-self: flex-start; max-height: calc(100vh - 4.5rem); overflow-y: auto; }
-    .faq-sidenav-inner { display: flex; flex-direction: column; padding-top: 0.5rem; }
-    .faq-nav-super { font-size: 0.75rem; font-weight: 700; color: var(--dark); padding: 1.1rem 0.75rem 0.4rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .faq-layout { display: flex; gap: 2rem; max-width: 1320px; margin: 0 auto; padding: 2.5rem 2rem; }
+    .faq-sidenav { width: 240px; flex-shrink: 0; }
+    .faq-sidenav-inner { position: sticky; top: 4rem; display: flex; flex-direction: column; }
+    .faq-nav-super { font-size: 0.75rem; font-weight: 700; color: var(--dark); padding: 1rem 0.75rem 0.35rem; }
     .faq-nav-super:first-child { padding-top: 0; }
-    .faq-nav-section { font-size: 0.68rem; font-weight: 700; color: #bbb; padding: 0.5rem 0.75rem 0.3rem 1.1rem; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; display: block; border-radius: 6px; transition: color 0.1s; cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .faq-nav-section { font-size: 0.68rem; font-weight: 700; color: #bbb; padding: 0.4rem 0.75rem 0.3rem 1.1rem; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; display: block; border-radius: 6px; transition: color 0.15s; cursor: pointer; }
     .faq-nav-section:hover { color: var(--dark); }
     .faq-nav-section.active { color: var(--orange); }
-    .faq-nav-link { font-size: 0.82rem; color: #555; text-decoration: none; padding: 0.35rem 0.75rem 0.35rem 1.1rem; border-radius: 6px; display: block; line-height: 1.45; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: background 0.1s, color 0.1s; }
-    .faq-nav-link:hover { background: var(--light); color: var(--dark); }
-    .faq-nav-link.active { color: var(--orange); font-weight: 600; }
     .faq-body { flex: 1; min-width: 0; }
-    @media (max-width: 800px) { .faq-sidenav { display: none; } .faq-layout { padding: 2rem 1.25rem; } }
+    @media (max-width: 860px) { .faq-sidenav { display: none; } .faq-layout { padding: 2rem 1.25rem; } }
   </style>
 </head>
 <body>
@@ -66,19 +59,19 @@
   </div>
 </nav>
 
+<div class="page-header">
+  <h1><span>FAQs</span></h1>
+  <p>Quick answers to the most common questions from customers and sales.</p>
+</div>
+
 <div class="faq-layout">
 
-  <!-- sidenav — built by JS -->
-  <nav class="faq-sidenav" id="faq-sidenav" aria-label="FAQ navigation">
+  <!-- sidenav column — content built by JS -->
+  <aside class="faq-sidenav" id="faq-sidenav" aria-label="FAQ navigation">
     <div class="faq-sidenav-inner" id="faq-sidenav-inner"></div>
-  </nav>
+  </aside>
 
   <div class="faq-body">
-
-  <div class="faq-page-header">
-    <h1><span>FAQs</span></h1>
-    <p>Quick answers to the most common questions from customers and sales.</p>
-  </div>
 
   <!-- ── TEST KITCHEN ── -->
   <div class="faq-super-section">
