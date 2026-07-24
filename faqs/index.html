@@ -202,11 +202,21 @@
   </div>
 
   <div class="faq-section">
-    <h2>Edge Cases &amp; Advanced Use Cases</h2>
+    <h2>Advanced Use Cases</h2>
 
     <details id="catering">
       <summary>Can large catering orders be handled differently?<button class="faq-link-btn" onclick="copyFaqLink(event,'catering')" title="Copy link">🔗</button></summary>
       <p>We haven't fully considered catering-specific operations yet, but a lot of great suggestions came up in the webinar. If a significant portion of your orders are catering-based, please reach out — we'd love to learn more about your use case.</p>
+    </details>
+
+    <details id="modifier-support">
+      <summary>What modifier functionality is coming in November?<button class="faq-link-btn" onclick="copyFaqLink(event,'modifier-support')" title="Copy link">🔗</button></summary>
+      <p>Modifiers are configurations that can be set on sellable items at the time of checkout — for example, adding a topping, swapping a size, or removing an ingredient. Some of these modifications have inventory implications, where ingredients or packaging are added to or removed from the core sellable item's recipe.</p>
+      <p style="margin-top:0.75rem">In November, we're launching modifier support for recipes with three modifier types: Add, Remove, and Size.</p>
+      <ul style="margin-top:0.75rem">
+        <li><strong>Add and Remove modifiers:</strong> Click into a modifier to link it to an ingredient with a consumption quantity (unit conversions supported). When an order is placed with the modifier selected, the ingredient quantity is added to or removed from the core recipe and the plate cost updates accordingly.</li>
+        <li style="margin-top:0.5rem"><strong>Size modifiers:</strong> Each size gets its own recipe that builds on the core recipe. You can add or remove ingredients and packaging per size, and adjust quantities independently for each size — giving you full control over what goes into each variation.</li>
+      </ul>
     </details>
   </div>
 
