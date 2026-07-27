@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Email Invoice Ingestion — Toast Inventory</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <script src="../assets/js/auth.js"></script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4G4QQHWDEG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4G4QQHWDEG');
+  </script>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="../index.html">
+    <div class="logo-icon">t</div>
+    <span>Toast Inventory</span>
+  </a>
+  <div class="nav-links">
+    <a href="../videos/index.html">Videos</a>
+    <a href="../tutorials/index.html" class="active">Tutorials</a>
+    <a href="../faqs/index.html">FAQs</a>
+    <a href="../onboarding/index.html" data-internal="true" style="display:none">Onboarding</a>
+  </div>
+  <div class="nav-actions">
+    <a href="mailto:anum.qassam@toasttab.com" class="btn-outline" data-track="nav_get_help">Get help now</a>
+    <a href="https://docs.google.com/forms/d/1fGYNrUxSuVLAZEoHQGNhTPxGZmjCKjUJVmtkaNbt0Do/viewform" target="_blank" class="btn-primary" data-track="nav_submit_feedback">Submit Feedback</a>
+  </div>
+</nav>
+
+<div class="tut-hero">
+  <div class="tut-hero-inner">
+    <a href="index.html" class="tut-back">← Tutorials</a>
+    <div class="tut-eyebrow">Learning Path 3 · Receive Inventory from POs or Invoices</div>
+    <h1>Receiving Invoices<br><span>via Email</span></h1>
+    <p>Instead of manually uploading invoices, you can receive them directly by email — either by having suppliers send invoices straight to your location's dedicated address, or by forwarding invoices from your inbox.</p>
+  </div>
+</div>
+
+<div class="tut-body">
+
+  <!-- STEP 01 -->
+  <div class="tut-step">
+    <div class="tut-step-header">
+      <div class="tut-step-num">01</div>
+      <div>
+        <h2>Open Email Import</h2>
+        <p>In Toast Inventory, navigate to <strong>Settings → Email Import</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 02 -->
+  <div class="tut-step">
+    <div class="tut-step-header">
+      <div class="tut-step-num">02</div>
+      <div>
+        <h2>Enable Email Import</h2>
+        <p>Toggle <strong>Enable</strong> next to Invoice email address. Toast will generate a dedicated email address for your location — something like <code>yourname@test-retail-invoices.nonprod.toasttab.com</code>.</p>
+        <p>This address is unique to your location. Any invoice PDF sent to it will be automatically picked up for processing.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 03 -->
+  <div class="tut-step">
+    <div class="tut-step-header">
+      <div class="tut-step-num">03</div>
+      <div>
+        <h2>Share Your Email Address</h2>
+        <p>Use the <strong>Copy</strong> button next to the address to copy it. Then share it through whichever method works best:</p>
+        <ul>
+          <li><strong>Supplier sends directly</strong> — give your suppliers the address so they can email invoices straight to Toast.</li>
+          <li><strong>Forward from Outlook or Gmail</strong> — set up a forwarding rule so invoice emails in your inbox are automatically forwarded to your location address.</li>
+          <li><strong>Scanner-to-email</strong> — configure your multi-function printer to scan invoices directly to the address.</li>
+        </ul>
+        <p class="tut-note">Toast does not send the email on your behalf — use your own preferred channel to share the address with suppliers.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 04 -->
+  <div class="tut-step">
+    <div class="tut-step-header">
+      <div class="tut-step-num">04</div>
+      <div>
+        <h2>Confirm Sender Eligibility</h2>
+        <p>Toast automatically accepts emails from most <strong>business domains</strong>. Emails from public domains (Gmail, Yahoo, etc.) are <strong>blocked by default</strong>.</p>
+        <p>When the first email arrives from a new sender, you'll see it in the <strong>Email activity</strong> tab and can choose to allow or block that sender or domain. You can also manage this proactively under <strong>Sender management</strong>.</p>
+        <div class="tut-banner tut-banner-tip">
+          <span class="tut-banner-icon">💡</span>
+          <div>
+            <strong>Forwarding from Gmail or Outlook?</strong><br>
+            If you're forwarding invoices from a personal or public-domain email account, you'll need to manually allow that sender the first time before their emails will be accepted.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 05 -->
+  <div class="tut-step">
+    <div class="tut-step-header">
+      <div class="tut-step-num">05</div>
+      <div>
+        <h2>Track Received Emails</h2>
+        <p>All incoming emails and their processed attachments are visible in the <strong>Email activity</strong> tab. Use the status filters — Received, Processed, Rejected, Blocked — to monitor what's come in and catch anything that needs attention.</p>
+        <p>If processing fails, you'll see it reflected here. Toast does not send failure notifications by email, so check this view periodically.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- KNOWN LIMITATIONS -->
+  <div class="tut-banner tut-banner-tip" style="margin: 0 2rem 2rem;">
+    <span class="tut-banner-icon">⚠️</span>
+    <div>
+      <strong>Current Limitations</strong><br>
+      <ul style="margin: 0.5rem 0 0; padding-left: 1.25rem;">
+        <li>PDF attachments only — image formats (PNG, JPG) are not yet supported.</li>
+        <li>Multiple invoices within a single PDF are not currently supported.</li>
+        <li>Emails sent to an incorrect or misspelled address cannot be recovered.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- DONE -->
+  <div class="tut-done">
+    <span class="tut-done-icon">✓</span>
+    <div>
+      <strong>You're set up for email invoice ingestion!</strong><br>
+      Once suppliers are sending to your address (or your forwarding rule is live), invoices will arrive automatically — no manual uploads needed. Monitor the Email activity tab in Settings to track incoming emails and processed attachments.
+    </div>
+  </div>
+
+  <!-- QUICK START PDF -->
+  <div style="margin: 0 0 1rem;">
+    <a href="../assets/docs/email-invoice-ingestion.pdf" target="_blank" class="tut-cta" style="display:inline-flex; align-items:center; gap:0.5rem;" data-track="tut_email_ingestion_pdf">
+      📄 Download Quick Start PDF
+    </a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="tut-step" style="margin-top: 2.5rem;">
+    <div class="tut-step-header">
+      <div style="flex:1">
+        <h2>Frequently Asked Questions</h2>
+      </div>
+    </div>
+
+    <div class="tut-faq-list">
+
+      <div class="tut-faq">
+        <div class="tut-faq-q">Do I need to register a sender before receiving emails?</div>
+        <div class="tut-faq-a">No. Business domains are accepted automatically. Public domains (Gmail, Yahoo) are blocked by default — you can allow them manually after the first email arrives.</div>
+      </div>
+
+      <div class="tut-faq">
+        <div class="tut-faq-q">Can I scan multiple invoices into a single PDF and email it?</div>
+        <div class="tut-faq-a">Not yet. Multi-invoice PDFs are not currently supported. This capability is planned for a future release.</div>
+      </div>
+
+      <div class="tut-faq">
+        <div class="tut-faq-q">Will I get an email notification if processing fails?</div>
+        <div class="tut-faq-a">No. Most vendor invoices come from no-reply addresses, so failure notifications aren't sent by email. Monitor the Email activity tab directly in Toast.</div>
+      </div>
+
+      <div class="tut-faq">
+        <div class="tut-faq-q">Can I update my location email address if it was created incorrectly?</div>
+        <div class="tut-faq-a">Yes, provided the new address you want is available.</div>
+      </div>
+
+      <div class="tut-faq">
+        <div class="tut-faq-q">What happens if an invoice is emailed to the wrong address?</div>
+        <div class="tut-faq-a">Toast cannot detect or recover emails sent to an incorrect or misspelled address. Double-check the address before sharing it.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="tut-nav-footer">
+    <a href="index.html" class="btn-outline">← Back to Tutorials</a>
+  </div>
+
+</div>
+
+<footer>
+  Toast Inventory Training &amp; Support
+  <a href="#" class="footer-internal-link internal-trigger">Internal</a>
+</footer>
+
+  <script src="../assets/js/analytics.js"></script>
+  <script src="../assets/js/internal.js?v=2"></script>
+</body>
+</html>

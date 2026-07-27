@@ -682,6 +682,8 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 
 .tut-step-header h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.4rem; }
 .tut-step-header p { font-size: 0.875rem; color: var(--mid); line-height: 1.65; }
+.tut-step-header ul { font-size: 0.875rem; color: var(--mid); line-height: 1.65; padding-left: 1.25rem; margin: 0.5rem 0; }
+.tut-step-header ul li { margin-bottom: 0.3rem; }
 
 .tut-cta {
   display: inline-flex;
@@ -750,6 +752,12 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 .tut-done-icon { font-size: 1.25rem; flex-shrink: 0; width: 32px; height: 32px; background: #16a34a; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; margin-top: 0.1rem; }
 
 .tut-nav-footer { display: flex; padding-top: 0.5rem; }
+
+.tut-faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 1rem; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+.tut-faq { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); }
+.tut-faq:last-child { border-bottom: none; }
+.tut-faq-q { font-size: 0.9rem; font-weight: 700; color: var(--dark); margin-bottom: 0.35rem; }
+.tut-faq-a { font-size: 0.875rem; color: var(--mid); line-height: 1.6; }
 
 /* LEARNING PATHS */
 .lp-list { display: flex; flex-direction: column; gap: 2rem; }
