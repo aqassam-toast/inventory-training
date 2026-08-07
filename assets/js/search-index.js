@@ -183,7 +183,7 @@ var SEARCH_INDEX = [
   {
     title: "Sandbox Access Acknowledgement Form",
     type: "Document",
-    url: "https://docs.google.com/forms/d/1cEDLAh22wpyiBbnibtwP2k5qwT0xHowIFcgpDn6yuyI/viewform",
+    url: "https://docs.google.com/forms/d/e/1FAIpQLScSRBvaz3QeEr_3QXmP7MLQtUGtAD4Q5k2gNocoH-d9C0IcvQ/viewform",
     external: true,
     description: "Confidentiality agreement required before getting access to the sandbox.",
     keywords: "sandbox access acknowledgement confidentiality form agreement sign"
