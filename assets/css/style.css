@@ -382,6 +382,9 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 .htl-item h3 { font-size: 0.875rem; font-weight: 700; margin-bottom: 0.25rem; }
 .htl-item p { font-size: 0.8rem; color: var(--mid); line-height: 1.5; }
 .htl-note { margin-top: 0.4rem; font-size: 0.7rem; font-style: italic; color: #888; }
+.htl-note-strong { font-style: normal; font-weight: 600; color: var(--orange); }
+.htl-next .htl-dot { border-color: var(--orange); }
+.tl-badge-next { background: var(--white); color: var(--orange); border: 1px solid var(--orange); padding: 0.05rem 0.4rem; }
 .htl-learn-more { display: inline-block; margin-top: 0.6rem; font-size: 0.78rem; font-weight: 600; color: var(--orange); text-decoration: none; }
 .htl-learn-more:hover { text-decoration: underline; }
 .htl-learn-more-center { display: block; text-align: center; }
