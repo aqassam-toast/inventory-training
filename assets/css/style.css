@@ -933,6 +933,8 @@ details a { color: var(--orange); }
 .beta-access-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 0.15rem 0.55rem; border-radius: 4px; white-space: nowrap; }
 .beta-access-sandbox { background: #dbeafe; color: #1e40af; }
 .beta-access-prod { background: #d1fae5; color: #065f46; }
+.beta-access-retail { background: #dbeafe; color: #1e40af; }
+.beta-access-recipes { background: #d1fae5; color: #065f46; }
 .beta-status {
   display: inline-block;
   font-size: 0.7rem;

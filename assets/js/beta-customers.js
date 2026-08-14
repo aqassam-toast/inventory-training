@@ -10,7 +10,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": true
   },
   {
@@ -24,7 +24,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -38,7 +38,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -52,7 +52,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -66,7 +66,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -80,7 +80,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -94,7 +94,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -108,7 +108,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -122,7 +122,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -136,7 +136,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -150,7 +150,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -164,7 +164,7 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -178,7 +178,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Recipes",
     "hasXC": true
   },
   {
@@ -192,7 +192,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -206,7 +206,7 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -220,7 +220,7 @@ const betaCustomers = [
     "countries": [
       "AU"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -234,7 +234,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -248,7 +248,7 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -262,7 +262,7 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -276,7 +276,7 @@ const betaCustomers = [
     "countries": [
       "IE"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -290,7 +290,7 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -304,7 +304,7 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -318,7 +318,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -332,7 +332,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -346,7 +346,7 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -360,7 +360,7 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": true
   },
   {
@@ -374,7 +374,7 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -388,7 +388,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": true
   },
   {
@@ -402,7 +402,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": true
   },
   {
@@ -416,7 +416,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": true
   },
   {
@@ -430,7 +430,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -444,7 +444,7 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -458,7 +458,7 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production",
+    "access": "Recipes",
     "hasXC": false
   },
   {
@@ -472,7 +472,7 @@ const betaCustomers = [
     "countries": [
       "AU"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -486,7 +486,7 @@ const betaCustomers = [
     "countries": [
       "AU"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -500,7 +500,7 @@ const betaCustomers = [
     "countries": [
       "AU"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -514,7 +514,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": true
   },
   {
@@ -528,7 +528,7 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -542,7 +542,7 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -556,7 +556,7 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -570,7 +570,7 @@ const betaCustomers = [
     "countries": [
       "IE"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -584,7 +584,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -598,7 +598,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": true
   },
   {
@@ -612,7 +612,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -626,7 +626,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -640,7 +640,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -654,7 +654,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -668,7 +668,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -682,7 +682,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -696,7 +696,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -710,7 +710,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -724,7 +724,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -738,7 +738,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -752,7 +752,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -766,7 +766,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -780,7 +780,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -794,7 +794,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -808,7 +808,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -822,7 +822,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -836,7 +836,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -850,7 +850,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -864,7 +864,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -878,7 +878,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -892,7 +892,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -906,7 +906,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -920,7 +920,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -934,7 +934,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -948,7 +948,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -962,7 +962,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -976,7 +976,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -990,7 +990,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1004,7 +1004,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1018,7 +1018,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1032,7 +1032,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1046,7 +1046,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1060,7 +1060,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1074,7 +1074,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1088,7 +1088,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1102,7 +1102,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1116,7 +1116,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1130,7 +1130,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1144,7 +1144,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": true
   },
   {
@@ -1158,7 +1158,7 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1172,7 +1172,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": true
   },
   {
@@ -1186,7 +1186,7 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1200,7 +1200,7 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1214,7 +1214,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1228,7 +1228,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1242,7 +1242,7 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1256,7 +1256,7 @@ const betaCustomers = [
     "countries": [
       "GB"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1270,7 +1270,7 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   },
   {
@@ -1284,7 +1284,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": true
   },
   {
@@ -1298,7 +1298,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": true
   },
   {
@@ -1312,7 +1312,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": true
   },
   {
@@ -1326,7 +1326,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": true
   },
   {
@@ -1340,7 +1340,7 @@ const betaCustomers = [
     "countries": [
       "CA"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": true
   },
   {
@@ -1354,7 +1354,7 @@ const betaCustomers = [
     "countries": [
       "US"
     ],
-    "access": "Production",
+    "access": "Retail only",
     "hasXC": false
   }
 ];

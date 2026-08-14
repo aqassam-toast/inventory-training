@@ -142,7 +142,7 @@
 
   <script src="assets/js/analytics.js"></script>
   <script src="assets/js/internal.js?v=2"></script>
-  <script src="assets/js/beta-customers.js"></script>
+  <script src="assets/js/beta-customers.js?v=2026-08-14"></script>
   <script>
     (function () {
       const countryNames = { US: "United States", CA: "Canada", GB: "United Kingdom", IE: "Ireland", AU: "Australia" };
@@ -162,6 +162,7 @@
           c.locations.join(' ').toLowerCase(),
           c.guids.join(' ').toLowerCase(),
           c.countries.join(' ').toLowerCase(),
+          (c.access || '').toLowerCase(),
           countryFull
         ].join(' ');
       }
@@ -170,7 +171,7 @@
         const tr = document.createElement('tr');
         const countries = c.countries.map(function (code) { return countryNames[code] || code; }).join(', ');
         const locationStr = c.locations.length ? c.locations.join(', ') : '—';
-        const accessClass = c.access === 'Production' ? 'beta-access-prod' : 'beta-access-sandbox';
+        const accessClass = c.access === 'Recipes' ? 'beta-access-recipes' : 'beta-access-retail';
         const xcClass = c.hasXC ? 'beta-xc-yes' : 'beta-xc-no';
         const xcLabel = c.hasXC ? 'Yes' : 'No';
         tr.innerHTML = '<td><strong>' + c.name + '</strong></td><td class="beta-locations">' + locationStr + '</td><td>' + countries + '</td><td><span class="beta-access-badge ' + accessClass + '">' + (c.access || '—') + '</span></td><td><span class="beta-access-badge ' + xcClass + '">' + xcLabel + '</span></td>';
