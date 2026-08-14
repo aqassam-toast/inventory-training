@@ -188,9 +188,11 @@
       sessionStorage.setItem(BETA_KEY, BETA_HASH);
       window.location.replace(REDIRECT_URL);
     } else if (hash === INTERNAL_HASH) {
-      // Internal password grants beta access + activates internal view for the session
+      // Internal password grants beta access + activates internal view.
+      // INTERNAL_KEY goes in localStorage because that's where internal.js and
+      // the tracker read it from; use "Exit internal view" in the banner to clear it.
       sessionStorage.setItem(BETA_KEY, BETA_HASH);
-      sessionStorage.setItem(INTERNAL_KEY, INTERNAL_HASH);
+      localStorage.setItem(INTERNAL_KEY, INTERNAL_HASH);
       window.location.replace(REDIRECT_URL);
     } else {
       document.getElementById("password-input").classList.add("error");
