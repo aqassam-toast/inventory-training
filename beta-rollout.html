@@ -49,7 +49,7 @@
   <!-- TLDR -->
   <div class="beta-tldr">
     <div class="beta-tldr-label">TL;DR</div>
-    <div style="font-size:0.75rem; color:var(--mid); margin-bottom:0.75rem;">Last updated July 14, 2026</div>
+    <div style="font-size:0.75rem; color:var(--mid); margin-bottom:0.75rem;">Last updated August 14, 2026</div>
     <ul>
       <li><strong>Only simple retail products are ready for testing right now.</strong> This covers stock counting, invoice scanning, and core purchasing &amp; receiving. All customers who have signed up are aware of this limitation.</li>
       <li><strong>Recipes &amp; ingredients are coming next.</strong> Once that phase is ready, we'll run another webinar and open a new signup round.</li>
@@ -101,7 +101,7 @@
   <!-- BETA CUSTOMER LIST -->
   <div class="tut-step">
     <h2 class="beta-section-title">Beta customer list</h2>
-    <p class="beta-section-sub" id="beta-count-line">Customers currently enrolled in the Toast Inventory beta program.</p>
+    <p class="beta-section-sub" id="beta-count-line">Restaurant locations with production access to Toast Inventory.</p>
 
     <div class="tracker-controls">
       <div class="tracker-search-wrap">
@@ -145,7 +145,7 @@
   <script src="assets/js/beta-customers.js"></script>
   <script>
     (function () {
-      const countryNames = { US: "United States", CA: "Canada", GB: "United Kingdom", IE: "Ireland" };
+      const countryNames = { US: "United States", CA: "Canada", GB: "United Kingdom", IE: "Ireland", AU: "Australia" };
       const tbody = document.getElementById('beta-table-body');
       const searchInput = document.getElementById('beta-search');
       const noResults = document.getElementById('beta-no-results');
@@ -180,7 +180,7 @@
         return tr;
       });
 
-      countLine.textContent = totalCount + ' customers currently enrolled in the Toast Inventory beta program.';
+      countLine.textContent = totalCount + ' restaurant locations currently have production access to Toast Inventory.';
 
       function applyFilters() {
         const q = searchInput.value.trim().toLowerCase();
@@ -195,7 +195,7 @@
           if (show) visible++;
         });
         noResults.style.display = visible === 0 ? '' : 'none';
-        countLine.textContent = (visible < totalCount ? visible + ' of ' + totalCount : totalCount) + ' customers currently enrolled in the Toast Inventory beta program.';
+        countLine.textContent = (visible < totalCount ? visible + ' of ' + totalCount : totalCount) + ' restaurant locations currently have production access to Toast Inventory.';
       }
 
       searchInput.addEventListener('input', applyFilters);
