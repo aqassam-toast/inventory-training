@@ -53,7 +53,6 @@
       <li><strong>This page now only covers production access.</strong> Interest in production access has grown, so we're no longer summarizing customers who only have sandbox access.</li>
       <li><strong>Most locations have retail products only.</strong> This covers stock counting, invoice scanning, and core purchasing &amp; receiving.</li>
       <li><strong>Recipes &amp; ingredients is being slow-rolled.</strong> Two customers have access right now, and more will have it by the end of the month.</li>
-      <li><strong>Production access requires a request.</strong> New capabilities won't be enabled on production accounts automatically. Customers need to request access when ready.</li>
     </ul>
   </div>
 
@@ -69,12 +68,23 @@
     <h2 class="beta-section-title">Beta customer list</h2>
     <p class="beta-section-sub" id="beta-count-line">Restaurant locations with production access to Toast Inventory.</p>
 
-    <div class="tracker-controls">
+    <div class="tracker-controls" style="margin-bottom:0.75rem">
       <div class="tracker-search-wrap">
         <span class="tracker-search-icon">🔍</span>
-        <input id="beta-search" type="text" placeholder="Search by customer name, location, country, or location GUID…" />
+        <input id="beta-search" type="text" placeholder="Search by customer name, location, country, access, or location GUID…" />
+      </div>
+    </div>
+
+    <div class="tracker-controls" style="gap:1.25rem">
+      <div class="tracker-tag-filters">
+        <span class="tracker-status-label">Country:</span>
+        <span id="beta-country-filters" class="tracker-tag-filters"></span>
       </div>
       <div class="tracker-tag-filters">
+        <span class="tracker-status-label">Access:</span>
+        <span id="beta-access-filters" class="tracker-tag-filters"></span>
+      </div>
+      <div class="tracker-tag-filters" id="beta-xc-filters">
         <span class="tracker-status-label">xtraCHEF:</span>
         <button class="tracker-tag-btn active" data-xc="all">All</button>
         <button class="tracker-tag-btn" data-xc="yes">Has active XC location</button>
@@ -116,10 +126,10 @@
       const searchInput = document.getElementById('beta-search');
       const noResults = document.getElementById('beta-no-results');
       const countLine = document.getElementById('beta-count-line');
-      const filterBtns = document.querySelectorAll('.tracker-tag-btn[data-xc]');
+      const xcBtns = document.querySelectorAll('#beta-xc-filters .tracker-tag-btn[data-xc]');
       const sorted = betaCustomers.slice().sort(function (a, b) { return a.name.localeCompare(b.name); });
       const totalCount = sorted.length;
-      let activeXcFilter = 'all';
+      const active = { country: 'all', access: 'all', xc: 'all' };
 
       function buildSearchable(c) {
         const countryFull = c.countries.map(function (code) { return (countryNames[code] || code).toLowerCase(); }).join(' ');
@@ -142,6 +152,8 @@
         const xcLabel = c.hasXC ? 'Yes' : 'No';
         tr.innerHTML = '<td><strong>' + c.name + '</strong></td><td class="beta-locations">' + locationStr + '</td><td>' + countries + '</td><td><span class="beta-access-badge ' + accessClass + '">' + (c.access || '—') + '</span></td><td><span class="beta-access-badge ' + xcClass + '">' + xcLabel + '</span></td>';
         tr._searchable = buildSearchable(c);
+        tr._countries = c.countries;
+        tr._access = c.access || '';
         tr._hasXC = c.hasXC;
         tbody.appendChild(tr);
         return tr;
@@ -149,15 +161,49 @@
 
       countLine.textContent = totalCount + ' restaurant locations currently have production access to Toast Inventory.';
 
+      // Build the Country and Access filters from the data so they stay in sync with it
+      function buildFilterGroup(containerId, key, values, labelFor) {
+        const container = document.getElementById(containerId);
+        [''].concat(values).forEach(function (v) {
+          const btn = document.createElement('button');
+          btn.className = 'tracker-tag-btn' + (v === '' ? ' active' : '');
+          btn.textContent = v === '' ? 'All' : labelFor(v);
+          btn.addEventListener('click', function () {
+            container.querySelectorAll('.tracker-tag-btn').forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            active[key] = v === '' ? 'all' : v;
+            applyFilters();
+          });
+          container.appendChild(btn);
+        });
+      }
+
+      const countryCodes = [];
+      sorted.forEach(function (c) {
+        c.countries.forEach(function (k) { if (countryCodes.indexOf(k) === -1) countryCodes.push(k); });
+      });
+      countryCodes.sort(function (a, b) { return (countryNames[a] || a).localeCompare(countryNames[b] || b); });
+
+      const accessValues = [];
+      sorted.forEach(function (c) {
+        if (c.access && accessValues.indexOf(c.access) === -1) accessValues.push(c.access);
+      });
+      accessValues.sort();
+
+      buildFilterGroup('beta-country-filters', 'country', countryCodes, function (k) { return countryNames[k] || k; });
+      buildFilterGroup('beta-access-filters', 'access', accessValues, function (v) { return v; });
+
       function applyFilters() {
         const q = searchInput.value.trim().toLowerCase();
         let visible = 0;
         rows.forEach(function (tr) {
           const matchSearch = !q || tr._searchable.includes(q);
-          const matchXC = activeXcFilter === 'all' ||
-            (activeXcFilter === 'yes' && tr._hasXC) ||
-            (activeXcFilter === 'no' && !tr._hasXC);
-          const show = matchSearch && matchXC;
+          const matchCountry = active.country === 'all' || tr._countries.indexOf(active.country) !== -1;
+          const matchAccess = active.access === 'all' || tr._access === active.access;
+          const matchXC = active.xc === 'all' ||
+            (active.xc === 'yes' && tr._hasXC) ||
+            (active.xc === 'no' && !tr._hasXC);
+          const show = matchSearch && matchCountry && matchAccess && matchXC;
           tr.style.display = show ? '' : 'none';
           if (show) visible++;
         });
@@ -167,11 +213,11 @@
 
       searchInput.addEventListener('input', applyFilters);
 
-      filterBtns.forEach(function (btn) {
+      xcBtns.forEach(function (btn) {
         btn.addEventListener('click', function () {
-          filterBtns.forEach(function (b) { b.classList.remove('active'); });
+          xcBtns.forEach(function (b) { b.classList.remove('active'); });
           btn.classList.add('active');
-          activeXcFilter = btn.getAttribute('data-xc');
+          active.xc = btn.getAttribute('data-xc');
           applyFilters();
         });
       });
