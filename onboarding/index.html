@@ -93,6 +93,18 @@
     .ob-link-badge-video { background: #fef3c7; color: #92400e; }
     .ob-link-badge-tutorial { background: #ede9fe; color: #5b21b6; }
     .ob-link-badge-template { background: #dbeafe; color: #1e40af; }
+    .ob-link-badge-skill { background: #ffedd5; color: #9a3412; }
+    .ob-note {
+      font-size: 0.8rem;
+      color: var(--mid);
+      line-height: 1.55;
+      margin: 0.75rem 0 0;
+      padding: 0.75rem 0.9rem;
+      border-left: 3px solid var(--border);
+      background: #fafafa;
+      border-radius: 0 6px 6px 0;
+    }
+    .ob-note strong { color: var(--dark); }
     .cards { margin-top: 0; }
   </style>
 </head>
@@ -155,7 +167,22 @@
       </div>
       <span class="ob-link-badge ob-link-badge-template">Template</span>
     </a>
+    <a class="ob-link-item" href="../assets/docs/toast-inventory-ingredient-import.skill" download data-track="ob_skill_ingredient_import">
+      <div class="ob-link-icon">✨</div>
+      <div class="ob-link-body">
+        <div class="ob-link-title">Ingredient Import — Claude skill</div>
+        <div class="ob-link-desc">Turns a customer's ingredient, price, or inventory files into a filled-out import workbook. Handles messy spreadsheets, CSV exports, and vendor order-guide PDFs.</div>
+      </div>
+      <span class="ob-link-badge ob-link-badge-skill">Skill</span>
+    </a>
   </div>
+  <p class="ob-note">
+    <strong>You don't need the template file to use the skill.</strong> It generates the import
+    workbook itself, so the only thing to hand over is the customer's own price or ingredient
+    files — one file or several. Multiple files are combined into a single import, with duplicate
+    rows dropped and anything uncertain flagged in a review sheet.
+    To install it, download the skill and add it to Claude, then attach the customer's files.
+  </p>
 </div>
 
 <div class="ob-section">
