@@ -47,19 +47,46 @@
 </div>
 
 <!-- Office hours — remove after September 3, 2026 -->
-<div class="oh-banner">
-  <div class="oh-inner">
-    <div class="oh-icon">📅</div>
-    <div class="oh-body">
-      <div class="oh-title">Office hours are coming up</div>
-      <div class="oh-desc">Bring your questions and get hands-on help from the Toast Inventory team. Two identical sessions are running so you can join at whichever time suits your time zone — add one to your calendar.</div>
-    </div>
-    <div class="oh-actions">
-      <a class="oh-btn" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=MGVuNWFqZ2JibWZ1dmRqODJoY2hrOWE1cDIgYW51bS5xYXNzYW1AdG9hc3R0YWIuY29t&amp;tmsrc=anum.qassam%40toasttab.com" target="_blank" rel="noopener" data-track="oh_calendar_sept_1">September&nbsp;1 <span class="oh-btn-sub">Add to calendar</span></a>
-      <a class="oh-btn" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=MnN0ZGxtMTZicTJqNW0zdW10ZjkwdjExZHUgYW51bS5xYXNzYW1AdG9hc3R0YWIuY29t&amp;tmsrc=anum.qassam%40toasttab.com" target="_blank" rel="noopener" data-track="oh_calendar_sept_3">September&nbsp;3 <span class="oh-btn-sub">Add to calendar</span></a>
+<div class="oh-wrap" id="oh-wrap">
+  <div class="oh-banner">
+    <button class="oh-close" id="oh-close" type="button" aria-label="Dismiss office hours announcement" data-track="oh_dismiss">&times;</button>
+    <span class="oh-pill">Upcoming</span>
+    <div class="oh-main">
+      <div class="oh-body">
+        <h2 class="oh-title">Office hours are coming up</h2>
+        <p class="oh-desc">Bring your questions and get hands-on help from the Toast Inventory team. Two identical sessions are running so you can join at whichever time suits your time zone.</p>
+      </div>
+      <div class="oh-actions">
+        <a class="oh-btn" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=MGVuNWFqZ2JibWZ1dmRqODJoY2hrOWE1cDIgYW51bS5xYXNzYW1AdG9hc3R0YWIuY29t&amp;tmsrc=anum.qassam%40toasttab.com" target="_blank" rel="noopener" data-track="oh_calendar_sept_1">September&nbsp;1 <span class="oh-btn-arrow" aria-hidden="true">→</span></a>
+        <a class="oh-btn" href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=MnN0ZGxtMTZicTJqNW0zdW10ZjkwdjExZHUgYW51bS5xYXNzYW1AdG9hc3R0YWIuY29t&amp;tmsrc=anum.qassam%40toasttab.com" target="_blank" rel="noopener" data-track="oh_calendar_sept_3">September&nbsp;3 <span class="oh-btn-arrow" aria-hidden="true">→</span></a>
+      </div>
     </div>
   </div>
 </div>
+<script>
+  // Office hours dismissal — remove alongside the banner after September 3, 2026.
+  // Bump OH_KEY if the banner content changes, so it reappears for people who
+  // dismissed the previous one.
+  (function () {
+    var OH_KEY = "ti_oh_dismissed_sept_2026";
+    var wrap = document.getElementById("oh-wrap");
+    if (!wrap) return;
+
+    function store(action) {
+      // localStorage throws in Safari private mode and when storage is blocked,
+      // so never let a failure here break the banner.
+      try { return action(); } catch (e) { return null; }
+    }
+
+    if (store(function () { return localStorage.getItem(OH_KEY); }) === "1") return;
+    wrap.classList.add("oh-visible");
+
+    document.getElementById("oh-close").addEventListener("click", function () {
+      wrap.classList.remove("oh-visible");
+      store(function () { localStorage.setItem(OH_KEY, "1"); });
+    });
+  })();
+</script>
 
 <div class="htl-wrap">
   <div class="htl-inner">
