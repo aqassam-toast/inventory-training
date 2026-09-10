@@ -7,7 +7,7 @@
   <meta http-equiv="Expires" content="0" />
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Toast Inventory — Beta Access</title>
+  <title>Toast Inventory — Internal Access</title>
   <link rel="stylesheet" href="assets/css/style.css" />
   <style>
     body {
@@ -64,26 +64,9 @@
     .gate-card .subtitle {
       color: var(--mid);
       font-size: 0.925rem;
-      margin-bottom: 0.4rem;
+      margin-bottom: 1.5rem;
       line-height: 1.55;
     }
-    .gate-card .subtitle a {
-      color: var(--orange);
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .gate-card .subtitle a:hover { text-decoration: underline; }
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 1.5rem 0;
-    }
-    .gate-card .already {
-      font-size: 0.875rem;
-      color: var(--mid);
-      margin-bottom: 1rem;
-    }
-    .gate-card .already strong { color: var(--dark); }
     .password-wrap {
       position: relative;
       margin-bottom: 0.75rem;
@@ -119,12 +102,20 @@
       cursor: pointer;
     }
     .gate-card .btn-submit:hover { opacity: 0.9; }
+    .gate-card .public-link {
+      display: block;
+      margin-top: 1.25rem;
+      font-size: 0.85rem;
+      color: var(--mid);
+      text-decoration: none;
+    }
+    .gate-card .public-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
 
 <nav>
-  <a class="logo" href="gate.html">
+  <a class="logo" href="index.html">
     <div class="logo-icon">t</div>
     <span>Toast Inventory</span>
   </a>
@@ -132,28 +123,23 @@
 
 <div class="gate-wrap">
   <div class="gate-card">
-    <a class="gate-logo" href="gate.html">
+    <a class="gate-logo" href="index.html">
       <div class="logo-icon">t</div>
       <span>Toast Inventory</span>
     </a>
 
-    <h1>Toast Inventory is in beta</h1>
+    <h1>Internal access</h1>
     <p class="subtitle">
-      Join the test kitchen to get access and be one of the first to try Toast Inventory.<br><br>
-      <a href="https://www.toasttab.com/customers/shop/test-kitchen/shop-item-toast-inventory" target="_blank">
-        Join the Test Kitchen →
-      </a>
+      This page is for the Toast Inventory team. Enter the internal password to continue.
     </p>
 
-    <hr class="divider" />
-
-    <p class="already"><strong>Already part of the Beta?</strong> Get started now.</p>
-
     <div class="password-wrap">
-      <input type="password" id="password-input" placeholder="Enter beta password" />
+      <input type="password" id="password-input" placeholder="Enter internal password" />
     </div>
     <p class="error-msg" id="error-msg">Incorrect password. Please try again.</p>
-    <button class="btn-submit" onclick="checkPassword()">Get Started</button>
+    <button class="btn-submit" onclick="checkPassword()">Unlock</button>
+
+    <a class="public-link" href="index.html">← Back to Training &amp; Support</a>
   </div>
 </div>
 
@@ -162,16 +148,15 @@
 </footer>
 
 <script>
-  const BETA_HASHES   = ["e9fb34ce28a625b0f56cecc4cf6d7fcf74dc21282dc3f94d8c5cf35527d46fea","7c161375afc1ca1c41ee7c49ab6a363d2465fe6b1a119bef2228b9af9287af67"];
-  const BETA_HASH     = BETA_HASHES[0];
   const INTERNAL_HASH = "8dd40795099ef28537203f1668d2812d4357c9176fcd6345389f224e3ae390b1";
-  const BETA_KEY      = "ti_beta_auth";
+  const ADMIN_HASH    = "5ab59b0f23217a8b65039340ed2857430abf52f10ab4c34a94aac0ace660b161";
   const INTERNAL_KEY  = "ti_internal_auth";
+  const ADMIN_KEY     = "ti_admin_auth";
 
   const REDIRECT_URL = new URLSearchParams(window.location.search).get('redirect') || 'index.html';
 
-  // If already authenticated, go straight to the intended page
-  if (sessionStorage.getItem(BETA_KEY) === BETA_HASH) {
+  // If internal view is already unlocked, go straight to the intended page
+  if (localStorage.getItem(INTERNAL_KEY) === INTERNAL_HASH) {
     window.location.replace(REDIRECT_URL);
   }
 
@@ -184,15 +169,15 @@
     const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(val));
     const hash = Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
 
-    if (BETA_HASHES.includes(hash)) {
-      sessionStorage.setItem(BETA_KEY, BETA_HASH);
+    // INTERNAL_KEY goes in localStorage because that's where internal.js, internal-guard.js
+    // and the tracker read it from; use "Exit internal view" in the banner to clear it.
+    if (hash === ADMIN_HASH) {
+      localStorage.setItem(INTERNAL_KEY, INTERNAL_HASH);
+      localStorage.setItem(ADMIN_KEY, ADMIN_HASH);
       window.location.replace(REDIRECT_URL);
     } else if (hash === INTERNAL_HASH) {
-      // Internal password grants beta access + activates internal view.
-      // INTERNAL_KEY goes in localStorage because that's where internal.js and
-      // the tracker read it from; use "Exit internal view" in the banner to clear it.
-      sessionStorage.setItem(BETA_KEY, BETA_HASH);
       localStorage.setItem(INTERNAL_KEY, INTERNAL_HASH);
+      localStorage.removeItem(ADMIN_KEY);
       window.location.replace(REDIRECT_URL);
     } else {
       document.getElementById("password-input").classList.add("error");
