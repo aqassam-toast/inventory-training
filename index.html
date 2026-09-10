@@ -37,7 +37,7 @@
 <!-- Test Kitchen enrolment notice — remove once we reopen to new customers -->
 <div class="tk-notice" id="tk-notice">
   <div class="tk-notice-inner">
-    <span class="tk-notice-text"><strong>Note:</strong> We can't accept any new customers into the Test Kitchen at this time. Please reach out to <a href="mailto:inventory-test-kitchen@toasttab.com" data-track="tk_notice_email">inventory-test-kitchen@toasttab.com</a> with any concerns or questions.</span>
+    <span class="tk-notice-text"><strong>Note:</strong> We can't accept new customers into the Test Kitchen at this time, because we've started selling Toast Inventory in select regions and districts. For access questions, reach out to your sales rep or <a href="mailto:inventory-test-kitchen@toasttab.com" data-track="tk_notice_email">inventory-test-kitchen@toasttab.com</a>.</span>
     <button class="tk-notice-close" id="tk-notice-close" type="button" aria-label="Dismiss notice" data-track="tk_notice_dismiss">&times;</button>
   </div>
 </div>
@@ -46,7 +46,7 @@
   // reopens. Bump TK_KEY if the wording changes, so the notice reappears for
   // people who dismissed the previous version.
   (function () {
-    var TK_KEY = "ti_tk_closed_notice_dismissed";
+    var TK_KEY = "ti_tk_closed_notice_dismissed_v2";
     var notice = document.getElementById("tk-notice");
     if (!notice) return;
 
