@@ -12,6 +12,7 @@ var SEARCH_INDEX = [
   {
     title: "Tracking Stock on an Item",
     type: "Video",
+    internal: true,
     url: "https://www.loom.com/share/87b5263e4f9f4df2b6d1e7baddd30512",
     external: true,
     description: "How to enable stock tracking, set units of measure, and manage item quantities.",
@@ -20,6 +21,7 @@ var SEARCH_INDEX = [
   {
     title: "Test Kitchen Onboarding — June 2026",
     type: "Video",
+    internal: true,
     url: "https://toasttab.zoom.us/clips/share/-JHr2coFRbCQwnW6XEb7kQ",
     external: true,
     description: "Live walkthrough of item setup, invoice upload, cycle counts, and reports.",

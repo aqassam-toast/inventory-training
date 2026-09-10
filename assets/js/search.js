@@ -3,6 +3,14 @@
   var input = document.getElementById("search-input");
   if (!input) return;
 
+  // Entries flagged `internal: true` are hidden from search unless internal view
+  // is unlocked, matching the data-internal="true" content gating in internal.js.
+  var INTERNAL_HASH = "8dd40795099ef28537203f1668d2812d4357c9176fcd6345389f224e3ae390b1";
+  function isInternal() {
+    // localStorage throws in Safari private mode and when storage is blocked.
+    try { return localStorage.getItem("ti_internal_auth") === INTERNAL_HASH; } catch (e) { return false; }
+  }
+
   var wrap = input.closest(".search-wrap");
   var results = document.createElement("div");
   results.className = "search-results";
@@ -11,7 +19,11 @@
   function search(query) {
     if (!query || query.length < 2) { results.innerHTML = ""; results.style.display = "none"; return; }
     var q = query.toLowerCase().split(/\s+/);
-    var scored = SEARCH_INDEX.map(function(item) {
+    // Checked per query, so unlocking internal view takes effect without a reload
+    var internal = isInternal();
+    var scored = SEARCH_INDEX.filter(function(item) {
+      return internal || !item.internal;
+    }).map(function(item) {
       var haystack = (item.title + " " + item.description + " " + item.keywords).toLowerCase();
       var score = 0;
       q.forEach(function(word) {
