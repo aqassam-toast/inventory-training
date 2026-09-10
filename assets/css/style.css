@@ -913,6 +913,24 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
 .lp-note-notice strong { color: #3b0f78; }
 .lp-note-notice a { color: #4c1d95; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 
+/* Same purple notice, sized to sit inside a FAQ answer */
+.faq-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin: 0 1.25rem 1rem;
+  padding: 0.75rem 0.9rem;
+  background: #f5f3ff;
+  border: 1px solid #ddd6fe;
+  border-radius: 8px;
+  font-size: 0.825rem;
+  color: #4c1d95;
+  line-height: 1.55;
+}
+.faq-notice-icon { flex-shrink: 0; font-style: normal; font-weight: 700; margin-top: 0.05rem; }
+.faq-notice strong { color: #3b0f78; }
+.faq-notice a { color: #4c1d95; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+
 .lp-step-cta {
   flex-shrink: 0;
   font-size: 0.85rem;

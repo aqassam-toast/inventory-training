@@ -46,12 +46,12 @@ var SEARCH_INDEX = [
   },
   // FAQs
   {
-    title: "How do I get early access to Toast Inventory?",
+    title: "How do I get access to Toast Inventory?",
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Sign up for Test Kitchen, watch the onboarding video, complete the acknowledgement form, then await confirmation.",
-    keywords: "early access get started sign up test kitchen onboarding video acknowledgement form sandbox production account how"
+    description: "Test Kitchen sign-ups have closed — the product is now available for purchase in some districts, expanding through the end of the year.",
+    keywords: "access get started buy purchase district availability test kitchen closed sandbox production account how"
   },
   {
     title: "Will inventory update automatically from invoices?",
