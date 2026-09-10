@@ -29,19 +29,19 @@ var SEARCH_INDEX = [
   },
   // Tutorials
   {
-    title: "Getting Started with the Test Kitchen Sandbox",
+    title: "Getting Started in the Sandbox",
     type: "Tutorial",
     url: "tutorials/sandbox-access.html",
     external: false,
-    description: "Join Test Kitchen, complete the access survey, and navigate to the Item Library.",
+    description: "For existing Test Kitchen members — find the sandbox account and navigate to the Item Library.",
     keywords: "sandbox access test kitchen join survey item library navigate getting started onboarding"
   },
   {
-    title: "Getting Early Access on Your Account",
+    title: "Getting Started on Your Account",
     type: "Tutorial",
     url: "tutorials/production-access.html",
     external: false,
-    description: "Request early access on your production Toast account through the Test Kitchen program.",
+    description: "For existing Test Kitchen members — where to find Toast Inventory once it is enabled on your account.",
     keywords: "production account early access enable feature flag test kitchen email"
   },
   // FAQs

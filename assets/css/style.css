@@ -779,6 +779,10 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
   line-height: 1.6;
 }
 .tut-banner-tip { background: #fffbeb; border: 1px solid #fde68a; color: #78350f; }
+/* Used for the Test Kitchen closure notice; matches the purple homepage strip */
+.tut-banner-notice { background: #f5f3ff; border: 1px solid #ddd6fe; color: #4c1d95; }
+.tut-banner-notice strong { color: #3b0f78; }
+.tut-banner-notice a { color: #4c1d95; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 .tut-banner-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: 0.1rem; }
 
 .tut-done {
@@ -899,6 +903,15 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
   line-height: 1.55;
 }
 .lp-note-icon { flex-shrink: 0; font-style: normal; font-weight: 700; margin-top: 0.05rem; }
+/* Purple variant for the Test Kitchen closure notice, matching .tut-banner-notice */
+.lp-note-notice {
+  background: #f5f3ff;
+  border-top-color: #ddd6fe;
+  border-bottom-color: #ddd6fe;
+  color: #4c1d95;
+}
+.lp-note-notice strong { color: #3b0f78; }
+.lp-note-notice a { color: #4c1d95; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
 
 .lp-step-cta {
   flex-shrink: 0;
