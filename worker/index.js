@@ -1,5 +1,5 @@
 /**
- * Cloudflare Worker — Jira proxy for Toast Inventory Tracker
+ * Cloudflare Worker — Jira proxy for Toast IQ Inventory Tracker
  *
  * Environment variables to set in Cloudflare dashboard (Workers > Settings > Variables):
  *   JIRA_TOKEN   — Jira API token (base64: email:token)

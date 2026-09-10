@@ -41,12 +41,12 @@ var SEARCH_INDEX = [
     type: "Tutorial",
     url: "tutorials/production-access.html",
     external: false,
-    description: "For existing Test Kitchen members — where to find Toast Inventory once it is enabled on your account.",
+    description: "For existing Test Kitchen members — where to find Toast IQ Inventory once it is enabled on your account.",
     keywords: "production account early access enable feature flag test kitchen email"
   },
   // FAQs
   {
-    title: "How do I get access to Toast Inventory?",
+    title: "How do I get access to Toast IQ Inventory?",
     type: "FAQ",
     url: "faqs/index.html",
     external: false,

@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Beta Rollout Plan — Toast Inventory</title>
-  <link rel="stylesheet" href="assets/css/style.css?v=4" />
+  <title>Beta Rollout Plan — Toast IQ Inventory</title>
+  <link rel="stylesheet" href="assets/css/style.css?v=5" />
   <script src="assets/js/internal-guard.js"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4G4QQHWDEG"></script>
@@ -21,7 +21,7 @@
 <nav>
   <a class="logo" href="index.html">
     <div class="logo-icon">t</div>
-    <span>Toast Inventory</span>
+    <span>Toast IQ Inventory</span>
   </a>
   <div class="nav-links">
     <a href="videos/index.html">Videos</a>
@@ -39,7 +39,7 @@
   <div class="tut-hero-inner">
     <a href="index.html" class="tut-back">← Back to home</a>
     <h1>Beta <span>Rollout Plan</span></h1>
-    <p>How we're rolling out Toast Inventory to early customers — what access looks like, how to get started, and who's already in the beta.</p>
+    <p>How we're rolling out Toast IQ Inventory to early customers — what access looks like, how to get started, and who's already in the beta.</p>
   </div>
 </div>
 
@@ -59,14 +59,14 @@
   <!-- ACCESS -->
   <div class="tut-step">
     <h2 class="beta-section-title">How to get access</h2>
-    <p class="beta-section-sub">Request Toast Inventory through the access survey. List every account name you want it enabled on — the team will use those names to enable access on the correct accounts and send you a confirmation email.</p>
+    <p class="beta-section-sub">Request Toast IQ Inventory through the access survey. List every account name you want it enabled on — the team will use those names to enable access on the correct accounts and send you a confirmation email.</p>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLScSRBvaz3QeEr_3QXmP7MLQtUGtAD4Q5k2gNocoH-d9C0IcvQ/viewform" target="_blank" class="tut-cta" data-track="beta_rollout_access_survey">Complete the access survey →</a>
   </div>
 
   <!-- BETA CUSTOMER LIST -->
   <div class="tut-step">
     <h2 class="beta-section-title">Beta customer list</h2>
-    <p class="beta-section-sub" id="beta-count-line">Restaurant locations with production access to Toast Inventory.</p>
+    <p class="beta-section-sub" id="beta-count-line">Restaurant locations with production access to Toast IQ Inventory.</p>
 
     <div class="tracker-controls" style="margin-bottom:0.75rem">
       <div class="tracker-search-wrap">
@@ -112,7 +112,7 @@
 </div>
 
 <footer>
-  Toast Inventory Training &amp; Support
+  Toast IQ Inventory Training &amp; Support
   <a href="#" class="footer-internal-link internal-trigger">Internal</a>
 </footer>
 
@@ -159,7 +159,7 @@
         return tr;
       });
 
-      countLine.textContent = totalCount + ' restaurant locations currently have production access to Toast Inventory.';
+      countLine.textContent = totalCount + ' restaurant locations currently have production access to Toast IQ Inventory.';
 
       // Build the Country and Access filters from the data so they stay in sync with it
       function buildFilterGroup(containerId, key, values, labelFor) {
@@ -208,7 +208,7 @@
           if (show) visible++;
         });
         noResults.style.display = visible === 0 ? '' : 'none';
-        countLine.textContent = (visible < totalCount ? visible + ' of ' + totalCount : totalCount) + ' restaurant locations currently have production access to Toast Inventory.';
+        countLine.textContent = (visible < totalCount ? visible + ' of ' + totalCount : totalCount) + ' restaurant locations currently have production access to Toast IQ Inventory.';
       }
 
       searchInput.addEventListener('input', applyFilters);

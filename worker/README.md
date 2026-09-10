@@ -1,4 +1,4 @@
-# Toast Inventory Tracker — Cloudflare Worker Setup
+# Toast IQ Inventory Tracker — Cloudflare Worker Setup
 
 ## What this does
 The Worker is a thin proxy between the GitHub Pages site and the Jira REST API.

@@ -55,6 +55,7 @@ nav .logo span {
   font-weight: 700;
   font-size: 0.95rem;
   color: var(--dark);
+  white-space: nowrap;
 }
 nav .nav-links { display: flex; align-items: center; gap: 1.5rem; }
 nav .nav-links a {
