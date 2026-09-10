@@ -903,6 +903,8 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
   line-height: 1.55;
 }
 .lp-note-icon { flex-shrink: 0; font-style: normal; font-weight: 700; margin-top: 0.05rem; }
+/* When a note is the last thing in a track, the track's own border draws the bottom edge. */
+.lp-note:last-child { border-bottom: none; }
 /* Purple variant for the Test Kitchen closure notice, matching .tut-banner-notice */
 .lp-note-notice {
   background: #f5f3ff;
