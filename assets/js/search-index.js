@@ -2,6 +2,57 @@
 var SEARCH_INDEX = [
   // Videos
   {
+    title: "Toast IQ Inventory: First Look",
+    type: "Video",
+    url: "https://www.loom.com/share/1489f7a1bf564659960370dc8b60f01f",
+    external: true,
+    description: "Curious about what Toast IQ Inventory is? Get a first look at the product in this quick walkthrough.",
+    keywords: "first look overview introduction what is toast iq inventory product vision demo"
+  },
+  {
+    title: "What to Expect During Onboarding",
+    type: "Video",
+    url: "https://www.loom.com/share/3a59e53bb9e44dd09604829bcd63adc9",
+    external: true,
+    description: "An overview of what the onboarding process will be like and how to prepare.",
+    keywords: "onboarding overview prepare process what to expect getting started setup"
+  },
+  {
+    title: "Completing Your First Stock Count",
+    type: "Video",
+    url: "https://www.loom.com/share/34d690b18a0145b68f29332ee0aabc7c",
+    external: true,
+    description: "A critical part of getting set up properly — complete your first stock count as soon as onboarding is finished.",
+    keywords: "first stock count cycle count count sheet onboarding setup reconcile shelf"
+  },
+  {
+    title: "Recipes & Ingredients — What's Ready for Testing",
+    type: "Video",
+    internal: true,
+    url: "https://toasttab.zoom.us/rec/share/-wYqVadtrbDPCIxoMELXjJsRIVpqlED3lF54gBsnaS4uhuWW8cfqO-RQfV9XC7nV.IVN0BPZJPa6QF3JV?startTime=1786021178000",
+    external: true,
+    description: "A live demo of the recipe and ingredient capability now available for testing.",
+    keywords: "recipes ingredients webinar august 2026 batch prep FIFO depletion allergens barcode label ingredient import xtrachef migration pricing rollout modifiers shared inventory passcode"
+  },
+  {
+    title: "How to get started with advanced inventory in Toast Retail",
+    type: "Video",
+    internal: true,
+    url: "https://www.loom.com/share/90a0ad55eef2462390e673d2c8a82ac2",
+    external: true,
+    description: "A step-by-step walkthrough of how to upgrade to Advanced Inventory as an existing Toast Retail customer.",
+    keywords: "advanced inventory upgrade toast retail existing customer getting started"
+  },
+  {
+    title: "Toast IQ Inventory First Look — May 2026",
+    type: "Video",
+    internal: true,
+    url: "https://www.loom.com/share/74b05496f42a443c9e80b83ab79c5e28",
+    external: true,
+    description: "A live first look at Toast IQ Inventory for Test Kitchen members.",
+    keywords: "first look webinar may 2026 product vision FIFO costing item library shared inventory pooling recipes prep AI invoice upload par levels auto-86 multi-location passcode test kitchen"
+  },
+  {
     title: "Overview of the Item Library",
     type: "Video",
     url: "https://play.vidyard.com/XzJUbiW5sQ1TMhSXVYzdLE",
