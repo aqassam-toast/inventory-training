@@ -78,6 +78,14 @@ var SEARCH_INDEX = [
     description: "Live walkthrough of item setup, invoice upload, cycle counts, and reports.",
     keywords: "test kitchen onboarding webinar item setup invoice upload cycle counts reports recipes ingredients shared inventory sales cogs roll forward snapshot purchasing receiving stock tracking barcode scanning retail products supplier"
   },
+  {
+    title: "Recipes & Ingredients Overview",
+    type: "Video",
+    url: "https://www.loom.com/share/320bbad9ac424f8991fd9bd712f6fc86",
+    external: true,
+    description: "A walkthrough of recipes and ingredients in Toast IQ Inventory — building recipes, tracking ingredient usage, and keeping plate costs accurate.",
+    keywords: "recipes ingredients overview feature plate cost tracking usage build"
+  },
   // Tutorials
   {
     title: "Getting Started in the Sandbox",
