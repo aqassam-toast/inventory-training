@@ -108,6 +108,42 @@
     }
     .ob-note strong { color: var(--dark); }
     .cards { margin-top: 0; }
+    .ob-tutorial-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1.1rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: white;
+    }
+    .ob-tutorial-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-shrink: 0;
+    }
+    .ob-tutorial-btn {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .ob-tutorial-btn-primary {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .ob-tutorial-btn-primary:hover {
+      background: #fff7f2;
+    }
+    .ob-tutorial-btn-disabled {
+      color: var(--mid);
+      cursor: default;
+      opacity: 0.7;
+    }
   </style>
 </head>
 <body>
@@ -140,16 +176,19 @@
      Roger Allen's enablement recap in #toast-iq-inventory-onboarding, 10 September 2026:
      https://toasttab.slack.com/archives/C0AT6GRAT7Z/p1789063298434379 -->
 <div class="ob-section">
-  <div class="ob-section-title">Videos</div>
+  <div class="ob-section-title">Tutorials</div>
   <div class="ob-links">
-    <a class="ob-link-item" href="https://www.loom.com/share/cb16f08f3563432a8cd585f0905e4951" target="_blank" data-track="ob_video_ingredient_import">
-      <div class="ob-link-icon">▶️</div>
+    <div class="ob-tutorial-item">
+      <div class="ob-link-icon">🥕</div>
       <div class="ob-link-body">
-        <div class="ob-link-title">Ingredient Import for Onboarding Consultants</div>
-        <div class="ob-link-desc">Loom walkthrough for onboarding consultants on importing ingredients.</div>
+        <div class="ob-link-title">Import Ingredients, How To</div>
+        <div class="ob-link-desc">Step-by-step walkthrough of importing ingredients during onboarding.</div>
       </div>
-      <span class="ob-link-badge ob-link-badge-video">Video</span>
-    </a>
+      <div class="ob-tutorial-actions">
+        <a class="ob-tutorial-btn ob-tutorial-btn-primary" href="https://www.loom.com/share/cb16f08f3563432a8cd585f0905e4951" target="_blank" data-track="ob_video_ingredient_import">Watch video</a>
+        <span class="ob-tutorial-btn ob-tutorial-btn-disabled">Read guide — coming soon</span>
+      </div>
+    </div>
     <a class="ob-link-item" href="https://toasttab.zoom.us/rec/share/TKUw7RtiRsnjcIMykaG9_-2JMU_HpOrotL8Qppjvz8H87pT3KRFSaIrK8HWgRJ3F.LNbqRKtrRwCybOVJ" target="_blank" data-track="ob_video_1">
       <div class="ob-link-icon">▶️</div>
       <div class="ob-link-body">
@@ -315,12 +354,6 @@
   </p>
 </div>
 
-<div class="ob-section">
-  <div class="ob-section-title">Tutorials</div>
-  <div class="cards">
-    <p style="color: var(--mid); font-size: 0.9rem;">No tutorials added yet.</p>
-  </div>
-</div>
 </div>
 
 <footer>
