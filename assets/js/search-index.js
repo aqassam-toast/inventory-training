@@ -86,6 +86,14 @@ var SEARCH_INDEX = [
     description: "A walkthrough of recipes and ingredients in Toast IQ Inventory — building recipes, tracking ingredient usage, and keeping plate costs accurate.",
     keywords: "recipes ingredients overview feature plate cost tracking usage build"
   },
+  {
+    title: "Cross-Location Transfer, Introduction",
+    type: "Video",
+    url: "https://www.loom.com/share/2a3b727f25a04cbb9f0ec98cb62224f7",
+    external: true,
+    description: "A walkthrough of cross-location transfers — requesting stock from another location, matching items automatically, and approving, receiving, and duplicating transfers to keep every location at par.",
+    keywords: "cross location transfer introduction feature multi-location stock move par max draft submit approve receive duplicate"
+  },
   // Tutorials
   {
     title: "Getting Started in the Sandbox",
