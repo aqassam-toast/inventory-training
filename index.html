@@ -66,6 +66,36 @@
   })();
 </script>
 
+<!-- Office hours banner — auto-hides after Fri Oct 23, 2026; remove once stale -->
+<div class="tk-notice oh-notice" id="oh-notice">
+  <div class="tk-notice-inner">
+    <span class="tk-notice-text"><strong>Office hours next week:</strong> Join us <a href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=NmE4cjNpZWs1bzZ0dDF2MjhmYXQ2MWNsYWkgYW51bS5xYXNzYW1AdG9hc3R0YWIuY29t&amp;tmsrc=anum.qassam%40toasttab.com" target="_blank" rel="noopener" data-track="oh_notice_tuesday">Tuesday, Oct 20 at 1:00pm ET</a> or <a href="https://calendar.google.com/calendar/event?action=TEMPLATE&amp;tmeid=NWRjYTNldHZ0bGxpa3BpOHJva2d2cW1xdDggYW51bS5xYXNzYW1AdG9hc3R0YWIuY29t&amp;tmsrc=anum.qassam%40toasttab.com" target="_blank" rel="noopener" data-track="oh_notice_friday">Friday, Oct 23 at 8:30am ET</a> (two times to suit different time zones). Click a time to sign up.</span>
+    <button class="tk-notice-close" id="oh-notice-close" type="button" aria-label="Dismiss notice" data-track="oh_notice_dismiss">&times;</button>
+  </div>
+</div>
+<script>
+  // Office hours banner: hidden once the last session (Oct 23, 2026) has passed,
+  // and for visitors who dismissed it. Bump OH_KEY if the wording changes.
+  (function () {
+    var OH_KEY = "ti_office_hours_oct2026_dismissed_v1";
+    var notice = document.getElementById("oh-notice");
+    if (!notice) return;
+    if (new Date() > new Date("2026-10-24T00:00:00")) return;
+
+    function store(action) {
+      try { return action(); } catch (e) { return null; }
+    }
+
+    if (store(function () { return localStorage.getItem(OH_KEY); }) === "1") return;
+    notice.classList.add("tk-visible");
+
+    document.getElementById("oh-notice-close").addEventListener("click", function () {
+      notice.classList.remove("tk-visible");
+      store(function () { localStorage.setItem(OH_KEY, "1"); });
+    });
+  })();
+</script>
+
 <div class="hero">
   <h1>Toast IQ Inventory</h1>
   <p class="hero-sub">Training &amp; Support</p>
