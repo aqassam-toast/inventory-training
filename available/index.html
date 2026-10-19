@@ -14,6 +14,7 @@
     gtag('js', new Date());
     gtag('config', 'G-4G4QQHWDEG');
   </script>
+  <style>.ft-committed::after { content: "On roadmap - Committed"; }</style>
 </head>
 <body>
 
@@ -36,12 +37,13 @@
 
 <div class="page-header">
   <h1><span>What's Available</span></h1>
-  <p>Everything you can use in Toast IQ Inventory today, including features available through the beta.</p>
+  <p>Everything you can use in Toast IQ Inventory today, including beta features and a look at what's on the roadmap.</p>
 </div>
 
 <div class="content features-content">
 
   <p class="ft-note" style="color:var(--mid);font-size:0.9rem;margin:0 0 1rem">Features marked <strong>Available via Beta</strong> are enabled for select customers. Reach out to your Toast contact or use <em>Get help now</em> above to ask about access.</p>
+  <p class="ft-note" style="color:var(--mid);font-size:0.9rem;margin:0 0 1rem">Features marked <strong>On roadmap - Committed</strong> are not yet available. We provide a look at upcoming features, but in no way is this a commitment to deliver those capabilities.</p>
 
   <div class="features-filters">
     <div class="ff-group">
@@ -49,6 +51,7 @@
       <button class="ff-btn active" data-filter="status" data-value="all">All</button>
       <button class="ff-btn" data-filter="status" data-value="ft-available">Available to all CX</button>
       <button class="ff-btn" data-filter="status" data-value="ft-beta">Available via Beta</button>
+      <button class="ff-btn" data-filter="status" data-value="ft-committed">On roadmap - Committed</button>
     </div>
     <div class="ff-group">
       <span class="ff-label">Section</span>
@@ -57,6 +60,7 @@
       <button class="ff-btn" data-filter="section" data-value="sec-inventory">Inventory</button>
       <button class="ff-btn" data-filter="section" data-value="sec-reporting">Reporting</button>
       <button class="ff-btn" data-filter="section" data-value="sec-prepfood">Prepared Food &amp; Bev</button>
+      <button class="ff-btn" data-filter="section" data-value="sec-modifiers">Modifiers</button>
       <button class="ff-btn" data-filter="section" data-value="sec-onboarding">Onboarding</button>
     </div>
     <div class="ff-group">
@@ -64,14 +68,17 @@
       <button class="ff-btn active" data-filter="tag" data-value="all">All</button>
       <button class="ff-btn" data-filter="tag" data-value="ft-ai">AI</button>
       <button class="ff-btn" data-filter="tag" data-value="ft-mobile">Mobile</button>
+      <button class="ff-btn" data-filter="tag" data-value="ft-mlm">MLM</button>
     </div>
   </div>
 
   <div class="features-legend">
     <span class="fl-item"><span class="fl-badge fl-available">Available to all CX</span></span>
     <span class="fl-item"><span class="fl-badge fl-beta">Available via Beta</span></span>
+    <span class="fl-item"><span class="fl-badge fl-committed">On roadmap - Committed</span></span>
     <span class="fl-item"><span class="fl-tag ft-ai">AI</span> AI-powered</span>
     <span class="fl-item"><span class="fl-tag ft-mobile">Mobile</span> Mobile feature</span>
+    <span class="fl-item"><span class="fl-tag ft-mlm">MLM</span> Multi-location management</span>
   </div>
 
   <!-- PURCHASING & RECEIVING & ORDERING -->
@@ -183,6 +190,12 @@
           
         </tr>
         <tr>
+          <td><strong>Manual Production of Bundles &amp; Recipes</strong><br><span class="ft-desc">Manually produce bundled and prep+ recipes to update stock levels accordingly.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
           <td><strong>Automatic Recipe &amp; Bundle Depletion</strong><br><span class="ft-desc">Automatically deduct ingredient inventory when recipes or bundled items are sold, without creating separate stock for the finished item.</span></td>
           <td></td>
           <td class="ft-beta"></td>
@@ -253,6 +266,18 @@
           <td class="ft-available"></td>
           
         </tr>
+        <tr>
+          <td><strong>Custom Reporting Categories</strong><br><span class="ft-desc">Create custom categories to organize products and analyze performance the way your business operates.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>Menu Insights Integration (Toast IQ)</strong><br><span class="ft-desc">Integrate inventory and recipe data with Toast IQ to unlock deeper menu performance and profitability insights.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
       </tbody>
     </table>
   </div>
@@ -295,6 +320,12 @@
           
         </tr>
         <tr>
+          <td><strong>Batch-Produce Recipes</strong><br><span class="ft-desc">Batch produce any recipe with batch size, stock tracking, and ingredient breakdown.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
           <td><strong>Allergen Tagging</strong><br><span class="ft-desc">Tag recipes with allergens to ensure accurate dietary information.</span></td>
           <td></td>
           <td class="ft-beta"></td>
@@ -307,15 +338,127 @@
           
         </tr>
         <tr>
+          <td><strong>Advanced Multimedia Recipe Instructions</strong><br><span class="ft-desc">Add photos, videos, and rich media to recipe instructions for improved kitchen execution.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>AI Ingredient Suggestions</strong><br><span class="ft-desc">Receive AI-powered ingredient suggestions when creating recipes.</span></td>
+          <td><span class="fl-tag ft-ai">AI</span></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>AI-Assisted Allergen Tagging</strong><br><span class="ft-desc">Automatically identify and tag allergens in recipes using AI assistance.</span></td>
+          <td><span class="fl-tag ft-ai">AI</span></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>Create Recipe from Uploaded Document</strong><br><span class="ft-desc">Generate recipes by uploading and parsing recipe documents.</span></td>
+          <td><span class="fl-tag ft-ai">AI</span></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
           <td><strong>Prep &amp; Cook Time Tracking</strong><br><span class="ft-desc">Record prep time and cook time for better kitchen planning and efficiency.</span></td>
           <td></td>
           <td class="ft-beta"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>Print Recipe Cards or Books</strong><br><span class="ft-desc">Print formatted recipe cards or compile recipes into printable books.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>Simple Recipe Display in KDS</strong><br><span class="ft-desc">Display a simplified recipe card view directly within the kitchen display system.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>Digital Recipe Book Publishing</strong><br><span class="ft-desc">Publish and share digital recipe books across your organization.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>Multimedia Recipe Display in KDS</strong><br><span class="ft-desc">Display rich media recipe content in the kitchen display system.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>Recipe Reuse Across Menu Items</strong><br><span class="ft-desc">Reuse a single recipe across multiple menu items to maintain consistency and reduce duplication.</span></td>
+          <td><span class="fl-tag ft-mlm">MLM</span></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>Ingredient Yield Support</strong><br><span class="ft-desc">Account for ingredient yield with default yield settings and recipe-level overrides to ensure accurate costing.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>Allergen Visibility Across Surfaces</strong><br><span class="ft-desc">Display allergen information consistently across POS, KDS, menu items, and online ordering.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
           
         </tr>
       </tbody>
     </table>
   </div>
 
+  <!-- MODIFIERS -->
+  <div class="ft-section" data-section="sec-modifiers">
+    <div class="ft-section-header">Modifiers</div>
+    <table class="ft-table">
+      <thead>
+        <tr>
+          <th class="ft-col-feature">Feature</th>
+          <th class="ft-col-tag"></th>
+          <th class="ft-col-status">Toast IQ Inventory</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Single Ingredient / Prep Modifiers</strong><br><span class="ft-desc">Allow guests or staff to add a single ingredient or prep component as a modifier while accurately updating cost and inventory usage.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>Remove Ingredient Modifier</strong><br><span class="ft-desc">Support a "remove" modifier that deducts ingredients from a recipe, with optional percentage-based cost and inventory adjustment.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>Size-Specific Recipe Definitions</strong><br><span class="ft-desc">Define a completely unique recipe for each size variation of a menu item to ensure accurate costing and inventory depletion.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>Recipe-Level Modifier Rules</strong><br><span class="ft-desc">Inherit default modifier rules or override them at the recipe level for greater flexibility and control.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+        <tr>
+          <td><strong>Pizza Modifier Matrix Support</strong><br><span class="ft-desc">Support complex pizza-style modifier matrices (e.g., half toppings, quarter toppings, size-based pricing) with accurate cost and inventory impact.</span></td>
+          <td></td>
+          <td class="ft-committed"></td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 
 
@@ -332,6 +475,11 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td><strong>Category Manager</strong></td>
+          <td></td>
+          <td class="ft-committed"></td>
+        </tr>
         <tr>
           <td><strong>Ingredient Import</strong></td>
           <td></td>
