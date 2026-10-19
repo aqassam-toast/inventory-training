@@ -652,7 +652,25 @@ details p { padding: 0 1.25rem 1rem; color: var(--mid); }
   padding: 0.6rem 0;
   border-bottom: 2px solid var(--border);
   margin-bottom: 0;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
+.ft-section-header::after {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  margin-right: 0.4rem;
+  transition: transform 0.15s;
+}
+.ft-section.collapsed .ft-section-header::after { transform: rotate(-45deg); }
+.ft-section.collapsed .ft-table { display: none; }
+.ft-section-header:hover { color: var(--orange); }
 
 .ft-table {
   width: 100%;

@@ -5,7 +5,7 @@
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Feature List — Toast IQ Inventory Training</title>
-  <link rel="stylesheet" href="../assets/css/style.css?v=5" />
+  <link rel="stylesheet" href="../assets/css/style.css?v=7" />
   <script src="../assets/js/internal-guard.js"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4G4QQHWDEG"></script>
@@ -564,6 +564,19 @@
           if (filter === 'tag') activeTag = value;
           if (filter === 'section') activeSection = value;
           applyFilters();
+        });
+      });
+      document.querySelectorAll('.ft-section-header').forEach(function (h) {
+        h.setAttribute('role', 'button');
+        h.setAttribute('tabindex', '0');
+        h.setAttribute('aria-expanded', 'true');
+        function toggle() {
+          const collapsed = h.parentElement.classList.toggle('collapsed');
+          h.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+        }
+        h.addEventListener('click', toggle);
+        h.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
         });
       });
     })();
