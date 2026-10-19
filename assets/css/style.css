@@ -1067,3 +1067,28 @@ footer {
   font-size: 0.8rem;
   margin-top: 4rem;
 }
+
+/* ── Feature explorer ── */
+.ft-header-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; flex-wrap: wrap; }
+.ft-pdf-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--white); font-weight: 600; white-space: nowrap; }
+.ft-pdf-btn svg { width: 1rem; height: 1rem; }
+.ftx-search input { width: 100%; padding: 0.8rem 1rem 0.8rem 2.6rem; border: 1px solid var(--border); border-radius: 10px; font-size: 0.95rem; font-family: inherit; background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") no-repeat 0.9rem center; }
+.ftx-search input:focus { outline: none; border-color: var(--orange); }
+.ftx-panel { background: var(--light); border-radius: 10px; padding: 1rem 1.25rem; margin: 1rem 0; display: flex; flex-direction: column; gap: 0.9rem; }
+.ftx-row { display: flex; gap: 1rem; align-items: flex-start; }
+.ftx-label { font-size: 0.8rem; font-weight: 700; color: var(--dark); min-width: 90px; padding-top: 0.45rem; }
+.ftx-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.ftx-btn { font: inherit; font-size: 0.82rem; font-weight: 500; padding: 0.4rem 0.9rem; border-radius: 99px; border: 1px solid var(--border); background: var(--white); color: var(--dark); cursor: pointer; }
+.ftx-btn:hover { border-color: var(--orange); }
+.ftx-btn.active { background: #fff1e6; border-color: #ffb27a; color: var(--orange-dark); font-weight: 600; }
+.ftx-active { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem; font-size: 0.9rem; }
+.ftx-active-chips { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.ftx-chip { font: inherit; font-size: 0.8rem; padding: 0.25rem 0.7rem; border-radius: 99px; border: 1px solid #ffb27a; background: #fff1e6; color: var(--orange-dark); cursor: pointer; }
+.ftx-chip span { font-size: 1rem; line-height: 1; margin-left: 0.2rem; }
+.ftx-clear { font: inherit; font-size: 0.85rem; background: none; border: 0; color: #2a5ab7; text-decoration: underline; cursor: pointer; }
+.ftx-callout { display: flex; gap: 0.75rem; align-items: flex-start; background: #eaf1fe; border: 1px solid #c9d8f7; border-radius: 10px; padding: 0.85rem 1.1rem; margin-bottom: 1.75rem; font-size: 0.85rem; }
+.ftx-callout p { margin: 0.15rem 0 0; color: var(--mid); }
+.ftx-callout-icon { flex: none; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: #2a5ab7; color: #fff; font-weight: 700; font-style: italic; font-family: Georgia, serif; display: inline-flex; align-items: center; justify-content: center; }
+.ftx-empty { text-align: center; color: var(--mid); padding: 2rem 0; }
+@media (max-width: 640px) { .ftx-row { flex-direction: column; gap: 0.4rem; } }
+.ft-header-row > div { max-width: 640px; }
