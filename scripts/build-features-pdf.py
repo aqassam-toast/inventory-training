@@ -16,10 +16,10 @@ AS_OF = 'October 2026'
 COMING_SOON = [
     'Recipe Import',
     'Menu Insights Integration (Toast IQ)',
-    'Print Recipe Cards or Books',
-    'Simple Recipe Display in KDS',
+    'Batch & Manual Production of Recipes & Bundles',
     'AI-Assisted Allergen Tagging',
-    'Build-your-own style complex modification handling',
+    'Create Recipe from Uploaded Document',
+    'Single Ingredient / Prep Modifiers',
 ]
 
 src = open(SRC, encoding='utf-8').read()
