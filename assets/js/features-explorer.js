@@ -83,7 +83,7 @@
   note.appendChild(el('span', 'ftx-callout-icon', 'i'));
   var noteText = el('div');
   noteText.appendChild(el('strong', null, 'About roadmap features'));
-  noteText.appendChild(el('p', null, 'Roadmap features are not yet available. We provide a look at upcoming features, but in no way is this a commitment to deliver those capabilities.'));
+  noteText.appendChild(el('p', null, 'Roadmap features are not yet available. We provide a look at upcoming features, and while our goal is to launch these features by GA, we can't guarantee it.'));
   note.appendChild(noteText);
   root.appendChild(note);
 
