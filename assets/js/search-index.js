@@ -240,6 +240,14 @@ var SEARCH_INDEX = [
     description: "Not yet fully considered — great suggestions came up in the webinar.",
     keywords: "catering orders large batch events"
   },
+  // Guides
+  {
+    title: "Upgrading from Toast Retail",
+    type: "Tutorial",
+    url: "tutorials/upgrading-from-toast-retail.html",
+    description: "What changes when you move from Toast Retail: sales availability vs stock, real-time stock tracking, adjustment reasons, and item history.",
+    keywords: "upgrade upgrading toast retail transition migrate changes 86 availability activity log adjustment reasons real-time reports"
+  },
   // Documents
   {
     title: "FAQ — Inventory Test Kitchen (PDF)",
