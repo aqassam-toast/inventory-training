@@ -45,109 +45,182 @@
 
 <div class="tut-body">
 
+  <div class="jump" role="navigation" aria-label="In this guide">
+    <a href="#change-1"><span>01</span><strong>Sales availability</strong><em>Separate from stock, so you can keep selling</em></a>
+    <a href="#change-2"><span>02</span><strong>Real-time tracking</strong><em>Every stock change in the activity log</em></a>
+    <a href="#change-3"><span>03</span><strong>Adjustment reasons</strong><em>Add and remove them in Settings</em></a>
+    <a href="#change-4"><span>04</span><strong>Item history</strong><em>The full trail behind every quantity</em></a>
+  </div>
+  <style>
+    html { scroll-behavior: smooth; }
+    .tut-step, .c1 { scroll-margin-top: 80px; }
+    .jump { display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; }
+    .jump a { background:#fff; border:1px solid var(--border); border-radius:12px; padding:0.9rem 1rem; text-decoration:none; color:var(--dark); display:flex; flex-direction:column; gap:0.15rem; transition:border-color .15s, box-shadow .15s; }
+    .jump a:hover { border-color:var(--orange); box-shadow:0 4px 14px rgba(0,0,0,0.07); }
+    .jump span { font-size:0.7rem; font-weight:800; color:var(--orange); letter-spacing:0.08em; }
+    .jump strong { font-size:0.9rem; }
+    .jump em { font-style:normal; font-size:0.75rem; color:var(--mid); line-height:1.4; }
+    @media (max-width:800px) { .jump { grid-template-columns:1fr 1fr; } }
+  </style>
+
   <!-- CHANGE 01 -->
-  <section class="chg">
-    <div class="chg-top">
-      <span class="chg-num">01</span>
-      <span class="chg-tag">Sales availability</span>
-    </div>
-    <h2>Selling is separate from stock</h2>
-    <p class="chg-lead">In Toast Retail, one quantity did both jobs. In Toast IQ Inventory, <strong>what you can sell</strong> and <strong>what you have on hand</strong> are managed separately.</p>
+  <section class="c1" id="change-1">
+    <div class="c1-kicker">What's changing</div>
+    <h2>Stock and sales availability now work independently.</h2>
+    <p class="c1-lead">Previously, one quantity controlled both what you had and what guests could buy. Now each item has two separate values, so you can keep selling even when stock on hand reaches zero.</p>
 
-    <div class="chg-toggle" role="tablist" aria-label="Compare">
-      <button type="button" class="on" data-view="both">Side by side</button>
-      <button type="button" data-view="before">Before</button>
-      <button type="button" data-view="after">After</button>
-    </div>
-
-    <div class="chg-compare" data-view="both">
-      <div class="chg-col chg-before">
-        <div class="chg-col-label"><i></i>Before · Toast Retail</div>
-        <ul>
-          <li>Stock and sales availability were tied together.</li>
-          <li>If your counts were out of date, items could stop selling.</li>
-          <li>No way to sell an item you haven't received yet.</li>
-        </ul>
+    <div class="c1-ba">
+      <div class="c1-card">
+        <div class="c1-card-head"><span class="c1-badge">BEFORE</span><strong>One shared quantity</strong></div>
+        <div class="c1-diagram">
+          <div class="c1-qty"><small>QUANTITY</small><b>12</b></div>
+          <div class="c1-lines"><i></i><i></i></div>
+          <div class="c1-chips"><div class="c1-pill "><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.5 12h11l2-8H6"/></svg><span>Available to sell</span></div><div class="c1-pill "><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="m3 13 9 5 9-5"/></svg><span>Stock on hand</span></div></div>
+        </div>
+        <div class="c1-note"><span class="c1-at">AT 0</span>The item automatically became unavailable on POS.</div>
       </div>
-      <div class="chg-col chg-after">
-        <div class="chg-col-label"><i></i>After · Toast IQ Inventory</div>
-        <ul>
-          <li>Sales availability is its own setting, independent of stock.</li>
-          <li>Keep selling even when inventory is out of date.</li>
-          <li>Control exactly how many can be sold, whatever the stock number says.</li>
-        </ul>
+      <div class="c1-arrow">→</div>
+      <div class="c1-card c1-card-now">
+        <div class="c1-card-head"><span class="c1-badge c1-badge-now">NOW</span><strong>Two independent values</strong></div>
+        <div class="c1-two">
+          <div class="c1-val"><div class="c1-val-ico"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.5 12h11l2-8H6"/></svg></div><small>SALES AVAILABILITY</small><b class="c1-green">Available</b><em>Controls whether guests can buy</em></div>
+          <div class="c1-sync"><span><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-15-6.7L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/><path d="M21 21v-5h-5"/></svg> SYNC</span></div>
+          <div class="c1-val"><div class="c1-val-ico"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="m3 13 9 5 9-5"/></svg></div><small>STOCK ON HAND</small><b>12 each</b><em>Tracks your physical inventory</em></div>
+        </div>
+        <div class="c1-note c1-note-green"><span class="c1-green-ico"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-15-6.7L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/><path d="M21 21v-5h-5"/></svg></span>At 0 stock, the item can remain available to sell.</div>
       </div>
     </div>
 
-    <div class="chg-subhead">What you gain</div>
-    <div class="chg-benefits">
-      <div class="chg-benefit"><div class="chg-benefit-ico">🟢</div><h3>Keep selling</h3><p>An out-of-date inventory no longer stops sales.</p></div>
-      <div class="chg-benefit"><div class="chg-benefit-ico">📦</div><h3>Preorders</h3><p>Take orders on items whose stock hasn't come in yet.</p></div>
-      <div class="chg-benefit"><div class="chg-benefit-ico">🔢</div><h3>Purchase limits</h3><p>Cap sales at, say, 100, regardless of the stock number.</p></div>
+    <div class="c1-two-cards">
+      <div class="c1-card c1-small">
+        <div class="c1-small-head"><span class="c1-n">01</span><div><h3>Sales and channel waste update both</h3><p>These actions keep sales availability and stock on hand aligned automatically.</p></div></div>
+        <div class="c1-flow"><div class="c1-flow-in"><div class="c1-pill"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/><path d="M2 3h3l2.5 12h11l2-8H6"/></svg><span>Sale on POS</span></div><div class="c1-pill"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span>Waste on POS or merchandising</span></div></div><span class="c1-flow-arrow">→</span><div class="c1-flow-out"><div class="c1-pill c1-ok"><b>✓</b><span>Sales availability</span></div><div class="c1-pill c1-ok"><b>✓</b><span>Stock on hand</span></div></div></div>
+        <span class="c1-tag c1-tag-green"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-15-6.7L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/><path d="M21 21v-5h-5"/></svg> UPDATES AUTOMATICALLY</span>
+      </div>
+      <div class="c1-card c1-small">
+        <div class="c1-small-head"><span class="c1-n">02</span><div><h3>Inventory adjustments update stock only</h3><p>After these changes, sync if sales availability should match stock on hand.</p></div></div>
+        <div class="c1-flow"><div class="c1-flow-in"><div class="c1-pill"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5z"/><path d="m3 13 9 5 9-5"/></svg><span>Receive inventory</span></div><div class="c1-pill"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span>Manual or damage adjustment</span></div></div><span class="c1-flow-arrow">→</span><div class="c1-flow-out"><div class="c1-pill c1-ok"><b>✓</b><span>Stock on hand</span></div><div class="c1-pill c1-stays"><span>Sales availability stays as-is</span></div></div></div>
+        <span class="c1-tag c1-tag-orange"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-15-6.7L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/><path d="M21 21v-5h-5"/></svg> SYNC WHEN NEEDED</span>
+      </div>
     </div>
 
-    <div class="chg-subhead">What to know</div>
-    <div class="tut-banner tut-banner-tip">
+    <div class="c1-bulk">
+      <div class="c1-bulk-copy">
+        <div class="c1-bulk-kicker">BULK ACTION</div>
+        <h3>Ready to auto-86 based on stock?</h3>
+        <p>Select the items you want to update, then choose <strong>Sync availability with stock on-hand</strong> from Item actions.</p>
+        <div class="c1-bulk-note">Sync after receiving or manually adjusting stock, not after every sale.</div>
+        <div class="c1-bulk-note">Automatic 86ing on stock won't be available until later in Q1 2027. Until then, use this sync for items where 86ing on stock is important.</div>
+      </div>
+      <div class="c1-mock">
+        <div class="c1-mock-head"><strong>Item catalog</strong><small>3 selected</small></div>
+        <table>
+          <tr><th>Item</th><th>Available to sell</th><th>Stock on hand</th></tr>
+          <tr><td><span class="c1-cb">✓</span>Modelo Especial</td><td><span class="c1-avail">AVAILABLE</span></td><td class="">25 each</td></tr><tr><td><span class="c1-cb">✓</span>Juice Lemon</td><td><span class="c1-avail">AVAILABLE</span></td><td class="">4 each</td></tr><tr><td><span class="c1-cb">✓</span>Relish Dill</td><td><span class="c1-avail">AVAILABLE</span></td><td class="c1-zero">0 each</td></tr>
+        </table>
+        <div class="c1-mock-foot"><span class="c1-count">3</span><small>selected</small><span class="c1-btn"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-15-6.7L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/><path d="M21 21v-5h-5"/></svg> Sync availability with stock on-hand</span></div>
+      </div>
+    </div>
+
+    <div class="c1-kicker c1-k2">What you gain</div>
+    <div class="c1-benefits">
+      <div class="c1-benefit"><h3>Keep selling</h3><p>An out-of-date inventory no longer stops sales.</p></div>
+      <div class="c1-benefit"><h3>Preorders</h3><p>Take orders on items whose stock hasn't come in yet.</p></div>
+      <div class="c1-benefit"><h3>Purchase limits</h3><p>Cap sales at, say, 100, regardless of the stock number.</p></div>
+    </div>
+
+    <div class="tut-banner tut-banner-tip" style="margin-top:1.25rem;">
       <span class="tut-banner-icon">📱</span>
       <div>
         <strong>This affects your POS devices</strong><br>
         Updating an item's quantity on a POS device changes its <strong>sales availability</strong>, <strong>not</strong> your stock. Stock is only changed by counts, received orders, sales, and waste.
       </div>
     </div>
-    <div class="tut-banner tut-banner-tip">
-      <span class="tut-banner-icon">⚠️</span>
-      <div>
-        <strong>What to do differently</strong><br>
-        Auto-86ing on stock won't be available until later in Q1 2027. Until then, manually sync sales availability to stock on hand for any items where 86ing on stock is important.
-      </div>
-    </div>
   </section>
 
   <style>
-    .chg { background:#fff; border:1px solid var(--border); border-radius:16px; padding:2rem; }
-    .chg-top { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.9rem; }
-    .chg-num { font-size:0.75rem; font-weight:800; color:var(--orange); letter-spacing:0.08em; }
-    .chg-tag { font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--orange); border:1px solid #ffc9a3; background:#fff6ef; border-radius:6px; padding:0.25rem 0.6rem; }
-    .chg h2 { font-size:1.7rem; letter-spacing:-0.02em; line-height:1.15; margin-bottom:0.6rem; }
-    .chg-lead { color:var(--mid); max-width:620px; font-size:0.95rem; margin-bottom:1.5rem; }
-    .chg-toggle { display:inline-flex; background:var(--light); border:1px solid var(--border); border-radius:99px; padding:3px; margin-bottom:1rem; }
-    .chg-toggle button { font:inherit; font-size:0.8rem; font-weight:600; color:var(--mid); background:none; border:0; border-radius:99px; padding:0.4rem 1rem; cursor:pointer; }
-    .chg-toggle button.on { background:#fff; color:var(--dark); box-shadow:0 1px 3px rgba(0,0,0,0.12); }
-    .chg-compare { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-    .chg-compare[data-view="before"] .chg-after, .chg-compare[data-view="after"] .chg-before { display:none; }
-    .chg-compare[data-view="before"], .chg-compare[data-view="after"] { grid-template-columns:1fr; }
-    .chg-col { border-radius:12px; padding:1.25rem 1.4rem; border:1px solid var(--border); background:var(--light); }
-    .chg-after { background:#fff6ef; border-color:#ffc9a3; }
-    .chg-col-label { display:flex; align-items:center; gap:0.5rem; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:0.75rem; }
-    .chg-col-label i { width:8px; height:8px; border-radius:50%; background:#aaa; }
-    .chg-after .chg-col-label { color:var(--orange); }
-    .chg-after .chg-col-label i { background:var(--orange); }
-    .chg-col ul { list-style:none; display:flex; flex-direction:column; gap:0.55rem; }
-    .chg-col li { font-size:0.88rem; line-height:1.5; padding-left:1.1rem; position:relative; }
-    .chg-col li::before { content:"–"; position:absolute; left:0; color:#aaa; }
-    .chg-after li::before { content:"✓"; color:var(--orange); font-weight:800; }
-    .chg-subhead { font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin:1.75rem 0 0.8rem; }
-    .chg-benefits { display:grid; grid-template-columns:repeat(3,1fr); gap:0.9rem; }
-    .chg-benefit { border:1px solid var(--border); border-radius:12px; padding:1.1rem; }
-    .chg-benefit-ico { font-size:1.2rem; margin-bottom:0.4rem; }
-    .chg-benefit h3 { font-size:0.95rem; margin-bottom:0.25rem; }
-    .chg-benefit p { font-size:0.82rem; color:var(--mid); }
-    .chg .tut-banner { margin-top:0.75rem; }
-    @media (max-width:700px) { .chg-compare, .chg-benefits { grid-template-columns:1fr; } .chg { padding:1.25rem; } }
+    .c1 { --cream:#faf7f3; --line:#e7e0d8; --ink:#1c1917; --mut:#78716c; --acc:#e0572b; --grn:#2f7a55;
+      background:var(--cream); border:1px solid var(--line); border-radius:18px; padding:2rem; color:var(--ink); }
+    .c1 h2 { font-size:clamp(1.7rem,4vw,2.4rem); letter-spacing:-0.035em; line-height:1.05; font-weight:800; margin-bottom:0.8rem; max-width:560px; }
+    .c1-kicker { font-size:0.62rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--acc); margin-bottom:0.6rem; }
+    .c1-k2 { margin-top:2rem; }
+    .c1-lead { color:var(--mut); font-size:0.85rem; max-width:520px; margin-bottom:1.5rem; }
+    .c1-card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:1.4rem; }
+    .c1-card-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.2rem; font-size:0.8rem; }
+    .c1-badge { background:#ece8e3; color:var(--mut); font-size:0.58rem; font-weight:700; letter-spacing:0.08em; padding:0.25rem 0.6rem; border-radius:99px; }
+    .c1-badge-now { background:var(--acc); color:#fff; }
+    .c1-ba { display:grid; grid-template-columns:1fr auto 1.15fr; gap:0.75rem; align-items:center; margin-bottom:1rem; }
+    .c1-card-now { border-color:#f3b9a3; box-shadow:0 8px 30px rgba(224,87,43,0.10); }
+    .c1-arrow { color:var(--acc); }
+    .c1-diagram { display:flex; align-items:center; justify-content:center; gap:0; padding:0.6rem 0 1.4rem; }
+    .c1-qty { width:92px; height:92px; border-radius:50%; border:7px solid #e4e0da; display:flex; flex-direction:column; align-items:center; justify-content:center; line-height:1.1; flex-shrink:0; }
+    .c1-qty small { font-size:0.5rem; letter-spacing:0.1em; color:var(--mut); }
+    .c1-qty b { font-size:1.5rem; }
+    .c1-lines { display:flex; flex-direction:column; gap:22px; width:26px; }
+    .c1-lines i { height:1px; background:#a8a29e; display:block; }
+    .c1-chips { display:flex; flex-direction:column; gap:0.5rem; }
+    .c1-pill { display:flex; align-items:center; gap:0.5rem; background:#f5f2ee; border:1px solid var(--line); border-radius:7px; padding:0.4rem 0.7rem; font-size:0.7rem; color:#44403c; }
+    .c1-note { background:#f0eeeb; border-radius:8px; padding:0.6rem 0.8rem; font-size:0.7rem; color:#57534e; display:flex; gap:0.6rem; align-items:center; }
+    .c1-at { white-space:nowrap; flex-shrink:0; background:#e0dcd6; border-radius:4px; font-size:0.55rem; font-weight:700; padding:0.15rem 0.35rem; color:var(--mut); }
+    .c1-note-green { background:#e6f4ec; color:#1f5c3d; }
+    .c1-green-ico { color:var(--grn); display:inline-flex; }
+    .c1-two { display:grid; grid-template-columns:1fr auto 1fr; gap:0.5rem; align-items:stretch; margin-bottom:1rem; }
+    .c1-val { background:#f8f6f3; border:1px solid var(--line); border-radius:12px; padding:0.9rem; display:flex; flex-direction:column; gap:0.15rem; }
+    .c1-val-ico { width:28px; height:28px; border:1px solid var(--line); background:#fff; border-radius:7px; display:flex; align-items:center; justify-content:center; margin-bottom:0.5rem; color:#44403c; }
+    .c1-val small { font-size:0.52rem; letter-spacing:0.08em; color:var(--mut); font-weight:600; }
+    .c1-val b { font-size:1.15rem; }
+    .c1-green { color:var(--grn); }
+    .c1-val em { font-style:normal; font-size:0.58rem; color:#a8a29e; margin-top:0.6rem; }
+    .c1-sync { display:flex; align-items:center; position:relative; }
+    .c1-sync::before { content:""; position:absolute; top:0; bottom:0; left:50%; border-left:1px dashed #f0a98f; }
+    .c1-sync span { position:relative; background:#fdeee8; border:1px solid #f3b9a3; color:var(--acc); border-radius:99px; font-size:0.5rem; font-weight:700; padding:0.25rem 0.5rem; display:flex; gap:0.25rem; align-items:center; letter-spacing:0.06em; }
+    .c1-two-cards { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem; }
+    .c1-small { padding:1.2rem; }
+    .c1-small-head { display:flex; gap:0.8rem; margin-bottom:1rem; }
+    .c1-n { flex-shrink:0; width:34px; height:34px; border-radius:9px; background:#fdeee8; color:var(--acc); font-size:0.7rem; font-weight:700; display:flex; align-items:center; justify-content:center; }
+    .c1-small h3 { font-size:0.95rem; letter-spacing:-0.01em; }
+    .c1-small-head p { font-size:0.68rem; color:var(--mut); }
+    .c1-flow { background:#f5f2ee; border-radius:10px; padding:0.8rem; display:grid; grid-template-columns:1fr auto 1fr; gap:0.5rem; align-items:center; margin-bottom:0.8rem; }
+    .c1-flow-in, .c1-flow-out { display:flex; flex-direction:column; gap:0.45rem; }
+    .c1-flow-in .c1-pill { background:#fff; font-size:0.62rem; }
+    .c1-flow-arrow { color:#a8a29e; font-size:0.8rem; }
+    .c1-ok { background:#fff !important; border-color:#9fd1b5 !important; color:#1f5c3d !important; font-size:0.62rem; }
+    .c1-ok b { color:var(--grn); font-size:0.7rem; }
+    .c1-stays { background:#ebe8e4; color:#a8a29e; font-size:0.6rem; border-style:dashed; }
+    .c1-tag { display:inline-flex; align-items:center; gap:0.3rem; font-size:0.55rem; font-weight:700; letter-spacing:0.06em; padding:0.3rem 0.6rem; border-radius:6px; }
+    .c1-tag-green { background:#e6f4ec; color:#1f5c3d; }
+    .c1-tag-orange { background:#fdeee8; color:var(--acc); }
+    .c1-bulk { background:#24201d; color:#fff; border-radius:16px; padding:1.8rem; display:grid; grid-template-columns:1fr 1.25fr; gap:2rem; align-items:center; }
+    .c1-bulk-kicker { font-size:0.58rem; letter-spacing:0.12em; color:#f0a98f; font-weight:700; margin-bottom:0.6rem; }
+    .c1-bulk h3 { font-size:1.5rem; letter-spacing:-0.025em; line-height:1.1; margin-bottom:0.7rem; }
+    .c1-bulk p { font-size:0.75rem; color:#d6d3d1; margin-bottom:1rem; }
+    .c1-bulk-note { border:1px solid #44403c; background:#2d2926; border-radius:8px; padding:0.6rem 0.8rem; font-size:0.65rem; color:#d6d3d1; margin-bottom:0.5rem; }
+    .c1-mock { background:#fff; color:var(--ink); border-radius:10px; overflow:hidden; }
+    .c1-mock-head { display:flex; justify-content:space-between; align-items:center; padding:0.8rem 1rem; background:#f5f4f2; font-size:0.85rem; }
+    .c1-mock-head small { font-size:0.6rem; color:var(--mut); }
+    .c1-mock table { width:100%; border-collapse:collapse; font-size:0.65rem; }
+    .c1-mock th { text-align:left; font-weight:600; color:var(--mut); padding:0.5rem 1rem; border-bottom:1px solid var(--line); font-size:0.58rem; }
+    .c1-mock td { padding:0.7rem 1rem; border-bottom:1px solid #f0eeeb; }
+    .c1-cb { display:inline-flex; width:12px; height:12px; background:#3b4cca; color:#fff; border-radius:3px; font-size:0.5rem; align-items:center; justify-content:center; margin-right:0.5rem; }
+    .c1-avail { background:#e8f7d9; border:1px solid #a5d97b; color:#3d7a14; font-size:0.5rem; font-weight:700; border-radius:99px; padding:0.1rem 0.45rem; }
+    .c1-zero { color:#c2410c; font-weight:600; }
+    .c1-mock-foot { display:flex; align-items:center; justify-content:flex-end; gap:0.4rem; padding:0.8rem 1rem; }
+    .c1-mock-foot small { font-size:0.55rem; color:var(--mut); margin-right:0.5rem; }
+    .c1-count { background:#3b4cca; color:#fff; border-radius:99px; font-size:0.55rem; padding:0.1rem 0.4rem; }
+    .c1-btn { background:#3b4cca; color:#fff; border-radius:7px; padding:0.5rem 0.8rem; font-size:0.6rem; font-weight:600; display:inline-flex; gap:0.35rem; align-items:center; }
+    .c1-benefits { display:grid; grid-template-columns:repeat(3,1fr); gap:0.8rem; }
+    .c1-benefit { background:#fff; border:1px solid var(--line); border-radius:12px; padding:1rem; }
+    .c1-benefit h3 { font-size:0.92rem; margin-bottom:0.2rem; }
+    .c1-benefit p { font-size:0.78rem; color:var(--mut); }
+    @media (max-width:820px) {
+      .c1 { padding:1.2rem; }
+      .c1-ba, .c1-two-cards, .c1-bulk, .c1-benefits { grid-template-columns:1fr; }
+      .c1-arrow { display:none; }
+    }
+    @media (max-width:520px) { .c1-two, .c1-flow { grid-template-columns:1fr; } .c1-sync { justify-content:center; padding:0.4rem 0; } .c1-sync::before { display:none; } .c1-flow-arrow { transform:rotate(90deg); text-align:center; } }
   </style>
-  <script>
-    (function () {
-      var box = document.querySelector(".chg-compare");
-      document.querySelectorAll(".chg-toggle button").forEach(function (b) {
-        b.addEventListener("click", function () {
-          box.setAttribute("data-view", b.getAttribute("data-view"));
-          document.querySelectorAll(".chg-toggle button").forEach(function (o) { o.classList.toggle("on", o === b); });
-        });
-      });
-    })();
-  </script>
 
-  <div class="tut-step">
+  <div class="tut-step" id="change-2">
     <div class="tut-step-header">
       <div class="tut-step-num">02</div>
       <div>
@@ -158,7 +231,7 @@
     </div>
   </div>
 
-  <div class="tut-step">
+  <div class="tut-step" id="change-3">
     <div class="tut-step-header">
       <div class="tut-step-num">03</div>
       <div>
@@ -168,7 +241,7 @@
     </div>
   </div>
 
-  <div class="tut-step">
+  <div class="tut-step" id="change-4">
     <div class="tut-step-header">
       <div class="tut-step-num">04</div>
       <div>
