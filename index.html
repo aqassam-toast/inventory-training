@@ -6,6 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Toast IQ Inventory — Training & Support</title>
   <link rel="stylesheet" href="assets/css/style.css?v=6" />
+  <link rel="stylesheet" href="assets/css/home.css?v=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4G4QQHWDEG"></script>
   <script>
@@ -15,7 +18,7 @@
     gtag('config', 'G-4G4QQHWDEG');
   </script>
 </head>
-<body>
+<body class="home">
 
 <nav>
   <a class="logo" href="index.html">
@@ -23,6 +26,7 @@
     <span>Toast IQ Inventory</span>
   </a>
   <div class="nav-links">
+    <a href="#roadmap">Product roadmap</a>
     <a href="videos/index.html">Videos</a>
     <a href="tutorials/index.html">Tutorials</a>
     <a href="faqs/index.html">FAQs</a>
@@ -96,17 +100,236 @@
   })();
 </script>
 
-<div class="hero">
-  <h1>Toast IQ Inventory</h1>
-  <p class="hero-sub">Training &amp; Support</p>
-  <p>Everything you need to get up and running with Toast IQ Inventory — videos, step-by-step tutorials, and answers to common questions.</p>
+<main class="h-main">
+<div class="h-hero">
+  <div class="h-eyebrow-pill">Your inventory learning hub</div>
+  <h1>Answers that meet you where you are.</h1>
+  <p class="h-sub">Tell us what you're working on. We'll surface the guidance that matters now — and hide the rest.</p>
   <div class="search-wrap">
     <span class="search-icon">🔍</span>
-    <input id="search-input" type="text" placeholder="Search knowledge base" />
+    <input id="search-input" type="text" placeholder="Search guides, videos, and answers" />
+    <span class="h-kbd">⌘ K</span>
   </div>
-  <a href="tutorials/index.html" class="btn" data-track="hero_get_started">Get Started</a>
 </div>
 
+<div class="h-wrap">
+  <div class="h-kicker">Find your path</div>
+  <div class="h-paths-head">
+    <h2>Where are you on your journey?</h2>
+    <p>Select the path that best matches what you're working on.</p>
+  </div>
+  <div class="h-paths" role="tablist" aria-label="Choose your path">
+    <button class="h-path" role="tab" id="tab-onboarding" aria-controls="panel-onboarding" aria-selected="true" data-path="onboarding" data-track="path_onboarding" type="button">
+      <div class="h-path-icon">📋</div>
+      <div>
+        <div class="h-path-eyebrow">New to inventory</div>
+        <h3>Onboarding &amp; getting started</h3>
+        <p>Set up your account, build your item library, and prepare for your first count.</p>
+      </div>
+      <span class="h-path-state">Select</span>
+    </button>
+    <button class="h-path" role="tab" id="tab-transition" aria-controls="panel-transition" aria-selected="false" data-path="transition" data-track="path_transition" type="button">
+      <div class="h-path-icon">➡️</div>
+      <div>
+        <div class="h-path-eyebrow">Making a change</div>
+        <h3>Transitioning between Toast products</h3>
+        <p>Move your data and workflows with clear guidance for a smooth transition.</p>
+      </div>
+      <span class="h-path-state">Select</span>
+    </button>
+    <button class="h-path" role="tab" id="tab-day-to-day" aria-controls="panel-day-to-day" aria-selected="false" data-path="day-to-day" data-track="path_day-to-day" type="button">
+      <div class="h-path-icon">🗂️</div>
+      <div>
+        <div class="h-path-eyebrow">Already up and running</div>
+        <h3>Managing inventory day to day</h3>
+        <p>Find answers, improve your workflows, and get more from Inventory.</p>
+      </div>
+      <span class="h-path-state">Select</span>
+    </button>
+  </div>
+
+  <div class="h-panels">
+
+    <section class="h-panel" id="panel-onboarding" role="tabpanel" aria-labelledby="tab-onboarding">
+      <div class="h-panel-head">
+        <h2>Recommended for you</h2>
+        <p>Start here and work down the list.</p>
+      </div>
+      <div class="h-grid">
+        <a class="h-card" href="https://www.loom.com/share/3a59e53bb9e44dd09604829bcd63adc9" target="_blank" rel="noopener" data-track="content_video_onboarding_overview">
+          <div class="h-card-type">Video</div>
+          <h3>What to expect during onboarding</h3>
+          <p>An overview of what the onboarding process will be like and how to prepare.</p>
+          <span class="h-card-cta">Watch →</span>
+        </a>
+        <a class="h-card" href="https://www.loom.com/share/a92a119834424b3a8e54ce04594a79d2" target="_blank" rel="noopener" data-track="content_video_item_catalog">
+          <div class="h-card-type">Video</div>
+          <h3>Item catalog overview</h3>
+          <p>A walkthrough of the Item Catalog — your central hub for keeping item data accurate and up to date.</p>
+          <span class="h-card-cta">Watch →</span>
+        </a>
+        <a class="h-card" href="https://www.loom.com/share/320bbad9ac424f8991fd9bd712f6fc86" target="_blank" rel="noopener" data-track="content_video_recipes_ingredients">
+          <div class="h-card-type">Video</div>
+          <h3>Recipes &amp; ingredients overview</h3>
+          <p>Build recipes, track ingredient usage, and keep plate costs accurate.</p>
+          <span class="h-card-cta">Watch →</span>
+        </a>
+        <a class="h-card" href="https://www.loom.com/share/34d690b18a0145b68f29332ee0aabc7c" target="_blank" rel="noopener" data-track="content_video_first_stock_count">
+          <div class="h-card-type">Video</div>
+          <h3>Completing your first stock count</h3>
+          <p>A critical part of getting set up properly — complete your first stock count as soon as onboarding is finished.</p>
+          <span class="h-card-cta">Watch →</span>
+        </a>
+        <a class="h-card" href="tutorials/receiving-invoices.html" data-track="content_tut_receiving_invoices">
+          <div class="h-card-type">Video + tutorial</div>
+          <h3>Receiving invoices for ingredients</h3>
+          <p>Upload a scanned invoice, match items, set the receiving unit, and update stock and costs.</p>
+          <span class="h-card-cta">Watch →</span>
+        </a>
+      </div>
+      <div class="h-subhead">More to explore</div>
+      <div class="h-grid">
+        <a class="h-card" href="https://www.loom.com/share/1489f7a1bf564659960370dc8b60f01f" target="_blank" rel="noopener" data-track="content_video_first_look">
+          <div class="h-card-type">Video</div>
+          <h3>Toast IQ Inventory: first look</h3>
+          <p>A quick walkthrough of what Toast IQ Inventory is.</p>
+          <span class="h-card-cta">Watch →</span>
+        </a>
+        <a class="h-card" href="https://play.vidyard.com/XzJUbiW5sQ1TMhSXVYzdLE" target="_blank" rel="noopener" data-track="content_video_item_library">
+          <div class="h-card-type">Video</div>
+          <h3>Overview of the Item Library</h3>
+          <p>Your central hub for managing everything you track stock against.</p>
+          <span class="h-card-cta">Watch →</span>
+        </a>
+        <a class="h-card" href="tutorials/production-access.html" data-track="content_tut_prod_access">
+          <div class="h-card-type">Tutorial</div>
+          <h3>Getting started on your account</h3>
+          <p>For existing Test Kitchen members — where to find Toast IQ Inventory once it's enabled.</p>
+          <span class="h-card-cta">Read →</span>
+        </a>
+        <a class="h-card" href="tutorials/sandbox-access.html" data-track="content_tut_sandbox">
+          <div class="h-card-type">Tutorial</div>
+          <h3>Getting started in the sandbox</h3>
+          <p>For existing Test Kitchen members — find the sandbox account and open the Item Library.</p>
+          <span class="h-card-cta">Read →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="h-panel" id="panel-transition" role="tabpanel" aria-labelledby="tab-transition" hidden>
+      <div class="h-panel-head">
+        <h2>Transition guides</h2>
+        <p>We're building these now. Need help sooner? Get in touch and we'll walk you through it.</p>
+      </div>
+      <div class="h-grid">
+        <div class="h-card h-card-soon">
+          <div class="h-card-type">Guide</div>
+          <h3>Transitioning from xtraCHEF</h3>
+          <p>Move your data and workflows from xtraCHEF to Toast IQ Inventory.</p>
+          <span class="h-card-cta">Coming soon</span>
+        </div>
+        <div class="h-card h-card-soon">
+          <div class="h-card-type">Guide</div>
+          <h3>Upgrading Toast Retail</h3>
+          <p>Upgrade from Toast Retail to Toast IQ Inventory and keep your item data.</p>
+          <span class="h-card-cta">Coming soon</span>
+        </div>
+        <div class="h-card h-card-soon">
+          <div class="h-card-type">Guide</div>
+          <h3>Transitioning from International Inventory Beta</h3>
+          <p>Move from the International Inventory Beta to Toast IQ Inventory.</p>
+          <span class="h-card-cta">Coming soon</span>
+        </div>
+      </div>
+      <div class="h-actions">
+        <a class="h-btn h-btn-solid" href="mailto:anum.qassam@toasttab.com" data-track="transition_get_help">Get help now</a>
+      </div>
+    </section>
+
+    <section class="h-panel" id="panel-day-to-day" role="tabpanel" aria-labelledby="tab-day-to-day" hidden>
+      <div class="h-panel-head">
+        <h2>Answers and support</h2>
+        <p>Can't find what you need? Talk to us or tell us what's missing.</p>
+      </div>
+      <div class="h-actions" style="margin: 0 0 1.25rem;">
+        <a class="h-btn h-btn-solid" href="mailto:anum.qassam@toasttab.com" data-track="daily_get_help">Get help now</a>
+        <a class="h-btn h-btn-ghost" href="https://docs.google.com/forms/d/1fGYNrUxSuVLAZEoHQGNhTPxGZmjCKjUJVmtkaNbt0Do/viewform" target="_blank" rel="noopener" data-track="daily_submit_feedback">Submit feedback</a>
+      </div>
+      <div class="h-grid">
+        <a class="h-card h-card-feature" href="faqs/index.html" data-track="content_faq">
+          <div class="h-card-type">FAQ</div>
+          <h3>Frequently asked questions</h3>
+          <p>Answers on recipes, shared inventory, reordering automation, QuickBooks integration, rollout timeline, pricing, and more.</p>
+          <span class="h-card-cta">Browse the FAQ →</span>
+        </a>
+        <a class="h-card" href="available/index.html" data-track="content_available_features">
+          <div class="h-card-type">Reference</div>
+          <h3>What's available</h3>
+          <p>Every feature you can use today across purchasing, inventory, reporting, and recipes, plus what's on the roadmap.</p>
+          <span class="h-card-cta">View →</span>
+        </a>
+        <a class="h-card" href="tutorials/index.html" data-track="content_tutorials">
+          <div class="h-card-type">Tutorials</div>
+          <h3>All tutorials</h3>
+          <p>Step-by-step guides for receiving, counting, and more.</p>
+          <span class="h-card-cta">Browse →</span>
+        </a>
+        <a class="h-card" href="assets/docs/faq-test-kitchen.pdf" target="_blank" rel="noopener" data-track="content_faq_pdf">
+          <div class="h-card-type">Document</div>
+          <h3>Test Kitchen FAQ (PDF)</h3>
+          <p>Downloadable FAQ from the June 2026 webinar.</p>
+          <span class="h-card-cta">Download →</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="h-section h-internal" data-internal="true" style="display:none">
+    <h2>Internal resources</h2>
+    <div class="h-grid">
+        <a class="h-card" href="https://toasttab.zoom.us/rec/share/-wYqVadtrbDPCIxoMELXjJsRIVpqlED3lF54gBsnaS4uhuWW8cfqO-RQfV9XC7nV.IVN0BPZJPa6QF3JV?startTime=1786021178000" target="_blank" rel="noopener" data-track="content_video_webinar_august_2026">
+          <div class="h-card-type">Video</div>
+          <h3>Recipes &amp; Ingredients — August 2026</h3>
+          <p>Live demo of recipes, batch prep, FIFO depletion, allergens, and ingredient import. Passcode: 8=rQQ+A4</p>
+          <span class="h-card-cta">Watch →</span>
+        </a>
+        <a class="h-card" href="tracker/index.html" data-track="content_tracker">
+          <div class="h-card-type">Tracker</div>
+          <h3>Issue &amp; Feature Tracker</h3>
+          <p>Known bugs, workarounds, and feature requests from the beta.</p>
+          <span class="h-card-cta">View →</span>
+        </a>
+        <a class="h-card" href="https://www.loom.com/share/74b05496f42a443c9e80b83ab79c5e28" target="_blank" rel="noopener" data-track="content_video_inventory_overview">
+          <div class="h-card-type">Video</div>
+          <h3>Toast IQ Inventory First Look — May 2026</h3>
+          <p>Live first look for Test Kitchen members: FIFO costing, shared inventory, recipes, AI invoice upload, par levels, auto-86.</p>
+          <span class="h-card-cta">Watch →</span>
+        </a>
+        <a class="h-card" href="https://www.loom.com/share/87b5263e4f9f4df2b6d1e7baddd30512" target="_blank" rel="noopener" data-track="content_tut_stock">
+          <div class="h-card-type">Video</div>
+          <h3>Tracking stock on an item</h3>
+          <p>Enable stock tracking, set units of measure, and manage quantities.</p>
+          <span class="h-card-cta">Watch →</span>
+        </a>
+        <a class="h-card" href="features/index.html" data-track="content_features_internal">
+          <div class="h-card-type">Internal</div>
+          <h3>Feature list</h3>
+          <p>Full capability list with availability status.</p>
+          <span class="h-card-cta">View →</span>
+        </a>
+        <a class="h-card" href="https://toasttab.zoom.us/clips/share/-JHr2coFRbCQwnW6XEb7kQ" target="_blank" rel="noopener" data-track="content_video_test_kitchen">
+          <div class="h-card-type">Video</div>
+          <h3>What's ready for testing — June 2026</h3>
+          <p>Item setup, invoice upload, cycle counts, and reports.</p>
+          <span class="h-card-cta">Watch →</span>
+        </a>
+    </div>
+  </div>
+
+  <div class="h-section" id="roadmap">
+    <h2>Product roadmap</h2>
+  </div>
 
 <div class="htl-wrap">
   <div class="htl-inner">
@@ -163,142 +386,46 @@
     </div>
   </div>
 </div>
-
-<div class="section">
-  <h2><span>Browse</span> content</h2>
-  <div class="cards">
-
-    <a class="card" href="https://www.loom.com/share/1489f7a1bf564659960370dc8b60f01f" target="_blank" data-track="content_video_first_look">
-      <div class="card-type-badge">Video</div>
-      <div class="icon">▶️</div>
-      <h3>Toast IQ Inventory: First Look</h3>
-      <p>Curious about what Toast IQ Inventory is? Get a first look at the product in this quick walkthrough.</p>
-      <span class="card-cta">Watch →</span>
-    </a>
-
-    <a class="card" href="https://www.loom.com/share/3a59e53bb9e44dd09604829bcd63adc9" target="_blank" data-track="content_video_onboarding_overview">
-      <div class="card-type-badge">Video</div>
-      <div class="icon">▶️</div>
-      <h3>What to Expect During Onboarding</h3>
-      <p>An overview of what the onboarding process will be like and how to prepare.</p>
-      <span class="card-cta">Watch →</span>
-    </a>
-
-    <a class="card" href="https://www.loom.com/share/34d690b18a0145b68f29332ee0aabc7c" target="_blank" data-track="content_video_first_stock_count">
-      <div class="card-type-badge">Video</div>
-      <div class="icon">▶️</div>
-      <h3>Completing Your First Stock Count</h3>
-      <p>A critical part of getting set up properly — complete your first stock count as soon as onboarding is finished.</p>
-      <span class="card-cta">Watch →</span>
-    </a>
-
-    <a class="card" href="https://toasttab.zoom.us/rec/share/-wYqVadtrbDPCIxoMELXjJsRIVpqlED3lF54gBsnaS4uhuWW8cfqO-RQfV9XC7nV.IVN0BPZJPa6QF3JV?startTime=1786021178000" target="_blank" data-track="content_video_webinar_august_2026" data-internal="true" style="display:none">
-      <div class="card-type-badge">Video</div>
-      <div class="icon">▶️</div>
-      <h3>Recipes &amp; Ingredients — August 2026</h3>
-      <p>Live demo of the recipe and ingredient capability now testable: recipes on the menu item, batch prep, real-time FIFO depletion, allergens, and ingredient import. Passcode: 8=rQQ+A4</p>
-      <span class="card-cta">Watch →</span>
-    </a>
-
-    <a class="card" href="tracker/index.html" data-track="content_tracker" data-internal="true" style="display:none">
-      <div class="card-type-badge">Tracker</div>
-      <div class="icon">🐛</div>
-      <h3>Issue &amp; Feature Tracker</h3>
-      <p>Known bugs, workarounds, and feature requests from the beta. Vote on priority and add context.</p>
-      <span class="card-cta">View →</span>
-    </a>
-
-    <a class="card" href="https://www.loom.com/share/74b05496f42a443c9e80b83ab79c5e28" target="_blank" data-track="content_video_inventory_overview" data-internal="true" style="display:none">
-      <div class="card-type-badge">Video</div>
-      <div class="icon">▶️</div>
-      <h3>Toast IQ Inventory First Look — May 2026</h3>
-      <p>Live first look for Test Kitchen members. Covers the product vision, FIFO costing, shared inventory pooling, recipes, AI invoice upload, par levels, and auto-86.</p>
-      <span class="card-cta">Watch →</span>
-    </a>
-
-    <a class="card" href="https://play.vidyard.com/XzJUbiW5sQ1TMhSXVYzdLE" target="_blank" data-track="content_video_item_library">
-      <div class="card-type-badge">Video</div>
-      <div class="icon">▶️</div>
-      <h3>Overview of the Item Library</h3>
-      <p>A walkthrough of the Item Library — your central hub for managing everything you stock track against.</p>
-      <span class="card-cta">Watch →</span>
-    </a>
-
-    <a class="card" href="tutorials/production-access.html" data-track="content_tut_prod_access">
-      <div class="card-type-badge">Tutorial</div>
-      <div class="icon">🏪</div>
-      <h3>Getting Started on Your Account</h3>
-      <p>For existing Test Kitchen members — where to find Toast IQ Inventory once it's enabled on your account.</p>
-      <span class="card-cta">Read →</span>
-    </a>
-
-    <a class="card" href="tutorials/sandbox-access.html" data-track="content_tut_sandbox">
-      <div class="card-type-badge">Tutorial</div>
-      <div class="icon">📋</div>
-      <h3>Getting Started in the Sandbox</h3>
-      <p>For existing Test Kitchen members — find the sandbox account and navigate to the Item Library for the first time.</p>
-      <span class="card-cta">Read →</span>
-    </a>
-
-    <a class="card" href="https://www.loom.com/share/87b5263e4f9f4df2b6d1e7baddd30512" target="_blank" data-track="content_tut_stock" data-internal="true" style="display:none">
-      <div class="card-type-badge">Video</div>
-      <div class="icon">▶️</div>
-      <h3>Tracking Stock on an Item</h3>
-      <p>How to enable stock tracking, set units of measure, and manage item quantities.</p>
-      <span class="card-cta">Watch →</span>
-    </a>
-
-    <a class="card" href="tutorials/index.html#path-3" data-track="content_tut_invoice">
-      <div class="card-type-badge">Tutorial · Coming soon</div>
-      <div class="icon">🧾</div>
-      <h3>Receiving Your First Invoice</h3>
-      <p>Upload or manually enter an invoice, map items, and confirm receipt to update stock levels.</p>
-      <span class="card-cta">Coming soon</span>
-    </a>
-
-    <a class="card" href="available/index.html" data-track="content_available_features">
-      <div class="card-type-badge">Reference</div>
-      <div class="icon">📊</div>
-      <h3>What's Available — Toast IQ Inventory</h3>
-      <p>See every feature you can use today across purchasing, inventory, reporting, and recipes, plus what's on the roadmap.</p>
-      <span class="card-cta">View →</span>
-    </a>
-
-    <a class="card" href="features/index.html" data-track="content_features_internal" data-internal="true" style="display:none">
-      <div class="card-type-badge">Internal</div>
-      <div class="icon">📊</div>
-      <h3>Feature List — Toast IQ Inventory</h3>
-      <p>Full capability list across purchasing, inventory, reporting, recipes, and modifiers with availability status.</p>
-      <span class="card-cta">View →</span>
-    </a>
-
-    <a class="card" href="https://toasttab.zoom.us/clips/share/-JHr2coFRbCQwnW6XEb7kQ" target="_blank" data-track="content_video_test_kitchen" data-internal="true" style="display:none">
-      <div class="card-type-badge">Video</div>
-      <div class="icon">▶️</div>
-      <h3>What's Ready for Testing — June 2026</h3>
-      <p>Live walkthrough of item setup, invoice upload, cycle counts, and reports. Includes a preview of upcoming recipe features.</p>
-      <span class="card-cta">Watch →</span>
-    </a>
-
-    <a class="card" href="faqs/index.html" data-track="content_faq">
-      <div class="card-type-badge">FAQ</div>
-      <div class="icon">💬</div>
-      <h3>Frequently Asked Questions</h3>
-      <p>Answers on recipes, shared inventory, reordering automation, QuickBooks integration, rollout timeline, pricing, and more.</p>
-      <span class="card-cta">Read →</span>
-    </a>
-
-    <a class="card" href="assets/docs/faq-test-kitchen.pdf" target="_blank" data-track="content_faq_pdf">
-      <div class="card-type-badge">Document</div>
-      <div class="icon">📄</div>
-      <h3>FAQ — Inventory Test Kitchen (PDF)</h3>
-      <p>Downloadable version of the Test Kitchen FAQ from the June 2026 webinar.</p>
-      <span class="card-cta">Download →</span>
-    </a>
-
-  </div>
 </div>
+</main>
 
+<script>
+  // Path picker: one panel visible at a time, deep-linkable via #onboarding,
+  // #transition or #day-to-day.
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".h-path"));
+    function select(id, focus) {
+      tabs.forEach(function (t) {
+        var on = t.getAttribute("data-path") === id;
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById("panel-" + t.getAttribute("data-path")).hidden = !on;
+        if (on && focus) t.focus();
+      });
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () {
+        var id = t.getAttribute("data-path");
+        select(id);
+        if (history.replaceState) history.replaceState(null, "", "#" + id);
+      });
+      t.addEventListener("keydown", function (e) {
+        var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+        if (d) { e.preventDefault(); select(tabs[(i + d + tabs.length) % tabs.length].getAttribute("data-path"), true); }
+      });
+    });
+    var start = location.hash.slice(1);
+    select(tabs.some(function (t) { return t.getAttribute("data-path") === start; }) ? start : "onboarding");
+
+    // Cmd/Ctrl+K focuses search
+    document.addEventListener("keydown", function (e) {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        document.getElementById("search-input").focus();
+      }
+    });
+  })();
+</script>
 
 <footer>
   Toast IQ Inventory Training &amp; Support
