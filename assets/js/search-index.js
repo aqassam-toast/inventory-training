@@ -11,9 +11,9 @@ var SEARCH_INDEX = [
   },
   {
     title: "What to Expect During Onboarding",
-    type: "Video",
-    url: "https://www.loom.com/share/3a59e53bb9e44dd09604829bcd63adc9",
-    external: true,
+    type: "Tutorial",
+    url: "tutorials/what-to-expect-during-onboarding.html",
+    external: false,
     description: "An overview of what the onboarding process will be like and how to prepare.",
     keywords: "onboarding overview prepare process what to expect getting started setup"
   },
