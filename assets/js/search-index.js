@@ -53,14 +53,6 @@ var SEARCH_INDEX = [
     keywords: "first look webinar may 2026 product vision FIFO costing item library shared inventory pooling recipes prep AI invoice upload par levels auto-86 multi-location passcode test kitchen"
   },
   {
-    title: "Overview of the Item Library",
-    type: "Video",
-    url: "https://play.vidyard.com/XzJUbiW5sQ1TMhSXVYzdLE",
-    external: true,
-    description: "A walkthrough of the Item Library — your central hub for managing everything you stock track against.",
-    keywords: "item library overview retail items stock track hub manage navigation"
-  },
-  {
     title: "Tracking Stock on an Item",
     type: "Video",
     internal: true,
@@ -95,22 +87,6 @@ var SEARCH_INDEX = [
     keywords: "cross location transfer introduction feature multi-location stock move par max draft submit approve receive duplicate"
   },
   // Tutorials
-  {
-    title: "Getting Started in the Sandbox",
-    type: "Tutorial",
-    url: "tutorials/sandbox-access.html",
-    external: false,
-    description: "For existing Test Kitchen members — find the sandbox account and navigate to the Item Library.",
-    keywords: "sandbox access test kitchen join survey item library navigate getting started onboarding"
-  },
-  {
-    title: "Getting Started on Your Account",
-    type: "Tutorial",
-    url: "tutorials/production-access.html",
-    external: false,
-    description: "For existing Test Kitchen members — where to find Toast IQ Inventory once it is enabled on your account.",
-    keywords: "production account early access enable feature flag test kitchen email"
-  },
   // FAQs
   {
     title: "How do I get access to Toast IQ Inventory?",
