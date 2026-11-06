@@ -54,8 +54,12 @@
   <style>
     html { scroll-behavior: smooth; }
     .tut-hero-inner, .tut-body { max-width: 1240px; }
-    .tut-step, .c1 { scroll-margin-top: 80px; }
-    .jump { display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; }
+    .tut-step, .c1 { scroll-margin-top: 150px; }
+    .jump { display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; position:sticky; top:60px; z-index:40; background:rgba(255,255,255,0.94); backdrop-filter:blur(8px); margin:-0.5rem -0.75rem 0; padding:0.5rem 0.75rem; border-radius:14px; transition:box-shadow .2s; }
+    .jump.stuck { box-shadow:0 6px 20px rgba(0,0,0,0.10); border:1px solid var(--border); }
+    .jump.stuck em { display:none; }
+    .jump.stuck a { padding:0.55rem 0.9rem; }
+    .jump a.active { border-color:var(--orange); background:#fff6ef; }
     .jump a { background:#fff; border:1px solid var(--border); border-radius:12px; padding:0.9rem 1rem; text-decoration:none; color:var(--dark); display:flex; flex-direction:column; gap:0.15rem; transition:border-color .15s, box-shadow .15s; }
     .jump a:hover { border-color:var(--orange); box-shadow:0 4px 14px rgba(0,0,0,0.07); }
     .jump span { font-size:0.7rem; font-weight:800; color:var(--orange); letter-spacing:0.08em; }
@@ -63,6 +67,21 @@
     .jump em { font-style:normal; font-size:0.75rem; color:var(--mid); line-height:1.4; }
     @media (max-width:800px) { .jump { grid-template-columns:1fr 1fr; } }
   </style>
+  <script>
+    (function () {
+      var bar = document.querySelector(".jump");
+      var links = Array.prototype.slice.call(bar.querySelectorAll("a"));
+      var secs = links.map(function (a) { return document.querySelector(a.getAttribute("href")); });
+      function update() {
+        bar.classList.toggle("stuck", bar.getBoundingClientRect().top <= 61);
+        var cur = 0;
+        secs.forEach(function (el, i) { if (el.getBoundingClientRect().top <= 170) cur = i; });
+        links.forEach(function (a, i) { a.classList.toggle("active", bar.classList.contains("stuck") && i === cur); });
+      }
+      window.addEventListener("scroll", update, { passive: true });
+      update();
+    })();
+  </script>
 
   <!-- CHANGE 01 -->
   <section class="c1" id="change-1">
@@ -345,15 +364,96 @@
     }
   </style>
 
-  <div class="tut-step" id="change-3">
-    <div class="tut-step-header">
-      <div class="tut-step-num">03</div>
-      <div>
-        <h2>Adjustment reasons that fit your business</h2>
-        <p>Add the reasons your team actually uses and remove the ones you don't. Find them in <strong>Settings</strong>.</p>
+  <section class="c1 c2 c3" id="change-3">
+    <div class="c1-kicker">Change 03 · Your reasons, your way</div>
+    <div class="c2-title">
+      <h2>Make adjustment reasons fit your business.</h2>
+      <p>Manage reasons in Settings. Deactivate the ones your team doesn't use and add custom reasons for the situations that matter to you.</p>
+    </div>
+
+    <div class="c3-feats">
+      <div class="c3-feat"><span class="c3-fi"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></span><div><strong>Keep choices relevant</strong><small>Give staff a shorter list that reflects how your business actually operates.</small></div></div>
+      <div class="c3-feat"><span class="c3-fi"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg></span><div><strong>Define the stock impact</strong><small>Choose whether each reason increases, decreases, or sets stock.</small></div></div>
+      <div class="c3-feat"><span class="c3-fi"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg></span><div><strong>Improve reporting consistency</strong><small>Use clear, shared reasons to understand why inventory changed.</small></div></div>
+    </div>
+
+    <div class="c3-main">
+      <div class="c2-panel c3-settings">
+        <div class="c2-panel-head"><div><small>SETTINGS</small><h3>Adjustment reasons</h3></div><span class="c3-add"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>Add adjustment reason</span></div>
+        <div class="c3-table">
+          <table>
+            <tr><th>REASON</th><th>EFFECT</th><th>SOURCE</th><th>ACTIVE</th></tr>
+            <tr class=""><td>Count</td><td><i class="c3-d c3-dk"></i>Sets stock</td><td><span class="c3-src ">DEFAULT</span></td><td><span class="c3-tg on"></span></td></tr><tr class=""><td>Damage</td><td><i class="c3-d c3-rd"></i>Decreases stock</td><td><span class="c3-src ">DEFAULT</span></td><td><span class="c3-tg on"></span></td></tr><tr class=""><td>Donation</td><td><i class="c3-d c3-rd"></i>Decreases stock</td><td><span class="c3-src c3-custom">CUSTOM</span></td><td><span class="c3-tg on"></span></td></tr><tr class="c3-off"><td>Expire</td><td><i class="c3-d c3-rd"></i>Decreases stock</td><td><span class="c3-src ">DEFAULT</span></td><td><span class="c3-tg "></span></td></tr><tr class="c3-off"><td>Sample</td><td><i class="c3-d c3-rd"></i>Decreases stock</td><td><span class="c3-src ">DEFAULT</span></td><td><span class="c3-tg "></span></td></tr>
+          </table>
+          <div class="c3-dark"><span class="c3-num">1</span><div><strong>Deactivate what doesn't fit</strong><small>Inactive reasons are removed from future choices while your history stays intact.</small></div></div>
+        </div>
+      </div>
+      <div class="c3-arrow">→</div>
+      <div class="c3-form">
+        <div class="c3-form-head"><span class="c3-back">←</span><div><h3>New adjustment reason</h3><small>Name the reason and choose how it affects stock.</small></div></div>
+        <label>Adjustment reason name</label>
+        <div class="c3-input">Staff meal</div>
+        <label>Impact on stock</label>
+        <div class="c3-opt "><span class="c3-oi"><i class="c3-up">▲</i></span><div><strong>Increases stock</strong><small>Returns, restocks, receiving</small></div></div>
+        <div class="c3-opt sel"><span class="c3-oi"><i class="c3-down">▼</i></span><div><strong>Decreases stock</strong><small>Waste, donations, staff meals</small></div><b><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg></b></div>
+        <div class="c3-opt "><span class="c3-oi">↻</span><div><strong>Sets stock</strong><small>Counts and corrections</small></div></div>
+        <div class="c3-btns"><span class="c3-cancel">Cancel</span><span class="c3-go">Add reason</span></div>
+        <div class="c3-dark c3-dark-r"><span class="c3-num">2</span><div><strong>Add the reasons you need</strong><small>Custom reasons appear alongside defaults wherever your team adjusts stock.</small></div></div>
       </div>
     </div>
-  </div>
+    <div class="tut-banner tut-banner-tip" style="margin-top:1.25rem;">
+      <span class="tut-banner-icon">💡</span>
+      <div><strong>Where to find it</strong><br>Go to <strong>Settings → Adjustment reasons</strong>.</div>
+    </div>
+  </section>
+
+  <style>
+    .c3-feats { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:1rem; }
+    .c3-feat { display:flex; gap:0.8rem; background:#fff; border:1px solid var(--line); border-radius:14px; padding:1rem 1.1rem; }
+    .c3-fi { flex-shrink:0; width:34px; height:34px; border-radius:9px; background:#fdeee8; color:var(--acc); display:flex; align-items:center; justify-content:center; }
+    .c3-feat strong { display:block; font-size:0.9rem; }
+    .c3-feat small { font-size:0.72rem; color:var(--mut); line-height:1.45; display:block; margin-top:0.15rem; }
+    .c3-main { display:grid; grid-template-columns:1.2fr auto 1fr; gap:1rem; align-items:stretch; }
+    .c3-arrow { align-self:center; color:var(--acc); }
+    .c3-add { background:#3b4cca; color:#fff; font-size:0.7rem; font-weight:600; border-radius:7px; padding:0.6rem 0.9rem; display:inline-flex; gap:0.4rem; align-items:center; white-space:nowrap; }
+    .c3-table { background:#fff; border-radius:12px; overflow:hidden; }
+    .c3-table table { width:100%; border-collapse:collapse; font-size:0.75rem; }
+    .c3-table th { text-align:left; font-size:0.55rem; letter-spacing:0.06em; color:var(--mut); font-weight:600; padding:1rem 1rem 0.6rem; border-bottom:1px solid var(--line); }
+    .c3-table td { padding:0.85rem 1rem; border-bottom:1px solid #f0eeeb; }
+    .c3-off td { color:#a8a29e; }
+    .c3-d { display:inline-block; width:6px; height:6px; border-radius:50%; margin-right:0.5rem; }
+    .c3-dk { background:#44403c; } .c3-rd { background:#c2492b; }
+    .c3-src { border:1px solid #d6d3d1; border-radius:99px; font-size:0.5rem; font-weight:700; letter-spacing:0.05em; padding:0.15rem 0.5rem; color:#57534e; }
+    .c3-custom { background:#e8f1fd; border-color:#b7d3f7; color:#2860b0; }
+    .c3-off .c3-src { color:#a8a29e; }
+    .c3-tg { display:inline-block; width:36px; height:20px; border-radius:99px; background:#d6d3d1; position:relative; }
+    .c3-tg::after { content:""; position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:50%; background:#fff; }
+    .c3-tg.on { background:#3b4cca; } .c3-tg.on::after { left:18px; }
+    .c3-dark { display:flex; gap:0.8rem; align-items:center; background:#24201d; color:#fff; padding:1rem 1.2rem; }
+    .c3-dark strong { font-size:0.8rem; display:block; }
+    .c3-dark small { font-size:0.68rem; color:#d6d3d1; display:block; }
+    .c3-num { flex-shrink:0; width:28px; height:28px; border-radius:50%; background:var(--acc); font-size:0.7rem; font-weight:700; display:flex; align-items:center; justify-content:center; }
+    .c3-dark-r { border-radius:10px; margin-top:1.1rem; }
+    .c3-form { background:#fff; border:1px solid var(--line); border-radius:18px; padding:1.4rem; }
+    .c3-form-head { display:flex; gap:0.7rem; padding-bottom:1rem; border-bottom:1px solid var(--line); margin-bottom:1rem; }
+    .c3-back { color:#3b4cca; }
+    .c3-form-head h3 { font-size:1.15rem; letter-spacing:-0.02em; }
+    .c3-form-head small { font-size:0.7rem; color:var(--mut); }
+    .c3-form label { display:block; font-size:0.7rem; font-weight:600; margin:0.5rem 0 0.4rem; }
+    .c3-input { border:1px solid var(--line); border-radius:8px; padding:0.8rem 0.9rem; font-size:0.8rem; margin-bottom:0.8rem; }
+    .c3-opt { display:flex; align-items:center; gap:0.9rem; border:1px solid var(--line); border-radius:10px; padding:0.8rem 1rem; margin-bottom:0.6rem; }
+    .c3-opt.sel { border-color:var(--acc); background:#fff6f2; }
+    .c3-opt > div { flex:1; }
+    .c3-opt strong { display:block; font-size:0.8rem; }
+    .c3-opt small { font-size:0.62rem; color:var(--mut); }
+    .c3-oi { width:20px; text-align:center; font-size:0.9rem; }
+    .c3-up { color:#2f7a2f; font-style:normal; } .c3-down { color:#c2312b; font-style:normal; }
+    .c3-opt b { color:var(--acc); display:flex; }
+    .c3-btns { display:flex; justify-content:flex-end; gap:0.6rem; margin-top:1rem; }
+    .c3-cancel { border:1px solid #3b4cca; color:#3b4cca; border-radius:7px; padding:0.6rem 1rem; font-size:0.7rem; font-weight:600; }
+    .c3-go { background:#3b4cca; color:#fff; border-radius:7px; padding:0.6rem 1rem; font-size:0.7rem; font-weight:600; }
+    @media (max-width:900px) { .c3-feats, .c3-main { grid-template-columns:1fr; } .c3-arrow { transform:rotate(90deg); justify-self:center; } }
+  </style>
 
   <div class="tut-step" id="change-4">
     <div class="tut-step-header">
