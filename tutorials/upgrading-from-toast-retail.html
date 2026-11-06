@@ -45,29 +45,107 @@
 
 <div class="tut-body">
 
-  <div class="tut-step">
-    <div class="tut-step-header">
-      <div class="tut-step-num">01</div>
-      <div>
-        <h2>Sales availability is separate from stock</h2>
-        <p>Whether an item can be sold is now managed separately from how much stock you have. The benefit: you can keep selling even if your inventory is out of date.</p>
-        <div class="tut-banner tut-banner-tip">
-          <span class="tut-banner-icon">📱</span>
-          <div>
-            <strong>This affects your POS devices</strong><br>
-            Updating an item's quantity on a POS device changes its <strong>sales availability</strong>, <strong>not</strong> your stock. Stock is only changed by counts, received orders, sales, and waste.
-          </div>
-        </div>
-        <div class="tut-banner tut-banner-tip">
-          <span class="tut-banner-icon">⚠️</span>
-          <div>
-            <strong>What to do differently</strong><br>
-            Auto-86ing on stock won't be available until later in Q1 2027. Until then, manually sync sales availability to stock on hand for any items where 86ing on stock is important.
-          </div>
-        </div>
+  <!-- CHANGE 01 -->
+  <section class="chg">
+    <div class="chg-top">
+      <span class="chg-num">01</span>
+      <span class="chg-tag">Sales availability</span>
+    </div>
+    <h2>Selling is separate from stock</h2>
+    <p class="chg-lead">In Toast Retail, one quantity did both jobs. In Toast IQ Inventory, <strong>what you can sell</strong> and <strong>what you have on hand</strong> are managed separately.</p>
+
+    <div class="chg-toggle" role="tablist" aria-label="Compare">
+      <button type="button" class="on" data-view="both">Side by side</button>
+      <button type="button" data-view="before">Before</button>
+      <button type="button" data-view="after">After</button>
+    </div>
+
+    <div class="chg-compare" data-view="both">
+      <div class="chg-col chg-before">
+        <div class="chg-col-label"><i></i>Before · Toast Retail</div>
+        <ul>
+          <li>Stock and sales availability were tied together.</li>
+          <li>If your counts were out of date, items could stop selling.</li>
+          <li>No way to sell an item you haven't received yet.</li>
+        </ul>
+      </div>
+      <div class="chg-col chg-after">
+        <div class="chg-col-label"><i></i>After · Toast IQ Inventory</div>
+        <ul>
+          <li>Sales availability is its own setting, independent of stock.</li>
+          <li>Keep selling even when inventory is out of date.</li>
+          <li>Control exactly how many can be sold, whatever the stock number says.</li>
+        </ul>
       </div>
     </div>
-  </div>
+
+    <div class="chg-subhead">What you gain</div>
+    <div class="chg-benefits">
+      <div class="chg-benefit"><div class="chg-benefit-ico">🟢</div><h3>Keep selling</h3><p>An out-of-date inventory no longer stops sales.</p></div>
+      <div class="chg-benefit"><div class="chg-benefit-ico">📦</div><h3>Preorders</h3><p>Take orders on items whose stock hasn't come in yet.</p></div>
+      <div class="chg-benefit"><div class="chg-benefit-ico">🔢</div><h3>Purchase limits</h3><p>Cap sales at, say, 100, regardless of the stock number.</p></div>
+    </div>
+
+    <div class="chg-subhead">What to know</div>
+    <div class="tut-banner tut-banner-tip">
+      <span class="tut-banner-icon">📱</span>
+      <div>
+        <strong>This affects your POS devices</strong><br>
+        Updating an item's quantity on a POS device changes its <strong>sales availability</strong>, <strong>not</strong> your stock. Stock is only changed by counts, received orders, sales, and waste.
+      </div>
+    </div>
+    <div class="tut-banner tut-banner-tip">
+      <span class="tut-banner-icon">⚠️</span>
+      <div>
+        <strong>What to do differently</strong><br>
+        Auto-86ing on stock won't be available until later in Q1 2027. Until then, manually sync sales availability to stock on hand for any items where 86ing on stock is important.
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .chg { background:#fff; border:1px solid var(--border); border-radius:16px; padding:2rem; }
+    .chg-top { display:flex; align-items:center; gap:0.75rem; margin-bottom:0.9rem; }
+    .chg-num { font-size:0.75rem; font-weight:800; color:var(--orange); letter-spacing:0.08em; }
+    .chg-tag { font-size:0.65rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--orange); border:1px solid #ffc9a3; background:#fff6ef; border-radius:6px; padding:0.25rem 0.6rem; }
+    .chg h2 { font-size:1.7rem; letter-spacing:-0.02em; line-height:1.15; margin-bottom:0.6rem; }
+    .chg-lead { color:var(--mid); max-width:620px; font-size:0.95rem; margin-bottom:1.5rem; }
+    .chg-toggle { display:inline-flex; background:var(--light); border:1px solid var(--border); border-radius:99px; padding:3px; margin-bottom:1rem; }
+    .chg-toggle button { font:inherit; font-size:0.8rem; font-weight:600; color:var(--mid); background:none; border:0; border-radius:99px; padding:0.4rem 1rem; cursor:pointer; }
+    .chg-toggle button.on { background:#fff; color:var(--dark); box-shadow:0 1px 3px rgba(0,0,0,0.12); }
+    .chg-compare { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .chg-compare[data-view="before"] .chg-after, .chg-compare[data-view="after"] .chg-before { display:none; }
+    .chg-compare[data-view="before"], .chg-compare[data-view="after"] { grid-template-columns:1fr; }
+    .chg-col { border-radius:12px; padding:1.25rem 1.4rem; border:1px solid var(--border); background:var(--light); }
+    .chg-after { background:#fff6ef; border-color:#ffc9a3; }
+    .chg-col-label { display:flex; align-items:center; gap:0.5rem; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin-bottom:0.75rem; }
+    .chg-col-label i { width:8px; height:8px; border-radius:50%; background:#aaa; }
+    .chg-after .chg-col-label { color:var(--orange); }
+    .chg-after .chg-col-label i { background:var(--orange); }
+    .chg-col ul { list-style:none; display:flex; flex-direction:column; gap:0.55rem; }
+    .chg-col li { font-size:0.88rem; line-height:1.5; padding-left:1.1rem; position:relative; }
+    .chg-col li::before { content:"–"; position:absolute; left:0; color:#aaa; }
+    .chg-after li::before { content:"✓"; color:var(--orange); font-weight:800; }
+    .chg-subhead { font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--mid); margin:1.75rem 0 0.8rem; }
+    .chg-benefits { display:grid; grid-template-columns:repeat(3,1fr); gap:0.9rem; }
+    .chg-benefit { border:1px solid var(--border); border-radius:12px; padding:1.1rem; }
+    .chg-benefit-ico { font-size:1.2rem; margin-bottom:0.4rem; }
+    .chg-benefit h3 { font-size:0.95rem; margin-bottom:0.25rem; }
+    .chg-benefit p { font-size:0.82rem; color:var(--mid); }
+    .chg .tut-banner { margin-top:0.75rem; }
+    @media (max-width:700px) { .chg-compare, .chg-benefits { grid-template-columns:1fr; } .chg { padding:1.25rem; } }
+  </style>
+  <script>
+    (function () {
+      var box = document.querySelector(".chg-compare");
+      document.querySelectorAll(".chg-toggle button").forEach(function (b) {
+        b.addEventListener("click", function () {
+          box.setAttribute("data-view", b.getAttribute("data-view"));
+          document.querySelectorAll(".chg-toggle button").forEach(function (o) { o.classList.toggle("on", o === b); });
+        });
+      });
+    })();
+  </script>
 
   <div class="tut-step">
     <div class="tut-step-header">
