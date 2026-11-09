@@ -40,7 +40,7 @@
     <div class="tut-eyebrow">Onboarding &amp; getting started</div>
     <h1>What to Expect<br><span>During Onboarding</span></h1>
     <p>Everything you need to know before getting started with Toast IQ Inventory.</p>
-    <div class="ob-meta"><span>⏱️ 1-minute video</span><span>🗺️ 3 onboarding stages</span><span>🧾 2 things to prepare</span></div>
+    <div class="ob-meta"><span>⏱️ 1-minute video</span><span>📞 3 onboarding calls</span><span>🧾 2 things to prepare</span></div>
   </div>
 </div>
 
@@ -56,24 +56,32 @@
     <h2>Getting started is simple.</h2>
     <div class="ob-timeline">
       <div class="ob-stage">
-        <div class="ob-stage-top"><span class="ob-n">01</span><span class="ob-who ob-who-both">Together</span></div>
+        <div class="ob-stage-top"><span class="ob-n">01</span><span class="ob-who ob-who-both">Call</span></div>
         <div class="ob-ico">📞</div>
         <h3>Kickoff call</h3>
         <p><strong>First up: a quick introduction.</strong> Your onboarding consultant schedules a 15-minute call to kick things off.</p>
       </div>
-      <div class="ob-arrow">→</div>
-      <div class="ob-stage">
-        <div class="ob-stage-top"><span class="ob-n">02</span><span class="ob-who ob-who-toast">Toast handles this</span></div>
-        <div class="ob-ico">⚙️</div>
-        <h3>We set things up</h3>
-        <p>You send your information. We import it and connect your ingredients, recipes, and menu.</p>
+      <div class="ob-link">
+        <span class="ob-who ob-who-toast">Toast handles this</span>
+        <div class="ob-arrow">→</div>
+        <p>Send us your info and we'll set everything up.</p>
       </div>
-      <div class="ob-arrow">→</div>
       <div class="ob-stage">
-        <div class="ob-stage-top"><span class="ob-n">03</span><span class="ob-who ob-who-both">Together</span></div>
-        <div class="ob-ico">✅</div>
+        <div class="ob-stage-top"><span class="ob-n">02</span><span class="ob-who ob-who-both">Call</span></div>
+        <div class="ob-ico">⚙️</div>
         <h3>Configuration call</h3>
-        <p>We review your setup together, answer your questions, and show you where to go from here.</p>
+        <p>We walk through your setup together, answer your questions, and show you where to go from here.</p>
+      </div>
+      <div class="ob-link">
+        <span class="ob-who ob-who-you">Your turn</span>
+        <div class="ob-arrow">→</div>
+        <p>Review and resolve any issues we flagged during setup.</p>
+      </div>
+      <div class="ob-stage">
+        <div class="ob-stage-top"><span class="ob-n">03</span><span class="ob-who ob-who-both">Call</span></div>
+        <div class="ob-ico">🚀</div>
+        <h3>Go-live call</h3>
+        <p>Everything's in place. We confirm you're ready, and you start using Toast IQ Inventory.</p>
       </div>
     </div>
   </section>
@@ -115,9 +123,13 @@
     <div class="ob-flow">
       <div class="ob-flow-step"><b>You</b>send your information</div>
       <span>→</span>
-      <div class="ob-flow-step ob-flow-toast"><b>Toast</b>imports it</div>
+      <div class="ob-flow-step ob-flow-toast"><b>Toast</b>sets everything up</div>
       <span>→</span>
-      <div class="ob-flow-step"><b>Together</b>we review everything</div>
+      <div class="ob-flow-step"><b>Together</b>we review your setup</div>
+      <span>→</span>
+      <div class="ob-flow-step"><b>You</b>resolve flagged issues</div>
+      <span>→</span>
+      <div class="ob-flow-step ob-flow-toast"><b>Go live</b>start using Toast IQ Inventory</div>
     </div>
     <div class="ob-support">
       <div>
@@ -152,7 +164,7 @@
   .ob-sec { padding:2.75rem 0 0; }
   .ob-kicker { font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--orange); margin-bottom:0.4rem; }
   .ob-sec h2 { font-size:1.7rem; letter-spacing:-0.025em; margin-bottom:1.25rem; }
-  .ob-timeline { display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:0.6rem; align-items:stretch; }
+  .ob-timeline { display:grid; grid-template-columns:1fr 150px 1fr 150px 1fr; gap:0.6rem; align-items:stretch; }
   .ob-stage { background:#fff; border:1px solid var(--border); border-radius:14px; padding:1.25rem; }
   .ob-stage-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:0.9rem; }
   .ob-n { font-size:0.72rem; font-weight:800; color:var(--orange); letter-spacing:0.08em; }
@@ -162,6 +174,9 @@
   .ob-ico { font-size:1.6rem; margin-bottom:0.4rem; }
   .ob-stage h3 { font-size:1.05rem; margin-bottom:0.35rem; }
   .ob-stage p { font-size:0.85rem; color:var(--mid); line-height:1.55; }
+  .ob-link { display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:0.3rem; }
+  .ob-link p { font-size:0.78rem; color:var(--mid); line-height:1.4; }
+  .ob-who-you { background:var(--orange); color:#fff; }
   .ob-arrow { align-self:center; color:var(--orange); font-size:1.2rem; }
   .ob-prep { background:#fff6ef; border-radius:18px; padding:2.25rem; margin-top:2.75rem; }
   .ob-cards { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
@@ -179,9 +194,9 @@
   .ob-formats { display:flex; flex-wrap:wrap; gap:0.45rem; margin:0.9rem 0; }
   .ob-formats span { background:#2e2e2e; border-radius:99px; font-size:0.75rem; padding:0.3rem 0.7rem; }
   .ob-small { font-size:0.8rem !important; }
-  .ob-flow { display:flex; align-items:center; gap:0.8rem; flex-wrap:wrap; margin-bottom:1rem; }
-  .ob-flow > span { color:var(--orange); font-size:1.2rem; }
-  .ob-flow-step { flex:1; min-width:180px; background:#fff; border:1px solid var(--border); border-radius:12px; padding:1rem 1.2rem; font-size:0.9rem; }
+  .ob-flow { display:flex; align-items:stretch; gap:0.8rem; flex-wrap:wrap; margin-bottom:1rem; }
+  .ob-flow > span { color:var(--orange); font-size:1.2rem; align-self:center; }
+  .ob-flow-step { flex:1; min-width:140px; background:#fff; border:1px solid var(--border); border-radius:12px; padding:1rem 1.2rem; font-size:0.9rem; }
   .ob-flow-step b { display:block; font-size:1rem; }
   .ob-flow-toast { background:#1a1a1a; color:#fff; border-color:#1a1a1a; }
   .ob-support { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; background:var(--light); border:1px solid var(--border); border-radius:12px; padding:1.1rem 1.3rem; }
@@ -197,7 +212,8 @@
   .ob .tut-nav-footer { margin-top:2rem; }
   @media (max-width:800px) {
     .ob-timeline, .ob-cards { grid-template-columns:1fr; }
-    .ob-arrow { transform:rotate(90deg); justify-self:center; }
+    .ob-link .ob-arrow { transform:rotate(90deg); }
+    .ob-link { padding:0.5rem 0; }
     .ob-prep { padding:1.25rem; }
   }
 </style>
