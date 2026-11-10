@@ -216,6 +216,15 @@ var SEARCH_INDEX = [
     description: "Not yet fully considered — great suggestions came up in the webinar.",
     keywords: "catering orders large batch events"
   },
+  // Item catalog
+  {
+    title: "Mastering the Item Catalog",
+    type: "Tutorial",
+    url: "tutorials/mastering-the-item-catalog.html",
+    external: false,
+    description: "Search, columns, sorting, filters, inline editing, and bulk actions to keep your item data accurate.",
+    keywords: "item catalog search columns sort filter warnings barcodes inline edit bulk actions set values margins items table"
+  },
   // Guides
   {
     title: "Upgrading from Toast Retail",
