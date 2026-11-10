@@ -19,11 +19,11 @@ var SEARCH_INDEX = [
   },
   {
     title: "Completing Your First Stock Count",
-    type: "Video",
-    url: "https://www.loom.com/share/34d690b18a0145b68f29332ee0aabc7c",
-    external: true,
-    description: "A critical part of getting set up properly — complete your first stock count as soon as onboarding is finished.",
-    keywords: "first stock count cycle count count sheet onboarding setup reconcile shelf"
+    type: "Tutorial",
+    url: "tutorials/completing-your-first-stock-count.html",
+    external: false,
+    description: "Set up item locations, create a count template, run the count, and review your variance.",
+    keywords: "stock count first count cycle count item locations count template schedule rules perpetual inventory variance actual theoretical mobile app ad hoc count baseline submit count"
   },
   {
     title: "Recipes & Ingredients — What's Ready for Testing",
@@ -72,11 +72,11 @@ var SEARCH_INDEX = [
   },
   {
     title: "Recipes & Ingredients Overview",
-    type: "Video",
-    url: "https://www.loom.com/share/320bbad9ac424f8991fd9bd712f6fc86",
-    external: true,
-    description: "A walkthrough of recipes and ingredients in Toast IQ Inventory — building recipes, tracking ingredient usage, and keeping plate costs accurate.",
-    keywords: "recipes ingredients overview feature plate cost tracking usage build"
+    type: "Tutorial",
+    url: "tutorials/recipes-and-ingredients-overview.html",
+    external: false,
+    description: "Define what goes into each menu item so selling it depletes ingredients and keeps your costs accurate.",
+    keywords: "recipes ingredients prepared food beverage recipe tab yield unit of measure unit conversion plate cost allergens prep time cook time depletion cost of goods stock purchase cost sellable non-sellable item catalog filters"
   },
   {
     title: "Cross-Location Transfer, Introduction",
@@ -224,6 +224,14 @@ var SEARCH_INDEX = [
     external: false,
     description: "Search, columns, sorting, filters, inline editing, and bulk actions to keep your item data accurate.",
     keywords: "item catalog search columns sort filter warnings barcodes inline edit bulk actions set values margins items table"
+  },
+  {
+    title: "Receiving Invoices for Ingredients",
+    type: "Tutorial",
+    url: "tutorials/receiving-invoices.html",
+    external: false,
+    description: "Upload a scanned invoice, match your items, set the receiving unit, and update stock and costs.",
+    keywords: "receiving invoices ingredients upload scan invoice match items vendor item id receiving unit primary unit create new item ingredient supply retail item mark as received update pricing margin updated widget purchasing receiving PO manual invoice chocolate chips cases packs"
   },
   // Guides
   {
