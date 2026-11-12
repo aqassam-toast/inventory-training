@@ -39,7 +39,7 @@
     <a href="index.html" class="tut-back">← Tutorials</a>
     <div class="tut-eyebrow">Making a change · Transitioning between Toast products</div>
     <h1>Upgrading from<br><span>Toast Retail</span></h1>
-    <p>Four things work differently in Toast IQ Inventory. Here's what's changing and what it means for you.</p>
+    <p>Five things work differently in Toast IQ Inventory. Here's what's changing and what it means for you.</p>
   </div>
 </div>
 
@@ -48,14 +48,15 @@
   <div class="jump" role="navigation" aria-label="In this guide">
     <a href="#change-1"><span>01</span><strong>Stock never disrupts sales</strong><em>Separate from stock, so you can keep selling</em></a>
     <a href="#change-2"><span>02</span><strong>Real-time reporting</strong><em>Current-day reports, traceable to the item log</em></a>
-    <a href="#change-3"><span>03</span><strong>Adjustment reasons</strong><em>Add and remove them in Settings</em></a>
-    <a href="#change-4"><span>04</span><strong>Item history</strong><em>The full trail behind every quantity</em></a>
+    <a href="#change-3"><span>03</span><strong>Never negative</strong><em>Stock stops at zero, and history can be edited</em></a>
+    <a href="#change-4"><span>04</span><strong>Adjustment reasons</strong><em>Add and remove them in Settings</em></a>
+    <a href="#change-5"><span>05</span><strong>Item history</strong><em>The full trail behind every quantity</em></a>
   </div>
   <style>
     html { scroll-behavior: smooth; }
     .tut-hero-inner, .tut-body { max-width: 1240px; }
     .tut-step, .c1 { scroll-margin-top: 150px; }
-    .jump { display:grid; grid-template-columns:repeat(4,1fr); gap:0.75rem; position:sticky; top:60px; z-index:40; background:rgba(255,255,255,0.94); backdrop-filter:blur(8px); margin:-0.5rem -0.75rem 0; padding:0.5rem 0.75rem; border-radius:14px; transition:box-shadow .2s; }
+    .jump { display:grid; grid-template-columns:repeat(5,1fr); gap:0.75rem; position:sticky; top:60px; z-index:40; background:rgba(255,255,255,0.94); backdrop-filter:blur(8px); margin:-0.5rem -0.75rem 0; padding:0.5rem 0.75rem; border-radius:14px; transition:box-shadow .2s; }
     .jump.stuck { box-shadow:0 6px 20px rgba(0,0,0,0.10); border:1px solid var(--border); }
     .jump.stuck em { display:none; }
     .jump.stuck a { padding:0.55rem 0.9rem; }
@@ -383,8 +384,96 @@
     }
   </style>
 
-  <section class="c1 c2 c3" id="change-3">
-    <div class="c1-kicker">Change 03 · Your reasons, your way</div>
+  <section class="c1 c2 c6" id="change-3">
+    <div class="c1-kicker">Change 03 · Stock on hand</div>
+    <div class="c2-title">
+      <h2>Stock never goes negative, and history can be fixed.</h2>
+      <p>Stock stays at zero until you count or receive more. When you back-date or edit past entries, everything after them is recalculated.</p>
+    </div>
+
+    <div class="c2-ba">
+      <div class="c2-half">
+        <span class="c1-badge">BEFORE</span>
+        <div class="c2-ico"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7M12 17h.01"/></svg></div>
+        <div class="c2-copy"><strong>Stock could show as negative</strong><small>Selling more than you had pushed stock below zero.</small></div>
+        <span class="c2-chip c2-chip-or">−4 EACH</span>
+      </div>
+      <div class="c2-half c2-half-now">
+        <span class="c1-badge c2-badge-now">NOW</span>
+        <div class="c2-ico c2-ico-g"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg></div>
+        <div class="c2-copy"><strong>Stock stays at zero</strong><small>Until you count or receive more.</small></div>
+        <span class="c2-chip c2-chip-g">0 EACH</span>
+      </div>
+    </div>
+
+    <div class="c6-main">
+      <div class="c2-panel">
+        <div class="c2-panel-head"><div><small>ITEM CATALOG · STOCK ON HAND</small><h3>Never negative</h3></div></div>
+        <div class="c6-cards">
+          <div class="c6-card c6-card-b"><small>BEFORE</small><b class="c6-neg">−4 each</b></div>
+          <div class="c6-arrow">→</div>
+          <div class="c6-card c6-card-a"><small>NOW</small><b>0 each</b><span class="c6-oos"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="m6.5 6.5 11 11"/></svg> Out of stock</span></div>
+        </div>
+        <div class="c6-cap">When you sell more than you have, stock stays at zero until you count or receive more.</div>
+        <div class="c6-tbl">
+          <table>
+            <tr><th>Item</th><th>Stock on hand</th></tr>
+            <tr><td>Giant Jenga: Outdoor Edition</td><td class="c6-zero">0 each <span class="c6-oos c6-oos-s">Out of stock</span></td></tr>
+            <tr><td>Catan: 3D Edition</td><td>4 each</td></tr>
+            <tr><td>Bleach: Original Formula</td><td>10 each</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="c2-mid"><span class="c2-rt"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-15-6.7L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"/><path d="M21 21v-5h-5"/></svg>RECALC</span></div>
+
+      <div class="c2-panel">
+        <div class="c2-panel-head"><div><small>ACTIVITY HISTORY</small><h3>Back-date and edit, then recalculate</h3></div><span class="c2-chip c2-chip-g c2-chip-out"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>HISTORIC EDITS</span></div>
+        <div class="c6-tbl">
+          <table>
+            <tr><th>Event</th><th>Stock before edit</th><th>Stock after edit</th></tr>
+            <tr class=""><td><strong>Stock count</strong><span class="c6-t">Mon 9:00 AM</span></td><td class="c6-b">18</td><td class="c6-a">18</td></tr><tr class="c6-new"><td><strong>Receive +10</strong><span class="c6-t">Back-dated to Mon 10:00 AM</span></td><td class="c6-b">—</td><td class="c6-a">28</td></tr><tr class=""><td><strong>Sale −8</strong><span class="c6-t">Mon 12:00 PM</span></td><td class="c6-b">10</td><td class="c6-a">20</td></tr><tr class=""><td><strong>Sale −12</strong><span class="c6-t">Mon 6:00 PM</span></td><td class="c6-b"><span class="c6-z">0</span></td><td class="c6-a">8</td></tr><tr class=""><td><strong>Sale −6</strong><span class="c6-t">Tue 11:00 AM</span></td><td class="c6-b"><span class="c6-z">0</span></td><td class="c6-a">2</td></tr>
+          </table>
+        </div>
+        <div class="c2-ok"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg>Add a back-dated receive and every balance after it is recalculated.</div>
+      </div>
+    </div>
+
+    <div class="c1-kicker c1-k2">What you gain</div>
+    <div class="c5-bs">
+      <div class="c5-b"><span>🧮</span><div><strong>Numbers that make sense</strong><small>Stock on hand never displays below zero.</small></div></div>
+      <div class="c5-b"><span>🕒</span><div><strong>Back-dating</strong><small>Record receives, counts, and adjustments for the date they actually happened.</small></div></div>
+      <div class="c5-b"><span>✏️</span><div><strong>Historic edits</strong><small>Fix a past entry and the full history after it recalculates.</small></div></div>
+    </div>
+  </section>
+
+  <style>
+    .c6-main { display:grid; grid-template-columns:1fr 64px 1.25fr; align-items:stretch; }
+    .c6-cards { display:flex; align-items:center; gap:0.8rem; margin-bottom:0.9rem; }
+    .c6-card { flex:1; background:#fff; border:1px solid var(--line); border-radius:12px; padding:1rem; display:flex; flex-direction:column; gap:0.3rem; }
+    .c6-card small { font-size:0.55rem; letter-spacing:0.1em; font-weight:700; color:var(--mut); }
+    .c6-card b { font-size:1.5rem; }
+    .c6-neg { color:#c2312b; text-decoration:line-through; }
+    .c6-card-a { border-color:#f3b9a3; background:#fff6f2; }
+    .c6-arrow { color:var(--acc); }
+    .c6-oos { display:inline-flex; align-items:center; gap:0.3rem; font-size:0.7rem; font-weight:600; color:#c2312b; }
+    .c6-oos-s { font-size:0.6rem; margin-left:0.4rem; }
+    .c6-cap { font-size:0.75rem; color:#57534e; margin-bottom:0.9rem; }
+    .c6-tbl { background:#fff; border-radius:10px; overflow:hidden; margin-bottom:0.8rem; }
+    .c6-tbl table { width:100%; border-collapse:collapse; font-size:0.72rem; }
+    .c6-tbl th { text-align:left; font-size:0.55rem; letter-spacing:0.05em; color:var(--mut); background:#f7f6f4; padding:0.7rem 0.8rem; }
+    .c6-tbl td { padding:0.8rem; border-bottom:1px solid #f0eeeb; }
+    .c6-t { display:block; font-size:0.58rem; color:var(--mut); margin-top:0.1rem; }
+    .c6-new td { background:#fff6f2; }
+    .c6-b { color:#78716c; }
+    .c6-a { font-weight:700; color:#1f5c3d; }
+    .c6-z { color:#c2312b; font-weight:600; }
+    .c6-zero { color:#c2312b; font-weight:600; }
+    @media (max-width:900px) { .c6-main { grid-template-columns:1fr; } .c2-mid { height:70px; } .c2-mid::before { top:0; bottom:0; } }
+  </style>
+
+  <section class="c1 c2 c3" id="change-4">
+    <div class="c1-kicker">Change 04 · Your reasons, your way</div>
     <div class="c2-title">
       <h2>Make adjustment reasons fit your business.</h2>
       <p>Manage reasons in Settings. Deactivate the ones your team doesn't use and add custom reasons for the situations that matter to you.</p>
@@ -474,8 +563,8 @@
     @media (max-width:900px) { .c3-feats, .c3-main { grid-template-columns:1fr; } .c3-arrow { transform:rotate(90deg); justify-self:center; } }
   </style>
 
-  <section class="c1 c2 c4" id="change-4">
-    <div class="c1-kicker">Change 04 · Complete edit history</div>
+  <section class="c1 c2 c4" id="change-5">
+    <div class="c1-kicker">Change 05 · Complete edit history</div>
     <div class="c2-title">
       <h2>Trace every change, right where it matters.</h2>
       <p>Investigate one record from its item or stock page, or open Reports → History for a filterable view of changes across your business.</p>
