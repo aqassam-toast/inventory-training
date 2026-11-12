@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Toast IQ Inventory — Training & Support</title>
   <link rel="stylesheet" href="assets/css/style.css?v=6" />
-  <link rel="stylesheet" href="assets/css/home.css?v=2" />
+  <link rel="stylesheet" href="assets/css/home.css?v=3" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <!-- Google tag (gtag.js) -->
@@ -119,7 +119,16 @@
     <p>Select the path that best matches what you're working on.</p>
   </div>
   <div class="h-paths" role="tablist" aria-label="Choose your path">
-    <button class="h-path" role="tab" id="tab-onboarding" aria-controls="panel-onboarding" aria-selected="true" data-path="onboarding" data-track="path_onboarding" type="button">
+    <button class="h-path" role="tab" id="tab-learn" aria-controls="panel-learn" aria-selected="true" data-path="learn" data-track="path_learn" type="button">
+      <div class="h-path-icon">🔎</div>
+      <div>
+        <div class="h-path-eyebrow">Exploring</div>
+        <h3>Learn more</h3>
+        <p>See what Toast IQ Inventory does, what's available today, and answers to common questions.</p>
+      </div>
+      <span class="h-path-state">Select</span>
+    </button>
+    <button class="h-path" role="tab" id="tab-onboarding" aria-controls="panel-onboarding" aria-selected="false" data-path="onboarding" data-track="path_onboarding" type="button">
       <div class="h-path-icon">📋</div>
       <div>
         <div class="h-path-eyebrow">New to inventory</div>
@@ -137,7 +146,8 @@
       </div>
       <span class="h-path-state">Select</span>
     </button>
-    <button class="h-path" role="tab" id="tab-day-to-day" aria-controls="panel-day-to-day" aria-selected="false" data-path="day-to-day" data-track="path_day-to-day" type="button">
+    <!-- Hidden for now: remove the hidden attribute (here and on #panel-day-to-day) to bring it back -->
+    <button class="h-path" hidden role="tab" id="tab-day-to-day" aria-controls="panel-day-to-day" aria-selected="false" data-path="day-to-day" data-track="path_day-to-day" type="button">
       <div class="h-path-icon">🗂️</div>
       <div>
         <div class="h-path-eyebrow">Already up and running</div>
@@ -150,7 +160,34 @@
 
   <div class="h-panels">
 
-    <section class="h-panel" id="panel-onboarding" role="tabpanel" aria-labelledby="tab-onboarding">
+    <section class="h-panel" id="panel-learn" role="tabpanel" aria-labelledby="tab-learn">
+      <div class="h-panel-head">
+        <h2>Get to know Toast IQ Inventory</h2>
+        <p>What it is, what you can do with it today, and where it's headed.</p>
+      </div>
+      <div class="h-grid">
+        <a class="h-card" href="https://www.loom.com/share/1489f7a1bf564659960370dc8b60f01f" target="_blank" rel="noopener" data-track="content_video_first_look">
+          <div class="h-card-type">Video</div>
+          <h3>Toast IQ Inventory: first look</h3>
+          <p>A quick walkthrough of what Toast IQ Inventory is.</p>
+          <span class="h-card-cta">Watch →</span>
+        </a>
+        <a class="h-card" href="available/index.html" data-track="content_available_features">
+          <div class="h-card-type">Reference</div>
+          <h3>What's available</h3>
+          <p>Every feature you can use today across purchasing, inventory, reporting, and recipes, plus what's on the roadmap.</p>
+          <span class="h-card-cta">View →</span>
+        </a>
+        <a class="h-card" href="faqs/index.html" data-track="content_faq">
+          <div class="h-card-type">FAQ</div>
+          <h3>Frequently asked questions</h3>
+          <p>Answers on recipes, par levels, availability and 86ing, QuickBooks integration, reporting, pricing, and more.</p>
+          <span class="h-card-cta">Browse the FAQ →</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="h-panel" id="panel-onboarding" role="tabpanel" aria-labelledby="tab-onboarding" hidden>
       <div class="h-panel-head">
         <h2>Recommended for you</h2>
         <p>Start here and work down the list.</p>
@@ -184,16 +221,7 @@
           <div class="h-card-type">Video + tutorial</div>
           <h3>Receiving invoices for ingredients</h3>
           <p>Upload a scanned invoice, match items, set the receiving unit, and update stock and costs.</p>
-          <span class="h-card-cta">Watch →</span>
-        </a>
-      </div>
-      <div class="h-subhead">More to explore</div>
-      <div class="h-grid">
-        <a class="h-card" href="https://www.loom.com/share/1489f7a1bf564659960370dc8b60f01f" target="_blank" rel="noopener" data-track="content_video_first_look">
-          <div class="h-card-type">Video</div>
-          <h3>Toast IQ Inventory: first look</h3>
-          <p>A quick walkthrough of what Toast IQ Inventory is.</p>
-          <span class="h-card-cta">Watch →</span>
+          <span class="h-card-cta">Read →</span>
         </a>
       </div>
     </section>
@@ -373,10 +401,10 @@
 </main>
 
 <script>
-  // Path picker: one panel visible at a time, deep-linkable via #onboarding,
-  // #transition or #day-to-day.
+  // Path picker: one panel visible at a time, deep-linkable via #learn, #onboarding
+  // or #transition.
   (function () {
-    var tabs = Array.prototype.slice.call(document.querySelectorAll(".h-path"));
+    var tabs = Array.prototype.slice.call(document.querySelectorAll(".h-path:not([hidden])"));
     function select(id, focus) {
       tabs.forEach(function (t) {
         var on = t.getAttribute("data-path") === id;
@@ -398,7 +426,7 @@
       });
     });
     var start = location.hash.slice(1);
-    select(tabs.some(function (t) { return t.getAttribute("data-path") === start; }) ? start : "onboarding");
+    select(tabs.some(function (t) { return t.getAttribute("data-path") === start; }) ? start : "learn");
 
     // Cmd/Ctrl+K focuses search
     document.addEventListener("keydown", function (e) {
