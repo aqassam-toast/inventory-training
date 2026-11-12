@@ -93,8 +93,8 @@ var SEARCH_INDEX = [
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Test Kitchen sign-ups have closed — the product is now available for purchase in some districts, expanding through the end of the year.",
-    keywords: "access get started buy purchase district availability test kitchen closed sandbox production account how"
+    description: "Open Beta is live in the UK & Ireland, Canada, and Australia, and available for purchase in select U.S. districts.",
+    keywords: "access get started buy purchase district availability open beta how"
   },
   {
     title: "Will inventory update automatically from invoices?",
@@ -113,59 +113,43 @@ var SEARCH_INDEX = [
     keywords: "recipes sales plate cost margin manual flexible historical update 30 days retroactive"
   },
   {
-    title: "Can multiple products share the same inventory?",
+    title: "Is batch production / prep supported?",
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Yes — core use case. Different pours from the same keg, shared inventory.",
-    keywords: "shared inventory multiple products keg pours bundle shared sellable"
-  },
-  {
-    title: "Will batch production / prep workflows be supported?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "Yes — batch production will exist, manual at the start.",
-    keywords: "batch production prep workflows cocktails prep builds manual automation"
+    description: "Yes — batch production is supported and is manual today.",
+    keywords: "batch production prep workflows cocktails prep builds manual"
   },
   {
     title: "Can I track inventory by sub-location?",
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Not fully in first release — high-priority area of feedback.",
+    description: "No — tracking by sub-location is not supported.",
     keywords: "sub-location bar kitchen retail location tracking"
   },
   {
-    title: "Will the system automate reordering?",
+    title: "Can I set par levels?",
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Eventually — alerts first, then recommendations, then automation.",
-    keywords: "reorder automated alerts recommendations par level stockout"
-  },
-  {
-    title: "Can I set par levels and trigger orders?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "Yes — par-based workflows are already part of the system.",
-    keywords: "par levels trigger orders reorder point minimum stock"
+    description: "Par levels are supported for sellable items, not ingredients or supplies. Automated restock-to-par is not available.",
+    keywords: "par levels reorder point minimum stock par min par max"
   },
   {
     title: "Can the system automatically 86 items?",
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Yes — especially based on ingredient stock.",
-    keywords: "86 items out of stock availability ingredient depletion sales"
+    description: "Not automatically — sales availability is separate from stock; sync availability with stock on-hand from Item actions.",
+    keywords: "86 items out of stock availability sync stock on hand sales availability"
   },
   {
-    title: "Will there be integrations with scales or draft systems?",
+    title: "Does this integrate with scales or draft systems?",
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Active area of research. Barcode scanning and label printing included.",
+    description: "Not today. Barcode scanning and label printing are included.",
     keywords: "scales draft systems hardware barcode scanning label printing integrations"
   },
   {
@@ -173,48 +157,32 @@ var SEARCH_INDEX = [
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Yes — payroll, sales, and invoice automation integrations with QuickBooks.",
-    keywords: "quickbooks accounting payroll integration sales invoice automation xtraCHEF"
+    description: "Available for QuickBooks Online, QuickBooks Desktop via IIF file, and generic export to Excel. Expanded to Canada; no other countries yet.",
+    keywords: "quickbooks accounting payroll integration sales invoice qbo iif quickbooks desktop excel export canada international"
   },
   {
-    title: "When will this be available?",
+    title: "Is Toast IQ Inventory available?",
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Rolling out in phases: retail first, recipes next, modifiers after.",
-    keywords: "availability rollout phases retail recipes modifiers timeline when"
+    description: "Open Beta since September 8, 2026 in the UK & Ireland, Canada, and Australia, and select U.S. districts.",
+    keywords: "availability rollout open beta countries when"
   },
   {
-    title: "Will there be sandbox access?",
+    title: "Is this available outside the U.S.?",
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Yes — sandbox / early testing environments are planned.",
-    keywords: "sandbox testing early access environment demo"
-  },
-  {
-    title: "Will this be available outside the U.S.?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "Yes — all countries where Toast is sold today.",
-    keywords: "international countries outside US global"
+    description: "Yes — live in the UK & Ireland, Canada, and Australia as part of the Open Beta.",
+    keywords: "international countries outside US uk ireland canada australia"
   },
   {
     title: "Will this cost extra?",
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Yes — pricing is still being finalized.",
+    description: "Yes — it is a paid addition to your Toast subscription. See Toast Shop or your Toast representative.",
     keywords: "cost price pricing extra paid"
-  },
-  {
-    title: "Can large catering orders be handled differently?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "Not yet fully considered — great suggestions came up in the webinar.",
-    keywords: "catering orders large batch events"
   },
   // Item catalog
   {
