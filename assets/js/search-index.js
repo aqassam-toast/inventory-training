@@ -89,100 +89,436 @@ var SEARCH_INDEX = [
   // Tutorials
   // FAQs
   {
-    title: "How do I get access to Toast IQ Inventory?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "Open Beta is live in the UK & Ireland, Canada, and Australia, and available for purchase in select U.S. districts.",
-    keywords: "access get started buy purchase district availability open beta how"
+    "title": "How do I get access to Toast IQ Inventory?",
+    "type": "FAQ",
+    "url": "faqs/index.html#early-access",
+    "external": false,
+    "description": "Contact your Toast sales representative to check availability and get set up.",
+    "keywords": "early access"
   },
   {
-    title: "How do I receive an invoice and update stock?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "Watch the receiving invoices tutorial for review, matching, receiving units, and updating stock. Email, scan, upload, manual entry, and purchase order workflows are supported.",
-    keywords: "invoice automatic update stock ingestion mapping purchases products"
+    "title": "Where is Toast IQ Inventory available?",
+    "type": "FAQ",
+    "url": "faqs/index.html#availability",
+    "external": false,
+    "description": "Open Beta is available in the UK & Ireland, Canada, and Australia, and for purchase in select U.S. districts.",
+    "keywords": "availability"
   },
   {
-    title: "Do recipes need to exist before sales?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "No — you can enter a manual plate cost and update it up to 30 days in the past.",
-    keywords: "recipes sales plate cost margin manual flexible historical update 30 days retroactive"
+    "title": "Is this available outside the U.S.?",
+    "type": "FAQ",
+    "url": "faqs/index.html#international",
+    "external": false,
+    "description": "Yes. Toast IQ Inventory is available in the UK & Ireland, Canada, and Australia. Accounting integration availability is limited to the U.S. and Canada.",
+    "keywords": "international"
   },
   {
-    title: "Is batch production / prep supported?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "Record batch production through stock counts or manual production events in the web or mobile item catalog.",
-    keywords: "batch production prep workflows cocktails prep builds manual"
+    "title": "Does Toast IQ Inventory cost extra?",
+    "type": "FAQ",
+    "url": "faqs/index.html#pricing",
+    "external": false,
+    "description": "Yes. It is a paid addition to your Toast subscription. Check Toast Shop or ask your Toast representative for pricing.",
+    "keywords": "pricing"
   },
   {
-    title: "Can I track inventory by sub-location?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "No — tracking by sub-location is not supported.",
-    keywords: "sub-location bar kitchen retail location tracking"
+    "title": "Do I need the Toast Retail module?",
+    "type": "FAQ",
+    "url": "faqs/index.html#need-retail-module",
+    "external": false,
+    "description": "No. You do not need to purchase Toast Retail to use Toast IQ Inventory.",
+    "keywords": "need retail module"
   },
   {
-    title: "Can I set par levels?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "Par levels are supported for sellable items, not ingredients or supplies. Automated restock-to-par is not available.",
-    keywords: "par levels reorder point minimum stock par min par max"
+    "title": "Why can’t I see my menu items?",
+    "type": "FAQ",
+    "url": "faqs/index.html#no-items-showing",
+    "external": false,
+    "description": "In Categories, select the menus you want to include. If items still do not appear, contact the Inventory team.",
+    "keywords": "no items showing"
   },
   {
-    title: "When do I need to sync sales availability with stock?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "Sales and POS waste update availability automatically. Sync after receiving inventory, negative Retail stock adjustments, or stock counts.",
-    keywords: "86 items out of stock availability sync stock on hand sales availability"
+    "title": "How do I share feedback?",
+    "type": "FAQ",
+    "url": "faqs/index.html#how-to-give-feedback",
+    "external": false,
+    "description": "Use the feedback form for suggestions, or email the Inventory team for help.",
+    "keywords": "how to give feedback"
   },
   {
-    title: "Does this integrate with scales or draft systems?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "Not today. Barcode scanning and label printing are included.",
-    keywords: "scales draft systems hardware barcode scanning label printing integrations"
+    "title": "What types of items can I create?",
+    "type": "FAQ",
+    "url": "faqs/index.html#item-types",
+    "external": false,
+    "description": "Retail, prepared food & beverage, ingredient, and supply. Recipe configuration is available on prepared food & beverage items.",
+    "keywords": "item types"
   },
   {
-    title: "Does this integrate with QuickBooks?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "Available for QuickBooks Online, QuickBooks Desktop via IIF file, and generic export to Excel. Accounting integrations are supported in the U.S. and Canada; other international markets are not supported.",
-    keywords: "quickbooks accounting payroll integration sales invoice qbo iif quickbooks desktop excel export canada international"
+    "title": "Do I manage items in Inventory or Menu Manager?",
+    "type": "FAQ",
+    "url": "faqs/index.html#inventory-vs-menu-manager",
+    "external": false,
+    "description": "Either. Both use the same item data. Use Inventory for recipes and stock tracking, and continue managing menus in Menu Manager.",
+    "keywords": "inventory vs menu manager"
   },
   {
-    title: "Is Toast IQ Inventory available?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "Open Beta since September 8, 2026 in the UK & Ireland, Canada, and Australia, and select U.S. districts.",
-    keywords: "availability rollout open beta countries when"
+    "title": "Do recipes need to exist before sales? Can I edit them later?",
+    "type": "FAQ",
+    "url": "faqs/index.html#recipes-before-sales",
+    "external": false,
+    "description": "No. You can enter a manual plate cost and back-date it up to 30 days. You can also update recipes over time without creating new menu items.",
+    "keywords": "recipes before sales"
   },
   {
-    title: "Is this available outside the U.S.?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "Yes — live in the UK & Ireland, Canada, and Australia as part of the Open Beta.",
-    keywords: "international countries outside US uk ireland canada australia"
+    "title": "Do I need to recreate recipes at every location?",
+    "type": "FAQ",
+    "url": "faqs/index.html#multi-location-recipes",
+    "external": false,
+    "description": "No. A recipe follows its menu item to the locations where that item is shared. Editing the recipe updates it across those locations.",
+    "keywords": "multi location recipes"
   },
   {
-    title: "Will this cost extra?",
-    type: "FAQ",
-    url: "faqs/index.html",
-    external: false,
-    description: "Yes — it is a paid addition to your Toast subscription. See Toast Shop or your Toast representative.",
-    keywords: "cost price pricing extra paid"
+    "title": "How do unit conversions work?",
+    "type": "FAQ",
+    "url": "faqs/index.html#unit-conversions",
+    "external": false,
+    "description": "Conversions are stored on the ingredient and used wherever that ingredient appears. Check them carefully: incorrect conversions affect inventory calculations.",
+    "keywords": "unit conversions"
+  },
+  {
+    "title": "Can I edit multiple items at once?",
+    "type": "FAQ",
+    "url": "faqs/index.html#bulk-editing",
+    "external": false,
+    "description": "Yes. Select items in the item catalog, then use the bulk action menus to update shared fields. Many fields can also be edited directly in the table.",
+    "keywords": "bulk editing"
+  },
+  {
+    "title": "Can I add my own fields to items?",
+    "type": "FAQ",
+    "url": "faqs/index.html#custom-attributes",
+    "external": false,
+    "description": "Yes. Create custom attributes to store extra information, filter your catalog, and include values on labels.",
+    "keywords": "custom attributes"
+  },
+  {
+    "title": "Does this support location-specific pricing?",
+    "type": "FAQ",
+    "url": "faqs/index.html#location-specific-pricing",
+    "external": false,
+    "description": "Yes. Reports and margins use each location’s price. Continue editing location-specific prices in your existing pricing tools.",
+    "keywords": "location specific pricing"
+  },
+  {
+    "title": "Do recipe quantities change with modifier selections?",
+    "type": "FAQ",
+    "url": "faqs/index.html#modifier-support",
+    "external": false,
+    "description": "No. Recipes are set on the sellable item; checkout modifiers do not add or remove recipe ingredients.",
+    "keywords": "modifier support"
+  },
+  {
+    "title": "Can I customize the allergen list?",
+    "type": "FAQ",
+    "url": "faqs/index.html#allergens",
+    "external": false,
+    "description": "No. You can tag finished items using the fixed, country-specific list. Allergens appear on POS and online ordering; third-party ordering is not supported.",
+    "keywords": "allergens"
+  },
+  {
+    "title": "Can I add custom dietary tags?",
+    "type": "FAQ",
+    "url": "faqs/index.html#dietary-tags",
+    "external": false,
+    "description": "Yes. Dietary tags are customizable and appear on POS and online ordering. They are separate from allergen information.",
+    "keywords": "dietary tags"
+  },
+  {
+    "title": "Do ingredient allergens roll up to recipes?",
+    "type": "FAQ",
+    "url": "faqs/index.html#ingredient-allergens",
+    "external": false,
+    "description": "No. Add allergens directly to the finished item.",
+    "keywords": "ingredient allergens"
+  },
+  {
+    "title": "How do I add invoices?",
+    "type": "FAQ",
+    "url": "faqs/index.html#invoice-capture",
+    "external": false,
+    "description": "Use email, mobile scan, upload, manual entry, or purchase order workflows.",
+    "keywords": "invoice capture"
+  },
+  {
+    "title": "How do I receive an invoice and update stock?",
+    "type": "FAQ",
+    "url": "faqs/index.html#invoice-updates",
+    "external": false,
+    "description": "Review the invoice, match items, and confirm receiving units. Mark it as received to update stock.",
+    "keywords": "invoice updates"
+  },
+  {
+    "title": "How do I complete my first stock count?",
+    "type": "FAQ",
+    "url": "faqs/index.html#first-stock-count",
+    "external": false,
+    "description": "Set up item locations, create a count template, enter the quantities you have, and submit the count.",
+    "keywords": "first stock count"
+  },
+  {
+    "title": "Why is my first count’s variance different from later counts?",
+    "type": "FAQ",
+    "url": "faqs/index.html#first-count-variance",
+    "external": false,
+    "description": "Your first count sets the starting point. Later counts compare what you count with what Toast expects.",
+    "keywords": "first count variance"
+  },
+  {
+    "title": "Do I have to track stock on every item?",
+    "type": "FAQ",
+    "url": "faqs/index.html#stock-tracking-optional",
+    "external": false,
+    "description": "No. Choose which items to track. Counting an item automatically enables stock tracking for it.",
+    "keywords": "stock tracking optional"
+  },
+  {
+    "title": "Can stock on hand go negative?",
+    "type": "FAQ",
+    "url": "faqs/index.html#negative-stock",
+    "external": false,
+    "description": "No. Stock on hand stops at zero until you count or receive more.",
+    "keywords": "negative stock"
+  },
+  {
+    "title": "Can I back-date a receipt or correct an earlier stock entry?",
+    "type": "FAQ",
+    "url": "faqs/index.html#backdate-stock",
+    "external": false,
+    "description": "Yes. Back-date or edit past stock entries to reflect when changes actually happened.",
+    "keywords": "backdate stock"
+  },
+  {
+    "title": "What recalculates when I edit a past stock entry?",
+    "type": "FAQ",
+    "url": "faqs/index.html#historic-recalculations",
+    "external": false,
+    "description": "Stock balances after the edited entry are recalculated throughout the subsequent history.",
+    "keywords": "historic recalculations"
+  },
+  {
+    "title": "How do I add or disable adjustment reasons?",
+    "type": "FAQ",
+    "url": "faqs/index.html#adjustment-reasons",
+    "external": false,
+    "description": "Go to Settings → Adjustment reasons. Add your own reasons or deactivate ones your team does not use.",
+    "keywords": "adjustment reasons"
+  },
+  {
+    "title": "How do I record batch production?",
+    "type": "FAQ",
+    "url": "faqs/index.html#batch-production",
+    "external": false,
+    "description": "Use stock counts or manual production events in the item catalog on the web or mobile app.",
+    "keywords": "batch production"
+  },
+  {
+    "title": "Does POS waste update inventory?",
+    "type": "FAQ",
+    "url": "faqs/index.html#waste-tracking",
+    "external": false,
+    "description": "Yes. POS waste appears in the item’s inventory activity. Configure waste reasons before logging waste.",
+    "keywords": "waste tracking"
+  },
+  {
+    "title": "Can I track stock balances by sub-location?",
+    "type": "FAQ",
+    "url": "faqs/index.html#sub-location-tracking",
+    "external": false,
+    "description": "No. Separate stock balances by sub-location are not supported. Item locations organize your counts.",
+    "keywords": "sub location tracking"
+  },
+  {
+    "title": "When do I need to sync sales availability with stock?",
+    "type": "FAQ",
+    "url": "faqs/index.html#auto-86",
+    "external": false,
+    "description": "Sales and POS waste update availability automatically. Sync after receiving inventory, negative Retail stock adjustments, or stock counts using Item actions → Sync availability with stock on-hand.",
+    "keywords": "auto 86"
+  },
+  {
+    "title": "Does changing quantity on the POS update stock on hand?",
+    "type": "FAQ",
+    "url": "faqs/index.html#pos-quantity",
+    "external": false,
+    "description": "No. Changing quantity on a POS device updates sales availability. Counts, receipts, sales, and waste change stock on hand.",
+    "keywords": "pos quantity"
+  },
+  {
+    "title": "Which ordering channels deplete inventory?",
+    "type": "FAQ",
+    "url": "faqs/index.html#which-channels-deplete",
+    "external": false,
+    "description": "POS, online ordering, kiosk, and catering & events all deplete stock. For future orders, depletion happens when the order fires.",
+    "keywords": "which channels deplete"
+  },
+  {
+    "title": "Can I set par levels?",
+    "type": "FAQ",
+    "url": "faqs/index.html#par-levels",
+    "external": false,
+    "description": "Yes, for sellable items. Set par min and max in the item catalog. Ingredient and supply par levels, and automated restock-to-par, are not supported.",
+    "keywords": "par levels"
+  },
+  {
+    "title": "Do future orders reduce stock when they are placed?",
+    "type": "FAQ",
+    "url": "faqs/index.html#preorders-and-fire-time",
+    "external": false,
+    "description": "No. Stock decreases when the order fires to the kitchen. Fire timing depends on your account’s settings.",
+    "keywords": "preorders and fire time"
+  },
+  {
+    "title": "Can I see stock committed to future orders?",
+    "type": "FAQ",
+    "url": "faqs/index.html#overselling-preorders",
+    "external": false,
+    "description": "No. Future orders do not reduce on-hand stock until they fire. There is no committed-stock view.",
+    "keywords": "overselling preorders"
+  },
+  {
+    "title": "Do voids and refunds return stock?",
+    "type": "FAQ",
+    "url": "faqs/index.html#voids-and-restocking",
+    "external": false,
+    "description": "A void before firing has no stock impact; a void after firing restocks the item. To refund without restocking, return the payment rather than voiding the order.",
+    "keywords": "voids and restocking"
+  },
+  {
+    "title": "Which inventory reports are available?",
+    "type": "FAQ",
+    "url": "faqs/index.html#reporting",
+    "external": false,
+    "description": "Sales & COGS, Inventory Snapshot, and Inventory Roll Forward.",
+    "keywords": "reporting"
+  },
+  {
+    "title": "Do I need to wait until tomorrow to see today’s reports?",
+    "type": "FAQ",
+    "url": "faqs/index.html#current-day-reporting",
+    "external": false,
+    "description": "No. Reports include current-day activity without waiting for an overnight batch.",
+    "keywords": "current day reporting"
+  },
+  {
+    "title": "How do I check the detail behind a report number?",
+    "type": "FAQ",
+    "url": "faqs/index.html#validate-report-numbers",
+    "external": false,
+    "description": "Open the item’s Inventory tab. Its activity log contains the individual movements behind summary report figures.",
+    "keywords": "validate report numbers"
+  },
+  {
+    "title": "Does Sales & COGS include waste or stock adjustments?",
+    "type": "FAQ",
+    "url": "faqs/index.html#cogs-sales-only",
+    "external": false,
+    "description": "No. COGS in this report focuses on sales, excluding waste, counts, and other stock movements.",
+    "keywords": "cogs sales only"
+  },
+  {
+    "title": "Does COGS include items I do not track inventory for?",
+    "type": "FAQ",
+    "url": "faqs/index.html#cogs-untracked-items",
+    "external": false,
+    "description": "Yes. Sales & COGS includes all items that sell, including items without stock tracking.",
+    "keywords": "cogs untracked items"
+  },
+  {
+    "title": "Why do prices and costs appear for items with no sales?",
+    "type": "FAQ",
+    "url": "faqs/index.html#prices-without-sales",
+    "external": false,
+    "description": "Price and cost values display even when an item has not sold.",
+    "keywords": "prices without sales"
+  },
+  {
+    "title": "How is inventory cost calculated?",
+    "type": "FAQ",
+    "url": "faqs/index.html#fifo-costing",
+    "external": false,
+    "description": "Using first-in, first-out (FIFO): the oldest received stock is consumed first. You can trace a sale’s cost to the receipt it used.",
+    "keywords": "fifo costing"
+  },
+  {
+    "title": "Can I see who changed an item and when?",
+    "type": "FAQ",
+    "url": "faqs/index.html#audit-log",
+    "external": false,
+    "description": "Yes. Item history shows what changed, when, who made the change, and where it came from. Use Reports → History to review changes across your business.",
+    "keywords": "audit log"
+  },
+  {
+    "title": "Can I choose the number of decimal places?",
+    "type": "FAQ",
+    "url": "faqs/index.html#decimal-precision",
+    "external": false,
+    "description": "No. Decimal precision is not customizable.",
+    "keywords": "decimal precision"
+  },
+  {
+    "title": "Can I ask questions about my inventory data?",
+    "type": "FAQ",
+    "url": "faqs/index.html#toastiq",
+    "external": false,
+    "description": "Yes. Use Toast IQ to ask about stock levels and margin changes in plain language.",
+    "keywords": "toastiq"
+  },
+  {
+    "title": "Which accounting options are supported?",
+    "type": "FAQ",
+    "url": "faqs/index.html#accounting-integrations",
+    "external": false,
+    "description": "QuickBooks Online, QuickBooks Desktop via IIF file, and export to Excel. QuickBooks Online supports sales, payroll, and accounts payable invoices. Accounting integrations are supported in the U.S. and Canada only.",
+    "keywords": "accounting integrations"
+  },
+  {
+    "title": "Does this support scales or draft-system integrations?",
+    "type": "FAQ",
+    "url": "faqs/index.html#hardware-integrations",
+    "external": false,
+    "description": "No. Barcode scanning and label generation and printing are supported.",
+    "keywords": "hardware integrations"
+  },
+  {
+    "title": "Can I generate barcodes and print labels?",
+    "type": "FAQ",
+    "url": "faqs/index.html#labels-and-barcodes",
+    "external": false,
+    "description": "Yes. Generate barcodes and customize and print labels individually or in bulk. Prep labels are not supported.",
+    "keywords": "labels and barcodes"
+  },
+  {
+    "title": "What happens to my existing Toast inventory product?",
+    "type": "FAQ",
+    "url": "faqs/index.html#current-product",
+    "external": false,
+    "description": "Most Toast Retail customers are expected to upgrade in January 2027; alternate-package exceptions are still being confirmed. For xtraCHEF or International Inventory, contact your Toast representative.",
+    "keywords": "current product"
+  },
+  {
+    "title": "What changes when I move from Toast Retail?",
+    "type": "FAQ",
+    "url": "faqs/index.html#retail-what-is-toast-inventory",
+    "external": false,
+    "description": "Sales availability is separate from stock. You also get real-time reporting, historic corrections, customizable adjustment reasons, and item history.",
+    "keywords": "retail what is toast inventory"
+  },
+  {
+    "title": "When will Toast Retail customers upgrade?",
+    "type": "FAQ",
+    "url": "faqs/index.html#retail-should-i-upgrade",
+    "external": false,
+    "description": "We expect most retailers to upgrade in January 2027. Some alternate-package users may be exceptions; this is still being confirmed.",
+    "keywords": "retail should i upgrade"
   },
   // Item catalog
   {

@@ -14,7 +14,7 @@
     gtag('js', new Date());
     gtag('config', 'G-4G4QQHWDEG');
   </script>
-  <link rel="stylesheet" href="../assets/css/faq.css?v=1" />
+  <link rel="stylesheet" href="../assets/css/faq.css?v=2" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
@@ -59,7 +59,7 @@
 <div class="hc-layout">
   <aside class="hc-side" aria-label="FAQ topics">
     <div class="hc-side-label">Browse by topic</div>
-    <ol class="hc-nav" id="hc-nav"><li><a href="#topic-getting-started" data-topic="getting-started"><span>01</span>Getting started</a></li><li><a href="#topic-product-functionality" data-topic="product-functionality"><span>02</span>Product &amp; functionality</a></li><li><a href="#topic-par-levels-availability" data-topic="par-levels-availability"><span>03</span>Par levels &amp; availability</a></li><li><a href="#topic-hardware-integrations" data-topic="hardware-integrations"><span>04</span>Hardware &amp; integrations</a></li><li><a href="#topic-allergens-dietary" data-topic="allergens-dietary"><span>05</span>Allergens &amp; dietary tags</a></li><li><a href="#topic-reporting" data-topic="reporting"><span>06</span>Reporting</a></li><li><a href="#topic-rollout-access" data-topic="rollout-access"><span>07</span>Rollout &amp; access</a></li><li><a href="#topic-advanced-use-cases" data-topic="advanced-use-cases"><span>08</span>Advanced use cases</a></li><li><a href="#topic-retail-customers" data-topic="retail-customers"><span>09</span>Existing Toast Retail customers</a></li></ol>
+    <ol class="hc-nav" id="hc-nav"><li><a href="#topic-getting-started" data-topic="getting-started"><span>01</span>Getting started &amp; access</a></li><li><a href="#topic-items-recipes" data-topic="items-recipes"><span>02</span>Items, recipes &amp; ingredients</a></li><li><a href="#topic-receiving-purchasing" data-topic="receiving-purchasing"><span>03</span>Receiving &amp; purchasing</a></li><li><a href="#topic-counts-adjustments" data-topic="counts-adjustments"><span>04</span>Stock counts &amp; adjustments</a></li><li><a href="#topic-sales-availability" data-topic="sales-availability"><span>05</span>Sales availability &amp; ordering</a></li><li><a href="#topic-costs-reporting" data-topic="costs-reporting"><span>06</span>Costs, reporting &amp; history</a></li><li><a href="#topic-integrations-retail" data-topic="integrations-retail"><span>07</span>Integrations &amp; moving from Toast Retail</a></li></ol>
     <div class="hc-help">
       <div class="hc-help-ico">?</div>
       <strong>Still need a hand?</strong>
@@ -75,375 +75,322 @@
       <p id="hc-results-sub"></p>
     </div>
 
-    <section class="hc-topic" id="topic-getting-started" data-label="Getting started">
+    <section class="hc-topic" id="topic-getting-started" data-label="Getting started &amp; access">
       <header class="hc-topic-head">
-        <div class="hc-kicker">First steps</div>
-        <h2>Getting Started</h2>
-        <p>Everything you need to know before moving to Toast IQ Inventory.</p>
+        <div class="hc-kicker">Get started</div>
+        <h2>Getting started &amp; access</h2>
+        <p>Access, setup, and help getting started.</p>
       </header>
-
-
-    <details id="current-product">
-      <summary>I'm already using a Toast inventory product. What happens to it?<button class="faq-link-btn" onclick="copyFaqLink(event,'current-product')" title="Copy link">🔗</button></summary>
-      <p><strong>Toast Retail:</strong> we expect most retailers to upgrade to Toast IQ Inventory in <strong>January 2027</strong>. Some alternate-package users may be exceptions; this is still being confirmed.</p>
-      <p><strong>xtraCHEF or International Inventory:</strong> contact your Toast representative about moving your account.</p>
-      <p>Item and ingredient import is available, usually handled by your onboarding consultant. Recipe import is not available.</p>
-    </details>
-
     <details id="early-access">
-      <summary>How do I get access to Toast IQ Inventory?<button class="faq-link-btn" onclick="copyFaqLink(event,'early-access')" title="Copy link">🔗</button></summary>
-      <div class="faq-notice">
-        <span class="faq-notice-icon">ℹ</span>
-        <div><strong>Toast IQ Inventory opened for Open Beta on September 8, 2026</strong>, live in the UK &amp; Ireland, Canada, and Australia for both new and existing customers. It's also available for purchase in some U.S. districts.</div>
-      </div>
-      <p>To find out whether Toast IQ Inventory is available for purchase in your district, or to get set up as part of the Open Beta, talk to your sales rep or email <a href="mailto:inventory-test-kitchen@toasttab.com">inventory-test-kitchen@toasttab.com</a>.</p>
+      <summary>How do I get access to Toast IQ Inventory?<button class="faq-link-btn" onclick="copyFaqLink(event,'early-access')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Contact your Toast sales representative to check availability and get set up.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/what-to-expect-during-onboarding.html">What to expect during onboarding →</a></p>
     </details>
-
-    <details id="no-items-showing">
-      <summary>I have access, but I don't see any of my items. What's wrong?<button class="faq-link-btn" onclick="copyFaqLink(event,'no-items-showing')" title="Copy link">🔗</button></summary>
-      <p>This is almost always a configuration step that hasn't been completed yet — not a problem with your account.</p>
-      <p style="margin-top:0.75rem">Today you have to tell us which menus you want to manage in this ecosystem. Go to the <strong>Categories</strong> section and check the boxes for the menus you want to bring in. Once you do, your menu items will appear.</p>
-      <p style="margin-top:0.75rem">We try to complete this step for everyone when access is granted, so if items are missing it may simply have been missed.</p>
-      <p style="margin-top:0.75rem">If you've checked Categories and items still aren't appearing, <a href="mailto:anum.qassam@toasttab.com">reach out</a> and we'll take a look together.</p>
-    </details>
-
-    <details id="need-retail-module">
-      <summary>Do I need the Toast Retail module to use this?<button class="faq-link-btn" onclick="copyFaqLink(event,'need-retail-module')" title="Copy link">🔗</button></summary>
-      <p>No. You do not need to purchase the Toast Retail module to use Toast IQ Inventory.</p>
-    </details>
-
-    <details id="how-to-give-feedback">
-      <summary>How can I pass back feedback?<button class="faq-link-btn" onclick="copyFaqLink(event,'how-to-give-feedback')" title="Copy link">🔗</button></summary>
-      <p>Use the <strong><a href="https://forms.gle/NvCgjEZinEKkPRkr6" target="_blank">product feedback form</a></strong> to send feedback directly to the product team. This is the best route for feature requests, rough edges, and anything that isn't working the way you'd expect.</p>
-      <p style="margin-top:0.75rem">If you'd rather talk it through, or you're hitting something that looks like a bug, <a href="mailto:anum.qassam@toasttab.com">email us</a> directly.</p>
-    </details>
-      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-product-functionality" data-topic="product-functionality">Next topic →</a></div>
-    </section>
-
-    <section class="hc-topic" id="topic-product-functionality" data-label="Product &amp; functionality">
-      <header class="hc-topic-head">
-        <div class="hc-kicker">How it works</div>
-        <h2>Product &amp; Functionality</h2>
-        <p>What Toast IQ Inventory does today, from items and recipes to costing and bulk edits.</p>
-      </header>
-
-
-    <details id="invoice-updates">
-      <summary>How do I receive an invoice and update stock?<button class="faq-link-btn" onclick="copyFaqLink(event,'invoice-updates')" title="Copy link">🔗</button></summary>
-      <p>For invoice review, item matching, receiving units, and updating stock, <a href="../tutorials/receiving-invoices.html">watch the receiving invoices tutorial</a>.</p>
-    </details>
-
-    <details id="recipes-before-sales">
-      <summary>Do recipes need to exist before sales? Can they be updated later?<button class="faq-link-btn" onclick="copyFaqLink(event,'recipes-before-sales')" title="Copy link">🔗</button></summary>
-      <p>No — you can manually enter a plate cost that gets applied to sales to determine margin, even without recipes existing against those sellable items. This manual plate cost can be updated up to 30 days in the past.</p>
-      <p style="margin-top:0.75rem">Recipes are also flexible after the fact:</p>
-      <ul>
-        <li>You can adjust recipes over time.</li>
-        <li>Changes are tracked so historical reporting remains intact — no need to create new menu items just because a recipe changes.</li>
-      </ul>
-    </details>
-
-    <details id="batch-production">
-      <summary>Is batch production / prep supported?<button class="faq-link-btn" onclick="copyFaqLink(event,'batch-production')" title="Copy link">🔗</button></summary>
-      <p>Yes. Record batch production through <strong>stock counts</strong> or <strong>manual production events</strong> in the item catalog on the web or mobile app.</p>
-    </details>
-
-    <details id="sub-location-tracking">
-      <summary>Can I track inventory by sub-location (bar, kitchen, retail)?<button class="faq-link-btn" onclick="copyFaqLink(event,'sub-location-tracking')" title="Copy link">🔗</button></summary>
-      <p>No. Tracking inventory by sub-location is not supported.</p>
-    </details>
-
-    <details id="item-types">
-      <summary>What types of items can I create?<button class="faq-link-btn" onclick="copyFaqLink(event,'item-types')" title="Copy link">🔗</button></summary>
-      <p>When you add an item, you'll be able to choose from four types:</p>
-      <ul>
-        <li><strong>Retail</strong></li>
-        <li><strong>Prepared food and beverage</strong> — only this type gets the additional recipe configuration option</li>
-        <li><strong>Ingredient</strong></li>
-        <li><strong>Supply</strong></li>
-      </ul>
-      <p style="margin-top:0.75rem">If you always create the same type of item, you can set a default so the selection prompt stops appearing. You can remove that default later from the edit view, and you can still create other item types through the secondary dropdown.</p>
-    </details>
-
-    <details id="inventory-vs-menu-manager">
-      <summary>Do I manage items in Inventory or in Menu Manager?<button class="faq-link-btn" onclick="copyFaqLink(event,'inventory-vs-menu-manager')" title="Copy link">🔗</button></summary>
-      <p>Either — it's all one system. Toast IQ Inventory and Menu Manager read from the same underlying data source, so work you do in one place shows up in the other. There is no mapping step and no duplication.</p>
-      <p style="margin-top:0.75rem">This is a deliberate departure from xtraChef, where mapping between systems was a constant source of work and errors. Here you do the work once, on the item you actually sell.</p>
-      <p style="margin-top:0.75rem">Practically, that means you can keep doing all your menu management, item modifications, and setup the traditional way, and only come into the inventory views when you want the granular pieces like recipes and stock tracking. Once you publish an item, it's available for sale at the price you configured and appears in Menu Manager and your menus interface as usual.</p>
-    </details>
-
-    <details id="location-specific-pricing">
-      <summary>Does this support location-specific pricing?<button class="faq-link-btn" onclick="copyFaqLink(event,'location-specific-pricing')" title="Copy link">🔗</button></summary>
-      <p>Yes, in the calculations. If an item is $10 at one location and $12 at another, all margin and reporting calculations use the correct location's price.</p>
-      <p style="margin-top:0.75rem">Location-specific prices can't be edited in the new interface. Continue setting location-based pricing where you do today and it will be honored.</p>
-    </details>
-
-    <details id="multi-location-recipes">
-      <summary>I'm multi-location (MLM). Do I have to recreate recipes at every location?<button class="faq-link-btn" onclick="copyFaqLink(event,'multi-location-recipes')" title="Copy link">🔗</button></summary>
-      <p>No. The recipe lives on the menu item itself, so it inherits whatever target and owner that menu item already has. If a menu item is targeted at 18 locations, the recipe applies at all 18.</p>
-      <p style="margin-top:0.75rem">You do not copy recipes, you do not re-add buttons per location, and you do not manage parallel copies. If you change the recipe, it changes everywhere the item is served.</p>
-    </details>
-
-    <details id="which-channels-deplete">
-      <summary>Which ordering channels deplete inventory?<button class="faq-link-btn" onclick="copyFaqLink(event,'which-channels-deplete')" title="Copy link">🔗</button></summary>
-      <p>All of them — Point of Sale, online ordering, kiosk, and catering &amp; events. Depletion is real time, so a sale through any channel is reflected in stock on hand immediately.</p>
-      <p style="margin-top:0.75rem">You can also see which channel a given sale came through in the detailed activity view for an item.</p>
-    </details>
-
-    <details id="stock-tracking-optional">
-      <summary>Do I have to track stock on every item?<button class="faq-link-btn" onclick="copyFaqLink(event,'stock-tracking-optional')" title="Copy link">🔗</button></summary>
-      <p>No, and this is one of the more useful aspects of the system. You choose which items to stock track and leave the rest alone. Plenty of customers care about margin and food cost without wanting to count everything.</p>
-      <p style="margin-top:0.75rem">One thing to know: if you count stock against an item during an inventory count, we'll automatically enable stock tracking for it and store that amount.</p>
-    </details>
-
-    <details id="fifo-costing">
-      <summary>How is inventory cost calculated?<button class="faq-link-btn" onclick="copyFaqLink(event,'fifo-costing')" title="Copy link">🔗</button></summary>
-      <p>On a first-in, first-out (FIFO) basis. If you receive tomatoes at $2 each and later receive more at $2.50, the system consumes all of the $2 tomatoes before it starts consuming the more expensive ones.</p>
-      <p style="margin-top:0.75rem">This is fully traceable: you can follow cost of goods down to each individual sale and see which receive it drew from. Most of the time you won't need this level of detail, but it's there when a number doesn't look right and you want to verify the calculation yourself.</p>
-    </details>
-
-    <details id="unit-conversions">
-      <summary>How do unit conversions work?<button class="faq-link-btn" onclick="copyFaqLink(event,'unit-conversions')" title="Copy link">🔗</button></summary>
-      <p>Conversions are stored on the ingredient itself. When you tell us that one each of something is equivalent to a pound, we store that on the item and apply it everywhere that ingredient is used, so you can review conversions in one place rather than hunting through recipes.</p>
-      <p style="margin-top:0.75rem"><strong>Unit conversions are the single most common source of error in theoretical inventory calculations.</strong> A mistyped conversion quietly corrupts actual-versus-theoretical numbers downstream, which is why we surface them for review.</p>
-    </details>
-
-    <details id="audit-log">
-      <summary>Can I see who changed what, and when?<button class="faq-link-btn" onclick="copyFaqLink(event,'audit-log')" title="Copy link">🔗</button></summary>
-      <p>Yes. Audit tracking is built into the core of the product. For a given item you can see who made a change, when they made it, and which surface it came from, for example a change made from the web item catalog versus one made on mobile.</p>
-      <p style="margin-top:0.75rem">This answers the most common question we heard in xtraChef: <em>who changed what, when, and why is this number not what I expected?</em></p>
-    </details>
-
-    <details id="waste-tracking">
-      <summary>Does waste tracking integrate with inventory?<button class="faq-link-btn" onclick="copyFaqLink(event,'waste-tracking')" title="Copy link">🔗</button></summary>
-      <p>Yes. Waste logged through the waste tracking module flows directly into the item's recent activity view, labeled as a POS waste adjustment, so you can account for waste alongside sales depletion.</p>
-      <p style="margin-top:0.75rem">You'll need to have waste reasons configured before you can log waste.</p>
-    </details>
-
-    <details id="decimal-precision">
-      <summary>Can I control how many decimal places are used?<button class="faq-link-btn" onclick="copyFaqLink(event,'decimal-precision')" title="Copy link">🔗</button></summary>
-      <p>No. The product uses <strong>two decimal places</strong> for everything.</p>
-    </details>
-
-    <details id="bulk-editing">
-      <summary>Can I edit items in bulk?<button class="faq-link-btn" onclick="copyFaqLink(event,'bulk-editing')" title="Copy link">🔗</button></summary>
-      <p>Yes. The item catalog supports both inline editing and bulk editing, and it covers <strong>merchandising and inventory fields together</strong>, including par min and par max, so you don't have to open individual item screens to make routine updates.</p>
-      <p style="margin-top:0.75rem">You can select many items at once and set values in bulk. Combined with custom attributes, this lets you slice your catalog however makes sense for your business and then edit the resulting set.</p>
-      <p style="margin-top:0.75rem">Use the item catalog for bulk changes rather than the legacy Advanced Settings bulk management screen.</p>
-    </details>
-
-    <details id="custom-attributes">
-      <summary>Can I add my own fields to items?<button class="faq-link-btn" onclick="copyFaqLink(event,'custom-attributes')" title="Copy link">🔗</button></summary>
-      <p>Yes — you can create custom attributes on items and use them however you need. One customer doing wholesale work on the side uses them to record the most recent lot number for an item.</p>
-      <p style="margin-top:0.75rem">Custom attributes can be printed on labels, and they're useful for slicing and filtering your catalog so you can make targeted bulk edits.</p>
-    </details>
-      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-par-levels-availability" data-topic="par-levels-availability">Next topic →</a></div>
-    </section>
-
-    <section class="hc-topic" id="topic-par-levels-availability" data-label="Par levels &amp; availability">
-      <header class="hc-topic-head">
-        <div class="hc-kicker">Stock &amp; selling</div>
-        <h2>Par Levels &amp; Availability</h2>
-        <p>How par levels work, and how to keep what's available to sell in sync with your stock.</p>
-      </header>
-
-
-    <details id="par-levels">
-      <summary>Can I set par levels?<button class="faq-link-btn" onclick="copyFaqLink(event,'par-levels')" title="Copy link">🔗</button></summary>
-      <p>Partly. <strong>Par-based workflows are supported for sellable items.</strong> Par levels for ingredients and supplies are not supported.</p>
-      <p style="margin-top:0.75rem">You can set par min and par max values, including inline and in bulk from the item catalog.</p>
-      <p style="margin-top:0.75rem"><strong>Automated restock-to-par is not available.</strong></p>
-    </details>
-
-    <details id="auto-86">
-      <summary>When do I need to sync sales availability with stock?<button class="faq-link-btn" onclick="copyFaqLink(event,'auto-86')" title="Copy link">🔗</button></summary>
-      <p><strong>Sales and waste logged on POS update sales availability automatically.</strong> Receiving inventory, negative stock adjustments in Retail, and stock counts require a manual sync.</p>
-      <p>Select the items, then choose <strong>Item actions → Sync availability with stock on-hand</strong>.</p>
-    </details>
-      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-hardware-integrations" data-topic="hardware-integrations">Next topic →</a></div>
-    </section>
-
-    <section class="hc-topic" id="topic-hardware-integrations" data-label="Hardware &amp; integrations">
-      <header class="hc-topic-head">
-        <div class="hc-kicker">Connections</div>
-        <h2>Hardware &amp; Integrations</h2>
-        <p>Barcodes, labels, invoice capture, and accounting integrations.</p>
-      </header>
-
-
-    <details id="hardware-integrations">
-      <summary>Does this integrate with scales or draft systems?<button class="faq-link-btn" onclick="copyFaqLink(event,'hardware-integrations')" title="Copy link">🔗</button></summary>
-      <p>Not today. Barcode scanning is included, as well as barcode label generation and printing.</p>
-    </details>
-
-    <details id="accounting-integrations">
-      <summary>Does this integrate with accounting tools like QuickBooks?<button class="faq-link-btn" onclick="copyFaqLink(event,'accounting-integrations')" title="Copy link">🔗</button></summary>
-      <p>Accounting options include <strong>QuickBooks Online</strong>, <strong>QuickBooks Desktop via IIF file</strong>, and <strong>export to Excel</strong>.</p>
-      <p>QuickBooks Online supports sales, payroll, and accounts payable invoice data.</p>
-      <p><strong>Accounting integration availability:</strong> supported in the U.S. and Canada. Other international markets are not supported.</p>
-    </details>
-
-    <details id="invoice-capture">
-      <summary>How do I get invoices into the system?<button class="faq-link-btn" onclick="copyFaqLink(event,'invoice-capture')" title="Copy link">🔗</button></summary>
-      <p>Add invoices by <strong>email, mobile scan, upload, manual entry, or purchase order workflows</strong>.</p>
-      <p><a href="../tutorials/receiving-invoices.html">Watch the receiving invoices tutorial →</a></p>
-    </details>
-
-    <details id="labels-and-barcodes">
-      <summary>What can I do with labels and barcodes?<button class="faq-link-btn" onclick="copyFaqLink(event,'labels-and-barcodes')" title="Copy link">🔗</button></summary>
-      <p>You can assign a barcode to any item, which is useful if you package something for grab-and-go and want it scannable. The system generates the barcode for you and lets you design and print labels.</p>
-      <p style="margin-top:0.75rem">Labels are fully customizable: choose which fields appear (including custom attributes), set the width and height for whatever label stock you use, and print individually or in bulk across many items. Most label printers are supported. This capability comes from building on top of the retail product.</p>
-      <p style="margin-top:0.75rem"><strong>Prep labels are not supported.</strong></p>
-    </details>
-      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-allergens-dietary" data-topic="allergens-dietary">Next topic →</a></div>
-    </section>
-
-    <section class="hc-topic" id="topic-allergens-dietary" data-label="Allergens &amp; dietary tags">
-      <header class="hc-topic-head">
-        <div class="hc-kicker">Menu details</div>
-        <h2>Allergens &amp; Dietary Tags</h2>
-        <p>Tag items with allergens and dietary information.</p>
-      </header>
-
-
-    <details id="allergens">
-      <summary>Can I track allergens? Can I customize the list?<button class="faq-link-btn" onclick="copyFaqLink(event,'allergens')" title="Copy link">🔗</button></summary>
-      <p>Yes, you can tag items with allergens, but <strong>the allergen list itself is not customizable</strong>. Allergen labeling is legally regulated, so the list is fixed and maintained by a dedicated Toast team that stays on top of the regulations.</p>
-      <p style="margin-top:0.75rem"><strong>The list changes by country.</strong> If your account is configured for the US, Canada, or the UK, you'll see the allergens appropriate to that market's requirements.</p>
-      <p style="margin-top:0.75rem">Allergens are saved and surfaced in your online ordering and Point of Sale. Third-party ordering systems are not supported.</p>
-    </details>
-
-    <details id="dietary-tags">
-      <summary>What if I want to flag something that isn't an allergen?<button class="faq-link-btn" onclick="copyFaqLink(event,'dietary-tags')" title="Copy link">🔗</button></summary>
-      <p>Use <strong>dietary tags</strong>. Unlike allergens, dietary tags are fully customizable, because there aren't legal regulations governing them. They surface in the same places — online ordering and Point of Sale — so guests can filter and sort by them, but they're not presented as allergen information.</p>
-      <p style="margin-top:0.75rem">If there's something specific to your menu you want to call out or let guests filter on, this is the field to use.</p>
-    </details>
-
-    <details id="ingredient-allergens">
-      <summary>Can allergens be set on ingredients and roll up to recipes?<button class="faq-link-btn" onclick="copyFaqLink(event,'ingredient-allergens')" title="Copy link">🔗</button></summary>
-      <p>No. Allergens are tagged on the finished item, not on ingredients, and they don't roll up from ingredients to recipes.</p>
-    </details>
-      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-reporting" data-topic="reporting">Next topic →</a></div>
-    </section>
-
-    <section class="hc-topic" id="topic-reporting" data-label="Reporting">
-      <header class="hc-topic-head">
-        <div class="hc-kicker">Insights</div>
-        <h2>Reporting</h2>
-        <p>The reports available, and how to ask questions about your data.</p>
-      </header>
-
-
-    <details id="reporting">
-      <summary>What reporting does Toast IQ Inventory include?<button class="faq-link-btn" onclick="copyFaqLink(event,'reporting')" title="Copy link">🔗</button></summary>
-      <p>We took a different approach to reporting in this product than xtraChef did. There are <strong>three core reports</strong>, designed to bring sales and inventory data together in one place rather than giving you a large catalog of overlapping reports to navigate:</p>
-      <ul>
-        <li><strong>Sales &amp; COGS</strong></li>
-        <li><strong>Inventory Snapshot</strong></li>
-        <li><strong>Inventory Roll Forward</strong></li>
-      </ul>
-      <p style="margin-top:0.75rem">See the <a href="../tutorials/index.html">Tutorials</a> section for walkthroughs of these reports.</p>
-    </details>
-
-    <details id="toastiq">
-      <summary>Can I ask questions about my inventory data?<button class="faq-link-btn" onclick="copyFaqLink(event,'toastiq')" title="Copy link">🔗</button></summary>
-      <p>Yes — because Toast IQ Inventory is built directly on top of the Point of Sale, you get the benefit of ToastIQ integration. You can ask questions in plain language instead of building a report, for example:</p>
-      <ul>
-        <li><em>What are my stock levels across my locations?</em></li>
-        <li><em>Which items' margins have gone down more than 5% in the past six months?</em></li>
-      </ul>
-    </details>
-      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-rollout-access" data-topic="rollout-access">Next topic →</a></div>
-    </section>
-
-    <section class="hc-topic" id="topic-rollout-access" data-label="Rollout &amp; access">
-      <header class="hc-topic-head">
-        <div class="hc-kicker">Availability</div>
-        <h2>Rollout &amp; Access</h2>
-        <p>Where Toast IQ Inventory is available, and what it costs.</p>
-      </header>
-
-
     <details id="availability">
-      <summary>Is Toast IQ Inventory available?<button class="faq-link-btn" onclick="copyFaqLink(event,'availability')" title="Copy link">🔗</button></summary>
-      <p>Toast IQ Inventory opened for Open Beta on September 8, 2026. It is live in the UK &amp; Ireland, Canada, and Australia for both new and existing customers, and available for purchase in select U.S. districts.</p>
-      <p style="margin-top:0.75rem">Whether the beta is right for you depends on which capabilities your business depends on. Contact your Toast representative to discuss your use case and readiness.</p>
+      <summary>Where is Toast IQ Inventory available?<button class="faq-link-btn" onclick="copyFaqLink(event,'availability')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Open Beta is available in the UK &amp; Ireland, Canada, and Australia, and for purchase in select U.S. districts.</p>
     </details>
-
     <details id="international">
-      <summary>Is this available outside the U.S.?<button class="faq-link-btn" onclick="copyFaqLink(event,'international')" title="Copy link">🔗</button></summary>
-      <p>Yes. Toast IQ Inventory is live outside the U.S. as part of the Open Beta in the UK &amp; Ireland, Canada, and Australia, for both new and existing customers.</p>
+      <summary>Is this available outside the U.S.?<button class="faq-link-btn" onclick="copyFaqLink(event,'international')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Yes. Toast IQ Inventory is available in the UK &amp; Ireland, Canada, and Australia. Accounting integration availability is limited to the U.S. and Canada.</p>
     </details>
-
     <details id="pricing">
-      <summary>Will this cost extra?<button class="faq-link-btn" onclick="copyFaqLink(event,'pricing')" title="Copy link">🔗</button></summary>
-      <p>Yes. Toast IQ Inventory is a paid addition to your Toast subscription. Head to Toast Shop for more information and product availability, or ask your Toast representative.</p>
+      <summary>Does Toast IQ Inventory cost extra?<button class="faq-link-btn" onclick="copyFaqLink(event,'pricing')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Yes. It is a paid addition to your Toast subscription. Check Toast Shop or ask your Toast representative for pricing.</p>
     </details>
-      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-advanced-use-cases" data-topic="advanced-use-cases">Next topic →</a></div>
+    <details id="need-retail-module">
+      <summary>Do I need the Toast Retail module?<button class="faq-link-btn" onclick="copyFaqLink(event,'need-retail-module')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. You do not need to purchase Toast Retail to use Toast IQ Inventory.</p>
+    </details>
+    <details id="no-items-showing">
+      <summary>Why can’t I see my menu items?<button class="faq-link-btn" onclick="copyFaqLink(event,'no-items-showing')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>In <strong>Categories</strong>, select the menus you want to include. If items still do not appear, <a href="mailto:anum.qassam@toasttab.com">contact the Inventory team</a>.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/mastering-the-item-catalog.html">Mastering the item catalog →</a></p>
+    </details>
+    <details id="how-to-give-feedback">
+      <summary>How do I share feedback?<button class="faq-link-btn" onclick="copyFaqLink(event,'how-to-give-feedback')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Use the <a href="https://docs.google.com/forms/d/1fGYNrUxSuVLAZEoHQGNhTPxGZmjCKjUJVmtkaNbt0Do/viewform" target="_blank" rel="noopener">feedback form</a> for suggestions, or <a href="mailto:anum.qassam@toasttab.com">email the Inventory team</a> for help.</p>
+    </details>
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-items-recipes" data-topic="items-recipes">Next topic →</a></div>
     </section>
 
-    <section class="hc-topic" id="topic-advanced-use-cases" data-label="Advanced use cases">
+    <section class="hc-topic" id="topic-items-recipes" data-label="Items, recipes &amp; ingredients">
       <header class="hc-topic-head">
-        <div class="hc-kicker">Going deeper</div>
-        <h2>Advanced Use Cases</h2>
-        <p>Modifiers, preorders, voids, and other less common scenarios.</p>
+        <div class="hc-kicker">Build your catalog</div>
+        <h2>Items, recipes &amp; ingredients</h2>
+        <p>Create items, connect recipes, and keep your catalog accurate.</p>
       </header>
-
-
+    <details id="item-types">
+      <summary>What types of items can I create?<button class="faq-link-btn" onclick="copyFaqLink(event,'item-types')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p><strong>Retail, prepared food &amp; beverage, ingredient, and supply.</strong> Recipe configuration is available on prepared food &amp; beverage items.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/recipes-and-ingredients-overview.html#step-2">Recipes &amp; ingredients overview →</a></p>
+    </details>
+    <details id="inventory-vs-menu-manager">
+      <summary>Do I manage items in Inventory or Menu Manager?<button class="faq-link-btn" onclick="copyFaqLink(event,'inventory-vs-menu-manager')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Either. Both use the same item data. Use Inventory for recipes and stock tracking, and continue managing menus in Menu Manager.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/mastering-the-item-catalog.html">Mastering the item catalog →</a></p>
+    </details>
+    <details id="recipes-before-sales">
+      <summary>Do recipes need to exist before sales? Can I edit them later?<button class="faq-link-btn" onclick="copyFaqLink(event,'recipes-before-sales')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. You can enter a manual plate cost and back-date it up to 30 days. You can also update recipes over time without creating new menu items.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/recipes-and-ingredients-overview.html#step-3">Recipes &amp; ingredients overview →</a></p>
+    </details>
+    <details id="multi-location-recipes">
+      <summary>Do I need to recreate recipes at every location?<button class="faq-link-btn" onclick="copyFaqLink(event,'multi-location-recipes')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. A recipe follows its menu item to the locations where that item is shared. Editing the recipe updates it across those locations.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/recipes-and-ingredients-overview.html#step-3">Recipes &amp; ingredients overview →</a></p>
+    </details>
+    <details id="unit-conversions">
+      <summary>How do unit conversions work?<button class="faq-link-btn" onclick="copyFaqLink(event,'unit-conversions')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Conversions are stored on the ingredient and used wherever that ingredient appears. Check them carefully: incorrect conversions affect inventory calculations.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/recipes-and-ingredients-overview.html#step-4">Recipes &amp; ingredients overview →</a></p>
+    </details>
+    <details id="bulk-editing">
+      <summary>Can I edit multiple items at once?<button class="faq-link-btn" onclick="copyFaqLink(event,'bulk-editing')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Yes. Select items in the item catalog, then use the bulk action menus to update shared fields. Many fields can also be edited directly in the table.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/mastering-the-item-catalog.html#step-6">Mastering the item catalog →</a></p>
+    </details>
+    <details id="custom-attributes">
+      <summary>Can I add my own fields to items?<button class="faq-link-btn" onclick="copyFaqLink(event,'custom-attributes')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Yes. Create custom attributes to store extra information, filter your catalog, and include values on labels.</p>
+    </details>
+    <details id="location-specific-pricing">
+      <summary>Does this support location-specific pricing?<button class="faq-link-btn" onclick="copyFaqLink(event,'location-specific-pricing')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Yes. Reports and margins use each location’s price. Continue editing location-specific prices in your existing pricing tools.</p>
+    </details>
     <details id="modifier-support">
-      <summary>Are modifiers supported in recipes?<button class="faq-link-btn" onclick="copyFaqLink(event,'modifier-support')" title="Copy link">🔗</button></summary>
-      <p>Not today. Recipes are set on the sellable item, and modifier selections at checkout do not add to or remove from the ingredients in that recipe.</p>
-      <p style="margin-top:0.75rem">Modifiers are configurations that can be set on sellable items at the time of checkout, for example adding a topping, swapping a size, or removing an ingredient.</p>
+      <summary>Do recipe quantities change with modifier selections?<button class="faq-link-btn" onclick="copyFaqLink(event,'modifier-support')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. Recipes are set on the sellable item; checkout modifiers do not add or remove recipe ingredients.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/recipes-and-ingredients-overview.html">Recipes &amp; ingredients overview →</a></p>
     </details>
-
-    <details id="preorders-and-fire-time">
-      <summary>When a preorder is placed for a future date, does it affect inventory today?<button class="faq-link-btn" onclick="copyFaqLink(event,'preorders-and-fire-time')" title="Copy link">🔗</button></summary>
-      <p><strong>Inventory is decremented at the moment the order fires to the kitchen</strong> — not when the order is placed.</p>
-      <p style="margin-top:0.75rem">For future orders, that generally means the future order date has to arrive, then any prep time you've configured is applied, and the order fires at the end of that. Because Toast has several settings that control fire timing — including an option not to fire until payment is received — the exact behavior depends on how your account is configured. If you're purchasing the product, work through this with your onboarding consultant.</p>
-      <p style="margin-top:0.75rem">This mostly matters if you do a meaningful volume of future or catering orders.</p>
+    <details id="allergens">
+      <summary>Can I customize the allergen list?<button class="faq-link-btn" onclick="copyFaqLink(event,'allergens')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. You can tag finished items using the fixed, country-specific list. Allergens appear on POS and online ordering; third-party ordering is not supported.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/recipes-and-ingredients-overview.html#step-5">Recipes &amp; ingredients overview →</a></p>
     </details>
-
-    <details id="voids-and-restocking">
-      <summary>Do voids and refunds return stock to inventory?<button class="faq-link-btn" onclick="copyFaqLink(event,'voids-and-restocking')" title="Copy link">🔗</button></summary>
-      <p>It follows the standard rules of Toast:</p>
-      <ul>
-        <li>If you void or cancel an order <strong>before</strong> it fires to the kitchen, there is no inventory impact at all.</li>
-        <li>If the order has <strong>already fired</strong> and you void it, the stock is returned and restocked. This appears in your inventory logs as a restock due to a sales void, so the reason is traceable.</li>
-      </ul>
-      <p style="margin-top:0.75rem"><strong>If you want to refund a guest without returning stock</strong>, for example the food was made and thrown away, return the money to the payment method rather than voiding the order. Voiding is the action that restocks.</p>
+    <details id="dietary-tags">
+      <summary>Can I add custom dietary tags?<button class="faq-link-btn" onclick="copyFaqLink(event,'dietary-tags')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Yes. Dietary tags are customizable and appear on POS and online ordering. They are separate from allergen information.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/recipes-and-ingredients-overview.html#step-5">Recipes &amp; ingredients overview →</a></p>
     </details>
-
-    <details id="overselling-preorders">
-      <summary>Can I see what's already promised on preorders?<button class="faq-link-btn" onclick="copyFaqLink(event,'overselling-preorders')" title="Copy link">🔗</button></summary>
-      <p>Not today. Because inventory decrements at fire time, preordered quantities aren't reflected in your on-hand count until the day the order fires, so there is no view of what's already promised.</p>
-      <p style="margin-top:0.75rem">Visibility into committed stock (what is on hand, what is committed to future orders, and what is in transit between locations) is not available.</p>
+    <details id="ingredient-allergens">
+      <summary>Do ingredient allergens roll up to recipes?<button class="faq-link-btn" onclick="copyFaqLink(event,'ingredient-allergens')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. Add allergens directly to the finished item.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/recipes-and-ingredients-overview.html#step-5">Recipes &amp; ingredients overview →</a></p>
     </details>
-      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-retail-customers" data-topic="retail-customers">Next topic →</a></div>
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-receiving-purchasing" data-topic="receiving-purchasing">Next topic →</a></div>
     </section>
 
-    <section class="hc-topic" id="topic-retail-customers" data-label="Existing Toast Retail customers">
+    <section class="hc-topic" id="topic-receiving-purchasing" data-label="Receiving &amp; purchasing">
       <header class="hc-topic-head">
-        <div class="hc-kicker">For retail customers</div>
-        <h2>Existing Toast Retail Customers</h2>
-        <p>What changes when you move from Toast Retail to Toast IQ Inventory.</p>
+        <div class="hc-kicker">Bring stock in</div>
+        <h2>Receiving &amp; purchasing</h2>
+        <p>Add invoices, match items, and receive inventory.</p>
       </header>
+    <details id="invoice-capture">
+      <summary>How do I add invoices?<button class="faq-link-btn" onclick="copyFaqLink(event,'invoice-capture')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Use <strong>email, mobile scan, upload, manual entry, or purchase order workflows</strong>.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/receiving-invoices.html">Receiving invoices for ingredients →</a></p>
+    </details>
+    <details id="invoice-updates">
+      <summary>How do I receive an invoice and update stock?<button class="faq-link-btn" onclick="copyFaqLink(event,'invoice-updates')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Review the invoice, match items, and confirm receiving units. Mark it as received to update stock.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/receiving-invoices.html">Receiving invoices for ingredients →</a></p>
+    </details>
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-counts-adjustments" data-topic="counts-adjustments">Next topic →</a></div>
+    </section>
 
-    <div class="hc-sub">Getting Started</div>
+    <section class="hc-topic" id="topic-counts-adjustments" data-label="Stock counts &amp; adjustments">
+      <header class="hc-topic-head">
+        <div class="hc-kicker">Keep stock accurate</div>
+        <h2>Stock counts &amp; adjustments</h2>
+        <p>Count what you have, record production, and correct stock.</p>
+      </header>
+    <details id="first-stock-count">
+      <summary>How do I complete my first stock count?<button class="faq-link-btn" onclick="copyFaqLink(event,'first-stock-count')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Set up item locations, create a count template, enter the quantities you have, and submit the count.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/completing-your-first-stock-count.html">Completing your first stock count →</a></p>
+    </details>
+    <details id="first-count-variance">
+      <summary>Why is my first count’s variance different from later counts?<button class="faq-link-btn" onclick="copyFaqLink(event,'first-count-variance')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Your first count sets the starting point. Later counts compare what you count with what Toast expects.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/completing-your-first-stock-count.html#step-4">Completing your first stock count →</a></p>
+    </details>
+    <details id="stock-tracking-optional">
+      <summary>Do I have to track stock on every item?<button class="faq-link-btn" onclick="copyFaqLink(event,'stock-tracking-optional')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. Choose which items to track. Counting an item automatically enables stock tracking for it.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/completing-your-first-stock-count.html">Completing your first stock count →</a></p>
+    </details>
+    <details id="negative-stock">
+      <summary>Can stock on hand go negative?<button class="faq-link-btn" onclick="copyFaqLink(event,'negative-stock')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. Stock on hand stops at zero until you count or receive more.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-3">Stock &amp; historic corrections →</a></p>
+    </details>
+    <details id="backdate-stock">
+      <summary>Can I back-date a receipt or correct an earlier stock entry?<button class="faq-link-btn" onclick="copyFaqLink(event,'backdate-stock')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Yes. Back-date or edit past stock entries to reflect when changes actually happened.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-3">Stock &amp; historic corrections →</a></p>
+    </details>
+    <details id="historic-recalculations">
+      <summary>What recalculates when I edit a past stock entry?<button class="faq-link-btn" onclick="copyFaqLink(event,'historic-recalculations')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Stock balances after the edited entry are recalculated throughout the subsequent history.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-3">Stock &amp; historic corrections →</a></p>
+    </details>
+    <details id="adjustment-reasons">
+      <summary>How do I add or disable adjustment reasons?<button class="faq-link-btn" onclick="copyFaqLink(event,'adjustment-reasons')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Go to <strong>Settings → Adjustment reasons</strong>. Add your own reasons or deactivate ones your team does not use.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-4">Adjustment reasons →</a></p>
+    </details>
+    <details id="batch-production">
+      <summary>How do I record batch production?<button class="faq-link-btn" onclick="copyFaqLink(event,'batch-production')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Use <strong>stock counts</strong> or <strong>manual production events</strong> in the item catalog on the web or mobile app.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/completing-your-first-stock-count.html">Completing your first stock count →</a></p>
+    </details>
+    <details id="waste-tracking">
+      <summary>Does POS waste update inventory?<button class="faq-link-btn" onclick="copyFaqLink(event,'waste-tracking')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Yes. POS waste appears in the item’s inventory activity. Configure waste reasons before logging waste.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-2">Real-time reporting →</a></p>
+    </details>
+    <details id="sub-location-tracking">
+      <summary>Can I track stock balances by sub-location?<button class="faq-link-btn" onclick="copyFaqLink(event,'sub-location-tracking')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. Separate stock balances by sub-location are not supported. Item locations organize your counts.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/completing-your-first-stock-count.html#step-1">Completing your first stock count →</a></p>
+    </details>
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-sales-availability" data-topic="sales-availability">Next topic →</a></div>
+    </section>
 
+    <section class="hc-topic" id="topic-sales-availability" data-label="Sales availability &amp; ordering">
+      <header class="hc-topic-head">
+        <div class="hc-kicker">Manage what sells</div>
+        <h2>Sales availability &amp; ordering</h2>
+        <p>Keep availability aligned with stock and understand order timing.</p>
+      </header>
+    <details id="auto-86">
+      <summary>When do I need to sync sales availability with stock?<button class="faq-link-btn" onclick="copyFaqLink(event,'auto-86')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Sales and POS waste update availability automatically. Sync after receiving inventory, negative Retail stock adjustments, or stock counts using <strong>Item actions → Sync availability with stock on-hand</strong>.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-1">Stock &amp; sales availability →</a></p>
+    </details>
+    <details id="pos-quantity">
+      <summary>Does changing quantity on the POS update stock on hand?<button class="faq-link-btn" onclick="copyFaqLink(event,'pos-quantity')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. Changing quantity on a POS device updates <strong>sales availability</strong>. Counts, receipts, sales, and waste change stock on hand.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-1">Stock &amp; sales availability →</a></p>
+    </details>
+    <details id="which-channels-deplete">
+      <summary>Which ordering channels deplete inventory?<button class="faq-link-btn" onclick="copyFaqLink(event,'which-channels-deplete')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>POS, online ordering, kiosk, and catering &amp; events all deplete stock. For future orders, depletion happens when the order fires.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/recipes-and-ingredients-overview.html#step-7">Recipes &amp; ingredients overview →</a></p>
+    </details>
+    <details id="par-levels">
+      <summary>Can I set par levels?<button class="faq-link-btn" onclick="copyFaqLink(event,'par-levels')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Yes, for sellable items. Set par min and max in the item catalog. Ingredient and supply par levels, and automated restock-to-par, are not supported.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/mastering-the-item-catalog.html">Mastering the item catalog →</a></p>
+    </details>
+    <details id="preorders-and-fire-time">
+      <summary>Do future orders reduce stock when they are placed?<button class="faq-link-btn" onclick="copyFaqLink(event,'preorders-and-fire-time')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. Stock decreases when the order fires to the kitchen. Fire timing depends on your account’s settings.</p>
+    </details>
+    <details id="overselling-preorders">
+      <summary>Can I see stock committed to future orders?<button class="faq-link-btn" onclick="copyFaqLink(event,'overselling-preorders')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. Future orders do not reduce on-hand stock until they fire. There is no committed-stock view.</p>
+    </details>
+    <details id="voids-and-restocking">
+      <summary>Do voids and refunds return stock?<button class="faq-link-btn" onclick="copyFaqLink(event,'voids-and-restocking')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>A void before firing has no stock impact; a void after firing restocks the item. To refund without restocking, return the payment rather than voiding the order.</p>
+    </details>
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-costs-reporting" data-topic="costs-reporting">Next topic →</a></div>
+    </section>
+
+    <section class="hc-topic" id="topic-costs-reporting" data-label="Costs, reporting &amp; history">
+      <header class="hc-topic-head">
+        <div class="hc-kicker">Understand your numbers</div>
+        <h2>Costs, reporting &amp; history</h2>
+        <p>Check costs, current-day reports, and the detail behind them.</p>
+      </header>
+    <details id="reporting">
+      <summary>Which inventory reports are available?<button class="faq-link-btn" onclick="copyFaqLink(event,'reporting')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p><strong>Sales &amp; COGS, Inventory Snapshot, and Inventory Roll Forward.</strong></p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-2">Real-time reporting →</a></p>
+    </details>
+    <details id="current-day-reporting">
+      <summary>Do I need to wait until tomorrow to see today’s reports?<button class="faq-link-btn" onclick="copyFaqLink(event,'current-day-reporting')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. Reports include current-day activity without waiting for an overnight batch.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-2">Real-time reporting →</a></p>
+    </details>
+    <details id="validate-report-numbers">
+      <summary>How do I check the detail behind a report number?<button class="faq-link-btn" onclick="copyFaqLink(event,'validate-report-numbers')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Open the item’s <strong>Inventory</strong> tab. Its activity log contains the individual movements behind summary report figures.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-2">Real-time reporting →</a></p>
+    </details>
+    <details id="cogs-sales-only">
+      <summary>Does Sales &amp; COGS include waste or stock adjustments?<button class="faq-link-btn" onclick="copyFaqLink(event,'cogs-sales-only')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. COGS in this report focuses on sales, excluding waste, counts, and other stock movements.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-2">Real-time reporting →</a></p>
+    </details>
+    <details id="cogs-untracked-items">
+      <summary>Does COGS include items I do not track inventory for?<button class="faq-link-btn" onclick="copyFaqLink(event,'cogs-untracked-items')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Yes. Sales &amp; COGS includes all items that sell, including items without stock tracking.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-2">Real-time reporting →</a></p>
+    </details>
+    <details id="prices-without-sales">
+      <summary>Why do prices and costs appear for items with no sales?<button class="faq-link-btn" onclick="copyFaqLink(event,'prices-without-sales')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Price and cost values display even when an item has not sold.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-2">Real-time reporting →</a></p>
+    </details>
+    <details id="fifo-costing">
+      <summary>How is inventory cost calculated?<button class="faq-link-btn" onclick="copyFaqLink(event,'fifo-costing')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Using <strong>first-in, first-out (FIFO)</strong>: the oldest received stock is consumed first. You can trace a sale’s cost to the receipt it used.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-2">Real-time reporting →</a></p>
+    </details>
+    <details id="audit-log">
+      <summary>Can I see who changed an item and when?<button class="faq-link-btn" onclick="copyFaqLink(event,'audit-log')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Yes. Item history shows what changed, when, who made the change, and where it came from. Use <strong>Reports → History</strong> to review changes across your business.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html#change-5">Item history →</a></p>
+    </details>
+    <details id="decimal-precision">
+      <summary>Can I choose the number of decimal places?<button class="faq-link-btn" onclick="copyFaqLink(event,'decimal-precision')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. Decimal precision is not customizable.</p>
+    </details>
+    <details id="toastiq">
+      <summary>Can I ask questions about my inventory data?<button class="faq-link-btn" onclick="copyFaqLink(event,'toastiq')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Yes. Use Toast IQ to ask about stock levels and margin changes in plain language.</p>
+    </details>
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-integrations-retail" data-topic="integrations-retail">Next topic →</a></div>
+    </section>
+
+    <section class="hc-topic" id="topic-integrations-retail" data-label="Integrations &amp; moving from Toast Retail">
+      <header class="hc-topic-head">
+        <div class="hc-kicker">Connect &amp; transition</div>
+        <h2>Integrations &amp; moving from Toast Retail</h2>
+        <p>Accounting, hardware, and the move from Toast Retail.</p>
+      </header>
+    <details id="accounting-integrations">
+      <summary>Which accounting options are supported?<button class="faq-link-btn" onclick="copyFaqLink(event,'accounting-integrations')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p><strong>QuickBooks Online, QuickBooks Desktop via IIF file, and export to Excel.</strong> QuickBooks Online supports sales, payroll, and accounts payable invoices. Accounting integrations are supported in the <strong>U.S. and Canada</strong> only.</p>
+    </details>
+    <details id="hardware-integrations">
+      <summary>Does this support scales or draft-system integrations?<button class="faq-link-btn" onclick="copyFaqLink(event,'hardware-integrations')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>No. Barcode scanning and label generation and printing are supported.</p>
+    </details>
+    <details id="labels-and-barcodes">
+      <summary>Can I generate barcodes and print labels?<button class="faq-link-btn" onclick="copyFaqLink(event,'labels-and-barcodes')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Yes. Generate barcodes and customize and print labels individually or in bulk. Prep labels are not supported.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/mastering-the-item-catalog.html#step-6">Mastering the item catalog →</a></p>
+    </details>
+    <details id="current-product">
+      <summary>What happens to my existing Toast inventory product?<button class="faq-link-btn" onclick="copyFaqLink(event,'current-product')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Most Toast Retail customers are expected to upgrade in <strong>January 2027</strong>; alternate-package exceptions are still being confirmed. For xtraCHEF or International Inventory, contact your Toast representative.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html">Upgrading from Toast Retail →</a></p>
+    </details>
     <details id="retail-what-is-toast-inventory">
-      <summary>What is Toast IQ Inventory, and what happens to Toast Retail?<button class="faq-link-btn" onclick="copyFaqLink(event,'retail-what-is-toast-inventory')" title="Copy link">🔗</button></summary>
-      <p>Toast IQ Inventory brings together purchasing, receiving, stock counts, the item catalog, and sales and inventory reporting.</p>
-      <p><a href="../tutorials/upgrading-from-toast-retail.html">See what's changing from Toast Retail →</a></p>
+      <summary>What changes when I move from Toast Retail?<button class="faq-link-btn" onclick="copyFaqLink(event,'retail-what-is-toast-inventory')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>Sales availability is separate from stock. You also get real-time reporting, historic corrections, customizable adjustment reasons, and item history.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html">Upgrading from Toast Retail →</a></p>
     </details>
-
-    <div class="hc-sub">Rollout &amp; Access</div>
-
     <details id="retail-should-i-upgrade">
-      <summary>When will Toast Retail customers upgrade?<button class="faq-link-btn" onclick="copyFaqLink(event,'retail-should-i-upgrade')" title="Copy link">🔗</button></summary>
-      <p>We expect <strong>most retailers to upgrade in January 2027</strong>. Some alternate-package users may be exceptions, but this is still being confirmed.</p>
-      <p><a href="../tutorials/upgrading-from-toast-retail.html">See what changes when you upgrade →</a></p>
+      <summary>When will Toast Retail customers upgrade?<button class="faq-link-btn" onclick="copyFaqLink(event,'retail-should-i-upgrade')" title="Copy link" aria-label="Copy link to this question">🔗</button></summary>
+      <p>We expect most retailers to upgrade in <strong>January 2027</strong>. Some alternate-package users may be exceptions; this is still being confirmed.</p>
+      <p class="hc-related">Related guide: <a href="../tutorials/upgrading-from-toast-retail.html">Upgrading from Toast Retail →</a></p>
     </details>
-
       <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-getting-started" data-topic="getting-started">Next topic →</a></div>
     </section>
 
@@ -554,17 +501,34 @@
         });
       });
 
-      // Deep links: #topic-<id> or #<question-id>
-      var hash = window.location.hash.slice(1);
-      var start = 'getting-started';
-      var target = null;
-      if (hash.indexOf('topic-') === 0 && document.getElementById(hash)) start = hash.slice(6);
-      else if (hash) {
-        var d = document.getElementById(hash);
-        if (d && d.tagName === 'DETAILS') { target = d; start = d.closest('.hc-topic').id.slice(6); }
+      // Resolve question links on initial load and when the URL fragment changes.
+      function followHash() {
+        var hash = window.location.hash.slice(1);
+        var topicAliases = {
+          'product-functionality': 'items-recipes',
+          'par-levels-availability': 'sales-availability',
+          'hardware-integrations': 'integrations-retail',
+          'allergens-dietary': 'items-recipes',
+          'reporting': 'costs-reporting',
+          'rollout-access': 'getting-started',
+          'advanced-use-cases': 'sales-availability',
+          'retail-customers': 'integrations-retail'
+        };
+        if (hash.indexOf('topic-') === 0 && topicAliases[hash.slice(6)]) {
+          hash = 'topic-' + topicAliases[hash.slice(6)];
+        }
+        var start = 'getting-started';
+        var target = null;
+        if (hash.indexOf('topic-') === 0 && document.getElementById(hash)) start = hash.slice(6);
+        else if (hash) {
+          var d = document.getElementById(hash);
+          if (d && d.tagName === 'DETAILS') { target = d; start = d.closest('.hc-topic').id.slice(6); }
+        }
+        showTopic(start, true);
+        if (target) { target.open = true; setTimeout(function () { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100); }
       }
-      showTopic(start, true);
-      if (target) { target.open = true; setTimeout(function () { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100); }
+      window.addEventListener('hashchange', followHash);
+      followHash();
     })();
 
     function copyFaqLink(e, slug) {

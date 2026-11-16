@@ -103,3 +103,16 @@ body.faq {
   .hc-nav a { background: #fff; border: 1px solid var(--f-line); border-radius: 99px; padding: 0.4rem 0.8rem; }
   .hc-help { display: none; }
 }
+
+/* Consistent next step beneath short FAQ answers. */
+.faq .hc-topic details p.hc-related { margin-top: 0.65rem; font-size: 0.78rem; color: var(--f-mid); }
+.hc-related a { font-weight: 600; }
+
+@media (max-width: 860px) {
+  .faq nav { height: auto; min-height: 60px; flex-wrap: wrap; gap: 0.6rem; padding: 0.75rem 1rem; }
+  .faq nav .logo { flex-basis: 100%; }
+  .faq nav .nav-links { display: none; }
+  .faq nav .nav-actions { margin-left: 0; flex-wrap: wrap; }
+  .hc-main, .hc-side { min-width: 0; }
+  .hc-nav a { overflow-wrap: anywhere; }
+}
