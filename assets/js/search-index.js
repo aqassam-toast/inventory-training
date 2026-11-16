@@ -97,11 +97,11 @@ var SEARCH_INDEX = [
     keywords: "access get started buy purchase district availability open beta how"
   },
   {
-    title: "Will inventory update automatically from invoices?",
+    title: "How do I receive an invoice and update stock?",
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Yes — invoice ingestion updates inventory with minimal manual intervention.",
+    description: "Watch the receiving invoices tutorial for review, matching, receiving units, and updating stock. Email, scan, upload, manual entry, and purchase order workflows are supported.",
     keywords: "invoice automatic update stock ingestion mapping purchases products"
   },
   {
@@ -117,7 +117,7 @@ var SEARCH_INDEX = [
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Yes — batch production is supported and is manual today.",
+    description: "Record batch production through stock counts or manual production events in the web or mobile item catalog.",
     keywords: "batch production prep workflows cocktails prep builds manual"
   },
   {
@@ -137,11 +137,11 @@ var SEARCH_INDEX = [
     keywords: "par levels reorder point minimum stock par min par max"
   },
   {
-    title: "Can the system automatically 86 items?",
+    title: "When do I need to sync sales availability with stock?",
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Not automatically — sales availability is separate from stock; sync availability with stock on-hand from Item actions.",
+    description: "Sales and POS waste update availability automatically. Sync after receiving inventory, negative Retail stock adjustments, or stock counts.",
     keywords: "86 items out of stock availability sync stock on hand sales availability"
   },
   {
@@ -157,7 +157,7 @@ var SEARCH_INDEX = [
     type: "FAQ",
     url: "faqs/index.html",
     external: false,
-    description: "Available for QuickBooks Online, QuickBooks Desktop via IIF file, and generic export to Excel. Expanded to Canada; no other countries yet.",
+    description: "Available for QuickBooks Online, QuickBooks Desktop via IIF file, and generic export to Excel. Accounting integrations are supported in the U.S. and Canada; other international markets are not supported.",
     keywords: "quickbooks accounting payroll integration sales invoice qbo iif quickbooks desktop excel export canada international"
   },
   {

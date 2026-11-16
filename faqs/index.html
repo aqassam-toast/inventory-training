@@ -85,20 +85,9 @@
 
     <details id="current-product">
       <summary>I'm already using a Toast inventory product. What happens to it?<button class="faq-link-btn" onclick="copyFaqLink(event,'current-product')" title="Copy link">🔗</button></summary>
-      <p>Toast currently offers three inventory products:</p>
-      <ul>
-        <li><strong>xtraChef</strong></li>
-        <li><strong>International Inventory</strong></li>
-        <li><strong>Retail Inventory</strong></li>
-      </ul>
-      <p style="margin-top:0.75rem"><strong>Toast Retail customers</strong> are upgraded in place, since the product is already built on top of Point of Sale. For xtraChef and International Inventory, talk to your Toast representative about the right path for your account.</p>
-      <p style="margin-top:0.75rem"><strong>You are not moved off a product you are actively using before Toast IQ Inventory is proven for your operation.</strong></p>
-      <p style="margin-top:0.75rem"><strong>Migration tooling available today:</strong></p>
-      <ul>
-        <li><strong>Item and ingredient import</strong> is available. If you have an inventory list from another system, including an xtraChef export, you can import it to get your data in.</li>
-        <li><strong>Recipe import</strong> is not available.</li>
-      </ul>
-      <p style="margin-top:0.75rem">In most cases your Toast onboarding consultant will run the import for you rather than you doing it yourself.</p>
+      <p><strong>Toast Retail:</strong> we expect most retailers to upgrade to Toast IQ Inventory in <strong>January 2027</strong>. Some alternate-package users may be exceptions; this is still being confirmed.</p>
+      <p><strong>xtraCHEF or International Inventory:</strong> contact your Toast representative about moving your account.</p>
+      <p>Item and ingredient import is available, usually handled by your onboarding consultant. Recipe import is not available.</p>
     </details>
 
     <details id="early-access">
@@ -140,8 +129,8 @@
 
 
     <details id="invoice-updates">
-      <summary>Will inventory update automatically from invoices?<button class="faq-link-btn" onclick="copyFaqLink(event,'invoice-updates')" title="Copy link">🔗</button></summary>
-      <p>Inventory updates from invoices, with some manual work at the start. Invoice ingestion updates inventory with minimal manual intervention, though mapping between purchases and products is still necessary initially.</p>
+      <summary>How do I receive an invoice and update stock?<button class="faq-link-btn" onclick="copyFaqLink(event,'invoice-updates')" title="Copy link">🔗</button></summary>
+      <p>For invoice review, item matching, receiving units, and updating stock, <a href="../tutorials/receiving-invoices.html">watch the receiving invoices tutorial</a>.</p>
     </details>
 
     <details id="recipes-before-sales">
@@ -156,7 +145,7 @@
 
     <details id="batch-production">
       <summary>Is batch production / prep supported?<button class="faq-link-btn" onclick="copyFaqLink(event,'batch-production')" title="Copy link">🔗</button></summary>
-      <p>Yes. Batch production is supported, and it is a manual process today.</p>
+      <p>Yes. Record batch production through <strong>stock counts</strong> or <strong>manual production events</strong> in the item catalog on the web or mobile app.</p>
     </details>
 
     <details id="sub-location-tracking">
@@ -267,9 +256,9 @@
     </details>
 
     <details id="auto-86">
-      <summary>Can the system automatically 86 items?<button class="faq-link-btn" onclick="copyFaqLink(event,'auto-86')" title="Copy link">🔗</button></summary>
-      <p>Not automatically. Sales availability is separate from stock on hand, so an item can keep selling even when stock reaches zero.</p>
-      <p style="margin-top:0.75rem">To stop selling an item when it runs out, sync its availability with stock. Select the items you want to update, then choose <strong>Sync availability with stock on-hand</strong> from Item actions. Sync after receiving inventory or adjusting stock counts; availability won't change automatically as items sell.</p>
+      <summary>When do I need to sync sales availability with stock?<button class="faq-link-btn" onclick="copyFaqLink(event,'auto-86')" title="Copy link">🔗</button></summary>
+      <p><strong>Sales and waste logged on POS update sales availability automatically.</strong> Receiving inventory, negative stock adjustments in Retail, and stock counts require a manual sync.</p>
+      <p>Select the items, then choose <strong>Item actions → Sync availability with stock on-hand</strong>.</p>
     </details>
       <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-hardware-integrations" data-topic="hardware-integrations">Next topic →</a></div>
     </section>
@@ -289,20 +278,15 @@
 
     <details id="accounting-integrations">
       <summary>Does this integrate with accounting tools like QuickBooks?<button class="faq-link-btn" onclick="copyFaqLink(event,'accounting-integrations')" title="Copy link">🔗</button></summary>
-      <p>Accounting integration is available for <strong>QuickBooks Online</strong>, <strong>QuickBooks Desktop via IIF file</strong>, and <strong>generic export to Excel</strong>.</p>
-      <p style="margin-top:0.75rem">For QuickBooks Online, sales, payroll, and accounts payable invoice data are supported.</p>
-      <p style="margin-top:0.75rem"><strong>Internationally:</strong> we have expanded to Canada, but there are no other countries yet.</p>
+      <p>Accounting options include <strong>QuickBooks Online</strong>, <strong>QuickBooks Desktop via IIF file</strong>, and <strong>export to Excel</strong>.</p>
+      <p>QuickBooks Online supports sales, payroll, and accounts payable invoice data.</p>
+      <p><strong>Accounting integration availability:</strong> supported in the U.S. and Canada. Other international markets are not supported.</p>
     </details>
 
     <details id="invoice-capture">
       <summary>How do I get invoices into the system?<button class="faq-link-btn" onclick="copyFaqLink(event,'invoice-capture')" title="Copy link">🔗</button></summary>
-      <p>There are three ways, and you can mix them depending on the supplier:</p>
-      <ul>
-        <li><strong>Receive via email</strong> — your account gets a dedicated email address. Have suppliers send invoices there and they arrive automatically, with no manual step from you.</li>
-        <li><strong>Mobile scan</strong> — scan an invoice on your phone and it's auto-scanned and received.</li>
-        <li><strong>Web upload</strong> — upload an image of the invoice from the browser.</li>
-      </ul>
-      <p style="margin-top:0.75rem">This is broadly similar to how xtraChef works today, with receive-via-email being the notable addition.</p>
+      <p>Add invoices by <strong>email, mobile scan, upload, manual entry, or purchase order workflows</strong>.</p>
+      <p><a href="../tutorials/receiving-invoices.html">Watch the receiving invoices tutorial →</a></p>
     </details>
 
     <details id="labels-and-barcodes">
@@ -441,34 +425,23 @@
       <header class="hc-topic-head">
         <div class="hc-kicker">For retail customers</div>
         <h2>Existing Toast Retail Customers</h2>
-        <p>For customers who are actively paying for Toast Retail today. You will be migrated to Toast IQ Inventory over time. Some customers will be able to migrate earlier depending on which features they are utilizing the most.</p>
+        <p>What changes when you move from Toast Retail to Toast IQ Inventory.</p>
       </header>
 
     <div class="hc-sub">Getting Started</div>
 
     <details id="retail-what-is-toast-inventory">
       <summary>What is Toast IQ Inventory, and what happens to Toast Retail?<button class="faq-link-btn" onclick="copyFaqLink(event,'retail-what-is-toast-inventory')" title="Copy link">🔗</button></summary>
-      <p>Toast IQ Inventory is the new name for the inventory management capabilities that are part of Toast Retail today. It includes core inventory tools such as purchasing and receiving, cycle counts, a centralized catalog, and reporting that brings together sales and inventory data in a single view.</p>
-      <p style="margin-top:0.75rem">As Toast expands to serve a broader range of businesses — including restaurants, convenience stores, gas stations, retail, and hybrid operations — we're evolving our inventory solution to support more product types and operational needs. Toast IQ Inventory provides a simple starting point for businesses just getting started with inventory management while offering the advanced capabilities needed as operations grow in complexity.</p>
-      <p style="margin-top:0.75rem">Existing Toast Retail customers will continue to have access to their inventory features, now under the Toast IQ Inventory name. This change reflects the broader scope of the product rather than a change to the core inventory functionality customers rely on.</p>
+      <p>Toast IQ Inventory brings together purchasing, receiving, stock counts, the item catalog, and sales and inventory reporting.</p>
+      <p><a href="../tutorials/upgrading-from-toast-retail.html">See what's changing from Toast Retail →</a></p>
     </details>
 
     <div class="hc-sub">Rollout &amp; Access</div>
 
     <details id="retail-should-i-upgrade">
-      <summary>How do I decide whether to upgrade to Advanced Inventory?<button class="faq-link-btn" onclick="copyFaqLink(event,'retail-should-i-upgrade')" title="Copy link">🔗</button></summary>
-      <p>Advanced Inventory is currently in beta and will become Toast IQ Inventory. While it's actively being enhanced, there are a few feature gaps to consider before upgrading.</p>
-      <p style="margin-top:0.75rem"><strong>You won't be able to upgrade yet if you:</strong></p>
-      <ul>
-        <li>Use <strong>alternate packages or bundles</strong>, which are not currently supported.</li>
-        <li>Use <strong>Shopify</strong>, as inventory quantity synchronization between Advanced Inventory and Shopify is not yet fully supported.</li>
-      </ul>
-      <p style="margin-top:0.75rem"><strong>You can upgrade, but should be aware that:</strong></p>
-      <ul>
-        <li><strong>Auto 86ing is not yet available.</strong> If automatically keeping your online menu in sync with inventory levels is critical to your business, we recommend waiting until this feature is released. In the meantime, you can manually sync inventory and item availability in bulk, though it does require some manual effort.</li>
-      </ul>
-      <p style="margin-top:0.75rem">If these limitations don't affect your operation, you're a great candidate for the beta and can take advantage of the latest inventory capabilities today.</p>
-      <p data-internal="true" style="margin-top:0.75rem; display:none">Ready to upgrade? <a href="https://www.loom.com/share/90a0ad55eef2462390e673d2c8a82ac2" target="_blank">Watch the upgrade tutorial →</a></p>
+      <summary>When will Toast Retail customers upgrade?<button class="faq-link-btn" onclick="copyFaqLink(event,'retail-should-i-upgrade')" title="Copy link">🔗</button></summary>
+      <p>We expect <strong>most retailers to upgrade in January 2027</strong>. Some alternate-package users may be exceptions, but this is still being confirmed.</p>
+      <p><a href="../tutorials/upgrading-from-toast-retail.html">See what changes when you upgrade →</a></p>
     </details>
 
       <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-getting-started" data-topic="getting-started">Next topic →</a></div>
