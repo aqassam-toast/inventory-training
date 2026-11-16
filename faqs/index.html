@@ -14,33 +14,19 @@
     gtag('js', new Date());
     gtag('config', 'G-4G4QQHWDEG');
   </script>
+  <link rel="stylesheet" href="../assets/css/faq.css?v=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    .faq-link-btn { background: none; border: none; cursor: pointer; font-size: 0.85rem; margin-left: 0.5rem; opacity: 0; transition: opacity 0.15s; vertical-align: middle; padding: 0; line-height: 1; }
-    details:target > summary .faq-link-btn,
+    .faq-link-btn { background: none; border: none; cursor: pointer; font-size: 0.85rem; opacity: 0; transition: opacity 0.15s; vertical-align: middle; padding: 0; line-height: 1; }
     details:hover > summary .faq-link-btn,
     details[open] > summary .faq-link-btn { opacity: 0.5; }
     .faq-link-btn:hover { opacity: 1 !important; }
     .faq-copied { position: fixed; bottom: 1.5rem; right: 1.5rem; background: #1a1a1a; color: white; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.8rem; opacity: 0; transition: opacity 0.2s; pointer-events: none; z-index: 999; }
     .faq-copied.show { opacity: 1; }
-    details:target { scroll-margin-top: 5rem; }
-    .faq-super-section { margin-bottom: 3rem; }
-    .faq-super-header { border-left: 4px solid var(--orange); padding: 0.75rem 0 0.75rem 1.1rem; margin-bottom: 1.75rem; }
-    .faq-super-title { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin: 0 0 0.35rem; }
-    .faq-super-blurb { font-size: 0.875rem; color: var(--mid); margin: 0; line-height: 1.6; }
-    /* ── FAQ LAYOUT + SIDENAV ── */
-    .faq-layout { display: flex; gap: 2rem; max-width: 1320px; margin: 0 auto; padding: 2.5rem 2rem; }
-    .faq-sidenav { width: 240px; flex-shrink: 0; }
-    .faq-sidenav-inner { position: sticky; top: 4rem; display: flex; flex-direction: column; }
-    .faq-nav-super { font-size: 0.75rem; font-weight: 700; color: var(--dark); padding: 1rem 0.75rem 0.35rem; }
-    .faq-nav-super:first-child { padding-top: 0; }
-    .faq-nav-section { font-size: 0.68rem; font-weight: 700; color: #bbb; padding: 0.4rem 0.75rem 0.3rem 1.1rem; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none; display: block; border-radius: 6px; transition: color 0.15s; cursor: pointer; }
-    .faq-nav-section:hover { color: var(--dark); }
-    .faq-nav-section.active { color: var(--orange); }
-    .faq-body { flex: 1; min-width: 0; }
-    @media (max-width: 860px) { .faq-sidenav { display: none; } .faq-layout { padding: 2rem 1.25rem; } }
   </style>
 </head>
-<body>
+<body class="faq">
 
 <nav>
   <a class="logo" href="../index.html">
@@ -58,30 +44,44 @@
   </div>
 </nav>
 
-<div class="page-header">
-  <div class="page-header-inner">
-    <h1><span>FAQs</span></h1>
-    <p>Quick answers to the most frequently asked questions.</p>
+<section class="hc-hero">
+  <div class="hc-eyebrow">Product help center</div>
+  <h1>Questions, meet answers.</h1>
+  <p>Everything you need to get more from Toast IQ Inventory, without the back-and-forth.</p>
+  <div class="hc-search" id="hc-search">
+    <span class="hc-search-ico"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></span>
+    <input id="hc-input" type="search" placeholder="Search for a question..." autocomplete="off" aria-label="Search the FAQ" />
+    <button class="hc-clear" id="hc-clear" type="button" aria-label="Clear search">×</button>
+    <span class="hc-kbd">⌘ K</span>
   </div>
-</div>
+</section>
 
-<div class="faq-layout">
-
-  <!-- sidenav column — content built by JS -->
-  <aside class="faq-sidenav" id="faq-sidenav" aria-label="FAQ navigation">
-    <div class="faq-sidenav-inner" id="faq-sidenav-inner"></div>
+<div class="hc-layout">
+  <aside class="hc-side" aria-label="FAQ topics">
+    <div class="hc-side-label">Browse by topic</div>
+    <ol class="hc-nav" id="hc-nav"><li><a href="#topic-getting-started" data-topic="getting-started"><span>01</span>Getting started</a></li><li><a href="#topic-product-functionality" data-topic="product-functionality"><span>02</span>Product &amp; functionality</a></li><li><a href="#topic-par-levels-availability" data-topic="par-levels-availability"><span>03</span>Par levels &amp; availability</a></li><li><a href="#topic-hardware-integrations" data-topic="hardware-integrations"><span>04</span>Hardware &amp; integrations</a></li><li><a href="#topic-allergens-dietary" data-topic="allergens-dietary"><span>05</span>Allergens &amp; dietary tags</a></li><li><a href="#topic-reporting" data-topic="reporting"><span>06</span>Reporting</a></li><li><a href="#topic-rollout-access" data-topic="rollout-access"><span>07</span>Rollout &amp; access</a></li><li><a href="#topic-advanced-use-cases" data-topic="advanced-use-cases"><span>08</span>Advanced use cases</a></li><li><a href="#topic-retail-customers" data-topic="retail-customers"><span>09</span>Existing Toast Retail customers</a></li></ol>
+    <div class="hc-help">
+      <div class="hc-help-ico">?</div>
+      <strong>Still need a hand?</strong>
+      <p>Our support team is ready to help you find the answer.</p>
+      <a href="mailto:anum.qassam@toasttab.com" data-track="faq_side_support">Talk to support →</a>
+    </div>
   </aside>
 
-  <div class="faq-body">
-
-  <!-- ── PRODUCT FAQ ── -->
-  <div class="faq-super-section">
-    <div class="faq-super-header">
-      <div class="faq-super-title">Product FAQ</div>
-      <p class="faq-super-blurb">For restaurant-focused customers using Toast IQ Inventory: an all-in-one POS + inventory solution that helps you keep stock of ingredients that are linked to menu item sales through recipes.</p>
+  <main class="hc-main" id="hc-main">
+    <div class="hc-results-head" id="hc-results-head" hidden>
+      <div class="hc-kicker">Search results</div>
+      <h2 id="hc-results-title"></h2>
+      <p id="hc-results-sub"></p>
     </div>
-  <div class="faq-section">
-    <h2>Getting Started</h2>
+
+    <section class="hc-topic" id="topic-getting-started" data-label="Getting started">
+      <header class="hc-topic-head">
+        <div class="hc-kicker">First steps</div>
+        <h2>Getting Started</h2>
+        <p>Everything you need to know before moving to Toast IQ Inventory.</p>
+      </header>
+
 
     <details id="current-product">
       <summary>I'm already using a Toast inventory product. What happens to it?<button class="faq-link-btn" onclick="copyFaqLink(event,'current-product')" title="Copy link">🔗</button></summary>
@@ -128,10 +128,16 @@
       <p>Use the <strong><a href="https://forms.gle/NvCgjEZinEKkPRkr6" target="_blank">product feedback form</a></strong> to send feedback directly to the product team. This is the best route for feature requests, rough edges, and anything that isn't working the way you'd expect.</p>
       <p style="margin-top:0.75rem">If you'd rather talk it through, or you're hitting something that looks like a bug, <a href="mailto:anum.qassam@toasttab.com">email us</a> directly.</p>
     </details>
-  </div>
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-product-functionality" data-topic="product-functionality">Next topic →</a></div>
+    </section>
 
-  <div class="faq-section">
-    <h2>Product &amp; Functionality</h2>
+    <section class="hc-topic" id="topic-product-functionality" data-label="Product &amp; functionality">
+      <header class="hc-topic-head">
+        <div class="hc-kicker">How it works</div>
+        <h2>Product &amp; Functionality</h2>
+        <p>What Toast IQ Inventory does today, from items and recipes to costing and bulk edits.</p>
+      </header>
+
 
     <details id="invoice-updates">
       <summary>Will inventory update automatically from invoices?<button class="faq-link-btn" onclick="copyFaqLink(event,'invoice-updates')" title="Copy link">🔗</button></summary>
@@ -242,10 +248,16 @@
       <p>Yes — you can create custom attributes on items and use them however you need. One customer doing wholesale work on the side uses them to record the most recent lot number for an item.</p>
       <p style="margin-top:0.75rem">Custom attributes can be printed on labels, and they're useful for slicing and filtering your catalog so you can make targeted bulk edits.</p>
     </details>
-  </div>
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-par-levels-availability" data-topic="par-levels-availability">Next topic →</a></div>
+    </section>
 
-  <div class="faq-section">
-    <h2>Par Levels &amp; Availability</h2>
+    <section class="hc-topic" id="topic-par-levels-availability" data-label="Par levels &amp; availability">
+      <header class="hc-topic-head">
+        <div class="hc-kicker">Stock &amp; selling</div>
+        <h2>Par Levels &amp; Availability</h2>
+        <p>How par levels work, and how to keep what's available to sell in sync with your stock.</p>
+      </header>
+
 
     <details id="par-levels">
       <summary>Can I set par levels?<button class="faq-link-btn" onclick="copyFaqLink(event,'par-levels')" title="Copy link">🔗</button></summary>
@@ -259,10 +271,16 @@
       <p>Not automatically. Sales availability is separate from stock on hand, so an item can keep selling even when stock reaches zero.</p>
       <p style="margin-top:0.75rem">To stop selling an item when it runs out, sync its availability with stock. Select the items you want to update, then choose <strong>Sync availability with stock on-hand</strong> from Item actions. Sync after receiving inventory or adjusting stock counts; availability won't change automatically as items sell.</p>
     </details>
-  </div>
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-hardware-integrations" data-topic="hardware-integrations">Next topic →</a></div>
+    </section>
 
-  <div class="faq-section">
-    <h2>Hardware &amp; Integrations</h2>
+    <section class="hc-topic" id="topic-hardware-integrations" data-label="Hardware &amp; integrations">
+      <header class="hc-topic-head">
+        <div class="hc-kicker">Connections</div>
+        <h2>Hardware &amp; Integrations</h2>
+        <p>Barcodes, labels, invoice capture, and accounting integrations.</p>
+      </header>
+
 
     <details id="hardware-integrations">
       <summary>Does this integrate with scales or draft systems?<button class="faq-link-btn" onclick="copyFaqLink(event,'hardware-integrations')" title="Copy link">🔗</button></summary>
@@ -293,10 +311,16 @@
       <p style="margin-top:0.75rem">Labels are fully customizable: choose which fields appear (including custom attributes), set the width and height for whatever label stock you use, and print individually or in bulk across many items. Most label printers are supported. This capability comes from building on top of the retail product.</p>
       <p style="margin-top:0.75rem"><strong>Prep labels are not supported.</strong></p>
     </details>
-  </div>
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-allergens-dietary" data-topic="allergens-dietary">Next topic →</a></div>
+    </section>
 
-  <div class="faq-section">
-    <h2>Allergens &amp; Dietary Tags</h2>
+    <section class="hc-topic" id="topic-allergens-dietary" data-label="Allergens &amp; dietary tags">
+      <header class="hc-topic-head">
+        <div class="hc-kicker">Menu details</div>
+        <h2>Allergens &amp; Dietary Tags</h2>
+        <p>Tag items with allergens and dietary information.</p>
+      </header>
+
 
     <details id="allergens">
       <summary>Can I track allergens? Can I customize the list?<button class="faq-link-btn" onclick="copyFaqLink(event,'allergens')" title="Copy link">🔗</button></summary>
@@ -315,10 +339,16 @@
       <summary>Can allergens be set on ingredients and roll up to recipes?<button class="faq-link-btn" onclick="copyFaqLink(event,'ingredient-allergens')" title="Copy link">🔗</button></summary>
       <p>No. Allergens are tagged on the finished item, not on ingredients, and they don't roll up from ingredients to recipes.</p>
     </details>
-  </div>
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-reporting" data-topic="reporting">Next topic →</a></div>
+    </section>
 
-  <div class="faq-section">
-    <h2>Reporting</h2>
+    <section class="hc-topic" id="topic-reporting" data-label="Reporting">
+      <header class="hc-topic-head">
+        <div class="hc-kicker">Insights</div>
+        <h2>Reporting</h2>
+        <p>The reports available, and how to ask questions about your data.</p>
+      </header>
+
 
     <details id="reporting">
       <summary>What reporting does Toast IQ Inventory include?<button class="faq-link-btn" onclick="copyFaqLink(event,'reporting')" title="Copy link">🔗</button></summary>
@@ -339,10 +369,16 @@
         <li><em>Which items' margins have gone down more than 5% in the past six months?</em></li>
       </ul>
     </details>
-  </div>
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-rollout-access" data-topic="rollout-access">Next topic →</a></div>
+    </section>
 
-  <div class="faq-section">
-    <h2>Rollout &amp; Access</h2>
+    <section class="hc-topic" id="topic-rollout-access" data-label="Rollout &amp; access">
+      <header class="hc-topic-head">
+        <div class="hc-kicker">Availability</div>
+        <h2>Rollout &amp; Access</h2>
+        <p>Where Toast IQ Inventory is available, and what it costs.</p>
+      </header>
+
 
     <details id="availability">
       <summary>Is Toast IQ Inventory available?<button class="faq-link-btn" onclick="copyFaqLink(event,'availability')" title="Copy link">🔗</button></summary>
@@ -359,10 +395,16 @@
       <summary>Will this cost extra?<button class="faq-link-btn" onclick="copyFaqLink(event,'pricing')" title="Copy link">🔗</button></summary>
       <p>Yes. Toast IQ Inventory is a paid addition to your Toast subscription. Head to Toast Shop for more information and product availability, or ask your Toast representative.</p>
     </details>
-  </div>
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-advanced-use-cases" data-topic="advanced-use-cases">Next topic →</a></div>
+    </section>
 
-  <div class="faq-section">
-    <h2>Advanced Use Cases</h2>
+    <section class="hc-topic" id="topic-advanced-use-cases" data-label="Advanced use cases">
+      <header class="hc-topic-head">
+        <div class="hc-kicker">Going deeper</div>
+        <h2>Advanced Use Cases</h2>
+        <p>Modifiers, preorders, voids, and other less common scenarios.</p>
+      </header>
+
 
     <details id="modifier-support">
       <summary>Are modifiers supported in recipes?<button class="faq-link-btn" onclick="copyFaqLink(event,'modifier-support')" title="Copy link">🔗</button></summary>
@@ -392,19 +434,17 @@
       <p>Not today. Because inventory decrements at fire time, preordered quantities aren't reflected in your on-hand count until the day the order fires, so there is no view of what's already promised.</p>
       <p style="margin-top:0.75rem">Visibility into committed stock (what is on hand, what is committed to future orders, and what is in transit between locations) is not available.</p>
     </details>
-  </div>
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-retail-customers" data-topic="retail-customers">Next topic →</a></div>
+    </section>
 
-  </div><!-- end .faq-super-section: Product FAQ -->
+    <section class="hc-topic" id="topic-retail-customers" data-label="Existing Toast Retail customers">
+      <header class="hc-topic-head">
+        <div class="hc-kicker">For retail customers</div>
+        <h2>Existing Toast Retail Customers</h2>
+        <p>For customers who are actively paying for Toast Retail today. You will be migrated to Toast IQ Inventory over time. Some customers will be able to migrate earlier depending on which features they are utilizing the most.</p>
+      </header>
 
-  <!-- ── EXISTING TOAST RETAIL CUSTOMERS ── -->
-  <div class="faq-super-section">
-    <div class="faq-super-header">
-      <div class="faq-super-title">Existing Toast Retail Customers</div>
-      <p class="faq-super-blurb">For customers who are actively paying for Toast Retail today. You will be migrated to Toast IQ Inventory over time. Some customers will be able to migrate earlier depending on which features they are utilizing the most.</p>
-    </div>
-
-  <div class="faq-section">
-    <h2>Getting Started</h2>
+    <div class="hc-sub">Getting Started</div>
 
     <details id="retail-what-is-toast-inventory">
       <summary>What is Toast IQ Inventory, and what happens to Toast Retail?<button class="faq-link-btn" onclick="copyFaqLink(event,'retail-what-is-toast-inventory')" title="Copy link">🔗</button></summary>
@@ -413,10 +453,7 @@
       <p style="margin-top:0.75rem">Existing Toast Retail customers will continue to have access to their inventory features, now under the Toast IQ Inventory name. This change reflects the broader scope of the product rather than a change to the core inventory functionality customers rely on.</p>
     </details>
 
-  </div>
-
-  <div class="faq-section">
-    <h2>Rollout &amp; Access</h2>
+    <div class="hc-sub">Rollout &amp; Access</div>
 
     <details id="retail-should-i-upgrade">
       <summary>How do I decide whether to upgrade to Advanced Inventory?<button class="faq-link-btn" onclick="copyFaqLink(event,'retail-should-i-upgrade')" title="Copy link">🔗</button></summary>
@@ -434,12 +471,25 @@
       <p data-internal="true" style="margin-top:0.75rem; display:none">Ready to upgrade? <a href="https://www.loom.com/share/90a0ad55eef2462390e673d2c8a82ac2" target="_blank">Watch the upgrade tutorial →</a></p>
     </details>
 
+      <div class="hc-topic-foot"><span class="hc-count"></span><a class="hc-next" href="#topic-getting-started" data-topic="getting-started">Next topic →</a></div>
+    </section>
+
+    <div class="hc-empty" id="hc-empty" hidden>We couldn't find an answer for that. Try different words, or <a href="mailto:anum.qassam@toasttab.com" data-track="faq_empty_support">ask our support team</a>.</div>
+  </main>
+</div>
+
+<section class="hc-cta">
+  <div class="hc-cta-inner">
+    <div>
+      <div class="hc-kicker">Real people, real help</div>
+      <h2>Still have questions?</h2>
+    </div>
+    <div class="hc-cta-actions">
+      <a class="hc-btn hc-btn-solid" href="mailto:anum.qassam@toasttab.com" data-track="faq_cta_support">Talk to our support team <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="hc-btn hc-btn-ghost" href="https://docs.google.com/forms/d/1fGYNrUxSuVLAZEoHQGNhTPxGZmjCKjUJVmtkaNbt0Do/viewform" target="_blank" rel="noopener" data-track="faq_cta_feedback">Submit feedback</a>
+    </div>
   </div>
-
-  </div><!-- end .faq-super-section: Existing Toast Retail Customers -->
-
-  </div><!-- end .faq-body -->
-</div><!-- end .faq-layout -->
+</section>
 
 <footer>
   Toast IQ Inventory Training &amp; Support
@@ -450,59 +500,98 @@
   <script src="../assets/js/internal.js?v=2"></script>
   <div class="faq-copied" id="faq-copied">Link copied!</div>
   <script>
-    // ── BUILD SIDENAV ──
     (function () {
-      var inner = document.getElementById('faq-sidenav-inner');
-      if (!inner) return;
+      var main = document.getElementById('hc-main');
+      var topics = Array.prototype.slice.call(document.querySelectorAll('.hc-topic'));
+      var navLinks = Array.prototype.slice.call(document.querySelectorAll('#hc-nav a'));
+      var input = document.getElementById('hc-input');
+      var box = document.getElementById('hc-search');
+      var rHead = document.getElementById('hc-results-head');
+      var empty = document.getElementById('hc-empty');
 
-      // Collect super-sections, their sub-sections, and FAQs
-      document.querySelectorAll('.faq-super-section').forEach(function (superEl) {
-        var superTitle = superEl.querySelector('.faq-super-title');
-        if (!superTitle) return;
-
-        var superLabel = document.createElement('div');
-        superLabel.className = 'faq-nav-super';
-        superLabel.textContent = superTitle.textContent;
-        inner.appendChild(superLabel);
-
-        superEl.querySelectorAll('.faq-section').forEach(function (section) {
-          var h2 = section.querySelector('h2');
-          if (h2) {
-            var sectionLabel = document.createElement('a');
-            sectionLabel.className = 'faq-nav-section';
-            sectionLabel.textContent = h2.textContent;
-            sectionLabel.href = '#';
-            sectionLabel.addEventListener('click', function (sec) {
-              return function (e) {
-                e.preventDefault();
-                sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-              };
-            }(section));
-            inner.appendChild(sectionLabel);
-          }
-
-        });
+      // Count questions per topic and pre-compute searchable text
+      topics.forEach(function (t) {
+        var ds = t.querySelectorAll('details');
+        t.querySelector('.hc-count').textContent = 'Showing ' + ds.length + ' question' + (ds.length === 1 ? '' : 's') + ' in ' + t.getAttribute('data-label');
+      });
+      var items = Array.prototype.slice.call(document.querySelectorAll('.hc-topic details')).map(function (d) {
+        return { el: d, topic: d.closest('.hc-topic'), text: d.textContent.toLowerCase() };
       });
 
-      // ── ACTIVE HIGHLIGHT ON SCROLL ──
-      var links = inner.querySelectorAll('.faq-nav-section');
-      var targets = Array.from(document.querySelectorAll('.faq-section'));
+      function showTopic(id, noHash) {
+        clearSearch(true);
+        topics.forEach(function (t) { t.classList.toggle('active', t.id === 'topic-' + id); });
+        navLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('data-topic') === id); });
+        if (!noHash && history.replaceState) history.replaceState(null, '', '#topic-' + id);
+      }
 
-      function onScroll() {
-        var scrollY = window.scrollY + 120;
-        var activeIdx = -1;
-        for (var i = 0; i < targets.length; i++) {
-          if (targets[i].getBoundingClientRect().top + window.scrollY <= scrollY) {
-            activeIdx = i;
-          }
-        }
-        links.forEach(function (el, i) {
-          el.classList.toggle('active', i === activeIdx);
+      function clearSearch(silent) {
+        input.value = '';
+        box.classList.remove('has-text');
+        main.classList.remove('searching');
+        rHead.hidden = true; empty.hidden = true;
+        items.forEach(function (it) { it.el.hidden = false; });
+        topics.forEach(function (t) { t.classList.remove('has-match'); });
+        if (!silent && !document.querySelector('.hc-topic.active')) showTopic('getting-started', true);
+      }
+
+      function search(q) {
+        var words = q.toLowerCase().split(/\s+/).filter(Boolean);
+        box.classList.toggle('has-text', q.length > 0);
+        if (!words.length) { clearSearch(); var cur = document.querySelector('.hc-topic.active') || topics[0]; showTopic(cur.id.replace('topic-', ''), true); input.value = q; return; }
+        main.classList.add('searching');
+        navLinks.forEach(function (a) { a.classList.remove('active'); });
+        var n = 0;
+        topics.forEach(function (t) { t.classList.remove('has-match'); });
+        items.forEach(function (it) {
+          var ok = words.every(function (w) { return it.text.indexOf(w) !== -1; });
+          it.el.hidden = !ok;
+          if (ok) { n++; it.topic.classList.add('has-match'); }
+        });
+        rHead.hidden = false;
+        document.getElementById('hc-results-title').textContent = n + (n === 1 ? ' Answer Found' : ' Answers Found');
+        document.getElementById('hc-results-sub').textContent = 'Results matching “' + q + '”';
+        empty.hidden = n !== 0;
+        topics.forEach(function (t) {
+          var h = t.querySelector('.hc-kicker');
+          if (!h.getAttribute('data-orig')) h.setAttribute('data-orig', h.textContent);
+          h.textContent = t.getAttribute('data-label');
         });
       }
 
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
+      input.addEventListener('input', function () { search(input.value.trim()); });
+      input.addEventListener('keydown', function (e) { if (e.key === 'Escape') { clearSearch(true); var cur = document.querySelector('.hc-topic.active') || topics[0]; showTopic(cur.id.replace('topic-', ''), true); input.blur(); } });
+      document.getElementById('hc-clear').addEventListener('click', function () { clearSearch(true); var cur = document.querySelector('.hc-topic.active') || topics[0]; showTopic(cur.id.replace('topic-', ''), true); input.focus(); });
+      document.addEventListener('keydown', function (e) {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); input.focus(); }
+      });
+
+      // Restore topic kicker labels when leaving search
+      var origClear = clearSearch;
+      clearSearch = function (silent) {
+        topics.forEach(function (t) { var h = t.querySelector('.hc-kicker'); if (h.getAttribute('data-orig')) h.textContent = h.getAttribute('data-orig'); });
+        origClear(silent);
+      };
+
+      document.querySelectorAll('[data-topic]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          showTopic(a.getAttribute('data-topic'));
+          window.scrollTo({ top: document.querySelector('.hc-layout').offsetTop - 70, behavior: 'smooth' });
+        });
+      });
+
+      // Deep links: #topic-<id> or #<question-id>
+      var hash = window.location.hash.slice(1);
+      var start = 'getting-started';
+      var target = null;
+      if (hash.indexOf('topic-') === 0 && document.getElementById(hash)) start = hash.slice(6);
+      else if (hash) {
+        var d = document.getElementById(hash);
+        if (d && d.tagName === 'DETAILS') { target = d; start = d.closest('.hc-topic').id.slice(6); }
+      }
+      showTopic(start, true);
+      if (target) { target.open = true; setTimeout(function () { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100); }
     })();
 
     function copyFaqLink(e, slug) {
@@ -515,15 +604,6 @@
         setTimeout(function() { el.classList.remove('show'); }, 2000);
       });
     }
-    (function() {
-      var hash = window.location.hash.slice(1);
-      if (!hash) return;
-      var el = document.getElementById(hash);
-      if (el && el.tagName === 'DETAILS') {
-        el.open = true;
-        setTimeout(function() { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
-      }
-    })();
   </script>
 </body>
 </html>
