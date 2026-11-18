@@ -693,21 +693,50 @@
         </div>
         <p>Categories now exist alongside Menus. Menus are your merchandising hierarchy, while categories are a new way to organize items, including non-sellable ones like ingredients. They lay the foundation for reporting rollups, which are planned by March.</p>
       </div>
+
+      <div class="c7-card c7-wide">
+        <div class="c7-wide-copy">
+          <div class="c7-n">D</div>
+          <h3>Not working for you? You can opt out.</h3>
+          <p>If the new experience doesn't work for you for any reason, you can go back to the previous version.</p>
+          <ol class="c7-steps">
+            <li>Open the <strong>Item catalog</strong>.</li>
+            <li>Click <strong>Need previous version</strong> in the banner at the top.</li>
+            <li>Fill out the <strong>survey</strong>. It tells us which gap you ran into, so we can fix it.</li>
+          </ol>
+        </div>
+        <div class="c7-banner-mock" aria-hidden="true">
+          <div class="c7-mock-head">Item catalog</div>
+          <div class="c7-mock-banner"><span>ℹ</span><span>Need previous version?</span></div>
+          <div class="c7-mock-rows"><i></i><i></i><i></i></div>
+        </div>
+      </div>
     </div>
   </section>
 
   <style>
-    .c7-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; }
+    .c7-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+    @media (max-width:900px) { .c7-grid { grid-template-columns:1fr; } }
     .c7-card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:1.4rem; display:flex; flex-direction:column; gap:0.8rem; }
     .c7-n { width:30px; height:30px; border-radius:9px; background:#fdeee8; color:var(--acc); font-size:0.75rem; font-weight:800; display:flex; align-items:center; justify-content:center; }
     .c7-card h3 { font-size:1.05rem; letter-spacing:-0.01em; line-height:1.25; }
     .c7-card p { font-size:0.85rem; color:#44403c; line-height:1.6; }
-    .c7-vis { background:#f5f2ee; border-radius:12px; padding:1rem; display:flex; align-items:center; justify-content:center; gap:0.7rem; height:84px; flex-wrap:wrap; }
+    .c7-vis { background:#f5f2ee; border-radius:12px; padding:1rem; display:flex; align-items:center; justify-content:center; gap:0.6rem; height:84px; flex-wrap:nowrap; }
     .c7-chip { display:inline-flex; align-items:center; gap:0.4rem; border-radius:8px; padding:0.5rem 0.8rem; font-size:0.78rem; font-weight:600; border:1px solid var(--line); background:#fff; }
     .c7-old { color:#a8a29e; text-decoration:line-through; }
     .c7-new { border-color:#f3b9a3; background:#fff6f2; color:#c2410c; }
     .c7-nav { background:#24201d; color:#fff; border-color:#24201d; }
     .c7-roll { border-style:dashed; color:var(--mut); }
+    .c7-wide { grid-column:1/-1; flex-direction:row; align-items:center; gap:2rem; background:#fff6f2; border-color:#f3b9a3; }
+    .c7-wide-copy { flex:1; display:flex; flex-direction:column; gap:0.7rem; }
+    .c7-steps { padding-left:1.2rem; display:flex; flex-direction:column; gap:0.35rem; font-size:0.88rem; color:#44403c; }
+    .c7-banner-mock { flex:0 0 320px; background:#fff; border:1px solid var(--line); border-radius:12px; padding:0.9rem; box-shadow:0 8px 24px rgba(120,80,40,0.10); }
+    .c7-mock-head { font-weight:800; font-size:1rem; margin-bottom:0.6rem; }
+    .c7-mock-banner { display:flex; gap:0.5rem; align-items:center; background:#e8ebfb; color:#3b4cca; border-radius:8px; padding:0.6rem 0.8rem; font-size:0.75rem; font-weight:600; }
+    .c7-mock-banner span:last-child { text-decoration:underline; }
+    .c7-mock-rows { margin-top:0.7rem; display:flex; flex-direction:column; gap:0.45rem; }
+    .c7-mock-rows i { display:block; height:10px; border-radius:5px; background:#f0eeeb; }
+    @media (max-width:760px) { .c7-wide { flex-direction:column; align-items:stretch; } .c7-banner-mock { flex-basis:auto; } }
     .c7-arrow { color:var(--acc); }
   </style>
 
