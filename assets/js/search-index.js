@@ -26,15 +26,6 @@ var SEARCH_INDEX = [
     keywords: "stock count first count cycle count item locations count template schedule rules perpetual inventory variance actual theoretical mobile app ad hoc count baseline submit count"
   },
   {
-    title: "Recipes & Ingredients — What's Ready for Testing",
-    type: "Video",
-    internal: true,
-    url: "https://toasttab.zoom.us/rec/share/-wYqVadtrbDPCIxoMELXjJsRIVpqlED3lF54gBsnaS4uhuWW8cfqO-RQfV9XC7nV.IVN0BPZJPa6QF3JV?startTime=1786021178000",
-    external: true,
-    description: "A live demo of the recipe and ingredient capability now available for testing.",
-    keywords: "recipes ingredients webinar august 2026 batch prep FIFO depletion allergens barcode label ingredient import xtrachef migration pricing rollout modifiers shared inventory passcode"
-  },
-  {
     title: "How to get started with advanced inventory in Toast Retail",
     type: "Video",
     internal: true,
@@ -60,15 +51,6 @@ var SEARCH_INDEX = [
     external: true,
     description: "How to enable stock tracking, set units of measure, and manage item quantities.",
     keywords: "tracking stock enable units of measure quantities FIFO cost item"
-  },
-  {
-    title: "Test Kitchen Onboarding — June 2026",
-    type: "Video",
-    internal: true,
-    url: "https://toasttab.zoom.us/clips/share/-JHr2coFRbCQwnW6XEb7kQ",
-    external: true,
-    description: "Live walkthrough of item setup, invoice upload, cycle counts, and reports.",
-    keywords: "test kitchen onboarding webinar item setup invoice upload cycle counts reports recipes ingredients shared inventory sales cogs roll forward snapshot purchasing receiving stock tracking barcode scanning retail products supplier"
   },
   {
     title: "Recipes & Ingredients Overview",
