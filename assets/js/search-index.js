@@ -35,15 +35,6 @@ var SEARCH_INDEX = [
     keywords: "advanced inventory upgrade toast retail existing customer getting started"
   },
   {
-    title: "Toast IQ Inventory First Look — May 2026",
-    type: "Video",
-    internal: true,
-    url: "https://www.loom.com/share/74b05496f42a443c9e80b83ab79c5e28",
-    external: true,
-    description: "A live first look at Toast IQ Inventory for Test Kitchen members.",
-    keywords: "first look webinar may 2026 product vision FIFO costing item library shared inventory pooling recipes prep AI invoice upload par levels auto-86 multi-location passcode test kitchen"
-  },
-  {
     title: "Tracking Stock on an Item",
     type: "Video",
     internal: true,
