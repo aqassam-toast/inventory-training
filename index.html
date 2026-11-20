@@ -136,22 +136,21 @@
       </div>
       <span class="h-path-state">Select</span>
     </button>
+    <button class="h-path" role="tab" id="tab-day-to-day" aria-controls="panel-day-to-day" aria-selected="false" data-path="day-to-day" data-track="path_day-to-day" type="button">
+      <div class="h-path-icon">🗂️</div>
+      <div>
+        <div class="h-path-eyebrow">Already up and running</div>
+        <h3>Managing inventory day to day</h3>
+        <p>Find answers, improve your workflows, and get more from Inventory.</p>
+      </div>
+      <span class="h-path-state">Select</span>
+    </button>
     <button class="h-path" role="tab" id="tab-transition" aria-controls="panel-transition" aria-selected="false" data-path="transition" data-track="path_transition" type="button">
       <div class="h-path-icon">➡️</div>
       <div>
         <div class="h-path-eyebrow">Switch products</div>
         <h3>Move to Toast Inventory</h3>
         <p>Get step-by-step guidance for moving your data and workflows from another Toast product.</p>
-      </div>
-      <span class="h-path-state">Select</span>
-    </button>
-    <!-- Hidden for now: remove the hidden attribute (here and on #panel-day-to-day) to bring it back -->
-    <button class="h-path" hidden role="tab" id="tab-day-to-day" aria-controls="panel-day-to-day" aria-selected="false" data-path="day-to-day" data-track="path_day-to-day" type="button">
-      <div class="h-path-icon">🗂️</div>
-      <div>
-        <div class="h-path-eyebrow">Already up and running</div>
-        <h3>Managing inventory day to day</h3>
-        <p>Find answers, improve your workflows, and get more from Inventory.</p>
       </div>
       <span class="h-path-state">Select</span>
     </button>
@@ -189,7 +188,7 @@
     <section class="h-panel" id="panel-onboarding" role="tabpanel" aria-labelledby="tab-onboarding" hidden>
       <div class="h-panel-head">
         <h2>Recommended for you</h2>
-        <p>Start here and work down the list.</p>
+        <p>Learn what to expect and how to prepare for onboarding.</p>
       </div>
       <div class="h-grid">
         <a class="h-card" href="tutorials/what-to-expect-during-onboarding.html" data-track="content_video_onboarding_overview">
@@ -198,6 +197,25 @@
           <p>An overview of what the onboarding process will be like and how to prepare.</p>
           <span class="h-card-cta">Read →</span>
         </a>
+
+
+
+
+      </div>
+    </section>
+
+
+
+    <section class="h-panel" id="panel-day-to-day" role="tabpanel" aria-labelledby="tab-day-to-day" hidden>
+      <div class="h-panel-head">
+        <h2>Managing inventory day to day</h2>
+        <p>Guides for managing your catalog, recipes, counts, invoices, and everyday questions.</p>
+      </div>
+      <div class="h-actions" style="margin: 0 0 1.25rem;">
+        <a class="h-btn h-btn-solid" href="mailto:anum.qassam@toasttab.com" data-track="daily_get_help">Get help now</a>
+        <a class="h-btn h-btn-ghost" href="https://docs.google.com/forms/d/1fGYNrUxSuVLAZEoHQGNhTPxGZmjCKjUJVmtkaNbt0Do/viewform" target="_blank" rel="noopener" data-track="daily_submit_feedback">Submit feedback</a>
+      </div>
+      <div class="h-grid">
         <a class="h-card" href="tutorials/mastering-the-item-catalog.html" data-track="content_video_item_catalog">
           <div class="h-card-type">Video + tutorial</div>
           <h3>Item catalog overview</h3>
@@ -221,6 +239,30 @@
           <h3>Receiving invoices for ingredients</h3>
           <p>Upload a scanned invoice, match items, set the receiving unit, and update stock and costs.</p>
           <span class="h-card-cta">Read →</span>
+        </a>
+        <a class="h-card h-card-feature" href="faqs/index.html" data-track="content_faq">
+          <div class="h-card-type">FAQ</div>
+          <h3>Frequently asked questions</h3>
+          <p>Answers on recipes, par levels, availability and 86ing, QuickBooks integration, reporting, pricing, and more.</p>
+          <span class="h-card-cta">Browse the FAQ →</span>
+        </a>
+        <a class="h-card" href="available/index.html" data-track="content_available_features">
+          <div class="h-card-type">Reference</div>
+          <h3>What's available</h3>
+          <p>Every feature you can use today across purchasing, inventory, reporting, and recipes, plus what's on the roadmap.</p>
+          <span class="h-card-cta">View →</span>
+        </a>
+        <a class="h-card" href="tutorials/index.html" data-track="content_tutorials">
+          <div class="h-card-type">Tutorials</div>
+          <h3>All tutorials</h3>
+          <p>Step-by-step guides for receiving, counting, and more.</p>
+          <span class="h-card-cta">Browse →</span>
+        </a>
+        <a class="h-card" href="assets/docs/faq-test-kitchen.pdf" target="_blank" rel="noopener" data-track="content_faq_pdf">
+          <div class="h-card-type">Document</div>
+          <h3>Test Kitchen FAQ (PDF)</h3>
+          <p>Downloadable FAQ from the June 2026 webinar.</p>
+          <span class="h-card-cta">Download →</span>
         </a>
       </div>
     </section>
@@ -252,43 +294,6 @@
       </div>
       <div class="h-actions">
         <a class="h-btn h-btn-solid" href="mailto:anum.qassam@toasttab.com" data-track="transition_get_help">Get help now</a>
-      </div>
-    </section>
-
-    <section class="h-panel" id="panel-day-to-day" role="tabpanel" aria-labelledby="tab-day-to-day" hidden>
-      <div class="h-panel-head">
-        <h2>Answers and support</h2>
-        <p>Can't find what you need? Talk to us or tell us what's missing.</p>
-      </div>
-      <div class="h-actions" style="margin: 0 0 1.25rem;">
-        <a class="h-btn h-btn-solid" href="mailto:anum.qassam@toasttab.com" data-track="daily_get_help">Get help now</a>
-        <a class="h-btn h-btn-ghost" href="https://docs.google.com/forms/d/1fGYNrUxSuVLAZEoHQGNhTPxGZmjCKjUJVmtkaNbt0Do/viewform" target="_blank" rel="noopener" data-track="daily_submit_feedback">Submit feedback</a>
-      </div>
-      <div class="h-grid">
-        <a class="h-card h-card-feature" href="faqs/index.html" data-track="content_faq">
-          <div class="h-card-type">FAQ</div>
-          <h3>Frequently asked questions</h3>
-          <p>Answers on recipes, par levels, availability and 86ing, QuickBooks integration, reporting, pricing, and more.</p>
-          <span class="h-card-cta">Browse the FAQ →</span>
-        </a>
-        <a class="h-card" href="available/index.html" data-track="content_available_features">
-          <div class="h-card-type">Reference</div>
-          <h3>What's available</h3>
-          <p>Every feature you can use today across purchasing, inventory, reporting, and recipes, plus what's on the roadmap.</p>
-          <span class="h-card-cta">View →</span>
-        </a>
-        <a class="h-card" href="tutorials/index.html" data-track="content_tutorials">
-          <div class="h-card-type">Tutorials</div>
-          <h3>All tutorials</h3>
-          <p>Step-by-step guides for receiving, counting, and more.</p>
-          <span class="h-card-cta">Browse →</span>
-        </a>
-        <a class="h-card" href="assets/docs/faq-test-kitchen.pdf" target="_blank" rel="noopener" data-track="content_faq_pdf">
-          <div class="h-card-type">Document</div>
-          <h3>Test Kitchen FAQ (PDF)</h3>
-          <p>Downloadable FAQ from the June 2026 webinar.</p>
-          <span class="h-card-cta">Download →</span>
-        </a>
       </div>
     </section>
 
