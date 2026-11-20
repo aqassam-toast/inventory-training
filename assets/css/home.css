@@ -140,3 +140,9 @@ a.h-card:hover { box-shadow: 0 8px 24px rgba(120,80,40,0.12); transform: transla
   .home nav .nav-links { display: none; }
   .home nav .nav-actions .btn-outline { display: none; }
 }
+
+/* Direct migration links below the home page paths. */
+.h-migration-links { margin-top:1.25rem; color:var(--h-mid); font-size:.9rem; scroll-margin-top:90px; }
+.h-migration-links a { color:var(--h-ink); font-weight:700; text-decoration:underline; text-underline-offset:3px; }
+.h-migration-links a:hover { color:var(--h-accent); }
+.h-migration-links a:focus-visible { outline:2px solid var(--h-accent); outline-offset:4px; }

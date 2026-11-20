@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Toast IQ Inventory — Training & Support</title>
   <link rel="stylesheet" href="assets/css/style.css?v=6" />
-  <link rel="stylesheet" href="assets/css/home.css?v=3" />
+  <link rel="stylesheet" href="assets/css/home.css?v=4" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <!-- Google tag (gtag.js) -->
@@ -145,16 +145,9 @@
       </div>
       <span class="h-path-state">Select</span>
     </button>
-    <button class="h-path" role="tab" id="tab-transition" aria-controls="panel-transition" aria-selected="false" data-path="transition" data-track="path_transition" type="button">
-      <div class="h-path-icon">➡️</div>
-      <div>
-        <div class="h-path-eyebrow">Switch products</div>
-        <h3>Move to Toast Inventory</h3>
-        <p>Get step-by-step guidance for moving your data and workflows from another Toast product.</p>
-      </div>
-      <span class="h-path-state">Select</span>
-    </button>
   </div>
+
+  <p class="h-migration-links" id="transition">Migrating from <a href="tutorials/upgrading-from-toast-retail.html" data-track="migration_toast_retail">Toast Retail</a> or <a href="tutorials/transitioning-from-xtrachef.html" data-track="migration_xtrachef">xtraCHEF</a>?</p>
 
   <div class="h-panels">
 
@@ -267,35 +260,6 @@
       </div>
     </section>
 
-    <section class="h-panel" id="panel-transition" role="tabpanel" aria-labelledby="tab-transition" hidden>
-      <div class="h-panel-head">
-        <h2>Transition guides</h2>
-        <p>Plan your move to Toast IQ Inventory with guidance on timing, your data, and support from Toast.</p>
-      </div>
-      <div class="h-grid">
-        <a class="h-card" href="tutorials/transitioning-from-xtrachef.html" data-track="content_transitioning_xtrachef">
-          <div class="h-card-type">Migration guide</div>
-          <h3>Transitioning from xtraCHEF</h3>
-          <p>At least until 2028 to upgrade, support from Toast, and your essential data coming with you.</p>
-          <span class="h-card-cta">See the plan →</span>
-        </a>
-        <a class="h-card" href="tutorials/upgrading-from-toast-retail.html" data-track="content_upgrading_toast_retail">
-          <div class="h-card-type">Guide</div>
-          <h3>Upgrading from Toast Retail</h3>
-          <p>What's changing: sales availability, real-time stock tracking, adjustment reasons, and item history.</p>
-          <span class="h-card-cta">Read →</span>
-        </a>
-        <div class="h-card h-card-soon">
-          <div class="h-card-type">Guide</div>
-          <h3>Transitioning from International Inventory Beta</h3>
-          <p>Move from the International Inventory Beta to Toast IQ Inventory.</p>
-          <span class="h-card-cta">Coming soon</span>
-        </div>
-      </div>
-      <div class="h-actions">
-        <a class="h-btn h-btn-solid" href="mailto:anum.qassam@toasttab.com" data-track="transition_get_help">Get help now</a>
-      </div>
-    </section>
 
   </div>
 
@@ -381,8 +345,8 @@
 </main>
 
 <script>
-  // Path picker: one panel visible at a time, deep-linkable via #learn, #onboarding
-  // or #transition.
+  // Path picker: one panel visible at a time, deep-linkable via #learn,
+  // #onboarding or #day-to-day. #transition anchors the migration links.
   (function () {
     var tabs = Array.prototype.slice.call(document.querySelectorAll(".h-path:not([hidden])"));
     function select(id, focus) {
