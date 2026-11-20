@@ -1,5 +1,13 @@
 // Search index — each entry has: title, type, description, url, keywords (searchable text)
 var SEARCH_INDEX = [
+  {
+    title: "Transitioning from xtraCHEF",
+    type: "Guide",
+    url: "tutorials/transitioning-from-xtrachef.html",
+    external: false,
+    description: "At least until 2028 to upgrade, Toast support during migration, and your essential data coming with you. Invitations start as early as Q1 2027.",
+    keywords: "xtrachef migration transition upgrade 2027 2028 invitations products purchase data quarter recipes mappings unit conversions invoices records support"
+  },
   // Videos
   {
     title: "Toast IQ Inventory: First Look",
