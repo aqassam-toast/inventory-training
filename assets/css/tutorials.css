@@ -1,0 +1,28 @@
+.tu-wrap { max-width:1100px; margin:auto; padding:0 2rem; }
+.tu-hero { padding:3.5rem 0 2.5rem; background:radial-gradient(ellipse at 100% 0%,#fde3d2,transparent 65%); }
+.tu-hero h1 { font-size:clamp(2.2rem,5vw,3.5rem); letter-spacing:-.045em; line-height:1.08; margin-bottom:1rem; }
+.tu-hero p { color:var(--h-mid); max-width:550px; font-size:1.05rem; }
+.tu-content { padding-bottom:3rem; }
+.tutorial-hub nav.tu-paths { position:static; height:auto; display:grid; grid-template-columns:repeat(4,1fr); gap:.8rem; border:0; padding:0; margin:1rem 0 3rem; background:transparent; z-index:auto; align-items:stretch; }
+.tu-paths a { display:flex; flex-direction:column; gap:.6rem; padding:1.25rem; border:1px solid var(--h-line); border-radius:16px; background:#fff; text-decoration:none; color:var(--h-ink); }
+.tu-paths a:hover { border-color:var(--h-accent); background:#fffaf5; }
+.tu-paths a>span { color:var(--h-accent); font-size:.75rem; font-weight:800; }
+.tu-paths strong { line-height:1.3; font-size:1rem; }
+.tu-paths p { font-size:.8rem; color:var(--h-mid); }
+.tu-paths em { font-size:.75rem; font-style:normal; font-weight:700; margin-top:auto; padding-top:.25rem; }
+.tu-section { scroll-margin-top:90px; margin:0 0 3.5rem; }
+.tu-section-head { display:flex; align-items:flex-start; gap:1rem; margin-bottom:1.3rem; }
+.tu-num { flex:0 0 40px; height:40px; display:grid; place-items:center; border-radius:12px; background:var(--h-tint); color:#a53916; font-size:.85rem; font-weight:800; }
+.tu-section h2,.tu-help h2,.tu-internal h2 { font-size:1.65rem; letter-spacing:-.035em; line-height:1.2; margin-bottom:.5rem; }
+.tu-section-head p,.tu-help p { color:var(--h-mid); font-size:.9rem; }
+.tu-soon { background:transparent; border-style:dashed; }
+.tu-soon .h-card-cta { color:var(--h-mid); }
+.tu-help { padding:1.75rem; background:#eee8df; border-radius:18px; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; }
+.tu-help .btn-primary { flex-shrink:0; }
+.tu-internal { margin-bottom:3rem; }
+.tu-internal h2 { margin-bottom:1.25rem; }
+.tutorial-hub a:focus-visible { outline:3px solid var(--h-accent); outline-offset:4px; }
+@media(max-width:900px) { .tutorial-hub nav.tu-paths { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:600px) { .tu-wrap { padding-left:1.25rem; padding-right:1.25rem; } .tu-hero { padding:2.5rem 0 1.5rem; } .tu-paths a { padding:1rem; } .tu-paths p { display:none; } .tu-paths strong { font-size:.9rem; } .tu-help { flex-direction:column; align-items:flex-start; } .tu-section h2 { font-size:1.4rem; } }
+.tutorial-hub .h-grid { grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr)); }
+@media(max-width:600px) { .tutorial-hub > nav { padding:0 1rem; gap:.5rem; } .tutorial-hub > nav .nav-actions { margin-left:0; } .tutorial-hub > nav .btn-primary { font-size:.72rem; padding:.45rem .7rem; } .tutorial-hub > nav .logo span { font-size:.8rem; } }
